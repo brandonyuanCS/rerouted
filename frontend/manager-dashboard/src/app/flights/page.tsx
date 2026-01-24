@@ -1,0 +1,287 @@
+'use client';
+
+import { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { mockFlights, mockCrew, getFlightStatusColor } from '@/lib/mock-data';
+import { Flight } from '@/lib/types';
+
+function SearchIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </svg>
+  );
+}
+
+function FlightDetailDialog({ flight }: { flight: Flight }) {
+  const assignedCrew = flight.crewAssignments.map((assignment) => {
+    const crew = mockCrew.find((c) => c.id === assignment.crewMemberId);
+    return { ...assignment, crew };
+  });
+
+  return (
+    <DialogContent className="max-w-lg">
+      <DialogHeader>
+        <DialogTitle>{flight.flightNumber}</DialogTitle>
+        <DialogDescription>
+          {flight.origin} to {flight.destination}
+        </DialogDescription>
+      </DialogHeader>
+      <div className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <p className="text-sm text-muted-foreground">Status</p>
+            <Badge className={`${getFlightStatusColor(flight.status)} text-white`}>
+              {flight.status.replace('_', ' ')}
+            </Badge>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Gate</p>
+            <p className="font-medium">{flight.gate || 'TBD'}</p>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Scheduled Departure</p>
+            <p className="font-medium">
+              {new Date(flight.scheduledDeparture).toLocaleString('en-US', {
+                dateStyle: 'short',
+                timeStyle: 'short',
+              })}
+            </p>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Scheduled Arrival</p>
+            <p className="font-medium">
+              {new Date(flight.scheduledArrival).toLocaleString('en-US', {
+                dateStyle: 'short',
+                timeStyle: 'short',
+              })}
+            </p>
+          </div>
+          <div className="col-span-2">
+            <p className="text-sm text-muted-foreground">Aircraft</p>
+            <p className="font-medium">{flight.aircraft}</p>
+          </div>
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground mb-2">Assigned Crew</p>
+          {assignedCrew.length > 0 ? (
+            <div className="space-y-2">
+              {assignedCrew.map((assignment) => (
+                <div
+                  key={assignment.id}
+                  className="flex items-center justify-between rounded-lg border p-3"
+                >
+                  <div>
+                    <p className="font-medium">
+                      {assignment.crew?.firstName} {assignment.crew?.lastName}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{assignment.role}</p>
+                  </div>
+                  <Badge
+                    variant={assignment.status === 'confirmed' ? 'default' : 'outline'}
+                  >
+                    {assignment.status}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground">No crew assigned yet</p>
+          )}
+        </div>
+      </div>
+    </DialogContent>
+  );
+}
+
+export default function FlightsPage() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState<string>('all');
+
+  const filteredFlights = mockFlights.filter((flight) => {
+    const matchesSearch =
+      flight.flightNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      flight.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      flight.destination.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesStatus = statusFilter === 'all' || flight.status === statusFilter;
+    return matchesSearch && matchesStatus;
+  });
+
+  const statusCounts = {
+    scheduled: mockFlights.filter((f) => f.status === 'scheduled').length,
+    boarding: mockFlights.filter((f) => f.status === 'boarding').length,
+    in_air: mockFlights.filter((f) => f.status === 'in_air').length,
+    delayed: mockFlights.filter((f) => f.status === 'delayed').length,
+  };
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold text-secondary">Flights</h1>
+        <p className="text-muted-foreground">Monitor and manage flight operations</p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-4">
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Scheduled</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-gray-600">{statusCounts.scheduled}</div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Boarding</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-blue-600">{statusCounts.boarding}</div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">In Air</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-green-600">{statusCounts.in_air}</div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Delayed</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-yellow-600">{statusCounts.delayed}</div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <CardTitle>All Flights</CardTitle>
+            <div className="flex flex-col gap-2 md:flex-row">
+              <div className="relative">
+                <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  placeholder="Search flights..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-9 w-full md:w-64"
+                />
+              </div>
+              <Select value={statusFilter} onValueChange={setStatusFilter}>
+                <SelectTrigger className="w-full md:w-40">
+                  <SelectValue placeholder="Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Status</SelectItem>
+                  <SelectItem value="scheduled">Scheduled</SelectItem>
+                  <SelectItem value="boarding">Boarding</SelectItem>
+                  <SelectItem value="departed">Departed</SelectItem>
+                  <SelectItem value="in_air">In Air</SelectItem>
+                  <SelectItem value="landed">Landed</SelectItem>
+                  <SelectItem value="delayed">Delayed</SelectItem>
+                  <SelectItem value="cancelled">Cancelled</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Flight</TableHead>
+                <TableHead>Route</TableHead>
+                <TableHead>Departure</TableHead>
+                <TableHead>Arrival</TableHead>
+                <TableHead>Gate</TableHead>
+                <TableHead>Aircraft</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Crew</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {filteredFlights.map((flight) => (
+                <TableRow key={flight.id}>
+                  <TableCell className="font-medium">{flight.flightNumber}</TableCell>
+                  <TableCell>
+                    {flight.origin} - {flight.destination}
+                  </TableCell>
+                  <TableCell>
+                    {new Date(flight.scheduledDeparture).toLocaleTimeString('en-US', {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>
+                    {new Date(flight.scheduledArrival).toLocaleTimeString('en-US', {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>{flight.gate || '-'}</TableCell>
+                  <TableCell className="text-sm">{flight.aircraft}</TableCell>
+                  <TableCell>
+                    <Badge className={`${getFlightStatusColor(flight.status)} text-white`}>
+                      {flight.status.replace('_', ' ')}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="outline">
+                      {flight.crewAssignments.length} assigned
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" size="sm">
+                          Details
+                        </Button>
+                      </DialogTrigger>
+                      <FlightDetailDialog flight={flight} />
+                    </Dialog>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          {filteredFlights.length === 0 && (
+            <div className="py-8 text-center text-muted-foreground">
+              No flights found matching your filters.
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
