@@ -1,0 +1,1787 @@
+{
+  "aircraft": [
+    {
+      "aircraftId": "N321AA001",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1150"
+      ]
+    },
+    {
+      "aircraftId": "N321AA002",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1165"
+      ]
+    },
+    {
+      "aircraftId": "N321AA003",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1175"
+      ]
+    },
+    {
+      "aircraftId": "N321AA004",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1181"
+      ]
+    },
+    {
+      "aircraftId": "N321AA005",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1184"
+      ]
+    },
+    {
+      "aircraftId": "N321AA006",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1192"
+      ]
+    },
+    {
+      "aircraftId": "N321AA007",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1194"
+      ]
+    },
+    {
+      "aircraftId": "N321AA008",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1201"
+      ]
+    },
+    {
+      "aircraftId": "N321AA009",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1202"
+      ]
+    },
+    {
+      "aircraftId": "N321AA010",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1203"
+      ]
+    },
+    {
+      "aircraftId": "N321AA011",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1214"
+      ]
+    },
+    {
+      "aircraftId": "N321AA012",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1217"
+      ]
+    },
+    {
+      "aircraftId": "N321AA013",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1218"
+      ]
+    },
+    {
+      "aircraftId": "N321AA014",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1220"
+      ]
+    },
+    {
+      "aircraftId": "N321AA015",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1229"
+      ]
+    },
+    {
+      "aircraftId": "N321AA016",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1231"
+      ]
+    },
+    {
+      "aircraftId": "N321AA017",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1247"
+      ]
+    },
+    {
+      "aircraftId": "N321AA018",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1254"
+      ]
+    },
+    {
+      "aircraftId": "N321AA019",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1257"
+      ]
+    },
+    {
+      "aircraftId": "N321AA020",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1266"
+      ]
+    },
+    {
+      "aircraftId": "N321AA021",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1272"
+      ]
+    },
+    {
+      "aircraftId": "N321AA022",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1152"
+      ]
+    },
+    {
+      "aircraftId": "N321AA023",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1171"
+      ]
+    },
+    {
+      "aircraftId": "N321AA024",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1176"
+      ]
+    },
+    {
+      "aircraftId": "N321AA025",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1183"
+      ]
+    },
+    {
+      "aircraftId": "N321AA026",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1193"
+      ]
+    },
+    {
+      "aircraftId": "N321AA027",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1222"
+      ]
+    },
+    {
+      "aircraftId": "N321AA028",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1237"
+      ]
+    },
+    {
+      "aircraftId": "N321AA029",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1239"
+      ]
+    },
+    {
+      "aircraftId": "N321AA030",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1249"
+      ]
+    },
+    {
+      "aircraftId": "N321AA031",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1255"
+      ]
+    },
+    {
+      "aircraftId": "N321AA032",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1259"
+      ]
+    },
+    {
+      "aircraftId": "N321AA033",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1260"
+      ]
+    },
+    {
+      "aircraftId": "N321AA034",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1264"
+      ]
+    },
+    {
+      "aircraftId": "N321AA035",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1275"
+      ]
+    },
+    {
+      "aircraftId": "N321AA036",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1140"
+      ]
+    },
+    {
+      "aircraftId": "N321AA037",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1151"
+      ]
+    },
+    {
+      "aircraftId": "N321AA038",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1153"
+      ]
+    },
+    {
+      "aircraftId": "N321AA039",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1156"
+      ]
+    },
+    {
+      "aircraftId": "N321AA040",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1160"
+      ]
+    },
+    {
+      "aircraftId": "N321AA041",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1170"
+      ]
+    },
+    {
+      "aircraftId": "N321AA042",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1173"
+      ]
+    },
+    {
+      "aircraftId": "N321AA043",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1178"
+      ]
+    },
+    {
+      "aircraftId": "N321AA044",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1186"
+      ]
+    },
+    {
+      "aircraftId": "N321AA045",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1195"
+      ]
+    },
+    {
+      "aircraftId": "N321AA046",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1197"
+      ]
+    },
+    {
+      "aircraftId": "N321AA047",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1204"
+      ]
+    },
+    {
+      "aircraftId": "N321AA048",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1207"
+      ]
+    },
+    {
+      "aircraftId": "N321AA049",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1208"
+      ]
+    },
+    {
+      "aircraftId": "N321AA050",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1212"
+      ]
+    },
+    {
+      "aircraftId": "N321AA051",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1224"
+      ]
+    },
+    {
+      "aircraftId": "N321AA052",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1228"
+      ]
+    },
+    {
+      "aircraftId": "N321AA053",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1233"
+      ]
+    },
+    {
+      "aircraftId": "N321AA054",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1234"
+      ]
+    },
+    {
+      "aircraftId": "N321AA055",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1236"
+      ]
+    },
+    {
+      "aircraftId": "N321AA056",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1238"
+      ]
+    },
+    {
+      "aircraftId": "N321AA057",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1241"
+      ]
+    },
+    {
+      "aircraftId": "N321AA058",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1252"
+      ]
+    },
+    {
+      "aircraftId": "N321AA059",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1256"
+      ]
+    },
+    {
+      "aircraftId": "N321AA060",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1261"
+      ]
+    },
+    {
+      "aircraftId": "N321AA061",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1185"
+      ]
+    },
+    {
+      "aircraftId": "N321AA062",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1216"
+      ]
+    },
+    {
+      "aircraftId": "N321AA063",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1221"
+      ]
+    },
+    {
+      "aircraftId": "N321AA064",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1226"
+      ]
+    },
+    {
+      "aircraftId": "N321AA065",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1232"
+      ]
+    },
+    {
+      "aircraftId": "N321AA066",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1240"
+      ]
+    },
+    {
+      "aircraftId": "N321AA067",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1245"
+      ]
+    },
+    {
+      "aircraftId": "N321AA068",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1250"
+      ]
+    },
+    {
+      "aircraftId": "N321AA069",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1258"
+      ]
+    },
+    {
+      "aircraftId": "N321AA070",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1265"
+      ]
+    },
+    {
+      "aircraftId": "N321AA071",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1142"
+      ]
+    },
+    {
+      "aircraftId": "N321AA072",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1149"
+      ]
+    },
+    {
+      "aircraftId": "N321AA073",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1154"
+      ]
+    },
+    {
+      "aircraftId": "N321AA074",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1158"
+      ]
+    },
+    {
+      "aircraftId": "N321AA075",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1161"
+      ]
+    },
+    {
+      "aircraftId": "N321AA076",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1163"
+      ]
+    },
+    {
+      "aircraftId": "N321AA077",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1168"
+      ]
+    },
+    {
+      "aircraftId": "N321AA078",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1169"
+      ]
+    },
+    {
+      "aircraftId": "N321AA079",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1172"
+      ]
+    },
+    {
+      "aircraftId": "N321AA080",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1180"
+      ]
+    },
+    {
+      "aircraftId": "N321AA081",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1187"
+      ]
+    },
+    {
+      "aircraftId": "N321AA082",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1188"
+      ]
+    },
+    {
+      "aircraftId": "N321AA083",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1235"
+      ]
+    },
+    {
+      "aircraftId": "N321AA084",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1242"
+      ]
+    },
+    {
+      "aircraftId": "N321AA085",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1243"
+      ]
+    },
+    {
+      "aircraftId": "N321AA086",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1244"
+      ]
+    },
+    {
+      "aircraftId": "N321AA087",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1144"
+      ]
+    },
+    {
+      "aircraftId": "N321AA088",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1159"
+      ]
+    },
+    {
+      "aircraftId": "N321AA089",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1164"
+      ]
+    },
+    {
+      "aircraftId": "N321AA090",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1166"
+      ]
+    },
+    {
+      "aircraftId": "N321AA091",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1179"
+      ]
+    },
+    {
+      "aircraftId": "N321AA092",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1190"
+      ]
+    },
+    {
+      "aircraftId": "N321AA093",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1200"
+      ]
+    },
+    {
+      "aircraftId": "N321AA094",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1206"
+      ]
+    },
+    {
+      "aircraftId": "N321AA095",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1209"
+      ]
+    },
+    {
+      "aircraftId": "N321AA096",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1227"
+      ]
+    },
+    {
+      "aircraftId": "N321AA097",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1246"
+      ]
+    },
+    {
+      "aircraftId": "N321AA098",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1251"
+      ]
+    },
+    {
+      "aircraftId": "N321AA099",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1253"
+      ]
+    },
+    {
+      "aircraftId": "N321AA100",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1262"
+      ]
+    },
+    {
+      "aircraftId": "N321AA101",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1263"
+      ]
+    },
+    {
+      "aircraftId": "N321AA102",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1267"
+      ]
+    },
+    {
+      "aircraftId": "N321AA103",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1268"
+      ]
+    },
+    {
+      "aircraftId": "N321AA104",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1271"
+      ]
+    },
+    {
+      "aircraftId": "N321AA105",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1274"
+      ]
+    },
+    {
+      "aircraftId": "N321AA106",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1145"
+      ]
+    },
+    {
+      "aircraftId": "N321AA107",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1147"
+      ]
+    },
+    {
+      "aircraftId": "N321AA108",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1148"
+      ]
+    },
+    {
+      "aircraftId": "N321AA109",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1157"
+      ]
+    },
+    {
+      "aircraftId": "N321AA110",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1162"
+      ]
+    },
+    {
+      "aircraftId": "N321AA111",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1167"
+      ]
+    },
+    {
+      "aircraftId": "N321AA112",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1174"
+      ]
+    },
+    {
+      "aircraftId": "N321AA113",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1177"
+      ]
+    },
+    {
+      "aircraftId": "N321AA114",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1189"
+      ]
+    },
+    {
+      "aircraftId": "N321AA115",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1196"
+      ]
+    },
+    {
+      "aircraftId": "N321AA116",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1199"
+      ]
+    },
+    {
+      "aircraftId": "N321AA117",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1211"
+      ]
+    },
+    {
+      "aircraftId": "N321AA118",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1213"
+      ]
+    },
+    {
+      "aircraftId": "N321AA119",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1223"
+      ]
+    },
+    {
+      "aircraftId": "N321AA120",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1225"
+      ]
+    },
+    {
+      "aircraftId": "N321AA121",
+      "model": "321",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1230"
+      ]
+    },
+    {
+      "aircraftId": "N321AA122",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1270"
+      ]
+    },
+    {
+      "aircraftId": "N321AA123",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1273"
+      ]
+    },
+    {
+      "aircraftId": "N321AA124",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1141"
+      ]
+    },
+    {
+      "aircraftId": "N321AA125",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1143"
+      ]
+    },
+    {
+      "aircraftId": "N321AA126",
+      "model": "321",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1146"
+      ]
+    },
+    {
+      "aircraftId": "N321AA127",
+      "model": "321",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1155"
+      ]
+    },
+    {
+      "aircraftId": "N321AA128",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1182"
+      ]
+    },
+    {
+      "aircraftId": "N321AA129",
+      "model": "321",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1191"
+      ]
+    },
+    {
+      "aircraftId": "N321AA130",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1198"
+      ]
+    },
+    {
+      "aircraftId": "N321AA131",
+      "model": "321",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1205"
+      ]
+    },
+    {
+      "aircraftId": "N321AA132",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1210"
+      ]
+    },
+    {
+      "aircraftId": "N321AA133",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1215"
+      ]
+    },
+    {
+      "aircraftId": "N321AA134",
+      "model": "321",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1219"
+      ]
+    },
+    {
+      "aircraftId": "N321AA135",
+      "model": "321",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1248"
+      ]
+    },
+    {
+      "aircraftId": "N321AA136",
+      "model": "321",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1269"
+      ]
+    },
+    {
+      "aircraftId": "N738AA001",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1000",
+        "AA1029",
+        "AA1002",
+        "AA1031"
+      ]
+    },
+    {
+      "aircraftId": "N738AA002",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1004",
+        "AA1045",
+        "AA1006",
+        "AA1047"
+      ]
+    },
+    {
+      "aircraftId": "N738AA003",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1008",
+        "AA1062"
+      ]
+    },
+    {
+      "aircraftId": "N738AA004",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1012",
+        "AA1077",
+        "AA1010"
+      ]
+    },
+    {
+      "aircraftId": "N738AA005",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1016",
+        "AA1094"
+      ]
+    },
+    {
+      "aircraftId": "N738AA006",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1020",
+        "AA1110"
+      ]
+    },
+    {
+      "aircraftId": "N738AA007",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1024",
+        "AA1126"
+      ]
+    },
+    {
+      "aircraftId": "N738AA008",
+      "model": "738",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1028",
+        "AA1001",
+        "AA1030",
+        "AA1003"
+      ]
+    },
+    {
+      "aircraftId": "N738AA009",
+      "model": "738",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1032",
+        "AA1049"
+      ]
+    },
+    {
+      "aircraftId": "N738AA010",
+      "model": "738",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1034",
+        "AA1063"
+      ]
+    },
+    {
+      "aircraftId": "N738AA011",
+      "model": "738",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1036",
+        "AA1081"
+      ]
+    },
+    {
+      "aircraftId": "N738AA012",
+      "model": "738",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1038",
+        "AA1093",
+        "AA1007"
+      ]
+    },
+    {
+      "aircraftId": "N738AA013",
+      "model": "738",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1042",
+        "AA1125",
+        "AA1011"
+      ]
+    },
+    {
+      "aircraftId": "N738AA014",
+      "model": "738",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1044",
+        "AA1005",
+        "AA1046",
+        "AA1015"
+      ]
+    },
+    {
+      "aircraftId": "N738AA015",
+      "model": "738",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1048",
+        "AA1033"
+      ]
+    },
+    {
+      "aircraftId": "N738AA016",
+      "model": "738",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1050",
+        "AA1061",
+        "AA1019"
+      ]
+    },
+    {
+      "aircraftId": "N738AA017",
+      "model": "738",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1052",
+        "AA1083"
+      ]
+    },
+    {
+      "aircraftId": "N738AA018",
+      "model": "738",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1054",
+        "AA1097"
+      ]
+    },
+    {
+      "aircraftId": "N738AA019",
+      "model": "738",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1058",
+        "AA1129"
+      ]
+    },
+    {
+      "aircraftId": "N738AA020",
+      "model": "738",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1060",
+        "AA1014",
+        "AA1079"
+      ]
+    },
+    {
+      "aircraftId": "N738AA021",
+      "model": "738",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1064"
+      ]
+    },
+    {
+      "aircraftId": "N738AA022",
+      "model": "738",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1066",
+        "AA1051"
+      ]
+    },
+    {
+      "aircraftId": "N738AA023",
+      "model": "738",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1068",
+        "AA1085"
+      ]
+    },
+    {
+      "aircraftId": "N738AA024",
+      "model": "738",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1070",
+        "AA1099"
+      ]
+    },
+    {
+      "aircraftId": "N738AA025",
+      "model": "738",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1074",
+        "AA1131"
+      ]
+    },
+    {
+      "aircraftId": "N738AA026",
+      "model": "738",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1076",
+        "AA1009"
+      ]
+    },
+    {
+      "aircraftId": "N738AA027",
+      "model": "738",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1080",
+        "AA1035"
+      ]
+    },
+    {
+      "aircraftId": "N738AA028",
+      "model": "738",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1082",
+        "AA1053",
+        "AA1078",
+        "AA1023"
+      ]
+    },
+    {
+      "aircraftId": "N738AA029",
+      "model": "738",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1084",
+        "AA1065"
+      ]
+    },
+    {
+      "aircraftId": "N738AA030",
+      "model": "738",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1086",
+        "AA1101"
+      ]
+    },
+    {
+      "aircraftId": "N738AA031",
+      "model": "738",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1090",
+        "AA1133"
+      ]
+    },
+    {
+      "aircraftId": "N738AA032",
+      "model": "738",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1092",
+        "AA1018"
+      ]
+    },
+    {
+      "aircraftId": "N738AA033",
+      "model": "738",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1096",
+        "AA1037"
+      ]
+    },
+    {
+      "aircraftId": "N738AA034",
+      "model": "738",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1098",
+        "AA1055",
+        "AA1095"
+      ]
+    },
+    {
+      "aircraftId": "N738AA035",
+      "model": "738",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1100",
+        "AA1067"
+      ]
+    },
+    {
+      "aircraftId": "N738AA036",
+      "model": "738",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1102",
+        "AA1087"
+      ]
+    },
+    {
+      "aircraftId": "N738AA037",
+      "model": "738",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1106",
+        "AA1135"
+      ]
+    },
+    {
+      "aircraftId": "N738AA038",
+      "model": "738",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1108",
+        "AA1022"
+      ]
+    },
+    {
+      "aircraftId": "N738AA039",
+      "model": "738",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1124",
+        "AA1026"
+      ]
+    },
+    {
+      "aircraftId": "N738AA040",
+      "model": "738",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1128",
+        "AA1039"
+      ]
+    },
+    {
+      "aircraftId": "N738AA041",
+      "model": "738",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1130",
+        "AA1059",
+        "AA1127"
+      ]
+    },
+    {
+      "aircraftId": "N738AA042",
+      "model": "738",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1132",
+        "AA1069"
+      ]
+    },
+    {
+      "aircraftId": "N738AA043",
+      "model": "738",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1134",
+        "AA1091"
+      ]
+    },
+    {
+      "aircraftId": "N738AA044",
+      "model": "738",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1136",
+        "AA1103"
+      ]
+    },
+    {
+      "aircraftId": "N738AA045",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1013"
+      ]
+    },
+    {
+      "aircraftId": "N738AA046",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1017"
+      ]
+    },
+    {
+      "aircraftId": "N738AA047",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1021",
+        "AA1111"
+      ]
+    },
+    {
+      "aircraftId": "N738AA048",
+      "model": "738",
+      "homeBase": "DFW",
+      "rotation": [
+        "AA1025"
+      ]
+    },
+    {
+      "aircraftId": "N738AA049",
+      "model": "738",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1043"
+      ]
+    },
+    {
+      "aircraftId": "N738AA050",
+      "model": "738",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1071"
+      ]
+    },
+    {
+      "aircraftId": "N738AA051",
+      "model": "738",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1075"
+      ]
+    },
+    {
+      "aircraftId": "N738AA052",
+      "model": "738",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1107"
+      ]
+    },
+    {
+      "aircraftId": "N738AA053",
+      "model": "738",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1109",
+        "AA1027"
+      ]
+    },
+    {
+      "aircraftId": "N738AA054",
+      "model": "738",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1137"
+      ]
+    },
+    {
+      "aircraftId": "N757AA001",
+      "model": "757",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1040"
+      ]
+    },
+    {
+      "aircraftId": "N757AA002",
+      "model": "757",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1056"
+      ]
+    },
+    {
+      "aircraftId": "N757AA003",
+      "model": "757",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1072"
+      ]
+    },
+    {
+      "aircraftId": "N757AA004",
+      "model": "757",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1088"
+      ]
+    },
+    {
+      "aircraftId": "N757AA005",
+      "model": "757",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1104"
+      ]
+    },
+    {
+      "aircraftId": "N757AA006",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1112"
+      ]
+    },
+    {
+      "aircraftId": "N757AA007",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1114"
+      ]
+    },
+    {
+      "aircraftId": "N757AA008",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1116"
+      ]
+    },
+    {
+      "aircraftId": "N757AA009",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1118"
+      ]
+    },
+    {
+      "aircraftId": "N757AA010",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1120"
+      ]
+    },
+    {
+      "aircraftId": "N757AA011",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1122"
+      ]
+    },
+    {
+      "aircraftId": "N757AA012",
+      "model": "757",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1138"
+      ]
+    },
+    {
+      "aircraftId": "N757AA013",
+      "model": "757",
+      "homeBase": "ORD",
+      "rotation": [
+        "AA1041"
+      ]
+    },
+    {
+      "aircraftId": "N757AA014",
+      "model": "757",
+      "homeBase": "CLT",
+      "rotation": [
+        "AA1057"
+      ]
+    },
+    {
+      "aircraftId": "N757AA015",
+      "model": "757",
+      "homeBase": "MIA",
+      "rotation": [
+        "AA1073"
+      ]
+    },
+    {
+      "aircraftId": "N757AA016",
+      "model": "757",
+      "homeBase": "PHX",
+      "rotation": [
+        "AA1089"
+      ]
+    },
+    {
+      "aircraftId": "N757AA017",
+      "model": "757",
+      "homeBase": "PHL",
+      "rotation": [
+        "AA1105"
+      ]
+    },
+    {
+      "aircraftId": "N757AA018",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1113"
+      ]
+    },
+    {
+      "aircraftId": "N757AA019",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1115"
+      ]
+    },
+    {
+      "aircraftId": "N757AA020",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1117"
+      ]
+    },
+    {
+      "aircraftId": "N757AA021",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1119"
+      ]
+    },
+    {
+      "aircraftId": "N757AA022",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1121"
+      ]
+    },
+    {
+      "aircraftId": "N757AA023",
+      "model": "757",
+      "homeBase": "LAX",
+      "rotation": [
+        "AA1123"
+      ]
+    },
+    {
+      "aircraftId": "N757AA024",
+      "model": "757",
+      "homeBase": "JFK",
+      "rotation": [
+        "AA1139"
+      ]
+    }
+  ],
+  "metadata": {
+    "totalAircraft": 214,
+    "byType": {
+      "321": 136,
+      "738": 54,
+      "757": 24
+    },
+    "generatedAt": "2026-01-24T22:47:12.549Z"
+  }
+}

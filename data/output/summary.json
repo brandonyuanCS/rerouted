@@ -1,0 +1,40 @@
+{
+  "totalFlights": 276,
+  "uniqueRoutes": 147,
+  "airportsServed": 25,
+  "aircraftTypes": [
+    "738",
+    "757",
+    "321"
+  ],
+  "totalAircraft": 214,
+  "aircraftByType": {
+    "321": 136,
+    "738": 54,
+    "757": 24
+  },
+  "totalCrew": 1014,
+  "pilots": 405,
+  "flightAttendants": 609,
+  "crewByBase": {
+    "DFW": 125,
+    "ORD": 138,
+    "CLT": 113,
+    "MIA": 150,
+    "PHX": 100,
+    "PHL": 150,
+    "LAX": 138,
+    "JFK": 100
+  },
+  "totalPairings": 897,
+  "avgLegsPerPairing": 1.47,
+  "crewReturningToBase": 20,
+  "unassignedFlights": 56,
+  "totalDisruptions": 69,
+  "delays": 61,
+  "cancellations": 8,
+  "cascadingDelays": 6,
+  "crewAffected": 307,
+  "seed": 42,
+  "generatedAt": "2026-01-24T22:47:12.773Z"
+}
