@@ -1,0 +1,6002 @@
+[
+  {
+    "flightNumber": "AA1000",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "05:15:00",
+    "scheduledArrival": "07:12:00",
+    "aircraft": "321",
+    "duration": 117,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1001",
+    "origin": "ATL",
+    "destination": "DEN",
+    "scheduledDeparture": "06:00:00",
+    "scheduledArrival": "09:31:00",
+    "aircraft": "320",
+    "duration": 211,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1002",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "07:00:00",
+    "scheduledArrival": "10:23:00",
+    "aircraft": "321",
+    "duration": 203,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1003",
+    "origin": "BOS",
+    "destination": "DEN",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "10:41:00",
+    "aircraft": "320",
+    "duration": 116,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1004",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "09:15:00",
+    "scheduledArrival": "13:13:00",
+    "aircraft": "320",
+    "duration": 238,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1005",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "10:00:00",
+    "scheduledArrival": "11:23:00",
+    "aircraft": "320",
+    "duration": 83,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1006",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "11:30:00",
+    "scheduledArrival": "15:56:00",
+    "aircraft": "738",
+    "duration": 266,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1007",
+    "origin": "DEN",
+    "destination": "ORD",
+    "scheduledDeparture": "12:45:00",
+    "scheduledArrival": "14:05:00",
+    "aircraft": "739",
+    "duration": 80,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1008",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "13:15:00",
+    "scheduledArrival": "17:15:00",
+    "aircraft": "738",
+    "duration": 240,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1009",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "14:00:00",
+    "scheduledArrival": "18:38:00",
+    "aircraft": "321",
+    "duration": 278,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1010",
+    "origin": "PHX",
+    "destination": "LAX",
+    "scheduledDeparture": "15:45:00",
+    "scheduledArrival": "19:27:00",
+    "aircraft": "757",
+    "duration": 222,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1011",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "16:30:00",
+    "scheduledArrival": "20:29:00",
+    "aircraft": "738",
+    "duration": 239,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1012",
+    "origin": "CLT",
+    "destination": "SEA",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "18:56:00",
+    "aircraft": "320",
+    "duration": 101,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1013",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "18:15:00",
+    "scheduledArrival": "22:10:00",
+    "aircraft": "757",
+    "duration": 235,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1014",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "19:00:00",
+    "scheduledArrival": "23:26:00",
+    "aircraft": "757",
+    "duration": 266,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1015",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "22:24:00",
+    "aircraft": "320",
+    "duration": 114,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1016",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "21:15:00",
+    "scheduledArrival": "23:22:00",
+    "aircraft": "321",
+    "duration": 127,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1017",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "22:45:00",
+    "scheduledArrival": "03:34:00",
+    "aircraft": "739",
+    "duration": 289,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1018",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "05:45:00",
+    "scheduledArrival": "07:08:00",
+    "aircraft": "738",
+    "duration": 83,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1019",
+    "origin": "CLT",
+    "destination": "BOS",
+    "scheduledDeparture": "06:15:00",
+    "scheduledArrival": "10:37:00",
+    "aircraft": "320",
+    "duration": 262,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1020",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "07:45:00",
+    "scheduledArrival": "11:00:00",
+    "aircraft": "757",
+    "duration": 195,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1021",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "08:00:00",
+    "scheduledArrival": "11:54:00",
+    "aircraft": "739",
+    "duration": 234,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1022",
+    "origin": "ATL",
+    "destination": "MIA",
+    "scheduledDeparture": "09:00:00",
+    "scheduledArrival": "11:15:00",
+    "aircraft": "320",
+    "duration": 135,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1023",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "10:15:00",
+    "scheduledArrival": "13:24:00",
+    "aircraft": "738",
+    "duration": 189,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1024",
+    "origin": "LAX",
+    "destination": "BOS",
+    "scheduledDeparture": "11:15:00",
+    "scheduledArrival": "12:54:00",
+    "aircraft": "757",
+    "duration": 99,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1025",
+    "origin": "DEN",
+    "destination": "SEA",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "15:33:00",
+    "aircraft": "757",
+    "duration": 213,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1026",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "13:30:00",
+    "scheduledArrival": "15:31:00",
+    "aircraft": "738",
+    "duration": 121,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1027",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "14:00:00",
+    "scheduledArrival": "18:07:00",
+    "aircraft": "320",
+    "duration": 247,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1028",
+    "origin": "DEN",
+    "destination": "CLT",
+    "scheduledDeparture": "15:15:00",
+    "scheduledArrival": "19:03:00",
+    "aircraft": "320",
+    "duration": 228,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1029",
+    "origin": "CLT",
+    "destination": "MIA",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "18:39:00",
+    "aircraft": "739",
+    "duration": 114,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1030",
+    "origin": "BOS",
+    "destination": "JFK",
+    "scheduledDeparture": "17:30:00",
+    "scheduledArrival": "20:12:00",
+    "aircraft": "757",
+    "duration": 162,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1031",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "18:15:00",
+    "scheduledArrival": "20:12:00",
+    "aircraft": "738",
+    "duration": 117,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1032",
+    "origin": "LAX",
+    "destination": "DFW",
+    "scheduledDeparture": "19:15:00",
+    "scheduledArrival": "20:16:00",
+    "aircraft": "738",
+    "duration": 61,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1033",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "20:00:00",
+    "scheduledArrival": "00:51:00",
+    "aircraft": "738",
+    "duration": 291,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1034",
+    "origin": "ORD",
+    "destination": "SEA",
+    "scheduledDeparture": "21:15:00",
+    "scheduledArrival": "23:26:00",
+    "aircraft": "320",
+    "duration": 131,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1035",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "22:45:00",
+    "scheduledArrival": "00:47:00",
+    "aircraft": "320",
+    "duration": 122,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1036",
+    "origin": "JFK",
+    "destination": "ORD",
+    "scheduledDeparture": "05:00:00",
+    "scheduledArrival": "08:48:00",
+    "aircraft": "320",
+    "duration": 228,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1037",
+    "origin": "DFW",
+    "destination": "ORD",
+    "scheduledDeparture": "06:00:00",
+    "scheduledArrival": "07:15:00",
+    "aircraft": "320",
+    "duration": 75,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1038",
+    "origin": "ORD",
+    "destination": "LAX",
+    "scheduledDeparture": "07:15:00",
+    "scheduledArrival": "09:03:00",
+    "aircraft": "739",
+    "duration": 108,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1039",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "10:48:00",
+    "aircraft": "738",
+    "duration": 123,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1040",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "09:00:00",
+    "scheduledArrival": "10:12:00",
+    "aircraft": "739",
+    "duration": 72,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1041",
+    "origin": "ORD",
+    "destination": "LAX",
+    "scheduledDeparture": "10:15:00",
+    "scheduledArrival": "12:59:00",
+    "aircraft": "320",
+    "duration": 164,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1042",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "11:15:00",
+    "scheduledArrival": "13:52:00",
+    "aircraft": "738",
+    "duration": 157,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1043",
+    "origin": "LAX",
+    "destination": "DEN",
+    "scheduledDeparture": "12:30:00",
+    "scheduledArrival": "15:18:00",
+    "aircraft": "739",
+    "duration": 168,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1044",
+    "origin": "PHL",
+    "destination": "CLT",
+    "scheduledDeparture": "13:15:00",
+    "scheduledArrival": "15:30:00",
+    "aircraft": "321",
+    "duration": 135,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1045",
+    "origin": "SEA",
+    "destination": "DEN",
+    "scheduledDeparture": "14:00:00",
+    "scheduledArrival": "18:11:00",
+    "aircraft": "757",
+    "duration": 251,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1046",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "15:15:00",
+    "scheduledArrival": "16:29:00",
+    "aircraft": "739",
+    "duration": 74,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1047",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "16:00:00",
+    "scheduledArrival": "19:52:00",
+    "aircraft": "321",
+    "duration": 232,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1048",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "20:43:00",
+    "aircraft": "739",
+    "duration": 208,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1049",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "18:30:00",
+    "scheduledArrival": "23:29:00",
+    "aircraft": "757",
+    "duration": 299,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1050",
+    "origin": "LAX",
+    "destination": "DFW",
+    "scheduledDeparture": "19:30:00",
+    "scheduledArrival": "22:11:00",
+    "aircraft": "321",
+    "duration": 161,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1051",
+    "origin": "LAX",
+    "destination": "DEN",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "01:27:00",
+    "aircraft": "738",
+    "duration": 297,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1052",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "21:00:00",
+    "scheduledArrival": "22:18:00",
+    "aircraft": "739",
+    "duration": 78,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1053",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "22:00:00",
+    "scheduledArrival": "02:45:00",
+    "aircraft": "321",
+    "duration": 285,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1054",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "09:06:00",
+    "aircraft": "739",
+    "duration": 216,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1055",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "06:00:00",
+    "scheduledArrival": "11:00:00",
+    "aircraft": "321",
+    "duration": 300,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1056",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "07:15:00",
+    "scheduledArrival": "09:24:00",
+    "aircraft": "757",
+    "duration": 129,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1057",
+    "origin": "BOS",
+    "destination": "MIA",
+    "scheduledDeparture": "08:15:00",
+    "scheduledArrival": "12:10:00",
+    "aircraft": "757",
+    "duration": 235,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1058",
+    "origin": "DFW",
+    "destination": "ORD",
+    "scheduledDeparture": "09:00:00",
+    "scheduledArrival": "12:42:00",
+    "aircraft": "320",
+    "duration": 222,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1059",
+    "origin": "DFW",
+    "destination": "ORD",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "14:47:00",
+    "aircraft": "321",
+    "duration": 257,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1060",
+    "origin": "LAX",
+    "destination": "CLT",
+    "scheduledDeparture": "11:45:00",
+    "scheduledArrival": "15:06:00",
+    "aircraft": "320",
+    "duration": 201,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1061",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "16:33:00",
+    "aircraft": "757",
+    "duration": 273,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1062",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "13:00:00",
+    "scheduledArrival": "15:18:00",
+    "aircraft": "757",
+    "duration": 138,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1063",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "14:15:00",
+    "scheduledArrival": "18:09:00",
+    "aircraft": "321",
+    "duration": 234,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1064",
+    "origin": "MIA",
+    "destination": "SEA",
+    "scheduledDeparture": "15:45:00",
+    "scheduledArrival": "19:23:00",
+    "aircraft": "321",
+    "duration": 218,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1065",
+    "origin": "JFK",
+    "destination": "CLT",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "21:00:00",
+    "aircraft": "320",
+    "duration": 285,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1066",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "17:45:00",
+    "scheduledArrival": "22:10:00",
+    "aircraft": "321",
+    "duration": 265,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1067",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "23:28:00",
+    "aircraft": "738",
+    "duration": 283,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1068",
+    "origin": "JFK",
+    "destination": "LAX",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "22:14:00",
+    "aircraft": "757",
+    "duration": 149,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1069",
+    "origin": "JFK",
+    "destination": "LAX",
+    "scheduledDeparture": "20:00:00",
+    "scheduledArrival": "23:48:00",
+    "aircraft": "321",
+    "duration": 228,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1070",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "21:30:00",
+    "scheduledArrival": "23:59:00",
+    "aircraft": "739",
+    "duration": 149,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1071",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "22:30:00",
+    "scheduledArrival": "03:30:00",
+    "aircraft": "738",
+    "duration": 300,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1072",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "06:39:00",
+    "aircraft": "738",
+    "duration": 69,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1073",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "10:20:00",
+    "aircraft": "739",
+    "duration": 215,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1074",
+    "origin": "LAX",
+    "destination": "DFW",
+    "scheduledDeparture": "07:30:00",
+    "scheduledArrival": "08:41:00",
+    "aircraft": "320",
+    "duration": 71,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1075",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "08:15:00",
+    "scheduledArrival": "10:48:00",
+    "aircraft": "320",
+    "duration": 153,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1076",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "09:30:00",
+    "scheduledArrival": "13:19:00",
+    "aircraft": "738",
+    "duration": 229,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1077",
+    "origin": "LAX",
+    "destination": "SEA",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "14:20:00",
+    "aircraft": "320",
+    "duration": 230,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1078",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "11:15:00",
+    "scheduledArrival": "13:04:00",
+    "aircraft": "320",
+    "duration": 109,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1079",
+    "origin": "PHX",
+    "destination": "BOS",
+    "scheduledDeparture": "12:15:00",
+    "scheduledArrival": "15:52:00",
+    "aircraft": "739",
+    "duration": 217,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1080",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "13:30:00",
+    "scheduledArrival": "15:43:00",
+    "aircraft": "321",
+    "duration": 133,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1081",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "14:30:00",
+    "scheduledArrival": "17:29:00",
+    "aircraft": "320",
+    "duration": 179,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1082",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "15:15:00",
+    "scheduledArrival": "19:03:00",
+    "aircraft": "738",
+    "duration": 228,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1083",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "16:30:00",
+    "scheduledArrival": "17:53:00",
+    "aircraft": "321",
+    "duration": 83,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1084",
+    "origin": "JFK",
+    "destination": "LAX",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "18:21:00",
+    "aircraft": "738",
+    "duration": 66,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1085",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "21:31:00",
+    "aircraft": "739",
+    "duration": 166,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1086",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "21:47:00",
+    "aircraft": "321",
+    "duration": 122,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1087",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "20:45:00",
+    "scheduledArrival": "22:41:00",
+    "aircraft": "321",
+    "duration": 116,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1088",
+    "origin": "BOS",
+    "destination": "DEN",
+    "scheduledDeparture": "21:45:00",
+    "scheduledArrival": "22:57:00",
+    "aircraft": "739",
+    "duration": 72,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1089",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "22:15:00",
+    "scheduledArrival": "02:40:00",
+    "aircraft": "320",
+    "duration": 265,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1090",
+    "origin": "DEN",
+    "destination": "ATL",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "09:43:00",
+    "aircraft": "320",
+    "duration": 253,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1091",
+    "origin": "BOS",
+    "destination": "DEN",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "11:17:00",
+    "aircraft": "739",
+    "duration": 272,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1092",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "07:45:00",
+    "scheduledArrival": "09:51:00",
+    "aircraft": "321",
+    "duration": 126,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1093",
+    "origin": "LAX",
+    "destination": "SEA",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "12:25:00",
+    "aircraft": "321",
+    "duration": 220,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1094",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "09:15:00",
+    "scheduledArrival": "11:24:00",
+    "aircraft": "757",
+    "duration": 129,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1095",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "10:15:00",
+    "scheduledArrival": "12:14:00",
+    "aircraft": "320",
+    "duration": 119,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1096",
+    "origin": "BOS",
+    "destination": "JFK",
+    "scheduledDeparture": "11:00:00",
+    "scheduledArrival": "13:46:00",
+    "aircraft": "320",
+    "duration": 166,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1097",
+    "origin": "DFW",
+    "destination": "ORD",
+    "scheduledDeparture": "12:15:00",
+    "scheduledArrival": "16:48:00",
+    "aircraft": "320",
+    "duration": 273,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1098",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "13:45:00",
+    "scheduledArrival": "16:47:00",
+    "aircraft": "738",
+    "duration": 182,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1099",
+    "origin": "LAX",
+    "destination": "PHL",
+    "scheduledDeparture": "14:45:00",
+    "scheduledArrival": "18:02:00",
+    "aircraft": "739",
+    "duration": 197,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1100",
+    "origin": "JFK",
+    "destination": "DEN",
+    "scheduledDeparture": "15:15:00",
+    "scheduledArrival": "17:24:00",
+    "aircraft": "320",
+    "duration": 129,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1101",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "20:50:00",
+    "aircraft": "321",
+    "duration": 245,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1102",
+    "origin": "CLT",
+    "destination": "ATL",
+    "scheduledDeparture": "17:00:00",
+    "scheduledArrival": "21:52:00",
+    "aircraft": "320",
+    "duration": 292,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1103",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "20:19:00",
+    "aircraft": "320",
+    "duration": 94,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1104",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "19:15:00",
+    "scheduledArrival": "22:11:00",
+    "aircraft": "757",
+    "duration": 176,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1105",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "20:45:00",
+    "scheduledArrival": "22:49:00",
+    "aircraft": "738",
+    "duration": 124,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1106",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "21:30:00",
+    "scheduledArrival": "23:27:00",
+    "aircraft": "738",
+    "duration": 117,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1107",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "22:00:00",
+    "scheduledArrival": "00:03:00",
+    "aircraft": "321",
+    "duration": 123,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1108",
+    "origin": "SEA",
+    "destination": "CLT",
+    "scheduledDeparture": "05:15:00",
+    "scheduledArrival": "06:47:00",
+    "aircraft": "320",
+    "duration": 92,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1109",
+    "origin": "SEA",
+    "destination": "JFK",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "10:44:00",
+    "aircraft": "757",
+    "duration": 239,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1110",
+    "origin": "CLT",
+    "destination": "ATL",
+    "scheduledDeparture": "07:00:00",
+    "scheduledArrival": "11:19:00",
+    "aircraft": "321",
+    "duration": 259,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1111",
+    "origin": "ORD",
+    "destination": "ATL",
+    "scheduledDeparture": "08:00:00",
+    "scheduledArrival": "12:57:00",
+    "aircraft": "757",
+    "duration": 297,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1112",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "09:45:00",
+    "scheduledArrival": "13:48:00",
+    "aircraft": "321",
+    "duration": 243,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1113",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "10:15:00",
+    "scheduledArrival": "11:41:00",
+    "aircraft": "757",
+    "duration": 86,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1114",
+    "origin": "SEA",
+    "destination": "ORD",
+    "scheduledDeparture": "11:00:00",
+    "scheduledArrival": "13:28:00",
+    "aircraft": "739",
+    "duration": 148,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1115",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "12:30:00",
+    "scheduledArrival": "13:33:00",
+    "aircraft": "320",
+    "duration": 63,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1116",
+    "origin": "ORD",
+    "destination": "PHL",
+    "scheduledDeparture": "13:30:00",
+    "scheduledArrival": "17:12:00",
+    "aircraft": "320",
+    "duration": 222,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1117",
+    "origin": "PHX",
+    "destination": "CLT",
+    "scheduledDeparture": "14:30:00",
+    "scheduledArrival": "18:07:00",
+    "aircraft": "739",
+    "duration": 217,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1118",
+    "origin": "PHL",
+    "destination": "PHX",
+    "scheduledDeparture": "15:30:00",
+    "scheduledArrival": "17:52:00",
+    "aircraft": "321",
+    "duration": 142,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1119",
+    "origin": "ORD",
+    "destination": "MIA",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "18:47:00",
+    "aircraft": "320",
+    "duration": 122,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1120",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "17:00:00",
+    "scheduledArrival": "20:06:00",
+    "aircraft": "757",
+    "duration": 186,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1121",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "18:30:00",
+    "scheduledArrival": "20:41:00",
+    "aircraft": "739",
+    "duration": 131,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1122",
+    "origin": "LAX",
+    "destination": "SEA",
+    "scheduledDeparture": "19:00:00",
+    "scheduledArrival": "22:12:00",
+    "aircraft": "321",
+    "duration": 192,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1123",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "20:15:00",
+    "scheduledArrival": "00:11:00",
+    "aircraft": "320",
+    "duration": 236,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1124",
+    "origin": "PHL",
+    "destination": "DEN",
+    "scheduledDeparture": "21:00:00",
+    "scheduledArrival": "22:23:00",
+    "aircraft": "757",
+    "duration": 83,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1125",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "22:30:00",
+    "scheduledArrival": "01:31:00",
+    "aircraft": "739",
+    "duration": 181,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1126",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "08:00:00",
+    "aircraft": "320",
+    "duration": 150,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1127",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "06:15:00",
+    "scheduledArrival": "08:35:00",
+    "aircraft": "738",
+    "duration": 140,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1128",
+    "origin": "BOS",
+    "destination": "CLT",
+    "scheduledDeparture": "07:15:00",
+    "scheduledArrival": "09:10:00",
+    "aircraft": "320",
+    "duration": 115,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1129",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "08:30:00",
+    "scheduledArrival": "09:55:00",
+    "aircraft": "321",
+    "duration": 85,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1130",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "09:00:00",
+    "scheduledArrival": "13:01:00",
+    "aircraft": "739",
+    "duration": 241,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1131",
+    "origin": "DFW",
+    "destination": "ORD",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "14:28:00",
+    "aircraft": "321",
+    "duration": 238,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1132",
+    "origin": "PHL",
+    "destination": "ORD",
+    "scheduledDeparture": "11:00:00",
+    "scheduledArrival": "14:26:00",
+    "aircraft": "757",
+    "duration": 206,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1133",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "14:04:00",
+    "aircraft": "320",
+    "duration": 124,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1134",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "13:00:00",
+    "scheduledArrival": "16:27:00",
+    "aircraft": "738",
+    "duration": 207,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1135",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "14:00:00",
+    "scheduledArrival": "16:03:00",
+    "aircraft": "738",
+    "duration": 123,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1136",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "15:15:00",
+    "scheduledArrival": "19:33:00",
+    "aircraft": "739",
+    "duration": 258,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1137",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "19:03:00",
+    "aircraft": "739",
+    "duration": 138,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1138",
+    "origin": "SEA",
+    "destination": "ORD",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "20:55:00",
+    "aircraft": "321",
+    "duration": 220,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1139",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "18:15:00",
+    "scheduledArrival": "21:36:00",
+    "aircraft": "738",
+    "duration": 201,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1140",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "21:59:00",
+    "aircraft": "738",
+    "duration": 134,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1141",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "20:00:00",
+    "scheduledArrival": "23:55:00",
+    "aircraft": "321",
+    "duration": 235,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1142",
+    "origin": "ATL",
+    "destination": "SEA",
+    "scheduledDeparture": "21:15:00",
+    "scheduledArrival": "00:03:00",
+    "aircraft": "738",
+    "duration": 168,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1143",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "22:15:00",
+    "scheduledArrival": "23:33:00",
+    "aircraft": "738",
+    "duration": 78,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1144",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "08:22:00",
+    "aircraft": "738",
+    "duration": 172,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1145",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "06:30:00",
+    "scheduledArrival": "09:38:00",
+    "aircraft": "739",
+    "duration": 188,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1146",
+    "origin": "DFW",
+    "destination": "ORD",
+    "scheduledDeparture": "07:45:00",
+    "scheduledArrival": "11:53:00",
+    "aircraft": "757",
+    "duration": 248,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1147",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "08:15:00",
+    "scheduledArrival": "12:07:00",
+    "aircraft": "739",
+    "duration": 232,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1148",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "09:30:00",
+    "scheduledArrival": "12:57:00",
+    "aircraft": "738",
+    "duration": 207,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1149",
+    "origin": "CLT",
+    "destination": "DEN",
+    "scheduledDeparture": "10:45:00",
+    "scheduledArrival": "15:39:00",
+    "aircraft": "757",
+    "duration": 294,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1150",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "11:45:00",
+    "scheduledArrival": "13:08:00",
+    "aircraft": "320",
+    "duration": 83,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1151",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "16:39:00",
+    "aircraft": "321",
+    "duration": 279,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1152",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "13:45:00",
+    "scheduledArrival": "18:13:00",
+    "aircraft": "739",
+    "duration": 268,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1153",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "14:30:00",
+    "scheduledArrival": "15:59:00",
+    "aircraft": "320",
+    "duration": 89,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1154",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "15:45:00",
+    "scheduledArrival": "18:30:00",
+    "aircraft": "738",
+    "duration": 165,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1155",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "20:59:00",
+    "aircraft": "738",
+    "duration": 254,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1156",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "17:45:00",
+    "scheduledArrival": "22:30:00",
+    "aircraft": "320",
+    "duration": 285,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1157",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "18:15:00",
+    "scheduledArrival": "22:16:00",
+    "aircraft": "321",
+    "duration": 241,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1158",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "19:00:00",
+    "scheduledArrival": "20:57:00",
+    "aircraft": "738",
+    "duration": 117,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1159",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "20:45:00",
+    "scheduledArrival": "01:43:00",
+    "aircraft": "757",
+    "duration": 298,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1160",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "21:45:00",
+    "scheduledArrival": "23:47:00",
+    "aircraft": "320",
+    "duration": 122,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1161",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "22:15:00",
+    "scheduledArrival": "02:56:00",
+    "aircraft": "738",
+    "duration": 281,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1162",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "10:29:00",
+    "aircraft": "739",
+    "duration": 299,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1163",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "11:26:00",
+    "aircraft": "321",
+    "duration": 281,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1164",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "07:45:00",
+    "scheduledArrival": "10:41:00",
+    "aircraft": "757",
+    "duration": 176,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1165",
+    "origin": "BOS",
+    "destination": "JFK",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "10:44:00",
+    "aircraft": "320",
+    "duration": 119,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1166",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "09:45:00",
+    "scheduledArrival": "13:34:00",
+    "aircraft": "321",
+    "duration": 229,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1167",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "15:12:00",
+    "aircraft": "738",
+    "duration": 282,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1168",
+    "origin": "PHL",
+    "destination": "ORD",
+    "scheduledDeparture": "11:45:00",
+    "scheduledArrival": "12:48:00",
+    "aircraft": "321",
+    "duration": 63,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1169",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "15:00:00",
+    "aircraft": "757",
+    "duration": 180,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1170",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "13:00:00",
+    "scheduledArrival": "17:38:00",
+    "aircraft": "757",
+    "duration": 278,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1171",
+    "origin": "DEN",
+    "destination": "PHX",
+    "scheduledDeparture": "14:30:00",
+    "scheduledArrival": "18:10:00",
+    "aircraft": "320",
+    "duration": 220,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1172",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "15:00:00",
+    "scheduledArrival": "17:00:00",
+    "aircraft": "757",
+    "duration": 120,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1173",
+    "origin": "BOS",
+    "destination": "ORD",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "18:10:00",
+    "aircraft": "738",
+    "duration": 85,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1174",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "17:00:00",
+    "scheduledArrival": "19:23:00",
+    "aircraft": "738",
+    "duration": 143,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1175",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "18:15:00",
+    "scheduledArrival": "21:30:00",
+    "aircraft": "320",
+    "duration": 195,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1176",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "19:15:00",
+    "scheduledArrival": "20:35:00",
+    "aircraft": "739",
+    "duration": 80,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1177",
+    "origin": "SEA",
+    "destination": "BOS",
+    "scheduledDeparture": "20:15:00",
+    "scheduledArrival": "23:22:00",
+    "aircraft": "739",
+    "duration": 187,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1178",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "21:45:00",
+    "scheduledArrival": "23:50:00",
+    "aircraft": "738",
+    "duration": 125,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1179",
+    "origin": "PHL",
+    "destination": "LAX",
+    "scheduledDeparture": "22:15:00",
+    "scheduledArrival": "23:33:00",
+    "aircraft": "320",
+    "duration": 78,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1180",
+    "origin": "SEA",
+    "destination": "LAX",
+    "scheduledDeparture": "05:45:00",
+    "scheduledArrival": "09:41:00",
+    "aircraft": "757",
+    "duration": 236,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1181",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "08:12:00",
+    "aircraft": "321",
+    "duration": 87,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1182",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "07:30:00",
+    "scheduledArrival": "08:35:00",
+    "aircraft": "320",
+    "duration": 65,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1183",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "08:00:00",
+    "scheduledArrival": "12:53:00",
+    "aircraft": "739",
+    "duration": 293,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1184",
+    "origin": "LAX",
+    "destination": "JFK",
+    "scheduledDeparture": "09:30:00",
+    "scheduledArrival": "11:26:00",
+    "aircraft": "321",
+    "duration": 116,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1185",
+    "origin": "ATL",
+    "destination": "BOS",
+    "scheduledDeparture": "10:15:00",
+    "scheduledArrival": "13:55:00",
+    "aircraft": "738",
+    "duration": 220,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1186",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "11:30:00",
+    "scheduledArrival": "15:51:00",
+    "aircraft": "320",
+    "duration": 261,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1187",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "16:52:00",
+    "aircraft": "757",
+    "duration": 292,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1188",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "13:15:00",
+    "scheduledArrival": "17:36:00",
+    "aircraft": "739",
+    "duration": 261,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1189",
+    "origin": "MIA",
+    "destination": "SEA",
+    "scheduledDeparture": "14:30:00",
+    "scheduledArrival": "19:02:00",
+    "aircraft": "321",
+    "duration": 272,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1190",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "15:30:00",
+    "scheduledArrival": "19:41:00",
+    "aircraft": "757",
+    "duration": 251,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1191",
+    "origin": "PHL",
+    "destination": "ORD",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "20:28:00",
+    "aircraft": "321",
+    "duration": 253,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1192",
+    "origin": "BOS",
+    "destination": "ATL",
+    "scheduledDeparture": "17:45:00",
+    "scheduledArrival": "22:21:00",
+    "aircraft": "739",
+    "duration": 276,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1193",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "18:30:00",
+    "scheduledArrival": "21:47:00",
+    "aircraft": "738",
+    "duration": 197,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1194",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "19:30:00",
+    "scheduledArrival": "22:59:00",
+    "aircraft": "320",
+    "duration": 209,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1195",
+    "origin": "MIA",
+    "destination": "ORD",
+    "scheduledDeparture": "20:15:00",
+    "scheduledArrival": "23:15:00",
+    "aircraft": "738",
+    "duration": 180,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1196",
+    "origin": "DEN",
+    "destination": "MIA",
+    "scheduledDeparture": "21:15:00",
+    "scheduledArrival": "01:00:00",
+    "aircraft": "738",
+    "duration": 225,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1197",
+    "origin": "PHL",
+    "destination": "LAX",
+    "scheduledDeparture": "22:45:00",
+    "scheduledArrival": "00:14:00",
+    "aircraft": "321",
+    "duration": 89,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1198",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "05:00:00",
+    "scheduledArrival": "06:24:00",
+    "aircraft": "321",
+    "duration": 84,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1199",
+    "origin": "CLT",
+    "destination": "PHL",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "09:19:00",
+    "aircraft": "739",
+    "duration": 154,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1200",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "07:45:00",
+    "scheduledArrival": "11:32:00",
+    "aircraft": "738",
+    "duration": 227,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1201",
+    "origin": "SEA",
+    "destination": "PHX",
+    "scheduledDeparture": "08:30:00",
+    "scheduledArrival": "09:38:00",
+    "aircraft": "757",
+    "duration": 68,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1202",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "09:30:00",
+    "scheduledArrival": "10:55:00",
+    "aircraft": "757",
+    "duration": 85,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1203",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "10:00:00",
+    "scheduledArrival": "12:41:00",
+    "aircraft": "757",
+    "duration": 161,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1204",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "11:00:00",
+    "scheduledArrival": "14:49:00",
+    "aircraft": "321",
+    "duration": 229,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1205",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "16:21:00",
+    "aircraft": "757",
+    "duration": 261,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1206",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "13:15:00",
+    "scheduledArrival": "14:32:00",
+    "aircraft": "739",
+    "duration": 77,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1207",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "14:30:00",
+    "scheduledArrival": "18:48:00",
+    "aircraft": "321",
+    "duration": 258,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1208",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "15:30:00",
+    "scheduledArrival": "20:09:00",
+    "aircraft": "321",
+    "duration": 279,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1209",
+    "origin": "DEN",
+    "destination": "LAX",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "17:43:00",
+    "aircraft": "738",
+    "duration": 88,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1210",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "17:30:00",
+    "scheduledArrival": "18:34:00",
+    "aircraft": "321",
+    "duration": 64,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1211",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "18:00:00",
+    "scheduledArrival": "22:10:00",
+    "aircraft": "738",
+    "duration": 250,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1212",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "19:00:00",
+    "scheduledArrival": "21:55:00",
+    "aircraft": "739",
+    "duration": 175,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1213",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "23:27:00",
+    "aircraft": "738",
+    "duration": 177,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1214",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "21:45:00",
+    "scheduledArrival": "01:40:00",
+    "aircraft": "738",
+    "duration": 235,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1215",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "22:00:00",
+    "scheduledArrival": "00:22:00",
+    "aircraft": "739",
+    "duration": 142,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1216",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "08:07:00",
+    "aircraft": "739",
+    "duration": 157,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1217",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "08:10:00",
+    "aircraft": "738",
+    "duration": 85,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1218",
+    "origin": "ATL",
+    "destination": "DEN",
+    "scheduledDeparture": "07:15:00",
+    "scheduledArrival": "10:05:00",
+    "aircraft": "320",
+    "duration": 170,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1219",
+    "origin": "PHX",
+    "destination": "MIA",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "11:27:00",
+    "aircraft": "320",
+    "duration": 162,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1220",
+    "origin": "MIA",
+    "destination": "PHL",
+    "scheduledDeparture": "09:30:00",
+    "scheduledArrival": "13:20:00",
+    "aircraft": "757",
+    "duration": 230,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1221",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "10:00:00",
+    "scheduledArrival": "11:23:00",
+    "aircraft": "738",
+    "duration": 83,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1222",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "11:15:00",
+    "scheduledArrival": "14:37:00",
+    "aircraft": "738",
+    "duration": 202,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1223",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "14:45:00",
+    "aircraft": "757",
+    "duration": 165,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1224",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "13:30:00",
+    "scheduledArrival": "17:03:00",
+    "aircraft": "757",
+    "duration": 213,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1225",
+    "origin": "LAX",
+    "destination": "DFW",
+    "scheduledDeparture": "14:15:00",
+    "scheduledArrival": "18:03:00",
+    "aircraft": "320",
+    "duration": 228,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1226",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "15:30:00",
+    "scheduledArrival": "16:59:00",
+    "aircraft": "757",
+    "duration": 89,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1227",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "16:00:00",
+    "scheduledArrival": "19:35:00",
+    "aircraft": "757",
+    "duration": 215,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1228",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "17:30:00",
+    "scheduledArrival": "19:59:00",
+    "aircraft": "738",
+    "duration": 149,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1229",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "20:02:00",
+    "aircraft": "321",
+    "duration": 77,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1230",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "19:15:00",
+    "scheduledArrival": "21:51:00",
+    "aircraft": "320",
+    "duration": 156,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1231",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "00:48:00",
+    "aircraft": "739",
+    "duration": 258,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1232",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "21:15:00",
+    "scheduledArrival": "01:28:00",
+    "aircraft": "739",
+    "duration": 253,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1233",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "22:45:00",
+    "scheduledArrival": "01:49:00",
+    "aircraft": "739",
+    "duration": 184,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1234",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "05:00:00",
+    "scheduledArrival": "07:28:00",
+    "aircraft": "320",
+    "duration": 148,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1235",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "09:59:00",
+    "aircraft": "757",
+    "duration": 194,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1236",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "07:00:00",
+    "scheduledArrival": "08:01:00",
+    "aircraft": "321",
+    "duration": 61,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1237",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "08:30:00",
+    "scheduledArrival": "10:44:00",
+    "aircraft": "757",
+    "duration": 134,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1238",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "09:15:00",
+    "scheduledArrival": "10:48:00",
+    "aircraft": "320",
+    "duration": 93,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1239",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "11:48:00",
+    "aircraft": "320",
+    "duration": 78,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1240",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "11:00:00",
+    "scheduledArrival": "13:57:00",
+    "aircraft": "738",
+    "duration": 177,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1241",
+    "origin": "SEA",
+    "destination": "PHX",
+    "scheduledDeparture": "12:45:00",
+    "scheduledArrival": "16:46:00",
+    "aircraft": "320",
+    "duration": 241,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1242",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "13:15:00",
+    "scheduledArrival": "17:40:00",
+    "aircraft": "739",
+    "duration": 265,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1243",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "14:00:00",
+    "scheduledArrival": "16:51:00",
+    "aircraft": "738",
+    "duration": 171,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1244",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "15:00:00",
+    "scheduledArrival": "17:41:00",
+    "aircraft": "757",
+    "duration": 161,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1245",
+    "origin": "JFK",
+    "destination": "PHX",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "17:34:00",
+    "aircraft": "739",
+    "duration": 79,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1246",
+    "origin": "DEN",
+    "destination": "SEA",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "22:06:00",
+    "aircraft": "757",
+    "duration": 291,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1247",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "18:15:00",
+    "scheduledArrival": "20:15:00",
+    "aircraft": "738",
+    "duration": 120,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1248",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "19:15:00",
+    "scheduledArrival": "23:29:00",
+    "aircraft": "738",
+    "duration": 254,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1249",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "20:45:00",
+    "scheduledArrival": "00:58:00",
+    "aircraft": "739",
+    "duration": 253,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1250",
+    "origin": "PHL",
+    "destination": "BOS",
+    "scheduledDeparture": "21:30:00",
+    "scheduledArrival": "02:11:00",
+    "aircraft": "757",
+    "duration": 281,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1251",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "22:30:00",
+    "scheduledArrival": "02:53:00",
+    "aircraft": "757",
+    "duration": 263,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1252",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "08:28:00",
+    "aircraft": "320",
+    "duration": 178,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1253",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "06:00:00",
+    "scheduledArrival": "09:45:00",
+    "aircraft": "738",
+    "duration": 225,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1254",
+    "origin": "DEN",
+    "destination": "PHX",
+    "scheduledDeparture": "07:45:00",
+    "scheduledArrival": "11:13:00",
+    "aircraft": "739",
+    "duration": 208,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1255",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "13:37:00",
+    "aircraft": "739",
+    "duration": 292,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1256",
+    "origin": "MIA",
+    "destination": "ATL",
+    "scheduledDeparture": "09:45:00",
+    "scheduledArrival": "12:53:00",
+    "aircraft": "321",
+    "duration": 188,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1257",
+    "origin": "PHL",
+    "destination": "ORD",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "14:32:00",
+    "aircraft": "738",
+    "duration": 242,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1258",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "11:45:00",
+    "scheduledArrival": "14:37:00",
+    "aircraft": "739",
+    "duration": 172,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1259",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "12:30:00",
+    "scheduledArrival": "15:09:00",
+    "aircraft": "320",
+    "duration": 159,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1260",
+    "origin": "ATL",
+    "destination": "SEA",
+    "scheduledDeparture": "13:00:00",
+    "scheduledArrival": "17:22:00",
+    "aircraft": "757",
+    "duration": 262,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1261",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "14:45:00",
+    "scheduledArrival": "16:57:00",
+    "aircraft": "757",
+    "duration": 132,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1262",
+    "origin": "ATL",
+    "destination": "SEA",
+    "scheduledDeparture": "15:15:00",
+    "scheduledArrival": "17:40:00",
+    "aircraft": "738",
+    "duration": 145,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1263",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "16:30:00",
+    "scheduledArrival": "20:17:00",
+    "aircraft": "320",
+    "duration": 227,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1264",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "17:30:00",
+    "scheduledArrival": "20:53:00",
+    "aircraft": "320",
+    "duration": 203,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1265",
+    "origin": "MIA",
+    "destination": "CLT",
+    "scheduledDeparture": "18:00:00",
+    "scheduledArrival": "21:45:00",
+    "aircraft": "320",
+    "duration": 225,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1266",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "19:15:00",
+    "scheduledArrival": "21:09:00",
+    "aircraft": "757",
+    "duration": 114,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1267",
+    "origin": "PHL",
+    "destination": "JFK",
+    "scheduledDeparture": "20:15:00",
+    "scheduledArrival": "21:50:00",
+    "aircraft": "321",
+    "duration": 95,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1268",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "21:00:00",
+    "scheduledArrival": "00:49:00",
+    "aircraft": "757",
+    "duration": 229,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1269",
+    "origin": "SEA",
+    "destination": "CLT",
+    "scheduledDeparture": "22:45:00",
+    "scheduledArrival": "00:24:00",
+    "aircraft": "321",
+    "duration": 99,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1270",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "05:15:00",
+    "scheduledArrival": "09:19:00",
+    "aircraft": "320",
+    "duration": 244,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1271",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "10:21:00",
+    "aircraft": "757",
+    "duration": 216,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1272",
+    "origin": "PHL",
+    "destination": "JFK",
+    "scheduledDeparture": "07:15:00",
+    "scheduledArrival": "09:34:00",
+    "aircraft": "320",
+    "duration": 139,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1273",
+    "origin": "JFK",
+    "destination": "PHX",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "11:43:00",
+    "aircraft": "757",
+    "duration": 178,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1274",
+    "origin": "DEN",
+    "destination": "SEA",
+    "scheduledDeparture": "09:45:00",
+    "scheduledArrival": "11:26:00",
+    "aircraft": "321",
+    "duration": 101,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1275",
+    "origin": "CLT",
+    "destination": "MIA",
+    "scheduledDeparture": "10:00:00",
+    "scheduledArrival": "13:44:00",
+    "aircraft": "320",
+    "duration": 224,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1276",
+    "origin": "DEN",
+    "destination": "ORD",
+    "scheduledDeparture": "11:00:00",
+    "scheduledArrival": "13:12:00",
+    "aircraft": "738",
+    "duration": 132,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1277",
+    "origin": "LAX",
+    "destination": "DEN",
+    "scheduledDeparture": "12:15:00",
+    "scheduledArrival": "16:47:00",
+    "aircraft": "320",
+    "duration": 272,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1278",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "13:30:00",
+    "scheduledArrival": "18:28:00",
+    "aircraft": "738",
+    "duration": 298,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1279",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "14:15:00",
+    "scheduledArrival": "16:53:00",
+    "aircraft": "738",
+    "duration": 158,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1280",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "15:30:00",
+    "scheduledArrival": "19:52:00",
+    "aircraft": "321",
+    "duration": 262,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1281",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "20:29:00",
+    "aircraft": "320",
+    "duration": 254,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1282",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "17:00:00",
+    "scheduledArrival": "19:05:00",
+    "aircraft": "321",
+    "duration": 125,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1283",
+    "origin": "DEN",
+    "destination": "ATL",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "20:13:00",
+    "aircraft": "757",
+    "duration": 88,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1284",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "23:28:00",
+    "aircraft": "739",
+    "duration": 223,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1285",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "20:00:00",
+    "scheduledArrival": "23:41:00",
+    "aircraft": "739",
+    "duration": 221,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1286",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "21:45:00",
+    "scheduledArrival": "22:45:00",
+    "aircraft": "739",
+    "duration": 60,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1287",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "22:00:00",
+    "scheduledArrival": "01:14:00",
+    "aircraft": "757",
+    "duration": 194,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1288",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "05:00:00",
+    "scheduledArrival": "07:39:00",
+    "aircraft": "320",
+    "duration": 159,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1289",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "06:30:00",
+    "scheduledArrival": "10:41:00",
+    "aircraft": "738",
+    "duration": 251,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1290",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "07:00:00",
+    "scheduledArrival": "11:17:00",
+    "aircraft": "739",
+    "duration": 257,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1291",
+    "origin": "MIA",
+    "destination": "CLT",
+    "scheduledDeparture": "08:00:00",
+    "scheduledArrival": "10:30:00",
+    "aircraft": "739",
+    "duration": 150,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1292",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "09:45:00",
+    "scheduledArrival": "13:43:00",
+    "aircraft": "320",
+    "duration": 238,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1293",
+    "origin": "CLT",
+    "destination": "ORD",
+    "scheduledDeparture": "10:45:00",
+    "scheduledArrival": "11:54:00",
+    "aircraft": "757",
+    "duration": 69,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1294",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "11:30:00",
+    "scheduledArrival": "16:28:00",
+    "aircraft": "757",
+    "duration": 298,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1295",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "12:45:00",
+    "scheduledArrival": "14:49:00",
+    "aircraft": "738",
+    "duration": 124,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1296",
+    "origin": "JFK",
+    "destination": "MIA",
+    "scheduledDeparture": "13:30:00",
+    "scheduledArrival": "18:10:00",
+    "aircraft": "738",
+    "duration": 280,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1297",
+    "origin": "MIA",
+    "destination": "LAX",
+    "scheduledDeparture": "14:00:00",
+    "scheduledArrival": "18:24:00",
+    "aircraft": "757",
+    "duration": 264,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1298",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "15:45:00",
+    "scheduledArrival": "18:11:00",
+    "aircraft": "321",
+    "duration": 146,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1299",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "16:30:00",
+    "scheduledArrival": "20:55:00",
+    "aircraft": "738",
+    "duration": 265,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1300",
+    "origin": "ORD",
+    "destination": "PHL",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "20:34:00",
+    "aircraft": "757",
+    "duration": 199,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1301",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "18:30:00",
+    "scheduledArrival": "20:48:00",
+    "aircraft": "320",
+    "duration": 138,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1302",
+    "origin": "PHX",
+    "destination": "CLT",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "22:14:00",
+    "aircraft": "320",
+    "duration": 149,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1303",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "20:45:00",
+    "scheduledArrival": "22:55:00",
+    "aircraft": "738",
+    "duration": 130,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1304",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "21:15:00",
+    "scheduledArrival": "22:22:00",
+    "aircraft": "321",
+    "duration": 67,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1305",
+    "origin": "ATL",
+    "destination": "PHL",
+    "scheduledDeparture": "22:00:00",
+    "scheduledArrival": "23:32:00",
+    "aircraft": "738",
+    "duration": 92,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1306",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "05:45:00",
+    "scheduledArrival": "09:10:00",
+    "aircraft": "738",
+    "duration": 205,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1307",
+    "origin": "ATL",
+    "destination": "PHL",
+    "scheduledDeparture": "06:30:00",
+    "scheduledArrival": "09:05:00",
+    "aircraft": "320",
+    "duration": 155,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1308",
+    "origin": "SEA",
+    "destination": "CLT",
+    "scheduledDeparture": "07:30:00",
+    "scheduledArrival": "10:11:00",
+    "aircraft": "757",
+    "duration": 161,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1309",
+    "origin": "JFK",
+    "destination": "ORD",
+    "scheduledDeparture": "08:00:00",
+    "scheduledArrival": "12:08:00",
+    "aircraft": "321",
+    "duration": 248,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1310",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "09:00:00",
+    "scheduledArrival": "11:07:00",
+    "aircraft": "757",
+    "duration": 127,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1311",
+    "origin": "JFK",
+    "destination": "ATL",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "14:27:00",
+    "aircraft": "320",
+    "duration": 237,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1312",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "11:45:00",
+    "scheduledArrival": "13:29:00",
+    "aircraft": "320",
+    "duration": 104,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1313",
+    "origin": "ATL",
+    "destination": "MIA",
+    "scheduledDeparture": "12:30:00",
+    "scheduledArrival": "16:31:00",
+    "aircraft": "738",
+    "duration": 241,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1314",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "13:15:00",
+    "scheduledArrival": "17:17:00",
+    "aircraft": "321",
+    "duration": 242,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1315",
+    "origin": "DEN",
+    "destination": "JFK",
+    "scheduledDeparture": "14:00:00",
+    "scheduledArrival": "15:51:00",
+    "aircraft": "321",
+    "duration": 111,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1316",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "15:30:00",
+    "scheduledArrival": "18:29:00",
+    "aircraft": "739",
+    "duration": 179,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1317",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "16:30:00",
+    "scheduledArrival": "19:11:00",
+    "aircraft": "320",
+    "duration": 161,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1318",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "17:00:00",
+    "scheduledArrival": "18:32:00",
+    "aircraft": "757",
+    "duration": 92,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1319",
+    "origin": "PHL",
+    "destination": "DEN",
+    "scheduledDeparture": "18:30:00",
+    "scheduledArrival": "20:02:00",
+    "aircraft": "739",
+    "duration": 92,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1320",
+    "origin": "CLT",
+    "destination": "JFK",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "22:53:00",
+    "aircraft": "738",
+    "duration": 188,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1321",
+    "origin": "DEN",
+    "destination": "CLT",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "22:12:00",
+    "aircraft": "321",
+    "duration": 102,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1322",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "21:30:00",
+    "scheduledArrival": "02:06:00",
+    "aircraft": "738",
+    "duration": 276,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1323",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "22:30:00",
+    "scheduledArrival": "00:02:00",
+    "aircraft": "757",
+    "duration": 92,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1324",
+    "origin": "ORD",
+    "destination": "SEA",
+    "scheduledDeparture": "05:15:00",
+    "scheduledArrival": "08:46:00",
+    "aircraft": "739",
+    "duration": 211,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1325",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "06:30:00",
+    "scheduledArrival": "11:05:00",
+    "aircraft": "739",
+    "duration": 275,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1326",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "07:00:00",
+    "scheduledArrival": "10:44:00",
+    "aircraft": "739",
+    "duration": 224,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1327",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "12:23:00",
+    "aircraft": "738",
+    "duration": 218,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1328",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "09:30:00",
+    "scheduledArrival": "12:33:00",
+    "aircraft": "321",
+    "duration": 183,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1329",
+    "origin": "ATL",
+    "destination": "PHX",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "13:26:00",
+    "aircraft": "738",
+    "duration": 176,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1330",
+    "origin": "CLT",
+    "destination": "DEN",
+    "scheduledDeparture": "11:45:00",
+    "scheduledArrival": "14:48:00",
+    "aircraft": "320",
+    "duration": 183,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1331",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "12:30:00",
+    "scheduledArrival": "16:37:00",
+    "aircraft": "757",
+    "duration": 247,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1332",
+    "origin": "CLT",
+    "destination": "PHX",
+    "scheduledDeparture": "13:00:00",
+    "scheduledArrival": "15:21:00",
+    "aircraft": "321",
+    "duration": 141,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1333",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "14:15:00",
+    "scheduledArrival": "15:39:00",
+    "aircraft": "738",
+    "duration": 84,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1334",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "15:45:00",
+    "scheduledArrival": "17:48:00",
+    "aircraft": "321",
+    "duration": 123,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1335",
+    "origin": "SEA",
+    "destination": "MIA",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "20:30:00",
+    "aircraft": "321",
+    "duration": 255,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1336",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "17:30:00",
+    "scheduledArrival": "20:37:00",
+    "aircraft": "738",
+    "duration": 187,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1337",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "18:15:00",
+    "scheduledArrival": "20:10:00",
+    "aircraft": "739",
+    "duration": 115,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1338",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "21:58:00",
+    "aircraft": "739",
+    "duration": 133,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1339",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "00:36:00",
+    "aircraft": "757",
+    "duration": 246,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1340",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "21:45:00",
+    "scheduledArrival": "22:58:00",
+    "aircraft": "739",
+    "duration": 73,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1341",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "22:00:00",
+    "scheduledArrival": "00:38:00",
+    "aircraft": "739",
+    "duration": 158,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1342",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "05:00:00",
+    "scheduledArrival": "06:32:00",
+    "aircraft": "738",
+    "duration": 92,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1343",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "06:30:00",
+    "scheduledArrival": "10:43:00",
+    "aircraft": "321",
+    "duration": 253,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1344",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "07:00:00",
+    "scheduledArrival": "08:11:00",
+    "aircraft": "738",
+    "duration": 71,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1345",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "10:23:00",
+    "aircraft": "739",
+    "duration": 98,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1346",
+    "origin": "CLT",
+    "destination": "PHX",
+    "scheduledDeparture": "09:30:00",
+    "scheduledArrival": "11:11:00",
+    "aircraft": "320",
+    "duration": 101,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1347",
+    "origin": "BOS",
+    "destination": "LAX",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "13:39:00",
+    "aircraft": "739",
+    "duration": 189,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1348",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "11:45:00",
+    "scheduledArrival": "16:13:00",
+    "aircraft": "738",
+    "duration": 268,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1349",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "12:30:00",
+    "scheduledArrival": "16:53:00",
+    "aircraft": "738",
+    "duration": 263,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1350",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "13:15:00",
+    "scheduledArrival": "17:19:00",
+    "aircraft": "738",
+    "duration": 244,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1351",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "14:45:00",
+    "scheduledArrival": "16:22:00",
+    "aircraft": "321",
+    "duration": 97,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1352",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "15:15:00",
+    "scheduledArrival": "16:19:00",
+    "aircraft": "320",
+    "duration": 64,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1353",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "19:53:00",
+    "aircraft": "739",
+    "duration": 188,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1354",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "20:27:00",
+    "aircraft": "321",
+    "duration": 192,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1355",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "21:05:00",
+    "aircraft": "321",
+    "duration": 140,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1356",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "19:30:00",
+    "scheduledArrival": "23:23:00",
+    "aircraft": "757",
+    "duration": 233,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1357",
+    "origin": "JFK",
+    "destination": "LAX",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "23:52:00",
+    "aircraft": "757",
+    "duration": 202,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1358",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "21:30:00",
+    "scheduledArrival": "01:30:00",
+    "aircraft": "321",
+    "duration": 240,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1359",
+    "origin": "PHL",
+    "destination": "MIA",
+    "scheduledDeparture": "22:45:00",
+    "scheduledArrival": "01:14:00",
+    "aircraft": "739",
+    "duration": 149,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1360",
+    "origin": "BOS",
+    "destination": "LAX",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "07:01:00",
+    "aircraft": "739",
+    "duration": 91,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1361",
+    "origin": "PHX",
+    "destination": "PHL",
+    "scheduledDeparture": "06:30:00",
+    "scheduledArrival": "10:47:00",
+    "aircraft": "321",
+    "duration": 257,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1362",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "07:30:00",
+    "scheduledArrival": "12:26:00",
+    "aircraft": "320",
+    "duration": 296,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1363",
+    "origin": "BOS",
+    "destination": "PHL",
+    "scheduledDeparture": "08:15:00",
+    "scheduledArrival": "10:06:00",
+    "aircraft": "739",
+    "duration": 111,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1364",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "09:15:00",
+    "scheduledArrival": "10:42:00",
+    "aircraft": "739",
+    "duration": 87,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1365",
+    "origin": "JFK",
+    "destination": "LAX",
+    "scheduledDeparture": "10:00:00",
+    "scheduledArrival": "13:51:00",
+    "aircraft": "739",
+    "duration": 231,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1366",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "11:45:00",
+    "scheduledArrival": "14:09:00",
+    "aircraft": "320",
+    "duration": 144,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1367",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "12:15:00",
+    "scheduledArrival": "14:59:00",
+    "aircraft": "320",
+    "duration": 164,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1368",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "13:30:00",
+    "scheduledArrival": "15:43:00",
+    "aircraft": "738",
+    "duration": 133,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1369",
+    "origin": "ORD",
+    "destination": "BOS",
+    "scheduledDeparture": "14:15:00",
+    "scheduledArrival": "17:31:00",
+    "aircraft": "738",
+    "duration": 196,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1370",
+    "origin": "CLT",
+    "destination": "PHL",
+    "scheduledDeparture": "15:15:00",
+    "scheduledArrival": "20:14:00",
+    "aircraft": "738",
+    "duration": 299,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1371",
+    "origin": "PHX",
+    "destination": "DEN",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "21:14:00",
+    "aircraft": "757",
+    "duration": 299,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1372",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "17:00:00",
+    "scheduledArrival": "21:57:00",
+    "aircraft": "757",
+    "duration": 297,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1373",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "23:32:00",
+    "aircraft": "321",
+    "duration": 287,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1374",
+    "origin": "PHL",
+    "destination": "LAX",
+    "scheduledDeparture": "19:15:00",
+    "scheduledArrival": "23:42:00",
+    "aircraft": "738",
+    "duration": 267,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1375",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "00:33:00",
+    "aircraft": "321",
+    "duration": 243,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1376",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "21:15:00",
+    "scheduledArrival": "22:59:00",
+    "aircraft": "739",
+    "duration": 104,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1377",
+    "origin": "PHX",
+    "destination": "PHL",
+    "scheduledDeparture": "22:30:00",
+    "scheduledArrival": "23:52:00",
+    "aircraft": "320",
+    "duration": 82,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1378",
+    "origin": "CLT",
+    "destination": "JFK",
+    "scheduledDeparture": "05:45:00",
+    "scheduledArrival": "08:07:00",
+    "aircraft": "321",
+    "duration": 142,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1379",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "06:30:00",
+    "scheduledArrival": "08:54:00",
+    "aircraft": "757",
+    "duration": 144,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1380",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "07:30:00",
+    "scheduledArrival": "11:27:00",
+    "aircraft": "321",
+    "duration": 237,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1381",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "08:15:00",
+    "scheduledArrival": "10:58:00",
+    "aircraft": "739",
+    "duration": 163,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1382",
+    "origin": "BOS",
+    "destination": "LAX",
+    "scheduledDeparture": "09:00:00",
+    "scheduledArrival": "12:43:00",
+    "aircraft": "757",
+    "duration": 223,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1383",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "10:45:00",
+    "scheduledArrival": "12:24:00",
+    "aircraft": "320",
+    "duration": 99,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1384",
+    "origin": "SEA",
+    "destination": "MIA",
+    "scheduledDeparture": "11:45:00",
+    "scheduledArrival": "15:44:00",
+    "aircraft": "739",
+    "duration": 239,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1385",
+    "origin": "DEN",
+    "destination": "BOS",
+    "scheduledDeparture": "12:15:00",
+    "scheduledArrival": "16:30:00",
+    "aircraft": "321",
+    "duration": 255,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1386",
+    "origin": "SEA",
+    "destination": "ORD",
+    "scheduledDeparture": "13:45:00",
+    "scheduledArrival": "17:00:00",
+    "aircraft": "757",
+    "duration": 195,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1387",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "14:15:00",
+    "scheduledArrival": "17:41:00",
+    "aircraft": "739",
+    "duration": 206,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1388",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "15:45:00",
+    "scheduledArrival": "17:14:00",
+    "aircraft": "321",
+    "duration": 89,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1389",
+    "origin": "PHL",
+    "destination": "ORD",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "21:12:00",
+    "aircraft": "738",
+    "duration": 267,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1390",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "17:00:00",
+    "scheduledArrival": "20:23:00",
+    "aircraft": "320",
+    "duration": 203,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1391",
+    "origin": "LAX",
+    "destination": "DFW",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "20:50:00",
+    "aircraft": "738",
+    "duration": 125,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1392",
+    "origin": "SEA",
+    "destination": "ORD",
+    "scheduledDeparture": "19:00:00",
+    "scheduledArrival": "21:48:00",
+    "aircraft": "757",
+    "duration": 168,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1393",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "20:00:00",
+    "scheduledArrival": "00:59:00",
+    "aircraft": "320",
+    "duration": 299,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1394",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "21:45:00",
+    "scheduledArrival": "00:20:00",
+    "aircraft": "320",
+    "duration": 155,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1395",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "22:45:00",
+    "scheduledArrival": "00:05:00",
+    "aircraft": "739",
+    "duration": 80,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1396",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "05:15:00",
+    "scheduledArrival": "08:32:00",
+    "aircraft": "320",
+    "duration": 197,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1397",
+    "origin": "LAX",
+    "destination": "DFW",
+    "scheduledDeparture": "06:00:00",
+    "scheduledArrival": "10:13:00",
+    "aircraft": "738",
+    "duration": 253,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1398",
+    "origin": "PHL",
+    "destination": "BOS",
+    "scheduledDeparture": "07:45:00",
+    "scheduledArrival": "11:01:00",
+    "aircraft": "320",
+    "duration": 196,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1399",
+    "origin": "JFK",
+    "destination": "DEN",
+    "scheduledDeparture": "08:30:00",
+    "scheduledArrival": "10:09:00",
+    "aircraft": "757",
+    "duration": 99,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1400",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "09:00:00",
+    "scheduledArrival": "13:27:00",
+    "aircraft": "320",
+    "duration": 267,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1401",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "10:15:00",
+    "scheduledArrival": "11:32:00",
+    "aircraft": "738",
+    "duration": 77,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1402",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "11:00:00",
+    "scheduledArrival": "13:02:00",
+    "aircraft": "738",
+    "duration": 122,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1403",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "13:35:00",
+    "aircraft": "739",
+    "duration": 95,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1404",
+    "origin": "JFK",
+    "destination": "ATL",
+    "scheduledDeparture": "13:30:00",
+    "scheduledArrival": "16:57:00",
+    "aircraft": "739",
+    "duration": 207,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1405",
+    "origin": "MIA",
+    "destination": "JFK",
+    "scheduledDeparture": "14:30:00",
+    "scheduledArrival": "19:14:00",
+    "aircraft": "321",
+    "duration": 284,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1406",
+    "origin": "DEN",
+    "destination": "JFK",
+    "scheduledDeparture": "15:45:00",
+    "scheduledArrival": "18:01:00",
+    "aircraft": "757",
+    "duration": 136,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1407",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "20:07:00",
+    "aircraft": "320",
+    "duration": 202,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1408",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "17:45:00",
+    "scheduledArrival": "22:06:00",
+    "aircraft": "739",
+    "duration": 261,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1409",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "18:30:00",
+    "scheduledArrival": "21:06:00",
+    "aircraft": "321",
+    "duration": 156,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1410",
+    "origin": "PHL",
+    "destination": "JFK",
+    "scheduledDeparture": "19:15:00",
+    "scheduledArrival": "21:31:00",
+    "aircraft": "321",
+    "duration": 136,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1411",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "20:45:00",
+    "scheduledArrival": "23:31:00",
+    "aircraft": "739",
+    "duration": 166,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1412",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "21:15:00",
+    "scheduledArrival": "23:39:00",
+    "aircraft": "738",
+    "duration": 144,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1413",
+    "origin": "MIA",
+    "destination": "ORD",
+    "scheduledDeparture": "22:15:00",
+    "scheduledArrival": "23:28:00",
+    "aircraft": "757",
+    "duration": 73,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1414",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "05:00:00",
+    "scheduledArrival": "06:48:00",
+    "aircraft": "739",
+    "duration": 108,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1415",
+    "origin": "DEN",
+    "destination": "JFK",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "08:38:00",
+    "aircraft": "757",
+    "duration": 113,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1416",
+    "origin": "LAX",
+    "destination": "DFW",
+    "scheduledDeparture": "07:15:00",
+    "scheduledArrival": "11:24:00",
+    "aircraft": "738",
+    "duration": 249,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1417",
+    "origin": "PHL",
+    "destination": "JFK",
+    "scheduledDeparture": "08:15:00",
+    "scheduledArrival": "10:56:00",
+    "aircraft": "321",
+    "duration": 161,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1418",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "09:45:00",
+    "scheduledArrival": "13:01:00",
+    "aircraft": "757",
+    "duration": 196,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1419",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "10:45:00",
+    "scheduledArrival": "12:10:00",
+    "aircraft": "320",
+    "duration": 85,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1420",
+    "origin": "MIA",
+    "destination": "JFK",
+    "scheduledDeparture": "11:30:00",
+    "scheduledArrival": "13:50:00",
+    "aircraft": "320",
+    "duration": 140,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1421",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "14:06:00",
+    "aircraft": "739",
+    "duration": 126,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1422",
+    "origin": "SEA",
+    "destination": "PHX",
+    "scheduledDeparture": "13:30:00",
+    "scheduledArrival": "15:09:00",
+    "aircraft": "321",
+    "duration": 99,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1423",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "14:45:00",
+    "scheduledArrival": "18:05:00",
+    "aircraft": "757",
+    "duration": 200,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1424",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "15:45:00",
+    "scheduledArrival": "18:42:00",
+    "aircraft": "321",
+    "duration": 177,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1425",
+    "origin": "MIA",
+    "destination": "CLT",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "20:19:00",
+    "aircraft": "739",
+    "duration": 244,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1426",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "17:00:00",
+    "scheduledArrival": "20:14:00",
+    "aircraft": "738",
+    "duration": 194,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1427",
+    "origin": "ORD",
+    "destination": "BOS",
+    "scheduledDeparture": "18:00:00",
+    "scheduledArrival": "22:15:00",
+    "aircraft": "738",
+    "duration": 255,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1428",
+    "origin": "LAX",
+    "destination": "DFW",
+    "scheduledDeparture": "19:00:00",
+    "scheduledArrival": "23:01:00",
+    "aircraft": "321",
+    "duration": 241,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1429",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "20:00:00",
+    "scheduledArrival": "23:38:00",
+    "aircraft": "739",
+    "duration": 218,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1430",
+    "origin": "ATL",
+    "destination": "PHL",
+    "scheduledDeparture": "21:00:00",
+    "scheduledArrival": "22:01:00",
+    "aircraft": "739",
+    "duration": 61,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1431",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "22:30:00",
+    "scheduledArrival": "01:47:00",
+    "aircraft": "757",
+    "duration": 197,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1432",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "05:45:00",
+    "scheduledArrival": "10:11:00",
+    "aircraft": "321",
+    "duration": 266,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1433",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "06:15:00",
+    "scheduledArrival": "08:04:00",
+    "aircraft": "739",
+    "duration": 109,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1434",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "07:45:00",
+    "scheduledArrival": "09:05:00",
+    "aircraft": "757",
+    "duration": 80,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1435",
+    "origin": "PHL",
+    "destination": "ATL",
+    "scheduledDeparture": "08:15:00",
+    "scheduledArrival": "12:13:00",
+    "aircraft": "321",
+    "duration": 238,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1436",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "09:00:00",
+    "scheduledArrival": "10:23:00",
+    "aircraft": "320",
+    "duration": 83,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1437",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "10:00:00",
+    "scheduledArrival": "13:59:00",
+    "aircraft": "321",
+    "duration": 239,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1438",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "11:30:00",
+    "scheduledArrival": "14:54:00",
+    "aircraft": "738",
+    "duration": 204,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1439",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "12:15:00",
+    "scheduledArrival": "17:05:00",
+    "aircraft": "739",
+    "duration": 290,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1440",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "13:30:00",
+    "scheduledArrival": "18:20:00",
+    "aircraft": "739",
+    "duration": 290,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1441",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "14:00:00",
+    "scheduledArrival": "15:53:00",
+    "aircraft": "739",
+    "duration": 113,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1442",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "15:00:00",
+    "scheduledArrival": "17:16:00",
+    "aircraft": "321",
+    "duration": 136,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1443",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "16:30:00",
+    "scheduledArrival": "19:08:00",
+    "aircraft": "321",
+    "duration": 158,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1444",
+    "origin": "BOS",
+    "destination": "ORD",
+    "scheduledDeparture": "17:30:00",
+    "scheduledArrival": "18:43:00",
+    "aircraft": "738",
+    "duration": 73,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1445",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "23:03:00",
+    "aircraft": "757",
+    "duration": 258,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1446",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "21:43:00",
+    "aircraft": "757",
+    "duration": 118,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1447",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "20:45:00",
+    "scheduledArrival": "22:06:00",
+    "aircraft": "739",
+    "duration": 81,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1448",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "21:00:00",
+    "scheduledArrival": "23:08:00",
+    "aircraft": "321",
+    "duration": 128,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1449",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "22:45:00",
+    "scheduledArrival": "01:06:00",
+    "aircraft": "757",
+    "duration": 141,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1450",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "05:45:00",
+    "scheduledArrival": "08:17:00",
+    "aircraft": "757",
+    "duration": 152,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1451",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "10:07:00",
+    "aircraft": "739",
+    "duration": 202,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1452",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "07:30:00",
+    "scheduledArrival": "10:51:00",
+    "aircraft": "738",
+    "duration": 201,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1453",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "08:00:00",
+    "scheduledArrival": "10:14:00",
+    "aircraft": "320",
+    "duration": 134,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1454",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "09:15:00",
+    "scheduledArrival": "12:41:00",
+    "aircraft": "739",
+    "duration": 206,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1455",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "12:47:00",
+    "aircraft": "757",
+    "duration": 137,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1456",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "11:30:00",
+    "scheduledArrival": "14:17:00",
+    "aircraft": "757",
+    "duration": 167,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1457",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "12:15:00",
+    "scheduledArrival": "16:19:00",
+    "aircraft": "320",
+    "duration": 244,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1458",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "13:15:00",
+    "scheduledArrival": "15:32:00",
+    "aircraft": "738",
+    "duration": 137,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1459",
+    "origin": "MIA",
+    "destination": "ATL",
+    "scheduledDeparture": "14:45:00",
+    "scheduledArrival": "19:10:00",
+    "aircraft": "757",
+    "duration": 265,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1460",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "15:15:00",
+    "scheduledArrival": "17:31:00",
+    "aircraft": "757",
+    "duration": 136,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1461",
+    "origin": "BOS",
+    "destination": "JFK",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "19:05:00",
+    "aircraft": "321",
+    "duration": 140,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1462",
+    "origin": "MIA",
+    "destination": "LAX",
+    "scheduledDeparture": "17:45:00",
+    "scheduledArrival": "21:12:00",
+    "aircraft": "321",
+    "duration": 207,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1463",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "18:30:00",
+    "scheduledArrival": "19:59:00",
+    "aircraft": "739",
+    "duration": 89,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1464",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "19:00:00",
+    "scheduledArrival": "23:06:00",
+    "aircraft": "320",
+    "duration": 246,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1465",
+    "origin": "JFK",
+    "destination": "DEN",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "01:02:00",
+    "aircraft": "738",
+    "duration": 272,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1466",
+    "origin": "PHX",
+    "destination": "BOS",
+    "scheduledDeparture": "21:45:00",
+    "scheduledArrival": "23:20:00",
+    "aircraft": "757",
+    "duration": 95,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1467",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "22:45:00",
+    "scheduledArrival": "00:03:00",
+    "aircraft": "320",
+    "duration": 78,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1468",
+    "origin": "PHL",
+    "destination": "ATL",
+    "scheduledDeparture": "05:45:00",
+    "scheduledArrival": "09:01:00",
+    "aircraft": "739",
+    "duration": 196,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1469",
+    "origin": "BOS",
+    "destination": "PHX",
+    "scheduledDeparture": "06:00:00",
+    "scheduledArrival": "10:22:00",
+    "aircraft": "757",
+    "duration": 262,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1470",
+    "origin": "DEN",
+    "destination": "ATL",
+    "scheduledDeparture": "07:00:00",
+    "scheduledArrival": "08:27:00",
+    "aircraft": "321",
+    "duration": 87,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1471",
+    "origin": "MIA",
+    "destination": "CLT",
+    "scheduledDeparture": "08:00:00",
+    "scheduledArrival": "11:24:00",
+    "aircraft": "320",
+    "duration": 204,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1472",
+    "origin": "MIA",
+    "destination": "PHL",
+    "scheduledDeparture": "09:00:00",
+    "scheduledArrival": "10:02:00",
+    "aircraft": "738",
+    "duration": 62,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1473",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "10:15:00",
+    "scheduledArrival": "13:09:00",
+    "aircraft": "757",
+    "duration": 174,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1474",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "11:15:00",
+    "scheduledArrival": "13:43:00",
+    "aircraft": "738",
+    "duration": 148,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1475",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "12:00:00",
+    "scheduledArrival": "16:32:00",
+    "aircraft": "321",
+    "duration": 272,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1476",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "13:45:00",
+    "scheduledArrival": "16:14:00",
+    "aircraft": "320",
+    "duration": 149,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1477",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "14:30:00",
+    "scheduledArrival": "15:47:00",
+    "aircraft": "757",
+    "duration": 77,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1478",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "15:30:00",
+    "scheduledArrival": "19:15:00",
+    "aircraft": "738",
+    "duration": 225,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1479",
+    "origin": "CLT",
+    "destination": "LAX",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "19:36:00",
+    "aircraft": "321",
+    "duration": 201,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1480",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "21:39:00",
+    "aircraft": "320",
+    "duration": 264,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1481",
+    "origin": "CLT",
+    "destination": "BOS",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "21:26:00",
+    "aircraft": "738",
+    "duration": 161,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1482",
+    "origin": "JFK",
+    "destination": "DEN",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "22:24:00",
+    "aircraft": "738",
+    "duration": 159,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1483",
+    "origin": "JFK",
+    "destination": "MIA",
+    "scheduledDeparture": "20:00:00",
+    "scheduledArrival": "23:27:00",
+    "aircraft": "738",
+    "duration": 207,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1484",
+    "origin": "DEN",
+    "destination": "CLT",
+    "scheduledDeparture": "21:30:00",
+    "scheduledArrival": "23:53:00",
+    "aircraft": "321",
+    "duration": 143,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1485",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "22:30:00",
+    "scheduledArrival": "02:02:00",
+    "aircraft": "320",
+    "duration": 212,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1486",
+    "origin": "SEA",
+    "destination": "ORD",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "08:00:00",
+    "aircraft": "320",
+    "duration": 150,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1487",
+    "origin": "ATL",
+    "destination": "LAX",
+    "scheduledDeparture": "06:00:00",
+    "scheduledArrival": "09:52:00",
+    "aircraft": "321",
+    "duration": 232,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1488",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "07:15:00",
+    "scheduledArrival": "09:50:00",
+    "aircraft": "321",
+    "duration": 155,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1489",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "11:33:00",
+    "aircraft": "321",
+    "duration": 168,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1490",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "09:15:00",
+    "scheduledArrival": "12:37:00",
+    "aircraft": "321",
+    "duration": 202,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1491",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "10:45:00",
+    "scheduledArrival": "14:23:00",
+    "aircraft": "738",
+    "duration": 218,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1492",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "11:15:00",
+    "scheduledArrival": "13:04:00",
+    "aircraft": "320",
+    "duration": 109,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1493",
+    "origin": "DEN",
+    "destination": "BOS",
+    "scheduledDeparture": "12:45:00",
+    "scheduledArrival": "15:29:00",
+    "aircraft": "320",
+    "duration": 164,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1494",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "13:15:00",
+    "scheduledArrival": "14:36:00",
+    "aircraft": "739",
+    "duration": 81,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1495",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "14:00:00",
+    "scheduledArrival": "16:10:00",
+    "aircraft": "321",
+    "duration": 130,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1496",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "15:45:00",
+    "scheduledArrival": "19:05:00",
+    "aircraft": "739",
+    "duration": 200,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1497",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "16:30:00",
+    "scheduledArrival": "19:48:00",
+    "aircraft": "738",
+    "duration": 198,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1498",
+    "origin": "PHL",
+    "destination": "SEA",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "20:03:00",
+    "aircraft": "738",
+    "duration": 168,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1499",
+    "origin": "ATL",
+    "destination": "JFK",
+    "scheduledDeparture": "18:30:00",
+    "scheduledArrival": "23:13:00",
+    "aircraft": "738",
+    "duration": 283,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1500",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "00:26:00",
+    "aircraft": "738",
+    "duration": 281,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1501",
+    "origin": "JFK",
+    "destination": "LAX",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "01:10:00",
+    "aircraft": "739",
+    "duration": 280,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1502",
+    "origin": "CLT",
+    "destination": "ATL",
+    "scheduledDeparture": "21:15:00",
+    "scheduledArrival": "01:35:00",
+    "aircraft": "321",
+    "duration": 260,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1503",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "22:30:00",
+    "scheduledArrival": "01:46:00",
+    "aircraft": "757",
+    "duration": 196,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1504",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "05:30:00",
+    "scheduledArrival": "08:56:00",
+    "aircraft": "757",
+    "duration": 206,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1505",
+    "origin": "DEN",
+    "destination": "BOS",
+    "scheduledDeparture": "06:00:00",
+    "scheduledArrival": "07:34:00",
+    "aircraft": "320",
+    "duration": 94,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1506",
+    "origin": "LAX",
+    "destination": "BOS",
+    "scheduledDeparture": "07:15:00",
+    "scheduledArrival": "11:14:00",
+    "aircraft": "321",
+    "duration": 239,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1507",
+    "origin": "LAX",
+    "destination": "DFW",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "11:50:00",
+    "aircraft": "321",
+    "duration": 185,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1508",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "09:45:00",
+    "scheduledArrival": "12:40:00",
+    "aircraft": "738",
+    "duration": 175,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1509",
+    "origin": "ORD",
+    "destination": "PHL",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "14:27:00",
+    "aircraft": "757",
+    "duration": 237,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1510",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "11:00:00",
+    "scheduledArrival": "15:42:00",
+    "aircraft": "738",
+    "duration": 282,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1511",
+    "origin": "PHL",
+    "destination": "BOS",
+    "scheduledDeparture": "12:30:00",
+    "scheduledArrival": "17:07:00",
+    "aircraft": "738",
+    "duration": 277,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1512",
+    "origin": "PHX",
+    "destination": "JFK",
+    "scheduledDeparture": "13:45:00",
+    "scheduledArrival": "18:16:00",
+    "aircraft": "321",
+    "duration": 271,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1513",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "14:30:00",
+    "scheduledArrival": "17:50:00",
+    "aircraft": "739",
+    "duration": 200,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1514",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "15:00:00",
+    "scheduledArrival": "16:11:00",
+    "aircraft": "738",
+    "duration": 71,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1515",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "16:00:00",
+    "scheduledArrival": "20:57:00",
+    "aircraft": "321",
+    "duration": 297,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1516",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "21:11:00",
+    "aircraft": "321",
+    "duration": 236,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1517",
+    "origin": "LAX",
+    "destination": "CLT",
+    "scheduledDeparture": "18:30:00",
+    "scheduledArrival": "19:53:00",
+    "aircraft": "757",
+    "duration": 83,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1518",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "19:15:00",
+    "scheduledArrival": "20:28:00",
+    "aircraft": "320",
+    "duration": 73,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1519",
+    "origin": "BOS",
+    "destination": "JFK",
+    "scheduledDeparture": "20:45:00",
+    "scheduledArrival": "00:32:00",
+    "aircraft": "738",
+    "duration": 227,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1520",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "21:45:00",
+    "scheduledArrival": "23:04:00",
+    "aircraft": "321",
+    "duration": 79,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1521",
+    "origin": "DEN",
+    "destination": "DFW",
+    "scheduledDeparture": "22:00:00",
+    "scheduledArrival": "23:02:00",
+    "aircraft": "757",
+    "duration": 62,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1522",
+    "origin": "PHX",
+    "destination": "CLT",
+    "scheduledDeparture": "05:45:00",
+    "scheduledArrival": "07:03:00",
+    "aircraft": "321",
+    "duration": 78,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1523",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "06:00:00",
+    "scheduledArrival": "08:20:00",
+    "aircraft": "757",
+    "duration": 140,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1524",
+    "origin": "CLT",
+    "destination": "PHL",
+    "scheduledDeparture": "07:15:00",
+    "scheduledArrival": "10:59:00",
+    "aircraft": "321",
+    "duration": 224,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1525",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "08:15:00",
+    "scheduledArrival": "11:07:00",
+    "aircraft": "757",
+    "duration": 172,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1526",
+    "origin": "ATL",
+    "destination": "CLT",
+    "scheduledDeparture": "09:45:00",
+    "scheduledArrival": "13:22:00",
+    "aircraft": "320",
+    "duration": 217,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1527",
+    "origin": "ORD",
+    "destination": "CLT",
+    "scheduledDeparture": "10:15:00",
+    "scheduledArrival": "14:27:00",
+    "aircraft": "738",
+    "duration": 252,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1528",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "11:30:00",
+    "scheduledArrival": "15:52:00",
+    "aircraft": "321",
+    "duration": 262,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1529",
+    "origin": "LAX",
+    "destination": "DFW",
+    "scheduledDeparture": "12:30:00",
+    "scheduledArrival": "16:49:00",
+    "aircraft": "738",
+    "duration": 259,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1530",
+    "origin": "ATL",
+    "destination": "LAX",
+    "scheduledDeparture": "13:15:00",
+    "scheduledArrival": "16:27:00",
+    "aircraft": "739",
+    "duration": 192,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1531",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "14:00:00",
+    "scheduledArrival": "18:20:00",
+    "aircraft": "321",
+    "duration": 260,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1532",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "15:00:00",
+    "scheduledArrival": "18:15:00",
+    "aircraft": "738",
+    "duration": 195,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1533",
+    "origin": "MIA",
+    "destination": "CLT",
+    "scheduledDeparture": "16:45:00",
+    "scheduledArrival": "21:25:00",
+    "aircraft": "739",
+    "duration": 280,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1534",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "17:45:00",
+    "scheduledArrival": "22:02:00",
+    "aircraft": "738",
+    "duration": 257,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1535",
+    "origin": "DFW",
+    "destination": "MIA",
+    "scheduledDeparture": "18:15:00",
+    "scheduledArrival": "19:25:00",
+    "aircraft": "738",
+    "duration": 70,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1536",
+    "origin": "PHX",
+    "destination": "SEA",
+    "scheduledDeparture": "19:30:00",
+    "scheduledArrival": "23:10:00",
+    "aircraft": "739",
+    "duration": 220,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1537",
+    "origin": "PHX",
+    "destination": "PHL",
+    "scheduledDeparture": "20:00:00",
+    "scheduledArrival": "23:43:00",
+    "aircraft": "739",
+    "duration": 223,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1538",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "21:30:00",
+    "scheduledArrival": "22:50:00",
+    "aircraft": "739",
+    "duration": 80,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1539",
+    "origin": "CLT",
+    "destination": "SEA",
+    "scheduledDeparture": "22:30:00",
+    "scheduledArrival": "01:10:00",
+    "aircraft": "739",
+    "duration": 160,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1540",
+    "origin": "ATL",
+    "destination": "BOS",
+    "scheduledDeparture": "05:00:00",
+    "scheduledArrival": "07:19:00",
+    "aircraft": "320",
+    "duration": 139,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1541",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "06:15:00",
+    "scheduledArrival": "07:37:00",
+    "aircraft": "320",
+    "duration": 82,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1542",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "07:30:00",
+    "scheduledArrival": "11:20:00",
+    "aircraft": "321",
+    "duration": 230,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1543",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "08:15:00",
+    "scheduledArrival": "11:22:00",
+    "aircraft": "757",
+    "duration": 187,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1544",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "09:15:00",
+    "scheduledArrival": "11:50:00",
+    "aircraft": "321",
+    "duration": 155,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1545",
+    "origin": "LAX",
+    "destination": "ORD",
+    "scheduledDeparture": "10:00:00",
+    "scheduledArrival": "12:25:00",
+    "aircraft": "320",
+    "duration": 145,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1546",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "11:00:00",
+    "scheduledArrival": "14:07:00",
+    "aircraft": "320",
+    "duration": 187,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1547",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "12:15:00",
+    "scheduledArrival": "14:49:00",
+    "aircraft": "321",
+    "duration": 154,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1548",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "13:00:00",
+    "scheduledArrival": "14:58:00",
+    "aircraft": "739",
+    "duration": 118,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1549",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "14:15:00",
+    "scheduledArrival": "15:26:00",
+    "aircraft": "320",
+    "duration": 71,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1550",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "15:00:00",
+    "scheduledArrival": "18:21:00",
+    "aircraft": "320",
+    "duration": 201,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1551",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "16:30:00",
+    "scheduledArrival": "21:01:00",
+    "aircraft": "738",
+    "duration": 271,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1552",
+    "origin": "DFW",
+    "destination": "BOS",
+    "scheduledDeparture": "17:00:00",
+    "scheduledArrival": "18:45:00",
+    "aircraft": "321",
+    "duration": 105,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1553",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "18:00:00",
+    "scheduledArrival": "22:44:00",
+    "aircraft": "320",
+    "duration": 284,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1554",
+    "origin": "LAX",
+    "destination": "PHX",
+    "scheduledDeparture": "19:00:00",
+    "scheduledArrival": "22:21:00",
+    "aircraft": "320",
+    "duration": 201,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1555",
+    "origin": "DFW",
+    "destination": "ATL",
+    "scheduledDeparture": "20:30:00",
+    "scheduledArrival": "00:39:00",
+    "aircraft": "739",
+    "duration": 249,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1556",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "21:15:00",
+    "scheduledArrival": "01:22:00",
+    "aircraft": "739",
+    "duration": 247,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1557",
+    "origin": "JFK",
+    "destination": "CLT",
+    "scheduledDeparture": "22:00:00",
+    "scheduledArrival": "02:58:00",
+    "aircraft": "320",
+    "duration": 298,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1558",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "05:00:00",
+    "scheduledArrival": "07:25:00",
+    "aircraft": "738",
+    "duration": 145,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1559",
+    "origin": "PHX",
+    "destination": "LAX",
+    "scheduledDeparture": "06:00:00",
+    "scheduledArrival": "07:52:00",
+    "aircraft": "739",
+    "duration": 112,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1560",
+    "origin": "PHX",
+    "destination": "DEN",
+    "scheduledDeparture": "07:00:00",
+    "scheduledArrival": "08:36:00",
+    "aircraft": "757",
+    "duration": 96,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1561",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "12:44:00",
+    "aircraft": "757",
+    "duration": 239,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1562",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "09:00:00",
+    "scheduledArrival": "12:09:00",
+    "aircraft": "321",
+    "duration": 189,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1563",
+    "origin": "PHX",
+    "destination": "ORD",
+    "scheduledDeparture": "10:00:00",
+    "scheduledArrival": "12:51:00",
+    "aircraft": "321",
+    "duration": 171,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1564",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "11:45:00",
+    "scheduledArrival": "15:44:00",
+    "aircraft": "757",
+    "duration": 239,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1565",
+    "origin": "DFW",
+    "destination": "CLT",
+    "scheduledDeparture": "12:15:00",
+    "scheduledArrival": "13:49:00",
+    "aircraft": "739",
+    "duration": 94,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1566",
+    "origin": "DFW",
+    "destination": "DEN",
+    "scheduledDeparture": "13:45:00",
+    "scheduledArrival": "16:05:00",
+    "aircraft": "320",
+    "duration": 140,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1567",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "14:45:00",
+    "scheduledArrival": "17:03:00",
+    "aircraft": "320",
+    "duration": 138,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1568",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "15:30:00",
+    "scheduledArrival": "20:01:00",
+    "aircraft": "739",
+    "duration": 271,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1569",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "17:38:00",
+    "aircraft": "321",
+    "duration": 83,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1570",
+    "origin": "PHX",
+    "destination": "SEA",
+    "scheduledDeparture": "17:00:00",
+    "scheduledArrival": "20:53:00",
+    "aircraft": "757",
+    "duration": 233,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1571",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "18:45:00",
+    "scheduledArrival": "23:23:00",
+    "aircraft": "320",
+    "duration": 278,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1572",
+    "origin": "CLT",
+    "destination": "DFW",
+    "scheduledDeparture": "19:45:00",
+    "scheduledArrival": "21:11:00",
+    "aircraft": "321",
+    "duration": 86,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1573",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "20:15:00",
+    "scheduledArrival": "22:05:00",
+    "aircraft": "320",
+    "duration": 110,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1574",
+    "origin": "BOS",
+    "destination": "DFW",
+    "scheduledDeparture": "21:00:00",
+    "scheduledArrival": "00:29:00",
+    "aircraft": "739",
+    "duration": 209,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1575",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "22:00:00",
+    "scheduledArrival": "23:50:00",
+    "aircraft": "320",
+    "duration": 110,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1576",
+    "origin": "ORD",
+    "destination": "PHX",
+    "scheduledDeparture": "05:00:00",
+    "scheduledArrival": "06:10:00",
+    "aircraft": "320",
+    "duration": 70,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1577",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "06:45:00",
+    "scheduledArrival": "09:52:00",
+    "aircraft": "738",
+    "duration": 187,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1578",
+    "origin": "DFW",
+    "destination": "PHX",
+    "scheduledDeparture": "07:15:00",
+    "scheduledArrival": "12:07:00",
+    "aircraft": "321",
+    "duration": 292,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1579",
+    "origin": "DFW",
+    "destination": "JFK",
+    "scheduledDeparture": "08:00:00",
+    "scheduledArrival": "11:37:00",
+    "aircraft": "739",
+    "duration": 217,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1580",
+    "origin": "ATL",
+    "destination": "LAX",
+    "scheduledDeparture": "09:45:00",
+    "scheduledArrival": "12:30:00",
+    "aircraft": "739",
+    "duration": 165,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1581",
+    "origin": "DFW",
+    "destination": "PHL",
+    "scheduledDeparture": "10:15:00",
+    "scheduledArrival": "13:02:00",
+    "aircraft": "321",
+    "duration": 167,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1582",
+    "origin": "DEN",
+    "destination": "JFK",
+    "scheduledDeparture": "11:00:00",
+    "scheduledArrival": "13:37:00",
+    "aircraft": "757",
+    "duration": 157,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1583",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "12:30:00",
+    "scheduledArrival": "15:09:00",
+    "aircraft": "757",
+    "duration": 159,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1584",
+    "origin": "DFW",
+    "destination": "LAX",
+    "scheduledDeparture": "13:00:00",
+    "scheduledArrival": "17:49:00",
+    "aircraft": "757",
+    "duration": 289,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1585",
+    "origin": "SEA",
+    "destination": "DFW",
+    "scheduledDeparture": "14:30:00",
+    "scheduledArrival": "18:46:00",
+    "aircraft": "739",
+    "duration": 256,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1586",
+    "origin": "CLT",
+    "destination": "ORD",
+    "scheduledDeparture": "15:15:00",
+    "scheduledArrival": "19:03:00",
+    "aircraft": "321",
+    "duration": 228,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1587",
+    "origin": "ORD",
+    "destination": "DFW",
+    "scheduledDeparture": "16:15:00",
+    "scheduledArrival": "19:42:00",
+    "aircraft": "320",
+    "duration": 207,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1588",
+    "origin": "JFK",
+    "destination": "DFW",
+    "scheduledDeparture": "17:15:00",
+    "scheduledArrival": "19:15:00",
+    "aircraft": "739",
+    "duration": 120,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1589",
+    "origin": "PHX",
+    "destination": "DFW",
+    "scheduledDeparture": "18:00:00",
+    "scheduledArrival": "22:00:00",
+    "aircraft": "757",
+    "duration": 240,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1590",
+    "origin": "SEA",
+    "destination": "CLT",
+    "scheduledDeparture": "19:15:00",
+    "scheduledArrival": "23:49:00",
+    "aircraft": "320",
+    "duration": 274,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1591",
+    "origin": "DFW",
+    "destination": "ORD",
+    "scheduledDeparture": "20:00:00",
+    "scheduledArrival": "21:14:00",
+    "aircraft": "321",
+    "duration": 74,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1592",
+    "origin": "DFW",
+    "destination": "SEA",
+    "scheduledDeparture": "21:45:00",
+    "scheduledArrival": "22:45:00",
+    "aircraft": "757",
+    "duration": 60,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1593",
+    "origin": "JFK",
+    "destination": "CLT",
+    "scheduledDeparture": "22:30:00",
+    "scheduledArrival": "02:33:00",
+    "aircraft": "321",
+    "duration": 243,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1594",
+    "origin": "MIA",
+    "destination": "DFW",
+    "scheduledDeparture": "05:00:00",
+    "scheduledArrival": "06:37:00",
+    "aircraft": "739",
+    "duration": 97,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1595",
+    "origin": "CLT",
+    "destination": "ORD",
+    "scheduledDeparture": "06:30:00",
+    "scheduledArrival": "07:48:00",
+    "aircraft": "757",
+    "duration": 78,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1596",
+    "origin": "ATL",
+    "destination": "PHX",
+    "scheduledDeparture": "07:00:00",
+    "scheduledArrival": "09:26:00",
+    "aircraft": "757",
+    "duration": 146,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1597",
+    "origin": "PHL",
+    "destination": "DFW",
+    "scheduledDeparture": "08:45:00",
+    "scheduledArrival": "12:31:00",
+    "aircraft": "757",
+    "duration": 226,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1598",
+    "origin": "ATL",
+    "destination": "DFW",
+    "scheduledDeparture": "09:30:00",
+    "scheduledArrival": "11:27:00",
+    "aircraft": "739",
+    "duration": 117,
+    "status": "scheduled"
+  },
+  {
+    "flightNumber": "AA1599",
+    "origin": "PHX",
+    "destination": "LAX",
+    "scheduledDeparture": "10:30:00",
+    "scheduledArrival": "12:02:00",
+    "aircraft": "321",
+    "duration": 92,
+    "status": "scheduled"
+  }
+]

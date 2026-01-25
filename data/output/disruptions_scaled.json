@@ -1,0 +1,4835 @@
+{
+  "disruptions": [
+    {
+      "flightNumber": "AA1257",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T08:00:00",
+      "delayMinutes": 73,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T09:13:00"
+    },
+    {
+      "flightNumber": "AA1028",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 94,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T07:34:00"
+    },
+    {
+      "flightNumber": "AA1006",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 165,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T16:45:00"
+    },
+    {
+      "flightNumber": "AA1118",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 132,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T08:12:00"
+    },
+    {
+      "flightNumber": "AA1110",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 221,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T17:41:00"
+    },
+    {
+      "flightNumber": "AA1057",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 145,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T12:25:00"
+    },
+    {
+      "flightNumber": "AA1035",
+      "type": "cancellation",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1026",
+      "type": "cancellation",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": null,
+      "isCascade": true
+    },
+    {
+      "flightNumber": "AA1267",
+      "type": "cancellation",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1187",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 278,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T16:38:00"
+    },
+    {
+      "flightNumber": "AA1022",
+      "type": "cancellation",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1245",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T11:00:00",
+      "delayMinutes": 238,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T14:58:00"
+    },
+    {
+      "flightNumber": "AA1156",
+      "type": "cancellation",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1008",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 80,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T07:20:00"
+    },
+    {
+      "flightNumber": "AA1007",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": 85,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T19:25:00"
+    },
+    {
+      "flightNumber": "AA1023",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": 246,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T22:06:00"
+    },
+    {
+      "flightNumber": "AA1055",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 68,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:08:00"
+    },
+    {
+      "flightNumber": "AA1059",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 55,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:55:00"
+    },
+    {
+      "flightNumber": "AA1177",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 77,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T15:17:00"
+    },
+    {
+      "flightNumber": "AA1248",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T15:00:00",
+      "delayMinutes": 278,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T19:38:00"
+    },
+    {
+      "flightNumber": "AA1273",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 114,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T15:54:00"
+    },
+    {
+      "flightNumber": "AA1191",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T15:00:00",
+      "delayMinutes": 262,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T19:22:00"
+    },
+    {
+      "flightNumber": "AA1050",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 279,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T10:39:00"
+    },
+    {
+      "flightNumber": "AA1266",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T08:00:00",
+      "delayMinutes": 61,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T09:01:00"
+    },
+    {
+      "flightNumber": "AA1155",
+      "type": "cancellation",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T15:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1056",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 290,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T10:50:00"
+    },
+    {
+      "flightNumber": "AA1162",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 150,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T16:30:00"
+    },
+    {
+      "flightNumber": "AA1244",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 50,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T12:50:00"
+    },
+    {
+      "flightNumber": "AA1119",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 297,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:57:00"
+    },
+    {
+      "flightNumber": "AA1001",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 190,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T13:10:00"
+    },
+    {
+      "flightNumber": "AA1040",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 183,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T09:03:00"
+    },
+    {
+      "flightNumber": "AA1263",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 34,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T13:34:00"
+    },
+    {
+      "flightNumber": "AA1135",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 67,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:07:00"
+    },
+    {
+      "flightNumber": "AA1247",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T08:00:00",
+      "delayMinutes": 208,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:28:00"
+    },
+    {
+      "flightNumber": "AA1039",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 110,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:50:00"
+    },
+    {
+      "flightNumber": "AA1259",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": 300,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T14:00:00"
+    },
+    {
+      "flightNumber": "AA1134",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 83,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T07:23:00"
+    },
+    {
+      "flightNumber": "AA1268",
+      "type": "cancellation",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": null,
+      "isCascade": true
+    },
+    {
+      "flightNumber": "AA1260",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": 137,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:17:00"
+    },
+    {
+      "flightNumber": "AA1145",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 165,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T16:45:00"
+    },
+    {
+      "flightNumber": "AA1024",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 56,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T06:56:00"
+    },
+    {
+      "flightNumber": "AA1139",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 31,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:31:00"
+    },
+    {
+      "flightNumber": "AA1136",
+      "type": "cancellation",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": null,
+      "isCascade": true
+    },
+    {
+      "flightNumber": "AA1115",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 34,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T10:34:00"
+    },
+    {
+      "flightNumber": "AA1011",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": 106,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T19:46:00"
+    },
+    {
+      "flightNumber": "AA1165",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T08:00:00",
+      "delayMinutes": 105,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T09:45:00"
+    },
+    {
+      "flightNumber": "AA1031",
+      "type": "cancellation",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1144",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 213,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T16:33:00"
+    },
+    {
+      "flightNumber": "AA1020",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 238,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T09:58:00"
+    },
+    {
+      "flightNumber": "AA1123",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 151,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T12:31:00"
+    },
+    {
+      "flightNumber": "AA1140",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 241,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T14:01:00"
+    },
+    {
+      "flightNumber": "AA1049",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 240,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:00:00"
+    },
+    {
+      "flightNumber": "AA1017",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 166,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T12:46:00"
+    },
+    {
+      "flightNumber": "AA1185",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T11:00:00",
+      "delayMinutes": 49,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:49:00"
+    },
+    {
+      "flightNumber": "AA1058",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 265,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:25:00"
+    },
+    {
+      "flightNumber": "AA1146",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T15:00:00",
+      "delayMinutes": 144,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T17:24:00"
+    },
+    {
+      "flightNumber": "AA1037",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 65,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:05:00"
+    },
+    {
+      "flightNumber": "AA1010",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 234,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T17:54:00"
+    },
+    {
+      "flightNumber": "AA1157",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 44,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T14:44:00"
+    },
+    {
+      "flightNumber": "AA1029",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 165,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T12:45:00"
+    },
+    {
+      "flightNumber": "AA1158",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 190,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T15:10:00"
+    },
+    {
+      "flightNumber": "AA1012",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 127,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T08:07:00"
+    },
+    {
+      "flightNumber": "AA1048",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 130,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T08:10:00"
+    },
+    {
+      "flightNumber": "AA1269",
+      "type": "cancellation",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T15:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1175",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T08:00:00",
+      "delayMinutes": 183,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:03:00"
+    },
+    {
+      "flightNumber": "AA1129",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 181,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T13:01:00"
+    },
+    {
+      "flightNumber": "AA1154",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 224,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T15:44:00"
+    },
+    {
+      "flightNumber": "AA1046",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 184,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T17:04:00"
+    },
+    {
+      "flightNumber": "AA1181",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T08:00:00",
+      "delayMinutes": 137,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:17:00"
+    },
+    {
+      "flightNumber": "AA1047",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": 268,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T22:28:00"
+    },
+    {
+      "flightNumber": "AA1045",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 116,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:56:00"
+    },
+    {
+      "flightNumber": "AA1238",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 201,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T13:21:00"
+    },
+    {
+      "flightNumber": "AA1133",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 188,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T13:08:00"
+    },
+    {
+      "flightNumber": "AA1034",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 155,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T08:35:00"
+    },
+    {
+      "flightNumber": "AA1137",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 263,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:23:00"
+    },
+    {
+      "flightNumber": "AA1243",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 226,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T15:46:00"
+    },
+    {
+      "flightNumber": "AA1130",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 32,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T06:32:00"
+    },
+    {
+      "flightNumber": "AA1009",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 247,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T14:07:00"
+    },
+    {
+      "flightNumber": "AA1125",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 267,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T14:27:00"
+    },
+    {
+      "flightNumber": "AA1164",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 263,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T17:23:00"
+    },
+    {
+      "flightNumber": "AA1021",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 192,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T13:12:00"
+    },
+    {
+      "flightNumber": "AA1116",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 288,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:48:00"
+    },
+    {
+      "flightNumber": "AA1141",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T15:00:00",
+      "delayMinutes": 111,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T16:51:00"
+    },
+    {
+      "flightNumber": "AA1183",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": 156,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:36:00"
+    },
+    {
+      "flightNumber": "AA1161",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 278,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T16:38:00"
+    },
+    {
+      "flightNumber": "AA1258",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T11:00:00",
+      "delayMinutes": 176,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T13:56:00"
+    },
+    {
+      "flightNumber": "AA1167",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 71,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T15:11:00"
+    },
+    {
+      "flightNumber": "AA1256",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 139,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T12:19:00"
+    },
+    {
+      "flightNumber": "AA1150",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T08:00:00",
+      "delayMinutes": 242,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T12:02:00"
+    },
+    {
+      "flightNumber": "AA1252",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 40,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:40:00"
+    },
+    {
+      "flightNumber": "AA1242",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 33,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T12:33:00"
+    },
+    {
+      "flightNumber": "AA1274",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 244,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T17:04:00"
+    },
+    {
+      "flightNumber": "AA1163",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 142,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:22:00"
+    },
+    {
+      "flightNumber": "AA1041",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 229,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T13:49:00"
+    },
+    {
+      "flightNumber": "AA1261",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 114,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:54:00"
+    },
+    {
+      "flightNumber": "AA1170",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 43,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:43:00"
+    },
+    {
+      "flightNumber": "AA1004",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 72,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T07:12:00"
+    },
+    {
+      "flightNumber": "AA1264",
+      "type": "cancellation",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": null,
+      "isCascade": true
+    },
+    {
+      "flightNumber": "AA1051",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 197,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T13:17:00"
+    },
+    {
+      "flightNumber": "AA1142",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 245,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T16:05:00"
+    },
+    {
+      "flightNumber": "AA1262",
+      "type": "cancellation",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1027",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": 65,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T19:05:00"
+    },
+    {
+      "flightNumber": "AA1120",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 156,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T08:36:00"
+    },
+    {
+      "flightNumber": "AA1132",
+      "type": "cancellation",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": null,
+      "isCascade": true
+    },
+    {
+      "flightNumber": "AA1128",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 141,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T08:21:00"
+    },
+    {
+      "flightNumber": "AA1111",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": 88,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T19:28:00"
+    },
+    {
+      "flightNumber": "AA1253",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 43,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T13:43:00"
+    },
+    {
+      "flightNumber": "AA1184",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T08:00:00",
+      "delayMinutes": 222,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:42:00"
+    },
+    {
+      "flightNumber": "AA1018",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 154,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T16:34:00"
+    },
+    {
+      "flightNumber": "AA1033",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 91,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:31:00"
+    },
+    {
+      "flightNumber": "AA1275",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": 249,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T13:09:00"
+    },
+    {
+      "flightNumber": "AA1174",
+      "type": "cancellation",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": null,
+      "isCascade": true
+    },
+    {
+      "flightNumber": "AA1148",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 251,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T18:11:00"
+    },
+    {
+      "flightNumber": "AA1127",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": 108,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T19:48:00"
+    },
+    {
+      "flightNumber": "AA1054",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 168,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T08:48:00"
+    },
+    {
+      "flightNumber": "AA1131",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 268,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:28:00"
+    },
+    {
+      "flightNumber": "AA1249",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": 155,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:35:00"
+    },
+    {
+      "flightNumber": "AA1138",
+      "type": "cancellation",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": null,
+      "isCascade": true
+    },
+    {
+      "flightNumber": "AA1188",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 224,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T15:44:00"
+    },
+    {
+      "flightNumber": "AA1032",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 279,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T10:39:00"
+    },
+    {
+      "flightNumber": "AA1272",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T08:00:00",
+      "delayMinutes": 171,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:51:00"
+    },
+    {
+      "flightNumber": "AA1005",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 153,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T12:33:00"
+    },
+    {
+      "flightNumber": "AA1143",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T15:00:00",
+      "delayMinutes": 273,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T19:33:00"
+    },
+    {
+      "flightNumber": "AA1003",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": 77,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T19:17:00"
+    },
+    {
+      "flightNumber": "AA1240",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T11:00:00",
+      "delayMinutes": 218,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:38:00"
+    },
+    {
+      "flightNumber": "AA1251",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 199,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T16:19:00"
+    },
+    {
+      "flightNumber": "AA1152",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": 148,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T11:28:00"
+    },
+    {
+      "flightNumber": "AA1126",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 124,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T16:04:00"
+    },
+    {
+      "flightNumber": "AA1172",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 298,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T16:58:00"
+    },
+    {
+      "flightNumber": "AA1180",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 181,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T15:01:00"
+    },
+    {
+      "flightNumber": "AA1043",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 94,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T11:34:00"
+    },
+    {
+      "flightNumber": "AA1151",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 94,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:34:00"
+    },
+    {
+      "flightNumber": "AA1038",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 36,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T06:36:00"
+    },
+    {
+      "flightNumber": "AA1171",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": 124,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:04:00"
+    },
+    {
+      "flightNumber": "AA1189",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 88,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T15:28:00"
+    },
+    {
+      "flightNumber": "AA1160",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 57,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T10:57:00"
+    },
+    {
+      "flightNumber": "AA1178",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 73,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:13:00"
+    },
+    {
+      "flightNumber": "AA1239",
+      "type": "cancellation",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1117",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 297,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:57:00"
+    },
+    {
+      "flightNumber": "AA1016",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 249,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:09:00"
+    },
+    {
+      "flightNumber": "AA1166",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 80,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:20:00"
+    },
+    {
+      "flightNumber": "AA1000",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 71,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T07:11:00"
+    },
+    {
+      "flightNumber": "AA1250",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T11:00:00",
+      "delayMinutes": 31,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T11:31:00"
+    },
+    {
+      "flightNumber": "AA1153",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 46,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T10:46:00"
+    },
+    {
+      "flightNumber": "AA1124",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 262,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T10:22:00"
+    },
+    {
+      "flightNumber": "AA1149",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 131,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:11:00"
+    },
+    {
+      "flightNumber": "AA1241",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 166,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T12:46:00"
+    },
+    {
+      "flightNumber": "AA1121",
+      "type": "cancellation",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1052",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 177,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T08:57:00"
+    },
+    {
+      "flightNumber": "AA1053",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 236,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T13:56:00"
+    },
+    {
+      "flightNumber": "AA1044",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 71,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T07:11:00"
+    },
+    {
+      "flightNumber": "AA1186",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 158,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T12:38:00"
+    },
+    {
+      "flightNumber": "AA1254",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T08:00:00",
+      "delayMinutes": 40,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T08:40:00"
+    },
+    {
+      "flightNumber": "AA1112",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 50,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T06:50:00"
+    },
+    {
+      "flightNumber": "AA1109",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 256,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:16:00"
+    },
+    {
+      "flightNumber": "AA1147",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 281,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T18:41:00"
+    },
+    {
+      "flightNumber": "AA1042",
+      "type": "delay",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 194,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T09:14:00"
+    },
+    {
+      "flightNumber": "AA1113",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 283,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T14:43:00"
+    },
+    {
+      "flightNumber": "AA1108",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 48,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T06:48:00"
+    },
+    {
+      "flightNumber": "AA1025",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 236,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T13:56:00"
+    },
+    {
+      "flightNumber": "AA1122",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 266,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:26:00"
+    },
+    {
+      "flightNumber": "AA1190",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 285,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T17:45:00"
+    },
+    {
+      "flightNumber": "AA1270",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 97,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T15:37:00"
+    },
+    {
+      "flightNumber": "AA1265",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T11:00:00",
+      "delayMinutes": 92,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T12:32:00"
+    },
+    {
+      "flightNumber": "AA1255",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": 111,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:51:00"
+    },
+    {
+      "flightNumber": "AA1182",
+      "type": "cancellation",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T15:00:00",
+      "delayMinutes": null,
+      "isCascade": true
+    },
+    {
+      "flightNumber": "AA1176",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T09:00:00",
+      "delayMinutes": 90,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:30:00"
+    },
+    {
+      "flightNumber": "AA1168",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 179,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:59:00"
+    },
+    {
+      "flightNumber": "AA1002",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 271,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T18:31:00"
+    },
+    {
+      "flightNumber": "AA1169",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T12:00:00",
+      "delayMinutes": 290,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T16:50:00"
+    },
+    {
+      "flightNumber": "AA1014",
+      "type": "cancellation",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1030",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T14:00:00",
+      "delayMinutes": 289,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T18:49:00"
+    },
+    {
+      "flightNumber": "AA1019",
+      "type": "cancellation",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1114",
+      "type": "delay",
+      "cause": "crew",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 106,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T07:46:00"
+    },
+    {
+      "flightNumber": "AA1179",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 223,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T16:43:00"
+    },
+    {
+      "flightNumber": "AA1271",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 152,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T15:32:00"
+    },
+    {
+      "flightNumber": "AA1173",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 52,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T10:52:00"
+    },
+    {
+      "flightNumber": "AA1013",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T10:00:00",
+      "delayMinutes": 225,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T13:45:00"
+    },
+    {
+      "flightNumber": "AA1159",
+      "type": "delay",
+      "cause": "atc",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 107,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:47:00"
+    },
+    {
+      "flightNumber": "AA1015",
+      "type": "cancellation",
+      "cause": "mechanical",
+      "originalDeparture": "2026-01-24T18:00:00",
+      "delayMinutes": null,
+      "isCascade": false
+    },
+    {
+      "flightNumber": "AA1036",
+      "type": "delay",
+      "cause": "late_aircraft",
+      "originalDeparture": "2026-01-24T06:00:00",
+      "delayMinutes": 255,
+      "isCascade": true,
+      "newDeparture": "2026-01-24T10:15:00"
+    },
+    {
+      "flightNumber": "AA1246",
+      "type": "delay",
+      "cause": "weather",
+      "originalDeparture": "2026-01-24T13:00:00",
+      "delayMinutes": 103,
+      "isCascade": false,
+      "newDeparture": "2026-01-24T14:43:00"
+    }
+  ],
+  "affectedCrew": [
+    {
+      "crewId": "PLT350",
+      "originalPairing": [
+        "AA1257"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T09:13:00"
+    },
+    {
+      "crewId": "PLT330",
+      "originalPairing": [
+        "AA1257"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T09:13:00"
+    },
+    {
+      "crewId": "FA532",
+      "originalPairing": [
+        "AA1257"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T09:13:00"
+    },
+    {
+      "crewId": "FA122",
+      "originalPairing": [
+        "AA1028"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T07:34:00"
+    },
+    {
+      "crewId": "PLT071",
+      "originalPairing": [
+        "AA1028"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T07:34:00"
+    },
+    {
+      "crewId": "FA105",
+      "originalPairing": [
+        "AA1028"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T07:34:00"
+    },
+    {
+      "crewId": "FA031",
+      "originalPairing": [
+        "AA1006"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T16:45:00"
+    },
+    {
+      "crewId": "FA042",
+      "originalPairing": [
+        "AA1006"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T16:45:00"
+    },
+    {
+      "crewId": "PLT328",
+      "originalPairing": [
+        "AA1118"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T08:12:00"
+    },
+    {
+      "crewId": "FA485",
+      "originalPairing": [
+        "AA1110"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T17:41:00"
+    },
+    {
+      "crewId": "FA470",
+      "originalPairing": [
+        "AA1110"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T17:41:00"
+    },
+    {
+      "crewId": "PLT334",
+      "originalPairing": [
+        "AA1110"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T17:41:00"
+    },
+    {
+      "crewId": "FA225",
+      "originalPairing": [
+        "AA1057"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T12:25:00"
+    },
+    {
+      "crewId": "PLT118",
+      "originalPairing": [
+        "AA1057"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T12:25:00"
+    },
+    {
+      "crewId": "FA170",
+      "originalPairing": [
+        "AA1057"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T12:25:00"
+    },
+    {
+      "crewId": "PLT062",
+      "originalPairing": [
+        "AA1035"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T10:00:00"
+    },
+    {
+      "crewId": "PLT038",
+      "originalPairing": [
+        "AA1026"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "FA565",
+      "originalPairing": [
+        "AA1267"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:00:00"
+    },
+    {
+      "crewId": "PLT384",
+      "originalPairing": [
+        "AA1267"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:00:00"
+    },
+    {
+      "crewId": "FA186",
+      "originalPairing": [
+        "AA1187"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T16:38:00"
+    },
+    {
+      "crewId": "FA201",
+      "originalPairing": [
+        "AA1187"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T16:38:00"
+    },
+    {
+      "crewId": "PLT011",
+      "originalPairing": [
+        "AA1022"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "FA473",
+      "originalPairing": [
+        "AA1245"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:58:00"
+    },
+    {
+      "crewId": "FA539",
+      "originalPairing": [
+        "AA1245"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:58:00"
+    },
+    {
+      "crewId": "FA139",
+      "originalPairing": [
+        "AA1156"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T10:00:00"
+    },
+    {
+      "crewId": "FA009",
+      "originalPairing": [
+        "AA1008"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T07:20:00"
+    },
+    {
+      "crewId": "PLT033",
+      "originalPairing": [
+        "AA1008"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T07:20:00"
+    },
+    {
+      "crewId": "FA066",
+      "originalPairing": [
+        "AA1007"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T19:25:00"
+    },
+    {
+      "crewId": "PLT037",
+      "originalPairing": [
+        "AA1007"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T19:25:00"
+    },
+    {
+      "crewId": "PLT010",
+      "originalPairing": [
+        "AA1023"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T22:06:00"
+    },
+    {
+      "crewId": "FA189",
+      "originalPairing": [
+        "AA1055"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:08:00"
+    },
+    {
+      "crewId": "PLT144",
+      "originalPairing": [
+        "AA1055"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:08:00"
+    },
+    {
+      "crewId": "PLT138",
+      "originalPairing": [
+        "AA1059"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T10:55:00"
+    },
+    {
+      "crewId": "FA172",
+      "originalPairing": [
+        "AA1059"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T10:55:00"
+    },
+    {
+      "crewId": "FA222",
+      "originalPairing": [
+        "AA1059"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T10:55:00"
+    },
+    {
+      "crewId": "PLT119",
+      "originalPairing": [
+        "AA1177"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:17:00"
+    },
+    {
+      "crewId": "PLT136",
+      "originalPairing": [
+        "AA1177"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:17:00"
+    },
+    {
+      "crewId": "FA487",
+      "originalPairing": [
+        "AA1248"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T19:38:00"
+    },
+    {
+      "crewId": "PLT316",
+      "originalPairing": [
+        "AA1248"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T19:38:00"
+    },
+    {
+      "crewId": "PLT367",
+      "originalPairing": [
+        "AA1273"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T15:54:00"
+    },
+    {
+      "crewId": "FA582",
+      "originalPairing": [
+        "AA1273"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T15:54:00"
+    },
+    {
+      "crewId": "FA191",
+      "originalPairing": [
+        "AA1191"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T19:22:00"
+    },
+    {
+      "crewId": "FA220",
+      "originalPairing": [
+        "AA1050"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T10:39:00"
+    },
+    {
+      "crewId": "PLT142",
+      "originalPairing": [
+        "AA1050"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T10:39:00"
+    },
+    {
+      "crewId": "PLT394",
+      "originalPairing": [
+        "AA1266"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T09:01:00"
+    },
+    {
+      "crewId": "FA591",
+      "originalPairing": [
+        "AA1266"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T09:01:00"
+    },
+    {
+      "crewId": "PLT086",
+      "originalPairing": [
+        "AA1155"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T15:00:00"
+    },
+    {
+      "crewId": "PLT075",
+      "originalPairing": [
+        "AA1155"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T15:00:00"
+    },
+    {
+      "crewId": "PLT145",
+      "originalPairing": [
+        "AA1056"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T10:50:00"
+    },
+    {
+      "crewId": "FA114",
+      "originalPairing": [
+        "AA1162"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T16:30:00"
+    },
+    {
+      "crewId": "PLT334",
+      "originalPairing": [
+        "AA1244"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T12:50:00"
+    },
+    {
+      "crewId": "FA518",
+      "originalPairing": [
+        "AA1119"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:57:00"
+    },
+    {
+      "crewId": "PLT355",
+      "originalPairing": [
+        "AA1119"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:57:00"
+    },
+    {
+      "crewId": "FA063",
+      "originalPairing": [
+        "AA1001"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:10:00"
+    },
+    {
+      "crewId": "FA075",
+      "originalPairing": [
+        "AA1001"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:10:00"
+    },
+    {
+      "crewId": "PLT047",
+      "originalPairing": [
+        "AA1001"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:10:00"
+    },
+    {
+      "crewId": "FA086",
+      "originalPairing": [
+        "AA1040"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T09:03:00"
+    },
+    {
+      "crewId": "FA605",
+      "originalPairing": [
+        "AA1263"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:34:00"
+    },
+    {
+      "crewId": "FA553",
+      "originalPairing": [
+        "AA1263"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:34:00"
+    },
+    {
+      "crewId": "PLT384",
+      "originalPairing": [
+        "AA1135"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T11:07:00"
+    },
+    {
+      "crewId": "FA513",
+      "originalPairing": [
+        "AA1247"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T11:28:00"
+    },
+    {
+      "crewId": "FA505",
+      "originalPairing": [
+        "AA1247"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T11:28:00"
+    },
+    {
+      "crewId": "PLT334",
+      "originalPairing": [
+        "AA1247"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T11:28:00"
+    },
+    {
+      "crewId": "PLT082",
+      "originalPairing": [
+        "AA1039"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:50:00"
+    },
+    {
+      "crewId": "FA137",
+      "originalPairing": [
+        "AA1039"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:50:00"
+    },
+    {
+      "crewId": "FA115",
+      "originalPairing": [
+        "AA1039"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:50:00"
+    },
+    {
+      "crewId": "FA584",
+      "originalPairing": [
+        "AA1259"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "FA558",
+      "originalPairing": [
+        "AA1259"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "FA596",
+      "originalPairing": [
+        "AA1134"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T07:23:00"
+    },
+    {
+      "crewId": "PLT369",
+      "originalPairing": [
+        "AA1268"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:00:00"
+    },
+    {
+      "crewId": "FA589",
+      "originalPairing": [
+        "AA1268"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:00:00"
+    },
+    {
+      "crewId": "PLT394",
+      "originalPairing": [
+        "AA1260"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T11:17:00"
+    },
+    {
+      "crewId": "FA592",
+      "originalPairing": [
+        "AA1260"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T11:17:00"
+    },
+    {
+      "crewId": "PLT374",
+      "originalPairing": [
+        "AA1260"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T11:17:00"
+    },
+    {
+      "crewId": "FA034",
+      "originalPairing": [
+        "AA1145"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T16:45:00"
+    },
+    {
+      "crewId": "FA003",
+      "originalPairing": [
+        "AA1145"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T16:45:00"
+    },
+    {
+      "crewId": "FA072",
+      "originalPairing": [
+        "AA1024"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T06:56:00"
+    },
+    {
+      "crewId": "FA573",
+      "originalPairing": [
+        "AA1139"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T10:31:00"
+    },
+    {
+      "crewId": "PLT380",
+      "originalPairing": [
+        "AA1139"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T10:31:00"
+    },
+    {
+      "crewId": "PLT383",
+      "originalPairing": [
+        "AA1136"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T06:00:00"
+    },
+    {
+      "crewId": "FA559",
+      "originalPairing": [
+        "AA1136"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T06:00:00"
+    },
+    {
+      "crewId": "FA568",
+      "originalPairing": [
+        "AA1136"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T06:00:00"
+    },
+    {
+      "crewId": "FA519",
+      "originalPairing": [
+        "AA1115"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:34:00"
+    },
+    {
+      "crewId": "PLT350",
+      "originalPairing": [
+        "AA1115"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:34:00"
+    },
+    {
+      "crewId": "FA518",
+      "originalPairing": [
+        "AA1115"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:34:00"
+    },
+    {
+      "crewId": "FA003",
+      "originalPairing": [
+        "AA1011"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T19:46:00"
+    },
+    {
+      "crewId": "FA071",
+      "originalPairing": [
+        "AA1011"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T19:46:00"
+    },
+    {
+      "crewId": "FA072",
+      "originalPairing": [
+        "AA1011"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T19:46:00"
+    },
+    {
+      "crewId": "FA076",
+      "originalPairing": [
+        "AA1165"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T09:45:00"
+    },
+    {
+      "crewId": "FA134",
+      "originalPairing": [
+        "AA1165"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T09:45:00"
+    },
+    {
+      "crewId": "PLT076",
+      "originalPairing": [
+        "AA1031"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T18:00:00"
+    },
+    {
+      "crewId": "FA115",
+      "originalPairing": [
+        "AA1031"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T18:00:00"
+    },
+    {
+      "crewId": "PLT008",
+      "originalPairing": [
+        "AA1144"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T16:33:00"
+    },
+    {
+      "crewId": "FA001",
+      "originalPairing": [
+        "AA1144"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T16:33:00"
+    },
+    {
+      "crewId": "FA072",
+      "originalPairing": [
+        "AA1020"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T09:58:00"
+    },
+    {
+      "crewId": "PLT365",
+      "originalPairing": [
+        "AA1123"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T12:31:00"
+    },
+    {
+      "crewId": "FA027",
+      "originalPairing": [
+        "AA1140"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:01:00"
+    },
+    {
+      "crewId": "FA075",
+      "originalPairing": [
+        "AA1140"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:01:00"
+    },
+    {
+      "crewId": "PLT003",
+      "originalPairing": [
+        "AA1140"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:01:00"
+    },
+    {
+      "crewId": "FA214",
+      "originalPairing": [
+        "AA1049"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "PLT009",
+      "originalPairing": [
+        "AA1017"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T12:46:00"
+    },
+    {
+      "crewId": "FA189",
+      "originalPairing": [
+        "AA1185"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:49:00"
+    },
+    {
+      "crewId": "PLT148",
+      "originalPairing": [
+        "AA1058"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T10:25:00"
+    },
+    {
+      "crewId": "PLT001",
+      "originalPairing": [
+        "AA1146"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T17:24:00"
+    },
+    {
+      "crewId": "PLT036",
+      "originalPairing": [
+        "AA1146"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T17:24:00"
+    },
+    {
+      "crewId": "FA060",
+      "originalPairing": [
+        "AA1146"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T17:24:00"
+    },
+    {
+      "crewId": "PLT095",
+      "originalPairing": [
+        "AA1037"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:05:00"
+    },
+    {
+      "crewId": "PLT079",
+      "originalPairing": [
+        "AA1037"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:05:00"
+    },
+    {
+      "crewId": "PLT002",
+      "originalPairing": [
+        "AA1010"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T17:54:00"
+    },
+    {
+      "crewId": "FA103",
+      "originalPairing": [
+        "AA1157"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:44:00"
+    },
+    {
+      "crewId": "FA088",
+      "originalPairing": [
+        "AA1029"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T12:45:00"
+    },
+    {
+      "crewId": "FA128",
+      "originalPairing": [
+        "AA1158"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T15:10:00"
+    },
+    {
+      "crewId": "FA046",
+      "originalPairing": [
+        "AA1012"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T08:07:00"
+    },
+    {
+      "crewId": "FA171",
+      "originalPairing": [
+        "AA1048"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T08:10:00"
+    },
+    {
+      "crewId": "FA213",
+      "originalPairing": [
+        "AA1048"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T08:10:00"
+    },
+    {
+      "crewId": "PLT379",
+      "originalPairing": [
+        "AA1269"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T15:00:00"
+    },
+    {
+      "crewId": "FA567",
+      "originalPairing": [
+        "AA1269"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T15:00:00"
+    },
+    {
+      "crewId": "FA574",
+      "originalPairing": [
+        "AA1269"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T15:00:00"
+    },
+    {
+      "crewId": "FA214",
+      "originalPairing": [
+        "AA1175"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:03:00"
+    },
+    {
+      "crewId": "FA224",
+      "originalPairing": [
+        "AA1175"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:03:00"
+    },
+    {
+      "crewId": "FA198",
+      "originalPairing": [
+        "AA1175"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:03:00"
+    },
+    {
+      "crewId": "PLT369",
+      "originalPairing": [
+        "AA1129"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:01:00"
+    },
+    {
+      "crewId": "PLT373",
+      "originalPairing": [
+        "AA1129"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:01:00"
+    },
+    {
+      "crewId": "FA571",
+      "originalPairing": [
+        "AA1129"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:01:00"
+    },
+    {
+      "crewId": "FA013",
+      "originalPairing": [
+        "AA1154"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T15:44:00"
+    },
+    {
+      "crewId": "PLT115",
+      "originalPairing": [
+        "AA1046"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T17:04:00"
+    },
+    {
+      "crewId": "PLT116",
+      "originalPairing": [
+        "AA1046"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T17:04:00"
+    },
+    {
+      "crewId": "PLT114",
+      "originalPairing": [
+        "AA1181"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T10:17:00"
+    },
+    {
+      "crewId": "FA193",
+      "originalPairing": [
+        "AA1047"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T22:28:00"
+    },
+    {
+      "crewId": "FA195",
+      "originalPairing": [
+        "AA1047"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T22:28:00"
+    },
+    {
+      "crewId": "PLT147",
+      "originalPairing": [
+        "AA1045"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:56:00"
+    },
+    {
+      "crewId": "FA162",
+      "originalPairing": [
+        "AA1045"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:56:00"
+    },
+    {
+      "crewId": "FA190",
+      "originalPairing": [
+        "AA1045"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:56:00"
+    },
+    {
+      "crewId": "FA522",
+      "originalPairing": [
+        "AA1238"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T13:21:00"
+    },
+    {
+      "crewId": "PLT336",
+      "originalPairing": [
+        "AA1238"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T13:21:00"
+    },
+    {
+      "crewId": "PLT340",
+      "originalPairing": [
+        "AA1238"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T13:21:00"
+    },
+    {
+      "crewId": "PLT393",
+      "originalPairing": [
+        "AA1133"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:08:00"
+    },
+    {
+      "crewId": "FA565",
+      "originalPairing": [
+        "AA1133"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:08:00"
+    },
+    {
+      "crewId": "FA567",
+      "originalPairing": [
+        "AA1133"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:08:00"
+    },
+    {
+      "crewId": "FA123",
+      "originalPairing": [
+        "AA1034"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T08:35:00"
+    },
+    {
+      "crewId": "FA127",
+      "originalPairing": [
+        "AA1034"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T08:35:00"
+    },
+    {
+      "crewId": "FA564",
+      "originalPairing": [
+        "AA1137"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T14:23:00"
+    },
+    {
+      "crewId": "FA550",
+      "originalPairing": [
+        "AA1137"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T14:23:00"
+    },
+    {
+      "crewId": "PLT350",
+      "originalPairing": [
+        "AA1243"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T15:46:00"
+    },
+    {
+      "crewId": "FA533",
+      "originalPairing": [
+        "AA1243"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T15:46:00"
+    },
+    {
+      "crewId": "PLT377",
+      "originalPairing": [
+        "AA1130"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T06:32:00"
+    },
+    {
+      "crewId": "FA046",
+      "originalPairing": [
+        "AA1009"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:07:00"
+    },
+    {
+      "crewId": "PLT382",
+      "originalPairing": [
+        "AA1125"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T14:27:00"
+    },
+    {
+      "crewId": "FA581",
+      "originalPairing": [
+        "AA1125"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T14:27:00"
+    },
+    {
+      "crewId": "FA105",
+      "originalPairing": [
+        "AA1164"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T17:23:00"
+    },
+    {
+      "crewId": "PLT082",
+      "originalPairing": [
+        "AA1164"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T17:23:00"
+    },
+    {
+      "crewId": "FA126",
+      "originalPairing": [
+        "AA1164"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T17:23:00"
+    },
+    {
+      "crewId": "PLT007",
+      "originalPairing": [
+        "AA1021"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:12:00"
+    },
+    {
+      "crewId": "FA074",
+      "originalPairing": [
+        "AA1021"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:12:00"
+    },
+    {
+      "crewId": "PLT037",
+      "originalPairing": [
+        "AA1021"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:12:00"
+    },
+    {
+      "crewId": "FA541",
+      "originalPairing": [
+        "AA1116"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:48:00"
+    },
+    {
+      "crewId": "FA035",
+      "originalPairing": [
+        "AA1141"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T16:51:00"
+    },
+    {
+      "crewId": "FA222",
+      "originalPairing": [
+        "AA1183"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:36:00"
+    },
+    {
+      "crewId": "FA115",
+      "originalPairing": [
+        "AA1161"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T16:38:00"
+    },
+    {
+      "crewId": "PLT080",
+      "originalPairing": [
+        "AA1161"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T16:38:00"
+    },
+    {
+      "crewId": "FA564",
+      "originalPairing": [
+        "AA1258"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:56:00"
+    },
+    {
+      "crewId": "PLT057",
+      "originalPairing": [
+        "AA1167"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T15:11:00"
+    },
+    {
+      "crewId": "FA089",
+      "originalPairing": [
+        "AA1167"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T15:11:00"
+    },
+    {
+      "crewId": "PLT058",
+      "originalPairing": [
+        "AA1167"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T15:11:00"
+    },
+    {
+      "crewId": "FA498",
+      "originalPairing": [
+        "AA1256"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T12:19:00"
+    },
+    {
+      "crewId": "FA501",
+      "originalPairing": [
+        "AA1256"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T12:19:00"
+    },
+    {
+      "crewId": "FA023",
+      "originalPairing": [
+        "AA1150"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T12:02:00"
+    },
+    {
+      "crewId": "PLT328",
+      "originalPairing": [
+        "AA1252"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:40:00"
+    },
+    {
+      "crewId": "PLT347",
+      "originalPairing": [
+        "AA1252"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:40:00"
+    },
+    {
+      "crewId": "PLT334",
+      "originalPairing": [
+        "AA1242"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T12:33:00"
+    },
+    {
+      "crewId": "PLT393",
+      "originalPairing": [
+        "AA1274"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T17:04:00"
+    },
+    {
+      "crewId": "FA558",
+      "originalPairing": [
+        "AA1274"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T17:04:00"
+    },
+    {
+      "crewId": "FA563",
+      "originalPairing": [
+        "AA1274"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T17:04:00"
+    },
+    {
+      "crewId": "FA100",
+      "originalPairing": [
+        "AA1163"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:22:00"
+    },
+    {
+      "crewId": "FA104",
+      "originalPairing": [
+        "AA1163"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:22:00"
+    },
+    {
+      "crewId": "PLT064",
+      "originalPairing": [
+        "AA1041"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T13:49:00"
+    },
+    {
+      "crewId": "FA606",
+      "originalPairing": [
+        "AA1261"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T11:54:00"
+    },
+    {
+      "crewId": "PLT071",
+      "originalPairing": [
+        "AA1170"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T10:43:00"
+    },
+    {
+      "crewId": "FA035",
+      "originalPairing": [
+        "AA1004"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T07:12:00"
+    },
+    {
+      "crewId": "FA005",
+      "originalPairing": [
+        "AA1004"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T07:12:00"
+    },
+    {
+      "crewId": "FA563",
+      "originalPairing": [
+        "AA1264"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T09:00:00"
+    },
+    {
+      "crewId": "PLT400",
+      "originalPairing": [
+        "AA1264"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T09:00:00"
+    },
+    {
+      "crewId": "PLT150",
+      "originalPairing": [
+        "AA1051"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T13:17:00"
+    },
+    {
+      "crewId": "PLT037",
+      "originalPairing": [
+        "AA1142"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T16:05:00"
+    },
+    {
+      "crewId": "FA585",
+      "originalPairing": [
+        "AA1262"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:00:00"
+    },
+    {
+      "crewId": "FA572",
+      "originalPairing": [
+        "AA1262"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:00:00"
+    },
+    {
+      "crewId": "FA577",
+      "originalPairing": [
+        "AA1262"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:00:00"
+    },
+    {
+      "crewId": "FA001",
+      "originalPairing": [
+        "AA1027"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T19:05:00"
+    },
+    {
+      "crewId": "PLT312",
+      "originalPairing": [
+        "AA1120"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T08:36:00"
+    },
+    {
+      "crewId": "PLT393",
+      "originalPairing": [
+        "AA1132"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T06:00:00"
+    },
+    {
+      "crewId": "FA608",
+      "originalPairing": [
+        "AA1132"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T06:00:00"
+    },
+    {
+      "crewId": "FA551",
+      "originalPairing": [
+        "AA1128"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T08:21:00"
+    },
+    {
+      "crewId": "PLT381",
+      "originalPairing": [
+        "AA1128"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T08:21:00"
+    },
+    {
+      "crewId": "FA522",
+      "originalPairing": [
+        "AA1111"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T19:28:00"
+    },
+    {
+      "crewId": "PLT355",
+      "originalPairing": [
+        "AA1111"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T19:28:00"
+    },
+    {
+      "crewId": "PLT344",
+      "originalPairing": [
+        "AA1111"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T19:28:00"
+    },
+    {
+      "crewId": "FA540",
+      "originalPairing": [
+        "AA1253"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T13:43:00"
+    },
+    {
+      "crewId": "FA217",
+      "originalPairing": [
+        "AA1184"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:42:00"
+    },
+    {
+      "crewId": "FA159",
+      "originalPairing": [
+        "AA1184"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:42:00"
+    },
+    {
+      "crewId": "PLT115",
+      "originalPairing": [
+        "AA1184"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:42:00"
+    },
+    {
+      "crewId": "PLT003",
+      "originalPairing": [
+        "AA1018"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T16:34:00"
+    },
+    {
+      "crewId": "FA009",
+      "originalPairing": [
+        "AA1018"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T16:34:00"
+    },
+    {
+      "crewId": "FA130",
+      "originalPairing": [
+        "AA1033"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:31:00"
+    },
+    {
+      "crewId": "FA124",
+      "originalPairing": [
+        "AA1033"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:31:00"
+    },
+    {
+      "crewId": "FA127",
+      "originalPairing": [
+        "AA1033"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:31:00"
+    },
+    {
+      "crewId": "FA551",
+      "originalPairing": [
+        "AA1275"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T13:09:00"
+    },
+    {
+      "crewId": "FA172",
+      "originalPairing": [
+        "AA1174"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "FA220",
+      "originalPairing": [
+        "AA1174"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "FA202",
+      "originalPairing": [
+        "AA1174"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "PLT032",
+      "originalPairing": [
+        "AA1148"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T18:11:00"
+    },
+    {
+      "crewId": "FA561",
+      "originalPairing": [
+        "AA1127"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T19:48:00"
+    },
+    {
+      "crewId": "FA577",
+      "originalPairing": [
+        "AA1127"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T19:48:00"
+    },
+    {
+      "crewId": "PLT376",
+      "originalPairing": [
+        "AA1127"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T19:48:00"
+    },
+    {
+      "crewId": "PLT134",
+      "originalPairing": [
+        "AA1054"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T08:48:00"
+    },
+    {
+      "crewId": "PLT148",
+      "originalPairing": [
+        "AA1054"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T08:48:00"
+    },
+    {
+      "crewId": "FA591",
+      "originalPairing": [
+        "AA1131"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T14:28:00"
+    },
+    {
+      "crewId": "PLT380",
+      "originalPairing": [
+        "AA1131"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T14:28:00"
+    },
+    {
+      "crewId": "FA577",
+      "originalPairing": [
+        "AA1131"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T14:28:00"
+    },
+    {
+      "crewId": "PLT348",
+      "originalPairing": [
+        "AA1249"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T11:35:00"
+    },
+    {
+      "crewId": "FA472",
+      "originalPairing": [
+        "AA1249"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T11:35:00"
+    },
+    {
+      "crewId": "PLT391",
+      "originalPairing": [
+        "AA1138"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T06:00:00"
+    },
+    {
+      "crewId": "PLT388",
+      "originalPairing": [
+        "AA1138"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T06:00:00"
+    },
+    {
+      "crewId": "PLT115",
+      "originalPairing": [
+        "AA1188"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:44:00"
+    },
+    {
+      "crewId": "PLT128",
+      "originalPairing": [
+        "AA1188"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:44:00"
+    },
+    {
+      "crewId": "FA212",
+      "originalPairing": [
+        "AA1188"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:44:00"
+    },
+    {
+      "crewId": "FA135",
+      "originalPairing": [
+        "AA1032"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T10:39:00"
+    },
+    {
+      "crewId": "FA103",
+      "originalPairing": [
+        "AA1032"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T10:39:00"
+    },
+    {
+      "crewId": "FA101",
+      "originalPairing": [
+        "AA1032"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T10:39:00"
+    },
+    {
+      "crewId": "FA566",
+      "originalPairing": [
+        "AA1272"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T10:51:00"
+    },
+    {
+      "crewId": "FA590",
+      "originalPairing": [
+        "AA1272"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T10:51:00"
+    },
+    {
+      "crewId": "PLT008",
+      "originalPairing": [
+        "AA1005"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T12:33:00"
+    },
+    {
+      "crewId": "PLT046",
+      "originalPairing": [
+        "AA1005"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T12:33:00"
+    },
+    {
+      "crewId": "FA015",
+      "originalPairing": [
+        "AA1005"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T12:33:00"
+    },
+    {
+      "crewId": "PLT005",
+      "originalPairing": [
+        "AA1143"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T19:33:00"
+    },
+    {
+      "crewId": "PLT008",
+      "originalPairing": [
+        "AA1143"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T19:33:00"
+    },
+    {
+      "crewId": "FA033",
+      "originalPairing": [
+        "AA1003"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T19:17:00"
+    },
+    {
+      "crewId": "FA541",
+      "originalPairing": [
+        "AA1240"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:38:00"
+    },
+    {
+      "crewId": "FA510",
+      "originalPairing": [
+        "AA1240"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:38:00"
+    },
+    {
+      "crewId": "FA530",
+      "originalPairing": [
+        "AA1240"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:38:00"
+    },
+    {
+      "crewId": "FA527",
+      "originalPairing": [
+        "AA1251"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T16:19:00"
+    },
+    {
+      "crewId": "PLT025",
+      "originalPairing": [
+        "AA1152"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T11:28:00"
+    },
+    {
+      "crewId": "PLT042",
+      "originalPairing": [
+        "AA1152"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T11:28:00"
+    },
+    {
+      "crewId": "FA028",
+      "originalPairing": [
+        "AA1152"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T11:28:00"
+    },
+    {
+      "crewId": "FA567",
+      "originalPairing": [
+        "AA1126"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T16:04:00"
+    },
+    {
+      "crewId": "PLT072",
+      "originalPairing": [
+        "AA1172"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T16:58:00"
+    },
+    {
+      "crewId": "FA150",
+      "originalPairing": [
+        "AA1172"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T16:58:00"
+    },
+    {
+      "crewId": "PLT137",
+      "originalPairing": [
+        "AA1180"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:01:00"
+    },
+    {
+      "crewId": "FA133",
+      "originalPairing": [
+        "AA1043"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:34:00"
+    },
+    {
+      "crewId": "FA155",
+      "originalPairing": [
+        "AA1043"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:34:00"
+    },
+    {
+      "crewId": "PLT047",
+      "originalPairing": [
+        "AA1151"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T11:34:00"
+    },
+    {
+      "crewId": "FA120",
+      "originalPairing": [
+        "AA1038"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T06:36:00"
+    },
+    {
+      "crewId": "FA125",
+      "originalPairing": [
+        "AA1038"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T06:36:00"
+    },
+    {
+      "crewId": "PLT064",
+      "originalPairing": [
+        "AA1171"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:04:00"
+    },
+    {
+      "crewId": "FA106",
+      "originalPairing": [
+        "AA1171"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:04:00"
+    },
+    {
+      "crewId": "PLT067",
+      "originalPairing": [
+        "AA1171"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T11:04:00"
+    },
+    {
+      "crewId": "FA163",
+      "originalPairing": [
+        "AA1189"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:28:00"
+    },
+    {
+      "crewId": "PLT142",
+      "originalPairing": [
+        "AA1189"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:28:00"
+    },
+    {
+      "crewId": "PLT138",
+      "originalPairing": [
+        "AA1189"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:28:00"
+    },
+    {
+      "crewId": "FA106",
+      "originalPairing": [
+        "AA1160"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T10:57:00"
+    },
+    {
+      "crewId": "FA198",
+      "originalPairing": [
+        "AA1178"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:13:00"
+    },
+    {
+      "crewId": "PLT124",
+      "originalPairing": [
+        "AA1178"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:13:00"
+    },
+    {
+      "crewId": "PLT150",
+      "originalPairing": [
+        "AA1178"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T11:13:00"
+    },
+    {
+      "crewId": "FA512",
+      "originalPairing": [
+        "AA1239"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T09:00:00"
+    },
+    {
+      "crewId": "PLT344",
+      "originalPairing": [
+        "AA1239"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T09:00:00"
+    },
+    {
+      "crewId": "PLT332",
+      "originalPairing": [
+        "AA1239"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T09:00:00"
+    },
+    {
+      "crewId": "FA496",
+      "originalPairing": [
+        "AA1117"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:57:00"
+    },
+    {
+      "crewId": "PLT343",
+      "originalPairing": [
+        "AA1117"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:57:00"
+    },
+    {
+      "crewId": "FA546",
+      "originalPairing": [
+        "AA1117"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:57:00"
+    },
+    {
+      "crewId": "FA016",
+      "originalPairing": [
+        "AA1016"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T10:09:00"
+    },
+    {
+      "crewId": "PLT047",
+      "originalPairing": [
+        "AA1016"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T10:09:00"
+    },
+    {
+      "crewId": "PLT097",
+      "originalPairing": [
+        "AA1166"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:20:00"
+    },
+    {
+      "crewId": "PLT105",
+      "originalPairing": [
+        "AA1166"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:20:00"
+    },
+    {
+      "crewId": "PLT029",
+      "originalPairing": [
+        "AA1000"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T07:11:00"
+    },
+    {
+      "crewId": "PLT330",
+      "originalPairing": [
+        "AA1250"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T11:31:00"
+    },
+    {
+      "crewId": "FA015",
+      "originalPairing": [
+        "AA1153"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T10:46:00"
+    },
+    {
+      "crewId": "FA577",
+      "originalPairing": [
+        "AA1124"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T10:22:00"
+    },
+    {
+      "crewId": "PLT370",
+      "originalPairing": [
+        "AA1124"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T10:22:00"
+    },
+    {
+      "crewId": "FA594",
+      "originalPairing": [
+        "AA1124"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T10:22:00"
+    },
+    {
+      "crewId": "PLT049",
+      "originalPairing": [
+        "AA1149"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:11:00"
+    },
+    {
+      "crewId": "PLT020",
+      "originalPairing": [
+        "AA1149"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:11:00"
+    },
+    {
+      "crewId": "PLT021",
+      "originalPairing": [
+        "AA1149"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:11:00"
+    },
+    {
+      "crewId": "FA524",
+      "originalPairing": [
+        "AA1241"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T12:46:00"
+    },
+    {
+      "crewId": "FA505",
+      "originalPairing": [
+        "AA1121"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:00:00"
+    },
+    {
+      "crewId": "FA472",
+      "originalPairing": [
+        "AA1121"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:00:00"
+    },
+    {
+      "crewId": "FA210",
+      "originalPairing": [
+        "AA1052"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T08:57:00"
+    },
+    {
+      "crewId": "FA209",
+      "originalPairing": [
+        "AA1052"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T08:57:00"
+    },
+    {
+      "crewId": "PLT136",
+      "originalPairing": [
+        "AA1053"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T13:56:00"
+    },
+    {
+      "crewId": "PLT145",
+      "originalPairing": [
+        "AA1053"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T13:56:00"
+    },
+    {
+      "crewId": "FA217",
+      "originalPairing": [
+        "AA1053"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T13:56:00"
+    },
+    {
+      "crewId": "FA187",
+      "originalPairing": [
+        "AA1044"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T07:11:00"
+    },
+    {
+      "crewId": "FA170",
+      "originalPairing": [
+        "AA1044"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T07:11:00"
+    },
+    {
+      "crewId": "FA173",
+      "originalPairing": [
+        "AA1044"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T07:11:00"
+    },
+    {
+      "crewId": "FA167",
+      "originalPairing": [
+        "AA1186"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T12:38:00"
+    },
+    {
+      "crewId": "PLT126",
+      "originalPairing": [
+        "AA1186"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T12:38:00"
+    },
+    {
+      "crewId": "FA218",
+      "originalPairing": [
+        "AA1186"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T12:38:00"
+    },
+    {
+      "crewId": "PLT324",
+      "originalPairing": [
+        "AA1254"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T08:40:00"
+    },
+    {
+      "crewId": "FA535",
+      "originalPairing": [
+        "AA1254"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T08:40:00"
+    },
+    {
+      "crewId": "FA544",
+      "originalPairing": [
+        "AA1112"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T06:50:00"
+    },
+    {
+      "crewId": "PLT332",
+      "originalPairing": [
+        "AA1109"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:16:00"
+    },
+    {
+      "crewId": "PLT352",
+      "originalPairing": [
+        "AA1109"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:16:00"
+    },
+    {
+      "crewId": "PLT019",
+      "originalPairing": [
+        "AA1147"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T18:41:00"
+    },
+    {
+      "crewId": "FA057",
+      "originalPairing": [
+        "AA1147"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T18:41:00"
+    },
+    {
+      "crewId": "FA006",
+      "originalPairing": [
+        "AA1147"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T18:41:00"
+    },
+    {
+      "crewId": "PLT057",
+      "originalPairing": [
+        "AA1042"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T09:14:00"
+    },
+    {
+      "crewId": "FA127",
+      "originalPairing": [
+        "AA1042"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T09:14:00"
+    },
+    {
+      "crewId": "FA507",
+      "originalPairing": [
+        "AA1113"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:43:00"
+    },
+    {
+      "crewId": "FA472",
+      "originalPairing": [
+        "AA1113"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:43:00"
+    },
+    {
+      "crewId": "FA510",
+      "originalPairing": [
+        "AA1113"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:43:00"
+    },
+    {
+      "crewId": "FA493",
+      "originalPairing": [
+        "AA1108"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T06:48:00"
+    },
+    {
+      "crewId": "FA034",
+      "originalPairing": [
+        "AA1025"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:56:00"
+    },
+    {
+      "crewId": "PLT043",
+      "originalPairing": [
+        "AA1025"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:56:00"
+    },
+    {
+      "crewId": "FA052",
+      "originalPairing": [
+        "AA1025"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:56:00"
+    },
+    {
+      "crewId": "FA532",
+      "originalPairing": [
+        "AA1122"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:26:00"
+    },
+    {
+      "crewId": "PLT346",
+      "originalPairing": [
+        "AA1122"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:26:00"
+    },
+    {
+      "crewId": "FA192",
+      "originalPairing": [
+        "AA1190"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T17:45:00"
+    },
+    {
+      "crewId": "PLT106",
+      "originalPairing": [
+        "AA1190"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T17:45:00"
+    },
+    {
+      "crewId": "PLT393",
+      "originalPairing": [
+        "AA1270"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T15:37:00"
+    },
+    {
+      "crewId": "PLT385",
+      "originalPairing": [
+        "AA1270"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T15:37:00"
+    },
+    {
+      "crewId": "FA577",
+      "originalPairing": [
+        "AA1265"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T12:32:00"
+    },
+    {
+      "crewId": "FA564",
+      "originalPairing": [
+        "AA1265"
+      ],
+      "impact": "delayed",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T12:32:00"
+    },
+    {
+      "crewId": "PLT380",
+      "originalPairing": [
+        "AA1265"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T12:32:00"
+    },
+    {
+      "crewId": "PLT323",
+      "originalPairing": [
+        "AA1255"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T10:51:00"
+    },
+    {
+      "crewId": "FA195",
+      "originalPairing": [
+        "AA1182"
+      ],
+      "impact": "timeout",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:00:00"
+    },
+    {
+      "crewId": "FA215",
+      "originalPairing": [
+        "AA1182"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T15:00:00"
+    },
+    {
+      "crewId": "PLT120",
+      "originalPairing": [
+        "AA1176"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T10:30:00"
+    },
+    {
+      "crewId": "FA158",
+      "originalPairing": [
+        "AA1168"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:59:00"
+    },
+    {
+      "crewId": "PLT055",
+      "originalPairing": [
+        "AA1168"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:59:00"
+    },
+    {
+      "crewId": "FA152",
+      "originalPairing": [
+        "AA1168"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:59:00"
+    },
+    {
+      "crewId": "PLT038",
+      "originalPairing": [
+        "AA1002"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T18:31:00"
+    },
+    {
+      "crewId": "FA111",
+      "originalPairing": [
+        "AA1169"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T16:50:00"
+    },
+    {
+      "crewId": "FA004",
+      "originalPairing": [
+        "AA1014"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "PLT024",
+      "originalPairing": [
+        "AA1014"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "FA036",
+      "originalPairing": [
+        "AA1014"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T14:00:00"
+    },
+    {
+      "crewId": "PLT068",
+      "originalPairing": [
+        "AA1030"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T18:49:00"
+    },
+    {
+      "crewId": "FA155",
+      "originalPairing": [
+        "AA1030"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T18:49:00"
+    },
+    {
+      "crewId": "FA021",
+      "originalPairing": [
+        "AA1019"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T18:00:00"
+    },
+    {
+      "crewId": "PLT003",
+      "originalPairing": [
+        "AA1019"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T18:00:00"
+    },
+    {
+      "crewId": "PLT050",
+      "originalPairing": [
+        "AA1019"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T18:00:00"
+    },
+    {
+      "crewId": "FA507",
+      "originalPairing": [
+        "AA1114"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T07:46:00"
+    },
+    {
+      "crewId": "FA476",
+      "originalPairing": [
+        "AA1114"
+      ],
+      "impact": "delayed",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T07:46:00"
+    },
+    {
+      "crewId": "FA214",
+      "originalPairing": [
+        "AA1179"
+      ],
+      "impact": "stranded",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T16:43:00"
+    },
+    {
+      "crewId": "PLT114",
+      "originalPairing": [
+        "AA1179"
+      ],
+      "impact": "delayed",
+      "currentLocation": "CLT",
+      "availableFrom": "2026-01-24T16:43:00"
+    },
+    {
+      "crewId": "FA594",
+      "originalPairing": [
+        "AA1271"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T15:32:00"
+    },
+    {
+      "crewId": "FA590",
+      "originalPairing": [
+        "AA1271"
+      ],
+      "impact": "timeout",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T15:32:00"
+    },
+    {
+      "crewId": "PLT379",
+      "originalPairing": [
+        "AA1271"
+      ],
+      "impact": "stranded",
+      "currentLocation": "JFK",
+      "availableFrom": "2026-01-24T15:32:00"
+    },
+    {
+      "crewId": "PLT062",
+      "originalPairing": [
+        "AA1173"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T10:52:00"
+    },
+    {
+      "crewId": "PLT044",
+      "originalPairing": [
+        "AA1013"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:45:00"
+    },
+    {
+      "crewId": "FA055",
+      "originalPairing": [
+        "AA1013"
+      ],
+      "impact": "timeout",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:45:00"
+    },
+    {
+      "crewId": "FA033",
+      "originalPairing": [
+        "AA1013"
+      ],
+      "impact": "stranded",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T13:45:00"
+    },
+    {
+      "crewId": "FA143",
+      "originalPairing": [
+        "AA1159"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:47:00"
+    },
+    {
+      "crewId": "PLT097",
+      "originalPairing": [
+        "AA1159"
+      ],
+      "impact": "timeout",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:47:00"
+    },
+    {
+      "crewId": "PLT085",
+      "originalPairing": [
+        "AA1159"
+      ],
+      "impact": "stranded",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T14:47:00"
+    },
+    {
+      "crewId": "PLT038",
+      "originalPairing": [
+        "AA1015"
+      ],
+      "impact": "delayed",
+      "currentLocation": "DFW",
+      "availableFrom": "2026-01-24T18:00:00"
+    },
+    {
+      "crewId": "PLT102",
+      "originalPairing": [
+        "AA1036"
+      ],
+      "impact": "delayed",
+      "currentLocation": "ORD",
+      "availableFrom": "2026-01-24T10:15:00"
+    },
+    {
+      "crewId": "FA491",
+      "originalPairing": [
+        "AA1246"
+      ],
+      "impact": "stranded",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:43:00"
+    },
+    {
+      "crewId": "FA543",
+      "originalPairing": [
+        "AA1246"
+      ],
+      "impact": "timeout",
+      "currentLocation": "LAX",
+      "availableFrom": "2026-01-24T14:43:00"
+    }
+  ],
+  "metadata": {
+    "scenario": "Major Winter Storm - Multi-Hub Impact",
+    "generated": "2026-01-25T01:52:26.715273",
+    "totalDisruptions": 182,
+    "totalAffectedCrew": 356,
+    "cancellations": 21,
+    "delays": 161
+  }
+}
