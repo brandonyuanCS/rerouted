@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { mockDisruptions, mockFlights, getSeverityColor } from '@/lib/mock-data';
@@ -37,53 +37,53 @@ export default function DisruptionsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-secondary">Disruptions</h1>
-        <p className="text-muted-foreground">Monitor and resolve operational disruptions</p>
+        <h1 className="text-3xl font-bold text-slate-800">Disruptions</h1>
+        <p className="text-slate-600">Monitor and resolve operational disruptions</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
-        <Card className="border-red-200">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Critical</CardTitle>
-          </CardHeader>
-          <CardContent>
+        <GlassCard className="border-red-200/50">
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Critical</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-red-600">{severityCounts.critical}</div>
-          </CardContent>
-        </Card>
-        <Card className="border-orange-200">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">High</CardTitle>
-          </CardHeader>
-          <CardContent>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard className="border-orange-200/50">
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">High</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-orange-600">{severityCounts.high}</div>
-          </CardContent>
-        </Card>
-        <Card className="border-yellow-200">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Medium</CardTitle>
-          </CardHeader>
-          <CardContent>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard className="border-yellow-200/50">
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Medium</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-yellow-600">{severityCounts.medium}</div>
-          </CardContent>
-        </Card>
-        <Card className="border-gray-200">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Low</CardTitle>
-          </CardHeader>
-          <CardContent>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Low</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-gray-600">{severityCounts.low}</div>
-          </CardContent>
-        </Card>
+          </GlassCardContent>
+        </GlassCard>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <AlertIcon className="h-5 w-5 text-destructive" />
+      <GlassCard>
+        <GlassCardHeader>
+          <GlassCardTitle className="flex items-center gap-2">
+            <AlertIcon className="h-5 w-5 text-red-500" />
             Active Disruptions
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+          </GlassCardTitle>
+        </GlassCardHeader>
+        <GlassCardContent>
           {activeDisruptions.length > 0 ? (
             <div className="space-y-4">
               {activeDisruptions.map((disruption) => {
@@ -91,24 +91,24 @@ export default function DisruptionsPage() {
                 return (
                   <div
                     key={disruption.id}
-                    className="flex items-start gap-4 rounded-lg border p-4"
+                    className="flex items-start gap-4 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30 p-4 hover:bg-white/30 transition-all"
                   >
-                    <div className={`mt-1 h-3 w-3 rounded-full ${getSeverityColor(disruption.severity)}`} />
+                    <div className={`mt-1 h-3 w-3 rounded-full ${getSeverityColor(disruption.severity)} shadow-lg`} />
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-bold">{flight?.flightNumber}</span>
-                        <span className="text-muted-foreground">
+                        <span className="font-bold text-gray-800">{flight?.flightNumber}</span>
+                        <span className="text-gray-600">
                           {flight?.origin} - {flight?.destination}
                         </span>
-                        <Badge variant="outline" className="ml-2">
+                        <Badge variant="outline" className="ml-2 bg-white/30 border-white/40">
                           {disruption.type.replace('_', ' ')}
                         </Badge>
-                        <Badge className={`${getSeverityColor(disruption.severity)} text-white`}>
+                        <Badge className={`${getSeverityColor(disruption.severity)} text-slate-800 liquid-glass-badge border-0`}>
                           {disruption.severity}
                         </Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2">{disruption.description}</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-sm text-gray-600 mb-2">{disruption.description}</p>
+                      <p className="text-xs text-gray-500">
                         Reported: {new Date(disruption.createdAt).toLocaleString('en-US', {
                           dateStyle: 'short',
                           timeStyle: 'short',
@@ -116,10 +116,10 @@ export default function DisruptionsPage() {
                       </p>
                     </div>
                     <div className="flex gap-2">
-                      <Button size="sm" variant="outline">
+                      <Button size="sm" variant="outline" className="liquid-glass-button">
                         Assign Crew
                       </Button>
-                      <Button size="sm">
+                      <Button size="sm" className="liquid-glass-button bg-[#0078D2] text-slate-800 hover:bg-[#0078D2]/80">
                         Resolve
                       </Button>
                     </div>
@@ -130,45 +130,45 @@ export default function DisruptionsPage() {
           ) : (
             <div className="py-8 text-center">
               <CheckIcon className="h-12 w-12 mx-auto text-green-500 mb-2" />
-              <p className="text-muted-foreground">No active disruptions</p>
+              <p className="text-gray-500">No active disruptions</p>
             </div>
           )}
-        </CardContent>
-      </Card>
+        </GlassCardContent>
+      </GlassCard>
 
       {resolvedDisruptions.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <GlassCard>
+          <GlassCardHeader>
+            <GlassCardTitle className="flex items-center gap-2">
               <CheckIcon className="h-5 w-5 text-green-500" />
               Recently Resolved
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+            </GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="space-y-4">
               {resolvedDisruptions.map((disruption) => {
                 const flight = mockFlights.find((f) => f.id === disruption.flightId);
                 return (
                   <div
                     key={disruption.id}
-                    className="flex items-start gap-4 rounded-lg border border-green-200 bg-green-50 p-4"
+                    className="flex items-start gap-4 rounded-2xl bg-green-500/10 backdrop-blur-sm border border-green-300/30 p-4"
                   >
                     <CheckIcon className="h-5 w-5 text-green-500 mt-0.5" />
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-bold">{flight?.flightNumber}</span>
-                        <Badge variant="outline">
+                        <span className="font-bold text-gray-800">{flight?.flightNumber}</span>
+                        <Badge variant="outline" className="bg-white/30 border-white/40">
                           {disruption.type.replace('_', ' ')}
                         </Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground">{disruption.description}</p>
+                      <p className="text-sm text-gray-600">{disruption.description}</p>
                     </div>
                   </div>
                 );
               })}
             </div>
-          </CardContent>
-        </Card>
+          </GlassCardContent>
+        </GlassCard>
       )}
     </div>
   );

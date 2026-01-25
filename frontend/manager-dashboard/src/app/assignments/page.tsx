@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -133,65 +133,65 @@ export default function AssignmentsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-secondary">Assignments</h1>
-          <p className="text-muted-foreground">Manage crew flight assignments</p>
+          <h1 className="text-3xl font-bold text-slate-800">Assignments</h1>
+          <p className="text-slate-600">Manage crew flight assignments</p>
         </div>
         <Dialog>
           <DialogTrigger asChild>
-            <Button>Create Assignment</Button>
+            <Button className="liquid-glass-button bg-[#0078D2] text-slate-800 hover:bg-[#0078D2]/80">Create Assignment</Button>
           </DialogTrigger>
           <CreateAssignmentDialog />
         </Dialog>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Pending</CardTitle>
-          </CardHeader>
-          <CardContent>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Pending</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-yellow-600">{statusCounts.pending}</div>
-            <p className="text-xs text-muted-foreground">Awaiting response</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Accepted</CardTitle>
-          </CardHeader>
-          <CardContent>
+            <p className="text-xs text-gray-500">Awaiting response</p>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Accepted</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-blue-600">{statusCounts.accepted}</div>
-            <p className="text-xs text-muted-foreground">Needs confirmation</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Confirmed</CardTitle>
-          </CardHeader>
-          <CardContent>
+            <p className="text-xs text-gray-500">Needs confirmation</p>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Confirmed</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-green-600">{statusCounts.confirmed}</div>
-            <p className="text-xs text-muted-foreground">Ready for duty</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Declined</CardTitle>
-          </CardHeader>
-          <CardContent>
+            <p className="text-xs text-gray-500">Ready for duty</p>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Declined</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-red-600">{statusCounts.declined}</div>
-            <p className="text-xs text-muted-foreground">Needs reassignment</p>
-          </CardContent>
-        </Card>
+            <p className="text-xs text-gray-500">Needs reassignment</p>
+          </GlassCardContent>
+        </GlassCard>
       </div>
 
-      <Card>
-        <CardHeader>
+      <GlassCard>
+        <GlassCardHeader>
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <CardTitle>All Assignments</CardTitle>
+            <GlassCardTitle>All Assignments</GlassCardTitle>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-full md:w-40">
+              <SelectTrigger className="w-full md:w-40 liquid-glass-input">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="liquid-glass-card border-white/30">
                 <SelectItem value="all">All Status</SelectItem>
                 <SelectItem value="pending">Pending</SelectItem>
                 <SelectItem value="accepted">Accepted</SelectItem>
@@ -200,76 +200,78 @@ export default function AssignmentsPage() {
               </SelectContent>
             </Select>
           </div>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Flight</TableHead>
-                <TableHead>Route</TableHead>
-                <TableHead>Crew Member</TableHead>
-                <TableHead>Role</TableHead>
-                <TableHead>Assigned</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredAssignments.map((assignment) => (
-                <TableRow key={assignment.id}>
-                  <TableCell className="font-medium">
-                    {assignment.flight.flightNumber}
-                  </TableCell>
-                  <TableCell>
-                    {assignment.flight.origin} - {assignment.flight.destination}
-                  </TableCell>
-                  <TableCell>
-                    {assignment.crew?.firstName} {assignment.crew?.lastName}
-                  </TableCell>
-                  <TableCell>{assignment.role}</TableCell>
-                  <TableCell>
-                    {new Date(assignment.assignedAt).toLocaleDateString('en-US', {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </TableCell>
-                  <TableCell>
-                    <Badge className={`${getAssignmentStatusColor(assignment.status)} text-white`}>
-                      {assignment.status}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex gap-2">
-                      {assignment.status === 'accepted' && (
-                        <Button size="sm" variant="default">
-                          Confirm
-                        </Button>
-                      )}
-                      {assignment.status === 'pending' && (
-                        <Button size="sm" variant="outline">
-                          Resend
-                        </Button>
-                      )}
-                      {(assignment.status === 'declined' || assignment.status === 'pending') && (
-                        <Button size="sm" variant="destructive">
-                          Cancel
-                        </Button>
-                      )}
-                    </div>
-                  </TableCell>
+        </GlassCardHeader>
+        <GlassCardContent>
+          <div className="rounded-xl overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow className="border-b border-white hover:bg-white/10">
+                  <TableHead className="text-gray-700">Flight</TableHead>
+                  <TableHead className="text-gray-700">Route</TableHead>
+                  <TableHead className="text-gray-700">Crew Member</TableHead>
+                  <TableHead className="text-gray-700">Role</TableHead>
+                  <TableHead className="text-gray-700">Assigned</TableHead>
+                  <TableHead className="text-gray-700">Status</TableHead>
+                  <TableHead className="text-gray-700">Actions</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {filteredAssignments.map((assignment) => (
+                  <TableRow key={assignment.id} className="border-b border-white hover:bg-white/20 transition-colors">
+                    <TableCell className="font-medium text-gray-800">
+                      {assignment.flight.flightNumber}
+                    </TableCell>
+                    <TableCell className="text-gray-700">
+                      {assignment.flight.origin} - {assignment.flight.destination}
+                    </TableCell>
+                    <TableCell className="text-gray-800">
+                      {assignment.crew?.firstName} {assignment.crew?.lastName}
+                    </TableCell>
+                    <TableCell className="text-gray-700">{assignment.role}</TableCell>
+                    <TableCell className="text-gray-700">
+                      {new Date(assignment.assignedAt).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </TableCell>
+                    <TableCell>
+                      <Badge className={`${getAssignmentStatusColor(assignment.status)} text-slate-800 liquid-glass-badge border-0`}>
+                        {assignment.status}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex gap-2">
+                        {assignment.status === 'accepted' && (
+                          <Button size="sm" variant="default" className="liquid-glass-button bg-[#0078D2] text-slate-800">
+                            Confirm
+                          </Button>
+                        )}
+                        {assignment.status === 'pending' && (
+                          <Button size="sm" variant="outline" className="liquid-glass-button">
+                            Resend
+                          </Button>
+                        )}
+                        {(assignment.status === 'declined' || assignment.status === 'pending') && (
+                          <Button size="sm" variant="destructive" className="liquid-glass-button bg-[#C30019] text-slate-800">
+                            Cancel
+                          </Button>
+                        )}
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
           {filteredAssignments.length === 0 && (
-            <div className="py-8 text-center text-muted-foreground">
+            <div className="py-8 text-center text-gray-500">
               No assignments found matching your filters.
             </div>
           )}
-        </CardContent>
-      </Card>
+        </GlassCardContent>
+      </GlassCard>
     </div>
   );
 }

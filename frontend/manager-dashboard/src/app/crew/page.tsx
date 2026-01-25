@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -57,7 +57,7 @@ function CrewDetailDialog({ crew }: { crew: CrewMember }) {
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Status</p>
-            <Badge className={`${getStatusColor(crew.status)} text-white`}>
+            <Badge className={`${getStatusColor(crew.status)} text-slate-800`}>
               {crew.status.replace('_', ' ')}
             </Badge>
           </div>
@@ -116,72 +116,72 @@ export default function CrewPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-secondary">Crew Management</h1>
-        <p className="text-muted-foreground">View and manage crew members</p>
+        <h1 className="text-3xl font-bold text-slate-800">Crew Management</h1>
+        <p className="text-slate-600">View and manage crew members</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-5">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Available</CardTitle>
-          </CardHeader>
-          <CardContent>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Available</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-green-600">{statusCounts.available}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">On Duty</CardTitle>
-          </CardHeader>
-          <CardContent>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">On Duty</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-blue-600">{statusCounts.on_duty}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">On Break</CardTitle>
-          </CardHeader>
-          <CardContent>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">On Break</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-yellow-600">{statusCounts.on_break}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Off Duty</CardTitle>
-          </CardHeader>
-          <CardContent>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Off Duty</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-gray-600">{statusCounts.off_duty}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">On Leave</CardTitle>
-          </CardHeader>
-          <CardContent>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">On Leave</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-purple-600">{statusCounts.on_leave}</div>
-          </CardContent>
-        </Card>
+          </GlassCardContent>
+        </GlassCard>
       </div>
 
-      <Card>
-        <CardHeader>
+      <GlassCard>
+        <GlassCardHeader>
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <CardTitle>All Crew Members</CardTitle>
+            <GlassCardTitle>All Crew Members</GlassCardTitle>
             <div className="flex flex-col gap-2 md:flex-row">
               <div className="relative">
-                <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                 <Input
                   placeholder="Search by name or ID..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 w-full md:w-64"
+                  className="pl-9 w-full md:w-64 liquid-glass-input"
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full md:w-40">
+                <SelectTrigger className="w-full md:w-40 liquid-glass-input">
                   <SelectValue placeholder="Status" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="liquid-glass-card border-white/30">
                   <SelectItem value="all">All Status</SelectItem>
                   <SelectItem value="available">Available</SelectItem>
                   <SelectItem value="on_duty">On Duty</SelectItem>
@@ -191,10 +191,10 @@ export default function CrewPage() {
                 </SelectContent>
               </Select>
               <Select value={roleFilter} onValueChange={setRoleFilter}>
-                <SelectTrigger className="w-full md:w-40">
+                <SelectTrigger className="w-full md:w-40 liquid-glass-input">
                   <SelectValue placeholder="Role" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="liquid-glass-card border-white/30">
                   <SelectItem value="all">All Roles</SelectItem>
                   <SelectItem value="pilot">Captain</SelectItem>
                   <SelectItem value="first_officer">First Officer</SelectItem>
@@ -204,56 +204,58 @@ export default function CrewPage() {
               </Select>
             </div>
           </div>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Employee ID</TableHead>
-                <TableHead>Name</TableHead>
-                <TableHead>Role</TableHead>
-                <TableHead>Base</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Duty Hours</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredCrew.map((crew) => (
-                <TableRow key={crew.id}>
-                  <TableCell className="font-mono">{crew.employeeId}</TableCell>
-                  <TableCell className="font-medium">
-                    {crew.firstName} {crew.lastName}
-                  </TableCell>
-                  <TableCell>{getRoleLabel(crew.role)}</TableCell>
-                  <TableCell>{crew.base}</TableCell>
-                  <TableCell>
-                    <Badge className={`${getStatusColor(crew.status)} text-white`}>
-                      {crew.status.replace('_', ' ')}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>{crew.dutyHoursRemaining}h</TableCell>
-                  <TableCell>
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button variant="outline" size="sm">
-                          View
-                        </Button>
-                      </DialogTrigger>
-                      <CrewDetailDialog crew={crew} />
-                    </Dialog>
-                  </TableCell>
+        </GlassCardHeader>
+        <GlassCardContent>
+          <div className="rounded-xl overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow className="border-b border-white hover:bg-white/10">
+                  <TableHead className="text-gray-700">Employee ID</TableHead>
+                  <TableHead className="text-gray-700">Name</TableHead>
+                  <TableHead className="text-gray-700">Role</TableHead>
+                  <TableHead className="text-gray-700">Base</TableHead>
+                  <TableHead className="text-gray-700">Status</TableHead>
+                  <TableHead className="text-gray-700">Duty Hours</TableHead>
+                  <TableHead className="text-gray-700">Actions</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {filteredCrew.map((crew) => (
+                  <TableRow key={crew.id} className="border-b border-white hover:bg-white/20 transition-colors">
+                    <TableCell className="font-mono text-gray-800">{crew.employeeId}</TableCell>
+                    <TableCell className="font-medium text-gray-800">
+                      {crew.firstName} {crew.lastName}
+                    </TableCell>
+                    <TableCell className="text-gray-700">{getRoleLabel(crew.role)}</TableCell>
+                    <TableCell className="text-gray-700">{crew.base}</TableCell>
+                    <TableCell>
+                      <Badge className={`${getStatusColor(crew.status)} text-slate-800 liquid-glass-badge border-0`}>
+                        {crew.status.replace('_', ' ')}
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="text-gray-700">{crew.dutyHoursRemaining}h</TableCell>
+                    <TableCell>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="sm" className="liquid-glass-button">
+                            View
+                          </Button>
+                        </DialogTrigger>
+                        <CrewDetailDialog crew={crew} />
+                      </Dialog>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
           {filteredCrew.length === 0 && (
-            <div className="py-8 text-center text-muted-foreground">
+            <div className="py-8 text-center text-gray-500">
               No crew members found matching your filters.
             </div>
           )}
-        </CardContent>
-      </Card>
+        </GlassCardContent>
+      </GlassCard>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -58,7 +58,7 @@ function FlightDetailDialog({ flight }: { flight: Flight }) {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <p className="text-sm text-muted-foreground">Status</p>
-            <Badge className={`${getFlightStatusColor(flight.status)} text-white`}>
+            <Badge className={`${getFlightStatusColor(flight.status)} text-slate-800`}>
               {flight.status.replace('_', ' ')}
             </Badge>
           </div>
@@ -144,64 +144,64 @@ export default function FlightsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-secondary">Flights</h1>
-        <p className="text-muted-foreground">Monitor and manage flight operations</p>
+        <h1 className="text-3xl font-bold text-slate-800">Flights</h1>
+        <p className="text-slate-600">Monitor and manage flight operations</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Scheduled</CardTitle>
-          </CardHeader>
-          <CardContent>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Scheduled</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-gray-600">{statusCounts.scheduled}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Boarding</CardTitle>
-          </CardHeader>
-          <CardContent>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Boarding</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-blue-600">{statusCounts.boarding}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">In Air</CardTitle>
-          </CardHeader>
-          <CardContent>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">In Air</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-green-600">{statusCounts.in_air}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Delayed</CardTitle>
-          </CardHeader>
-          <CardContent>
+          </GlassCardContent>
+        </GlassCard>
+        <GlassCard>
+          <GlassCardHeader className="pb-2">
+            <GlassCardTitle className="text-sm font-medium">Delayed</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             <div className="text-2xl font-bold text-yellow-600">{statusCounts.delayed}</div>
-          </CardContent>
-        </Card>
+          </GlassCardContent>
+        </GlassCard>
       </div>
 
-      <Card>
-        <CardHeader>
+      <GlassCard>
+        <GlassCardHeader>
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <CardTitle>All Flights</CardTitle>
+            <GlassCardTitle>All Flights</GlassCardTitle>
             <div className="flex flex-col gap-2 md:flex-row">
               <div className="relative">
-                <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                 <Input
                   placeholder="Search flights..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 w-full md:w-64"
+                  className="pl-9 w-full md:w-64 liquid-glass-input"
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full md:w-40">
+                <SelectTrigger className="w-full md:w-40 liquid-glass-input">
                   <SelectValue placeholder="Status" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="liquid-glass-card border-white/30">
                   <SelectItem value="all">All Status</SelectItem>
                   <SelectItem value="scheduled">Scheduled</SelectItem>
                   <SelectItem value="boarding">Boarding</SelectItem>
@@ -214,74 +214,76 @@ export default function FlightsPage() {
               </Select>
             </div>
           </div>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Flight</TableHead>
-                <TableHead>Route</TableHead>
-                <TableHead>Departure</TableHead>
-                <TableHead>Arrival</TableHead>
-                <TableHead>Gate</TableHead>
-                <TableHead>Aircraft</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Crew</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredFlights.map((flight) => (
-                <TableRow key={flight.id}>
-                  <TableCell className="font-medium">{flight.flightNumber}</TableCell>
-                  <TableCell>
-                    {flight.origin} - {flight.destination}
-                  </TableCell>
-                  <TableCell>
-                    {new Date(flight.scheduledDeparture).toLocaleTimeString('en-US', {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </TableCell>
-                  <TableCell>
-                    {new Date(flight.scheduledArrival).toLocaleTimeString('en-US', {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </TableCell>
-                  <TableCell>{flight.gate || '-'}</TableCell>
-                  <TableCell className="text-sm">{flight.aircraft}</TableCell>
-                  <TableCell>
-                    <Badge className={`${getFlightStatusColor(flight.status)} text-white`}>
-                      {flight.status.replace('_', ' ')}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline">
-                      {flight.crewAssignments.length} assigned
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button variant="outline" size="sm">
-                          Details
-                        </Button>
-                      </DialogTrigger>
-                      <FlightDetailDialog flight={flight} />
-                    </Dialog>
-                  </TableCell>
+        </GlassCardHeader>
+        <GlassCardContent>
+          <div className="rounded-xl overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow className="border-b border-white hover:bg-white/10">
+                  <TableHead className="text-gray-700">Flight</TableHead>
+                  <TableHead className="text-gray-700">Route</TableHead>
+                  <TableHead className="text-gray-700">Departure</TableHead>
+                  <TableHead className="text-gray-700">Arrival</TableHead>
+                  <TableHead className="text-gray-700">Gate</TableHead>
+                  <TableHead className="text-gray-700">Aircraft</TableHead>
+                  <TableHead className="text-gray-700">Status</TableHead>
+                  <TableHead className="text-gray-700">Crew</TableHead>
+                  <TableHead className="text-gray-700">Actions</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {filteredFlights.map((flight) => (
+                  <TableRow key={flight.id} className="border-b border-white hover:bg-white/20 transition-colors">
+                    <TableCell className="font-medium text-gray-800">{flight.flightNumber}</TableCell>
+                    <TableCell className="text-gray-700">
+                      {flight.origin} - {flight.destination}
+                    </TableCell>
+                    <TableCell className="text-gray-700">
+                      {new Date(flight.scheduledDeparture).toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </TableCell>
+                    <TableCell className="text-gray-700">
+                      {new Date(flight.scheduledArrival).toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </TableCell>
+                    <TableCell className="text-gray-700">{flight.gate || '-'}</TableCell>
+                    <TableCell className="text-sm text-gray-700">{flight.aircraft}</TableCell>
+                    <TableCell>
+                      <Badge className={`${getFlightStatusColor(flight.status)} text-slate-800 liquid-glass-badge border-0`}>
+                        {flight.status.replace('_', ' ')}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant="outline" className="bg-white/30 border-white/40 text-gray-700">
+                        {flight.crewAssignments.length} assigned
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="sm" className="liquid-glass-button">
+                            Details
+                          </Button>
+                        </DialogTrigger>
+                        <FlightDetailDialog flight={flight} />
+                      </Dialog>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
           {filteredFlights.length === 0 && (
-            <div className="py-8 text-center text-muted-foreground">
+            <div className="py-8 text-center text-gray-500">
               No flights found matching your filters.
             </div>
           )}
-        </CardContent>
-      </Card>
+        </GlassCardContent>
+      </GlassCard>
     </div>
   );
 }

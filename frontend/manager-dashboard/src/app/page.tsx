@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
 import { Badge } from '@/components/ui/badge';
 import {
   Table,
@@ -64,179 +64,191 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-secondary">Dashboard</h1>
-        <p className="text-muted-foreground">Real-time operations overview</p>
+        <h1 className="text-3xl font-bold text-slate-800">Dashboard</h1>
+        <p className="text-slate-600">Real-time operations overview</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Flights</CardTitle>
-            <PlaneIcon className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-primary">{stats.activeFlights}</div>
-            <p className="text-xs text-muted-foreground">
+        <GlassCard>
+          <GlassCardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <GlassCardTitle className="text-sm font-medium">Active Flights</GlassCardTitle>
+            <div className="h-8 w-8 rounded-xl bg-blue-500/20 flex items-center justify-center">
+              <PlaneIcon className="h-4 w-4 text-blue-600" />
+            </div>
+          </GlassCardHeader>
+          <GlassCardContent>
+            <div className="text-3xl font-bold text-blue-600">{stats.activeFlights}</div>
+            <p className="text-xs text-gray-500 mt-1">
               {stats.delayedFlights} delayed of {stats.totalFlights} total
             </p>
-          </CardContent>
-        </Card>
+          </GlassCardContent>
+        </GlassCard>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Available Crew</CardTitle>
-            <UsersIcon className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-primary">{stats.availableCrew}</div>
-            <p className="text-xs text-muted-foreground">
+        <GlassCard>
+          <GlassCardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <GlassCardTitle className="text-sm font-medium">Available Crew</GlassCardTitle>
+            <div className="h-8 w-8 rounded-xl bg-green-500/20 flex items-center justify-center">
+              <UsersIcon className="h-4 w-4 text-green-600" />
+            </div>
+          </GlassCardHeader>
+          <GlassCardContent>
+            <div className="text-3xl font-bold text-green-600">{stats.availableCrew}</div>
+            <p className="text-xs text-gray-500 mt-1">
               {stats.onDutyCrew} on duty of {stats.totalCrew} total
             </p>
-          </CardContent>
-        </Card>
+          </GlassCardContent>
+        </GlassCard>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Pending Assignments</CardTitle>
-            <ClockIcon className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-primary">{stats.pendingAssignments}</div>
-            <p className="text-xs text-muted-foreground">Awaiting crew response</p>
-          </CardContent>
-        </Card>
+        <GlassCard>
+          <GlassCardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <GlassCardTitle className="text-sm font-medium">Pending Assignments</GlassCardTitle>
+            <div className="h-8 w-8 rounded-xl bg-amber-500/20 flex items-center justify-center">
+              <ClockIcon className="h-4 w-4 text-amber-600" />
+            </div>
+          </GlassCardHeader>
+          <GlassCardContent>
+            <div className="text-3xl font-bold text-amber-600">{stats.pendingAssignments}</div>
+            <p className="text-xs text-gray-500 mt-1">Awaiting crew response</p>
+          </GlassCardContent>
+        </GlassCard>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Disruptions</CardTitle>
-            <AlertIcon className="h-4 w-4 text-destructive" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-destructive">{stats.activeDisruptions}</div>
-            <p className="text-xs text-muted-foreground">Requiring attention</p>
-          </CardContent>
-        </Card>
+        <GlassCard>
+          <GlassCardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <GlassCardTitle className="text-sm font-medium">Active Disruptions</GlassCardTitle>
+            <div className="h-8 w-8 rounded-xl bg-red-500/20 flex items-center justify-center">
+              <AlertIcon className="h-4 w-4 text-red-600" />
+            </div>
+          </GlassCardHeader>
+          <GlassCardContent>
+            <div className="text-3xl font-bold text-red-600">{stats.activeDisruptions}</div>
+            <p className="text-xs text-gray-500 mt-1">Requiring attention</p>
+          </GlassCardContent>
+        </GlassCard>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Upcoming Flights</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Flight</TableHead>
-                  <TableHead>Route</TableHead>
-                  <TableHead>Departure</TableHead>
-                  <TableHead>Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {recentFlights.map((flight) => (
-                  <TableRow key={flight.id}>
-                    <TableCell className="font-medium">{flight.flightNumber}</TableCell>
-                    <TableCell>
-                      {flight.origin} - {flight.destination}
-                    </TableCell>
-                    <TableCell>
-                      {new Date(flight.scheduledDeparture).toLocaleTimeString('en-US', {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                      })}
-                    </TableCell>
-                    <TableCell>
-                      <Badge className={`${getFlightStatusColor(flight.status)} text-white`}>
-                        {flight.status.replace('_', ' ')}
-                      </Badge>
-                    </TableCell>
+        <GlassCard>
+          <GlassCardHeader>
+            <GlassCardTitle>Upcoming Flights</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
+            <div className="rounded-xl overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow className="border-b border-white hover:bg-white/10">
+                    <TableHead className="text-gray-700">Flight</TableHead>
+                    <TableHead className="text-gray-700">Route</TableHead>
+                    <TableHead className="text-gray-700">Departure</TableHead>
+                    <TableHead className="text-gray-700">Status</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+                </TableHeader>
+                <TableBody>
+                  {recentFlights.map((flight) => (
+                    <TableRow key={flight.id} className="border-b border-white hover:bg-white/20 transition-colors">
+                      <TableCell className="font-medium text-gray-800">{flight.flightNumber}</TableCell>
+                      <TableCell className="text-gray-700">
+                        {flight.origin} - {flight.destination}
+                      </TableCell>
+                      <TableCell className="text-gray-700">
+                        {new Date(flight.scheduledDeparture).toLocaleTimeString('en-US', {
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
+                      </TableCell>
+                      <TableCell>
+                        <Badge className={`${getFlightStatusColor(flight.status)} text-slate-800 liquid-glass-badge border-0`}>
+                          {flight.status.replace('_', ' ')}
+                        </Badge>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </GlassCardContent>
+        </GlassCard>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Active Disruptions</CardTitle>
-          </CardHeader>
-          <CardContent>
+        <GlassCard>
+          <GlassCardHeader>
+            <GlassCardTitle>Active Disruptions</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent>
             {activeDisruptions.length > 0 ? (
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {activeDisruptions.map((disruption) => {
                   const flight = mockFlights.find((f) => f.id === disruption.flightId);
                   return (
                     <div
                       key={disruption.id}
-                      className="flex items-start gap-4 rounded-lg border p-4"
+                      className="flex items-start gap-4 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30 p-4 hover:bg-white/30 transition-all"
                     >
-                      <div className={`mt-1 h-2 w-2 rounded-full ${getSeverityColor(disruption.severity)}`} />
+                      <div className={`mt-1 h-3 w-3 rounded-full ${getSeverityColor(disruption.severity)} shadow-lg`} />
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-medium">{flight?.flightNumber}</span>
-                          <Badge variant="outline" className="text-xs">
+                          <span className="font-semibold text-gray-800">{flight?.flightNumber}</span>
+                          <Badge variant="outline" className="text-xs bg-white/30 border-white/40">
                             {disruption.type.replace('_', ' ')}
                           </Badge>
                         </div>
-                        <p className="text-sm text-muted-foreground">{disruption.description}</p>
+                        <p className="text-sm text-gray-600 mt-1">{disruption.description}</p>
                       </div>
                     </div>
                   );
                 })}
               </div>
             ) : (
-              <p className="text-muted-foreground">No active disruptions</p>
+              <p className="text-gray-500">No active disruptions</p>
             )}
-          </CardContent>
-        </Card>
+          </GlassCardContent>
+        </GlassCard>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Available Crew Members</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Role</TableHead>
-                <TableHead>Base</TableHead>
-                <TableHead>Duty Hours Left</TableHead>
-                <TableHead>Certifications</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {availableCrew.map((crew) => (
-                <TableRow key={crew.id}>
-                  <TableCell className="font-medium">
-                    {crew.firstName} {crew.lastName}
-                  </TableCell>
-                  <TableCell className="capitalize">{crew.role.replace('_', ' ')}</TableCell>
-                  <TableCell>{crew.base}</TableCell>
-                  <TableCell>{crew.dutyHoursRemaining}h</TableCell>
-                  <TableCell>
-                    <div className="flex flex-wrap gap-1">
-                      {crew.certifications.slice(0, 2).map((cert) => (
-                        <Badge key={cert} variant="outline" className="text-xs">
-                          {cert}
-                        </Badge>
-                      ))}
-                      {crew.certifications.length > 2 && (
-                        <Badge variant="outline" className="text-xs">
-                          +{crew.certifications.length - 2}
-                        </Badge>
-                      )}
-                    </div>
-                  </TableCell>
+      <GlassCard>
+        <GlassCardHeader>
+          <GlassCardTitle>Available Crew Members</GlassCardTitle>
+        </GlassCardHeader>
+        <GlassCardContent>
+          <div className="rounded-xl overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow className="border-b border-white hover:bg-white/10">
+                  <TableHead className="text-gray-700">Name</TableHead>
+                  <TableHead className="text-gray-700">Role</TableHead>
+                  <TableHead className="text-gray-700">Base</TableHead>
+                  <TableHead className="text-gray-700">Duty Hours Left</TableHead>
+                  <TableHead className="text-gray-700">Certifications</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+              </TableHeader>
+              <TableBody>
+                {availableCrew.map((crew) => (
+                  <TableRow key={crew.id} className="border-b border-white hover:bg-white/20 transition-colors">
+                    <TableCell className="font-medium text-gray-800">
+                      {crew.firstName} {crew.lastName}
+                    </TableCell>
+                    <TableCell className="capitalize text-gray-700">{crew.role.replace('_', ' ')}</TableCell>
+                    <TableCell className="text-gray-700">{crew.base}</TableCell>
+                    <TableCell className="text-gray-700">{crew.dutyHoursRemaining}h</TableCell>
+                    <TableCell>
+                      <div className="flex flex-wrap gap-1">
+                        {crew.certifications.slice(0, 2).map((cert) => (
+                          <Badge key={cert} variant="outline" className="text-xs bg-white/30 border-white/40 text-gray-700">
+                            {cert}
+                          </Badge>
+                        ))}
+                        {crew.certifications.length > 2 && (
+                          <Badge variant="outline" className="text-xs bg-white/30 border-white/40 text-gray-700">
+                            +{crew.certifications.length - 2}
+                          </Badge>
+                        )}
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </GlassCardContent>
+      </GlassCard>
     </div>
   );
 }

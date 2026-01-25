@@ -84,22 +84,27 @@ function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar>
-      <SidebarHeader className="p-4">
+    <Sidebar className="border-none p-3 bg-transparent">
+      <div 
+        className="liquid-glass-sidebar-inner h-full rounded-2xl overflow-hidden flex flex-col"
+      >
+      <SidebarHeader className="p-4 relative z-10">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
-            <Plane className="h-6 w-6 text-white" />
+          <div className="h-10 w-10 flex items-center justify-center">
+            <img src="/logo.png" alt="CrewSync Logo" className="h-10 w-10 object-contain" />
           </div>
           <div>
-            <h1 className="font-bold text-lg text-sidebar-foreground">CrewSync</h1>
-            <p className="text-xs text-sidebar-foreground/70">Manager Dashboard</p>
+            <h1 className="font-bold text-lg text-white drop-shadow-sm">CrewSync</h1>
+            <p className="text-xs text-white/70">Manager Dashboard</p>
           </div>
         </div>
       </SidebarHeader>
-      <Separator className="bg-sidebar-border" />
-      <SidebarContent>
+      <div className="px-4">
+        <Separator className="bg-white/30" />
+      </div>
+      <SidebarContent className="relative z-10 flex-1">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-sidebar-foreground/70">Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-white/80 text-xs uppercase tracking-wider">Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
@@ -107,6 +112,7 @@ function AppSidebar() {
                   <SidebarMenuButton
                     asChild
                     isActive={pathname === item.url}
+                    className="liquid-glass-nav-button hover:bg-white/20 data-[active=true]:bg-white/30 data-[active=true]:backdrop-blur-sm rounded-xl transition-all duration-300 text-white/90 hover:text-white border border-white/15 hover:border-white/30 data-[active=true]:border-white/40"
                   >
                     <Link href={item.url}>
                       <item.icon className="h-4 w-4" />
@@ -119,18 +125,21 @@ function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="p-4">
-        <Separator className="bg-sidebar-border mb-4" />
-        <div className="flex items-center gap-3">
-          <Avatar>
-            <AvatarFallback className="bg-primary text-white">JD</AvatarFallback>
+      <SidebarFooter className="p-4 relative z-10">
+        <div className="px-0">
+          <Separator className="bg-white/30 mb-4" />
+        </div>
+        <div className="flex items-center gap-3 p-2 rounded-xl bg-white/15 backdrop-blur-sm border border-white/25">
+          <Avatar className="border border-white/30">
+            <AvatarFallback className="bg-white/20 text-white font-semibold">JD</AvatarFallback>
           </Avatar>
           <div>
-            <p className="text-sm font-medium text-sidebar-foreground">John Doe</p>
-            <p className="text-xs text-sidebar-foreground/70">Operations Manager</p>
+            <p className="text-sm font-medium text-white">John Doe</p>
+            <p className="text-xs text-white/60">Operations Manager</p>
           </div>
         </div>
       </SidebarFooter>
+      </div>
     </Sidebar>
   );
 }
@@ -144,11 +153,14 @@ export default function DashboardLayout({
     <SidebarProvider>
       <div className="flex min-h-screen w-full">
         <AppSidebar />
-        <main className="flex-1 overflow-auto">
-          <div className="flex items-center gap-4 border-b px-6 py-4">
-            <SidebarTrigger />
+        <main className="flex-1 overflow-auto relative">
+          <div className="relative z-10 p-6">
+            <div className="flex items-center gap-4 px-6 py-4 liquid-glass-card rounded-2xl mb-6">
+              <SidebarTrigger className="text-slate-700 hover:bg-white/30 rounded-xl p-2 transition-all" />
+              <h2 className="text-lg font-semibold text-slate-800">American Airlines Operations</h2>
+            </div>
+            <div>{children}</div>
           </div>
-          <div className="p-6">{children}</div>
         </main>
       </div>
     </SidebarProvider>
