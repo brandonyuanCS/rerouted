@@ -1,6 +1,3 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -11,15 +8,14 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import dynamic from 'next/dynamic';
-import { fetchDashboardData } from '@/lib/api';
-import { DashboardStats, Flight, Crew, Disruption } from '@/lib/types';
-import { JobSubmissionDialog } from '@/components/JobSubmissionDialog';
-
-const FlightMap = dynamic(() => import('@/components/FlightMap'), {
-  ssr: false,
-  loading: () => <div className="h-[600px] w-full bg-slate-900/10 animate-pulse rounded-lg flex items-center justify-center text-muted-foreground">Loading Flight Map...</div>
-});
+import {
+  mockDashboardStats,
+  mockFlights,
+  mockDisruptions,
+  mockCrew,
+  getFlightStatusColor,
+  getSeverityColor,
+} from '@/lib/mock-data';
 
 function PlaneIcon({ className }: { className?: string }) {
   return (
@@ -58,53 +54,18 @@ function ClockIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-// ...
+
 export default function DashboardPage() {
-  const [stats, setStats] = useState<DashboardStats | null>(null);
-  const [flights, setFlights] = useState<Flight[]>([]);
-  const [allFlights, setAllFlights] = useState<Flight[]>([]);
-  const [disruptions, setDisruptions] = useState<Disruption[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadData() {
-      try {
-        const data = await fetchDashboardData();
-        setStats(data.summary);
-        setFlights(data.flights.slice(0, 5));
-        setAllFlights(data.flights);
-        setDisruptions(data.disruptions);
-      } catch (error) {
-        console.error('Failed to load dashboard data:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadData();
-  }, []);
-
-  if (loading || !stats) {
-    return <div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>;
-  }
+  const stats = mockDashboardStats;
+  const recentFlights = mockFlights.slice(0, 5);
+  const activeDisruptions = mockDisruptions.filter((d) => !d.resolvedAt);
+  const availableCrew = mockCrew.filter((c) => c.status === 'available').slice(0, 5);
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-end">
-        <div>
-          <h1 className="text-3xl font-bold text-secondary">Dashboard</h1>
-          <p className="text-muted-foreground">Real-time operations overview</p>
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="text-sm text-muted-foreground hidden md:block">
-            Live Data: {stats.total_flights} flights • {stats.active_flights} active
-          </div>
-          <JobSubmissionDialog />
-        </div>
-      </div>
-
-      {/* Flight Map Section */}
-      <div className="w-full">
-        <FlightMap flights={allFlights} disruptions={disruptions} />
+      <div>
+        <h1 className="text-3xl font-bold text-secondary">Dashboard</h1>
+        <p className="text-muted-foreground">Real-time operations overview</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -114,23 +75,34 @@ export default function DashboardPage() {
             <PlaneIcon className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-primary">{stats.active_flights}</div>
+            <div className="text-2xl font-bold text-primary">{stats.activeFlights}</div>
             <p className="text-xs text-muted-foreground">
-              {stats.delayed_flights} delayed of {stats.total_flights} total
+              {stats.delayedFlights} delayed of {stats.totalFlights} total
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Crew Status</CardTitle>
+            <CardTitle className="text-sm font-medium">Available Crew</CardTitle>
             <UsersIcon className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-primary">{stats.total_crew}</div>
+            <div className="text-2xl font-bold text-primary">{stats.availableCrew}</div>
             <p className="text-xs text-muted-foreground">
-              {stats.available_crew} available, {stats.on_duty_crew} on duty
+              {stats.onDutyCrew} on duty of {stats.totalCrew} total
             </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Pending Assignments</CardTitle>
+            <ClockIcon className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-primary">{stats.pendingAssignments}</div>
+            <p className="text-xs text-muted-foreground">Awaiting crew response</p>
           </CardContent>
         </Card>
 
@@ -140,21 +112,8 @@ export default function DashboardPage() {
             <AlertIcon className="h-4 w-4 text-destructive" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-destructive">{stats.delays + stats.cancellations}</div>
-            <p className="text-xs text-muted-foreground">
-              {stats.cancellations} cancellations, {stats.delays} delays
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Affected Crew</CardTitle>
-            <UsersIcon className="h-4 w-4 text-orange-500" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-orange-600">{stats.affected_crew}</div>
-            <p className="text-xs text-muted-foreground">Crew members displaced</p>
+            <div className="text-2xl font-bold text-destructive">{stats.activeDisruptions}</div>
+            <p className="text-xs text-muted-foreground">Requiring attention</p>
           </CardContent>
         </Card>
       </div>
@@ -162,7 +121,7 @@ export default function DashboardPage() {
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Recent Flights</CardTitle>
+            <CardTitle>Upcoming Flights</CardTitle>
           </CardHeader>
           <CardContent>
             <Table>
@@ -170,23 +129,26 @@ export default function DashboardPage() {
                 <TableRow>
                   <TableHead>Flight</TableHead>
                   <TableHead>Route</TableHead>
-                  <TableHead>Departs</TableHead>
+                  <TableHead>Departure</TableHead>
                   <TableHead>Status</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {flights.map((flight) => (
-                  <TableRow key={flight.flight_number}>
-                    <TableCell className="font-medium">{flight.flight_number}</TableCell>
+                {recentFlights.map((flight) => (
+                  <TableRow key={flight.id}>
+                    <TableCell className="font-medium">{flight.flightNumber}</TableCell>
                     <TableCell>
-                      {flight.origin} → {flight.destination}
+                      {flight.origin} - {flight.destination}
                     </TableCell>
                     <TableCell>
-                      {flight.scheduled_departure}
+                      {new Date(flight.scheduledDeparture).toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
                     </TableCell>
                     <TableCell>
-                      <Badge variant="outline">
-                        {flight.status || 'Scheduled'}
+                      <Badge className={`${getFlightStatusColor(flight.status)} text-white`}>
+                        {flight.status.replace('_', ' ')}
                       </Badge>
                     </TableCell>
                   </TableRow>
@@ -201,29 +163,28 @@ export default function DashboardPage() {
             <CardTitle>Active Disruptions</CardTitle>
           </CardHeader>
           <CardContent>
-            {disruptions.length > 0 ? (
-              <div className="space-y-4 max-h-[300px] overflow-y-auto">
-                {disruptions.slice(0, 5).map((d) => (
-                  <div
-                    key={d.flight_number}
-                    className="flex items-start gap-4 rounded-lg border p-4 bg-red-50"
-                  >
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-red-700">{d.flight_number}</span>
-                        <Badge variant="destructive" className="text-xs">
-                          {d.type}
-                        </Badge>
+            {activeDisruptions.length > 0 ? (
+              <div className="space-y-4">
+                {activeDisruptions.map((disruption) => {
+                  const flight = mockFlights.find((f) => f.id === disruption.flightId);
+                  return (
+                    <div
+                      key={disruption.id}
+                      className="flex items-start gap-4 rounded-lg border p-4"
+                    >
+                      <div className={`mt-1 h-2 w-2 rounded-full ${getSeverityColor(disruption.severity)}`} />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium">{flight?.flightNumber}</span>
+                          <Badge variant="outline" className="text-xs">
+                            {disruption.type.replace('_', ' ')}
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">{disruption.description}</p>
                       </div>
-                      <p className="text-sm text-red-600 mt-1">
-                        {d.cause} • {d.delay_minutes ? `${d.delay_minutes} min delay` : 'Cancelled'}
-                      </p>
-                      <p className="text-xs text-red-400 mt-1">
-                        Orig: {d.original_departure}
-                      </p>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             ) : (
               <p className="text-muted-foreground">No active disruptions</p>
@@ -231,6 +192,51 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Available Crew Members</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead>Role</TableHead>
+                <TableHead>Base</TableHead>
+                <TableHead>Duty Hours Left</TableHead>
+                <TableHead>Certifications</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {availableCrew.map((crew) => (
+                <TableRow key={crew.id}>
+                  <TableCell className="font-medium">
+                    {crew.firstName} {crew.lastName}
+                  </TableCell>
+                  <TableCell className="capitalize">{crew.role.replace('_', ' ')}</TableCell>
+                  <TableCell>{crew.base}</TableCell>
+                  <TableCell>{crew.dutyHoursRemaining}h</TableCell>
+                  <TableCell>
+                    <div className="flex flex-wrap gap-1">
+                      {crew.certifications.slice(0, 2).map((cert) => (
+                        <Badge key={cert} variant="outline" className="text-xs">
+                          {cert}
+                        </Badge>
+                      ))}
+                      {crew.certifications.length > 2 && (
+                        <Badge variant="outline" className="text-xs">
+                          +{crew.certifications.length - 2}
+                        </Badge>
+                      )}
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -1,47 +1,71 @@
-export type CrewRole = 'pilot' | 'flightAttendant';
-export type CrewStatus = 'available' | 'on_duty' | 'resting' | 'day_off';
-
-export interface Crew {
-  crew_id: string;
-  name: string;
-  role: CrewRole;
-  status: CrewStatus;
+export interface CrewMember {
+  id: string;
+  employeeId: string;
+  firstName: string;
+  lastName: string;
+  role: 'pilot' | 'first_officer' | 'flight_attendant' | 'lead_attendant';
+  status: 'available' | 'on_duty' | 'on_break' | 'off_duty' | 'on_leave';
   base: string;
-  current_location: string;
   certifications: string[];
-  duty_time_today: number;
-  flight_time_today: number;
-  last_rest_end: string;
+  dutyHoursRemaining: number;
+  phone: string;
+  email: string;
+  currentFlightId?: string;
 }
 
 export interface Flight {
-  flight_number: string;
+  id: string;
+  flightNumber: string;
   origin: string;
   destination: string;
-  scheduled_departure: string;
-  scheduled_arrival: string;
+  scheduledDeparture: string;
+  scheduledArrival: string;
+  actualDeparture?: string;
+  actualArrival?: string;
+  status: 'scheduled' | 'boarding' | 'departed' | 'in_air' | 'landed' | 'delayed' | 'cancelled';
+  gate?: string;
   aircraft: string;
-  duration: number;
-  status?: string;
+  crewAssignments: CrewAssignment[];
+}
+
+export interface CrewAssignment {
+  id: string;
+  flightId: string;
+  crewMemberId: string;
+  role: string;
+  status: 'pending' | 'accepted' | 'declined' | 'confirmed';
+  assignedAt: string;
+  respondedAt?: string;
 }
 
 export interface Disruption {
-  flight_number: string;
-  type: 'delay' | 'cancellation';
-  cause: string;
-  original_departure: string;
-  new_departure?: string;
-  delay_minutes?: number;
+  id: string;
+  type: 'delay' | 'cancellation' | 'crew_shortage' | 'weather' | 'mechanical';
+  flightId: string;
+  description: string;
+  severity: 'low' | 'medium' | 'high' | 'critical';
+  createdAt: string;
+  resolvedAt?: string;
+  affectedCrew: string[];
+}
+
+export interface Notification {
+  id: string;
+  type: 'assignment' | 'disruption' | 'update' | 'alert';
+  title: string;
+  message: string;
+  createdAt: string;
+  read: boolean;
+  targetCrewId?: string;
 }
 
 export interface DashboardStats {
-  total_flights: number;
-  active_flights: number;
-  delayed_flights: number;
-  total_crew: number;
-  available_crew: number;
-  on_duty_crew: number;
-  affected_crew: number;
-  delays: number;
-  cancellations: number;
+  totalFlights: number;
+  activeFlights: number;
+  delayedFlights: number;
+  totalCrew: number;
+  availableCrew: number;
+  onDutyCrew: number;
+  pendingAssignments: number;
+  activeDisruptions: number;
 }
