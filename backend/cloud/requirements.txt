@@ -1,0 +1,3 @@
+# Requirements for AWS Lambda deployment
+# These are the ONLY dependencies needed in Lambda
+# (no FastAPI, uvicorn, etc.)
