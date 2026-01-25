@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "leaflet/dist/leaflet.css";
 import DashboardLayout from "@/components/dashboard-layout";
 
 export const metadata: Metadata = {

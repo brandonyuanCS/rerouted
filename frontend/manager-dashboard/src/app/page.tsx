@@ -1,5 +1,9 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Table,
   TableBody,
@@ -12,26 +16,17 @@ import {
   mockDashboardStats,
   mockFlights,
   mockDisruptions,
-  mockCrew,
   getFlightStatusColor,
   getSeverityColor,
 } from '@/lib/mock-data';
+import { FlightMap, FlightRoute, AIRPORTS } from '@/components/flight-map';
+import { OptimizationModal } from '@/components/optimization-modal';
+import { useOptimizationJob } from '@/hooks/use-optimization-job';
 
 function PlaneIcon({ className }: { className?: string }) {
   return (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
-    </svg>
-  );
-}
-
-function UsersIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>
   );
 }
@@ -46,87 +41,171 @@ function AlertIcon({ className }: { className?: string }) {
   );
 }
 
-function ClockIcon({ className }: { className?: string }) {
+function ZapIcon({ className }: { className?: string }) {
   return (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </svg>
+  );
+}
+
+function CloudIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
     </svg>
   );
 }
 
 export default function DashboardPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [lastResult, setLastResult] = useState<any>(null);
+  const optimization = useOptimizationJob();
+
   const stats = mockDashboardStats;
   const recentFlights = mockFlights.slice(0, 5);
   const activeDisruptions = mockDisruptions.filter((d) => !d.resolvedAt);
-  const availableCrew = mockCrew.filter((c) => c.status === 'available').slice(0, 5);
+
+  // Generate flight routes for map
+  const flightRoutes: FlightRoute[] = mockFlights
+    .filter(f => AIRPORTS[f.origin] && AIRPORTS[f.destination])
+    .map(f => ({
+      origin: f.origin,
+      destination: f.destination,
+      flightNumber: f.flightNumber,
+      status: f.status === 'delayed' ? 'disrupted' as const : 'normal' as const,
+    }));
+
+  // Add recovered routes from optimization results
+  const recoveredRoutes: FlightRoute[] = lastResult?.reassignments?.slice(0, 10).map((r: any) => ({
+    origin: r.from_location,
+    destination: r.to_location,
+    flightNumber: r.flight,
+    status: 'recovered' as const,
+  })).filter((r: FlightRoute) => AIRPORTS[r.origin] && AIRPORTS[r.destination]) || [];
+
+  const allRoutes = [...flightRoutes, ...recoveredRoutes];
+
+  // Start optimization
+  const handleOptimize = async () => {
+    setIsModalOpen(true);
+    await optimization.startOptimization(4);
+  };
+
+  // Update last result when completed
+  useEffect(() => {
+    if (optimization.state === 'completed' && optimization.result) {
+      setLastResult(optimization.result);
+    }
+  }, [optimization.state, optimization.result]);
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-slate-800">Dashboard</h1>
-        <p className="text-slate-600">Real-time operations overview</p>
+      {/* Hero Section with Map */}
+      <div className="relative">
+        {/* Map Container */}
+        <div className="relative rounded-3xl overflow-hidden border-2 border-white/30 shadow-2xl">
+          <FlightMap routes={allRoutes} height="450px" />
+
+          {/* Overlay Controls */}
+          <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
+            {/* Title */}
+            <div className="bg-slate-900/80 backdrop-blur-xl rounded-2xl px-6 py-4 border border-white/20">
+              <h1 className="text-2xl font-bold text-white">Crew Recovery Command Center</h1>
+              <p className="text-white/70 text-sm mt-1">Real-time operations • {flightRoutes.length} active routes</p>
+            </div>
+
+            {/* Optimize Button */}
+            <Button
+              onClick={handleOptimize}
+              disabled={optimization.state === 'running' || optimization.state === 'submitting'}
+              className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 hover:from-cyan-600 hover:via-blue-600 hover:to-purple-600 text-white font-semibold px-8 py-6 text-lg rounded-2xl shadow-lg shadow-blue-500/30 border border-white/20 transition-all hover:scale-105 hover:shadow-xl hover:shadow-blue-500/40"
+            >
+              {optimization.state === 'running' || optimization.state === 'submitting' ? (
+                <>
+                  <span className="animate-spin mr-2">⚡</span>
+                  Optimizing...
+                </>
+              ) : (
+                <>
+                  <ZapIcon className="mr-2 h-5 w-5" />
+                  Optimize Crew
+                </>
+              )}
+            </Button>
+          </div>
+
+          {/* Bottom Stats Bar */}
+          <div className="absolute bottom-4 left-4 right-4 z-20">
+            <div className="flex gap-4 justify-center">
+              <div className="bg-slate-900/80 backdrop-blur-xl rounded-xl px-4 py-2 border border-white/20 flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                <span className="text-white/90 text-sm font-medium">{stats.activeDisruptions} Disruptions</span>
+              </div>
+              <div className="bg-slate-900/80 backdrop-blur-xl rounded-xl px-4 py-2 border border-white/20 flex items-center gap-2">
+                <PlaneIcon className="h-4 w-4 text-blue-400" />
+                <span className="text-white/90 text-sm font-medium">{stats.activeFlights} Active Flights</span>
+              </div>
+              {lastResult && (
+                <div className="bg-green-500/20 backdrop-blur-xl rounded-xl px-4 py-2 border border-green-400/30 flex items-center gap-2">
+                  <span className="text-green-400 text-sm font-medium">
+                    ✓ {lastResult.metrics?.flights_recovered || 0} Flights Recovered
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <GlassCard>
-          <GlassCardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <GlassCardTitle className="text-sm font-medium">Active Flights</GlassCardTitle>
-            <div className="h-8 w-8 rounded-xl bg-blue-500/20 flex items-center justify-center">
-              <PlaneIcon className="h-4 w-4 text-blue-600" />
-            </div>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-3xl font-bold text-blue-600">{stats.activeFlights}</div>
-            <p className="text-xs text-gray-500 mt-1">
-              {stats.delayedFlights} delayed of {stats.totalFlights} total
-            </p>
-          </GlassCardContent>
-        </GlassCard>
+      {/* HPC Results Row (shown after optimization) */}
+      {lastResult && (
+        <div className="grid gap-4 md:grid-cols-4">
+          <GlassCard className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border-cyan-400/30">
+            <GlassCardContent className="pt-4 text-center">
+              <div className="text-3xl font-bold text-cyan-500">
+                {lastResult.total_scenarios_evaluated?.toLocaleString()}
+              </div>
+              <div className="text-xs text-slate-600 mt-1">Scenarios Evaluated</div>
+            </GlassCardContent>
+          </GlassCard>
 
-        <GlassCard>
-          <GlassCardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <GlassCardTitle className="text-sm font-medium">Available Crew</GlassCardTitle>
-            <div className="h-8 w-8 rounded-xl bg-green-500/20 flex items-center justify-center">
-              <UsersIcon className="h-4 w-4 text-green-600" />
-            </div>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-3xl font-bold text-green-600">{stats.availableCrew}</div>
-            <p className="text-xs text-gray-500 mt-1">
-              {stats.onDutyCrew} on duty of {stats.totalCrew} total
-            </p>
-          </GlassCardContent>
-        </GlassCard>
+          <GlassCard className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-400/30">
+            <GlassCardContent className="pt-4 text-center">
+              <div className="text-3xl font-bold text-blue-500">
+                {lastResult.workers_used}
+              </div>
+              <div className="text-xs text-slate-600 mt-1">Parallel Workers</div>
+            </GlassCardContent>
+          </GlassCard>
 
-        <GlassCard>
-          <GlassCardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <GlassCardTitle className="text-sm font-medium">Pending Assignments</GlassCardTitle>
-            <div className="h-8 w-8 rounded-xl bg-amber-500/20 flex items-center justify-center">
-              <ClockIcon className="h-4 w-4 text-amber-600" />
-            </div>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-3xl font-bold text-amber-600">{stats.pendingAssignments}</div>
-            <p className="text-xs text-gray-500 mt-1">Awaiting crew response</p>
-          </GlassCardContent>
-        </GlassCard>
+          <GlassCard className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-400/30">
+            <GlassCardContent className="pt-4 text-center">
+              <Badge className={`text-sm px-3 py-1 ${lastResult.compute_mode === 'cloud'
+                  ? 'bg-purple-500/30 text-purple-700 border-purple-400/50'
+                  : 'bg-blue-500/30 text-blue-700 border-blue-400/50'
+                }`}>
+                <CloudIcon className="h-3 w-3 mr-1 inline" />
+                {lastResult.compute_mode === 'cloud' ? 'AWS Lambda' : 'Local'}
+              </Badge>
+              <div className="text-xs text-slate-600 mt-2">Compute Mode</div>
+            </GlassCardContent>
+          </GlassCard>
 
-        <GlassCard>
-          <GlassCardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <GlassCardTitle className="text-sm font-medium">Active Disruptions</GlassCardTitle>
-            <div className="h-8 w-8 rounded-xl bg-red-500/20 flex items-center justify-center">
-              <AlertIcon className="h-4 w-4 text-red-600" />
-            </div>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-3xl font-bold text-red-600">{stats.activeDisruptions}</div>
-            <p className="text-xs text-gray-500 mt-1">Requiring attention</p>
-          </GlassCardContent>
-        </GlassCard>
-      </div>
+          <GlassCard className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-400/30">
+            <GlassCardContent className="pt-4 text-center">
+              <div className="text-3xl font-bold text-green-500">
+                ${(lastResult.metrics?.cost_savings_usd || 0).toLocaleString()}
+              </div>
+              <div className="text-xs text-slate-600 mt-1">Projected Savings</div>
+            </GlassCardContent>
+          </GlassCard>
+        </div>
+      )}
 
+      {/* Main Content Grid */}
       <div className="grid gap-6 lg:grid-cols-2">
+        {/* Upcoming Flights */}
         <GlassCard>
           <GlassCardHeader>
             <GlassCardTitle>Upcoming Flights</GlassCardTitle>
@@ -147,7 +226,7 @@ export default function DashboardPage() {
                     <TableRow key={flight.id} className="border-b border-white hover:bg-white/20 transition-colors">
                       <TableCell className="font-medium text-gray-800">{flight.flightNumber}</TableCell>
                       <TableCell className="text-gray-700">
-                        {flight.origin} - {flight.destination}
+                        {flight.origin} → {flight.destination}
                       </TableCell>
                       <TableCell className="text-gray-700">
                         {new Date(flight.scheduledDeparture).toLocaleTimeString('en-US', {
@@ -168,9 +247,13 @@ export default function DashboardPage() {
           </GlassCardContent>
         </GlassCard>
 
+        {/* Active Disruptions */}
         <GlassCard>
-          <GlassCardHeader>
+          <GlassCardHeader className="flex flex-row items-center justify-between">
             <GlassCardTitle>Active Disruptions</GlassCardTitle>
+            <Badge variant="destructive" className="bg-red-500/20 text-red-700 border-red-400/30">
+              {activeDisruptions.length} Active
+            </Badge>
           </GlassCardHeader>
           <GlassCardContent>
             {activeDisruptions.length > 0 ? (
@@ -203,52 +286,17 @@ export default function DashboardPage() {
         </GlassCard>
       </div>
 
-      <GlassCard>
-        <GlassCardHeader>
-          <GlassCardTitle>Available Crew Members</GlassCardTitle>
-        </GlassCardHeader>
-        <GlassCardContent>
-          <div className="rounded-xl overflow-hidden">
-            <Table>
-              <TableHeader>
-                <TableRow className="border-b border-white hover:bg-white/10">
-                  <TableHead className="text-gray-700">Name</TableHead>
-                  <TableHead className="text-gray-700">Role</TableHead>
-                  <TableHead className="text-gray-700">Base</TableHead>
-                  <TableHead className="text-gray-700">Duty Hours Left</TableHead>
-                  <TableHead className="text-gray-700">Certifications</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {availableCrew.map((crew) => (
-                  <TableRow key={crew.id} className="border-b border-white hover:bg-white/20 transition-colors">
-                    <TableCell className="font-medium text-gray-800">
-                      {crew.firstName} {crew.lastName}
-                    </TableCell>
-                    <TableCell className="capitalize text-gray-700">{crew.role.replace('_', ' ')}</TableCell>
-                    <TableCell className="text-gray-700">{crew.base}</TableCell>
-                    <TableCell className="text-gray-700">{crew.dutyHoursRemaining}h</TableCell>
-                    <TableCell>
-                      <div className="flex flex-wrap gap-1">
-                        {crew.certifications.slice(0, 2).map((cert) => (
-                          <Badge key={cert} variant="outline" className="text-xs bg-white/30 border-white/40 text-gray-700">
-                            {cert}
-                          </Badge>
-                        ))}
-                        {crew.certifications.length > 2 && (
-                          <Badge variant="outline" className="text-xs bg-white/30 border-white/40 text-gray-700">
-                            +{crew.certifications.length - 2}
-                          </Badge>
-                        )}
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </GlassCardContent>
-      </GlassCard>
+      {/* Optimization Modal */}
+      <OptimizationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        state={optimization.state === 'running' || optimization.state === 'submitting' ? 'running' : optimization.state === 'completed' ? 'completed' : optimization.state === 'error' ? 'error' : 'running'}
+        progress={optimization.progress}
+        elapsedTime={optimization.elapsedTime}
+        result={optimization.result}
+        error={optimization.error}
+        onReset={optimization.reset}
+      />
     </div>
   );
 }
