@@ -7,7 +7,6 @@ from optimizer.types import (
     Crew, Flight, Pairing, Disruption, AffectedCrew,
     Solution, CrewState, DisruptionType,
 )
-from data.loader import load_all_data
 import copy
 
 

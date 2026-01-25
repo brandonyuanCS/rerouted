@@ -78,7 +78,7 @@ def tabu_search(
         best_move = None
         
         for move in generate_neighborhood(
-            current, disruptions, flights_by_number, sim_time, config.neighborhood_size
+            current, disruptions, flights_by_number, sim_time, config.neighborhood_size, config.seed
         ):
             moves_evaluated += 1
             

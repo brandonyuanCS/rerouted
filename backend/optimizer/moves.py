@@ -3,6 +3,7 @@ Move generation and application for tabu search.
 """
 
 import copy
+import random
 from datetime import datetime
 from typing import Generator
 
@@ -20,18 +21,25 @@ def generate_neighborhood(
     flights_by_number: dict[str, Flight],
     sim_time: datetime,
     max_moves: int = 50,
+    seed: int = 42,
 ) -> Generator[Move, None, None]:
     """
     Generate candidate moves for neighborhood exploration.
     Yields up to max_moves moves.
+    
+    Each worker should use a different seed to explore different neighborhoods.
     """
+    # Seed RNG for this worker so each explores differently
+    rng = random.Random(seed)
+    
     moves_generated = 0
     
-    # Get disrupted flights that need crew
+    # Get disrupted flights that need crew (shuffled for diversity)
     disrupted_flights = [
         d.flight_number for d in disruptions
         if d.type == DisruptionType.DELAY
     ]
+    rng.shuffle(disrupted_flights)
     
     # Priority 1: Reassign available crew to uncovered flights
     for flight_num in disrupted_flights:

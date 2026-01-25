@@ -13,6 +13,7 @@ from jobs.manager import job_manager, JobStatus
 from data.loader import load_all_data
 from parallel.ray_workers import run_parallel_optimization
 from optimizer.types import DisruptionType
+from cloud.lambda_client import invoke_lambda_optimizer, is_cloud_enabled
 
 
 router = APIRouter()
@@ -145,17 +146,16 @@ async def list_jobs():
 
 
 async def run_optimization_job(job_id: str):
-    """Run optimization in background."""
+    """Run optimization in background.
+    
+    Uses AWS Lambda if USE_CLOUD_COMPUTE=true, otherwise runs locally.
+    """
     job = job_manager.get_job(job_id)
     if not job:
         return
     
     try:
         job_manager.update_status(job_id, JobStatus.RUNNING)
-        job_manager.update_progress(job_id, {
-            "message": "Initializing parallel workers...",
-            "workers_started": 0,
-        })
         
         # Get data
         data = get_data()
@@ -164,26 +164,55 @@ async def run_optimization_job(job_id: str):
         num_workers = config.get("num_workers", 8)
         timeout = config.get("timeout_seconds", 30.0)
         
-        job_manager.update_progress(job_id, {
-            "message": f"Starting {num_workers} parallel workers...",
-            "workers_started": num_workers,
-        })
+        # Check if cloud compute is enabled
+        use_cloud = is_cloud_enabled()
         
-        # Run parallel optimization
-        result = await asyncio.get_event_loop().run_in_executor(
-            None,
-            lambda: run_parallel_optimization(
-                data["crew"],
-                data["flights"],
-                data["pairings"],
-                data["disruptions"],
-                affected_crew=data["affected_crew"],
-                num_workers=num_workers,
-                timeout_seconds=timeout,
+        if use_cloud:
+            job_manager.update_progress(job_id, {
+                "message": "Invoking AWS Lambda optimizer...",
+                "compute_mode": "cloud",
+                "workers_started": num_workers,
+            })
+            
+            # Run on AWS Lambda
+            result = await asyncio.get_event_loop().run_in_executor(
+                None,
+                lambda: invoke_lambda_optimizer(
+                    data["crew"],
+                    data["flights"],
+                    data["pairings"],
+                    data["disruptions"],
+                    affected_crew=data["affected_crew"],
+                    num_workers=num_workers,
+                    timeout_seconds=timeout,
+                )
             )
-        )
+        else:
+            job_manager.update_progress(job_id, {
+                "message": f"Starting {num_workers} local parallel workers...",
+                "compute_mode": "local",
+                "workers_started": num_workers,
+            })
+            
+            # Run locally
+            result = await asyncio.get_event_loop().run_in_executor(
+                None,
+                lambda: run_parallel_optimization(
+                    data["crew"],
+                    data["flights"],
+                    data["pairings"],
+                    data["disruptions"],
+                    affected_crew=data["affected_crew"],
+                    num_workers=num_workers,
+                    timeout_seconds=timeout,
+                )
+            )
+        
+        # Add compute mode to result
+        result["compute_mode"] = "cloud" if use_cloud else "local"
         
         job_manager.set_result(job_id, result)
         
     except Exception as e:
         job_manager.set_error(job_id, str(e))
+

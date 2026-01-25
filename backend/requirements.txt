@@ -3,3 +3,7 @@ uvicorn[standard]>=0.27.0
 pydantic>=2.5.0
 python-dotenv>=1.0.0
 # ray is replaced with concurrent.futures (built-in) for Python 3.13 support
+
+# AWS Lambda support (optional, install with: pip install boto3)
+boto3>=1.34.0
+
