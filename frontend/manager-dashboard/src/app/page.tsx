@@ -107,32 +107,34 @@ export default function DashboardPage() {
         <div className="relative rounded-3xl overflow-hidden border-2 border-white/30 shadow-2xl">
           <FlightMap routes={allRoutes} height="450px" />
 
-          {/* Overlay Controls */}
-          <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
-            {/* Title */}
-            <div className="bg-slate-900/80 backdrop-blur-xl rounded-2xl px-6 py-4 border border-white/20">
-              <h1 className="text-2xl font-bold text-white">Crew Recovery Command Center</h1>
-              <p className="text-white/70 text-sm mt-1">Real-time operations • {flightRoutes.length} active routes</p>
-            </div>
+          {/* Overlay Controls - pointer-events-none on container, auto on interactive elements */}
+          <div className="absolute inset-0 pointer-events-none z-20">
+            <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
+              {/* Title */}
+              <div className="pointer-events-auto bg-slate-900/90 backdrop-blur-xl rounded-2xl px-6 py-4 border border-white/20 shadow-xl">
+                <h1 className="text-2xl font-bold text-white">Crew Recovery Command Center</h1>
+                <p className="text-white/70 text-sm mt-1">Real-time operations • {flightRoutes.length} active routes</p>
+              </div>
 
-            {/* Optimize Button */}
-            <Button
-              onClick={handleOptimize}
-              disabled={optimization.state === 'running' || optimization.state === 'submitting'}
-              className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 hover:from-cyan-600 hover:via-blue-600 hover:to-purple-600 text-white font-semibold px-8 py-6 text-lg rounded-2xl shadow-lg shadow-blue-500/30 border border-white/20 transition-all hover:scale-105 hover:shadow-xl hover:shadow-blue-500/40"
-            >
-              {optimization.state === 'running' || optimization.state === 'submitting' ? (
-                <>
-                  <span className="animate-spin mr-2">⚡</span>
-                  Optimizing...
-                </>
-              ) : (
-                <>
-                  <ZapIcon className="mr-2 h-5 w-5" />
-                  Optimize Crew
-                </>
-              )}
-            </Button>
+              {/* Optimize Button - AA Red, professional look */}
+              <Button
+                onClick={handleOptimize}
+                disabled={optimization.state === 'running' || optimization.state === 'submitting'}
+                className="pointer-events-auto bg-[#C30019] hover:bg-[#a30016] text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-lg shadow-red-900/40 border border-red-400/30 transition-all duration-200 hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {optimization.state === 'running' || optimization.state === 'submitting' ? (
+                  <>
+                    <span className="animate-spin mr-2">⏳</span>
+                    Optimizing...
+                  </>
+                ) : (
+                  <>
+                    <ZapIcon className="mr-2 h-5 w-5" />
+                    Optimize Crew
+                  </>
+                )}
+              </Button>
+            </div>
           </div>
 
           {/* Bottom Stats Bar */}
@@ -182,8 +184,8 @@ export default function DashboardPage() {
           <GlassCard className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-400/30">
             <GlassCardContent className="pt-4 text-center">
               <Badge className={`text-sm px-3 py-1 ${lastResult.compute_mode === 'cloud'
-                  ? 'bg-purple-500/30 text-purple-700 border-purple-400/50'
-                  : 'bg-blue-500/30 text-blue-700 border-blue-400/50'
+                ? 'bg-purple-500/30 text-purple-700 border-purple-400/50'
+                : 'bg-blue-500/30 text-blue-700 border-blue-400/50'
                 }`}>
                 <CloudIcon className="h-3 w-3 mr-1 inline" />
                 {lastResult.compute_mode === 'cloud' ? 'AWS Lambda' : 'Local'}
