@@ -1,4 +1,4 @@
-export function isCrewLegal(crew, flight, pairing, simTime) {
+export function isAssignmentLegal(crew, flight, simTime) {
     if (!crew.certifications.includes(flight.aircraft)) return false;
 
     if (crew.status == "day_off") return false;
@@ -8,6 +8,10 @@ export function isCrewLegal(crew, flight, pairing, simTime) {
     if (wouldExceedDuty(crew, flight, pairing)) return false;
 
     if (crew.consecutiveDutyDays >= 6) return false;
+
+    // if (crew.currentLocation !== flight.origin) {
+    //     return false;
+    // }
 
     return true;
 }
@@ -23,6 +27,9 @@ function hasRequiredRest(crew, simTime) {
 function wouldExceedDuty(crew, flight, pairing) {
     // to do with updated regulations
 
-    const predictedDuty = crew.dutyTimeToday + flight.duration + 45; // buffer
-    return predictedDuty <= 780; // FAA 13 hours
+    if (crew.dutyTimeToday + flight.duration + 45 > 780) return false;
+
+    if (crew.flightTimeToday + flight.duration > 480) return false;
+
+    return true;
 }

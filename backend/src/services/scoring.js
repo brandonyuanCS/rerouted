@@ -1,19 +1,19 @@
-// chat generated skeleton scoring for each crew member to flight pairing
-
-export function scoreCrew(crew, flight) {
+export function scoreState(state, flights) {
     let score = 0;
 
-    // Base proximity
-    if (crew.currentLocation === flight.origin) score += 30;
+    // Reward assigned flights
+    score += state.assignments.length * 100;
 
-    // Aircraft familiarity
-    score += crew.certifications.length * 2;
+    // Penalize unassigned flights
+    score -= (flights.length - state.assignments.length) * 200;
 
-    // Seniority preference (normalized)
-    score += Math.min(crew.seniorityScore / 100, 20);
-
-    // Fatigue penalty
-    score -= crew.consecutiveDutyDays * 5;
+    // Penalize excessive duty time
+    for (const crewId in state.crewStates) {
+        const crew = state.crewStates[crewId];
+        if (crew.dutyTimeToday > 600) {
+            score -= 50;
+        }
+    }
 
     return score;
 }

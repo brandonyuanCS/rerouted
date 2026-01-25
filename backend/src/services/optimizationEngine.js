@@ -1,34 +1,18 @@
-import { planRecovery } from "./recoveryPlanner.js";
+import { tabuSearch } from "./tabuSearch.js";
 
-export function runOptimization({
-  flights,
-  crew,
-  pairings,
-  disruptions,
-  simTime
-}) {
-  const actions = [];
+export function runOptimization(crewData, flightData, simTime) {
 
-  disruptions.forEach(disruption => {
-    const flight = flights.find(
-      f => f.flightNumber === disruption.flightNumber
-    );
+  const initialState = {
+    assignments: [],
+    crewStates: JSON.parse(JSON.stringify(crewData))
+  };
 
-    if (!flight) return;
+  const finalState = tabuSearch(
+    initialState,
+    crewData,
+    flightData,
+    simTime
+  );
 
-    const affectedPairing = pairings.find(p =>
-      p.flights.includes(flight.flightNumber)
-    );
-
-    const recovery = planRecovery(
-      flight,
-      affectedPairing,
-      crew,
-      disruptions
-    );
-
-    if (recovery) actions.push(recovery);
-  });
-
-  return actions;
+  return finalState;
 }
