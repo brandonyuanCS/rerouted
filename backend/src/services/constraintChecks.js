@@ -1,3 +1,17 @@
+export function allAssignmentsLegal(state, crewData, flightData) {
+    for (const crewId in state.crewAssignments) {
+        const crew = crewData[crewId];
+        const flights = state.crewAssignments[crewId];
+
+        if (!isAssignmentLegal(crew, flights, flightData)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
 export function isAssignmentLegal(crew, flight, simTime) {
     if (!crew.certifications.includes(flight.aircraft)) return false;
 
