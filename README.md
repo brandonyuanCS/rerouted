@@ -1,12 +1,12 @@
-# CrewSync / Flight-Engine
+# Rerouted
 
-**CrewSync** is a parallel tabu search-based optimization engine for rapid airline crew recovery during operational disruptions (flight delays, cancellations, etc). It leverages realistic mock flight data from the Flight Engine API and provides a robust modeling of airline operations, FAA-compliant rules, and end-to-end real-time tools for schedulers, crew, and operations managers.
+**Rerouted** is a parallel tabu search-based optimization engine for rapid airline crew recovery during operational disruptions (flight delays, cancellations, etc). It leverages realistic mock flight data from the Flight Engine API and provides a robust modeling of airline operations, FAA-compliant rules, and end-to-end real-time tools for schedulers, crew, and operations managers.
 
 ## Inspiration
 
 In large-scale disruptions, reassigning airline crew is a major bottleneck. Crew schedulers must comply with complex FAA duty rules, location/certification constraints, and need to minimize cascading cancellations. Today, this process is manual and slow, often taking hours, worsening the passenger/operator impact.
 
-**CrewSync** automates this process with parallel optimization, fast simulation, and a modern end-user UI for both web and mobile.
+**Rerouted** automates this process with parallel optimization, fast simulation, and a modern end-user UI for both web and mobile.
 
 ---
 
