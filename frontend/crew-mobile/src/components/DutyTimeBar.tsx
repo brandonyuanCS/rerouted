@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../theme/colors';
 import { typography, spacing, borderRadius } from '../theme/typography';
 
@@ -32,25 +33,38 @@ export const DutyTimeBar: React.FC<DutyTimeBarProps> = ({
     return `${h}h ${m}m`;
   };
 
+  const statusColor = getStatusColor();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.label}>Duty Time Remaining</Text>
-        <View
-          style={[styles.statusBadge, { backgroundColor: getStatusColor() }]}>
+        <View style={[styles.statusBadge, { backgroundColor: statusColor }]}>
           <Text style={styles.statusText}>{getStatusText()}</Text>
         </View>
       </View>
       <View style={styles.barContainer}>
+        <LinearGradient
+          colors={['rgba(0, 120, 210, 0.08)', 'rgba(0, 120, 210, 0.04)']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.barBackground}
+        />
         <View
           style={[
             styles.barFill,
             {
               width: `${percentage}%`,
-              backgroundColor: getStatusColor(),
+              backgroundColor: statusColor,
             },
-          ]}
-        />
+          ]}>
+          <LinearGradient
+            colors={['rgba(255, 255, 255, 0.4)', 'rgba(255, 255, 255, 0)']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            style={styles.barShine}
+          />
+        </View>
       </View>
       <View style={styles.footer}>
         <Text style={styles.timeText}>{formatTime(hoursRemaining)}</Text>
@@ -72,26 +86,50 @@ const styles = StyleSheet.create({
   },
   label: {
     ...typography.smallBold,
-    color: colors.textSecondary,
+    color: colors.textOnGlass,
   },
   statusBadge: {
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
-    borderRadius: borderRadius.sm,
+    paddingHorizontal: spacing.sm + 2,
+    paddingVertical: spacing.xs + 2,
+    borderRadius: borderRadius.md,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 3,
   },
   statusText: {
     ...typography.captionBold,
     color: colors.textInverse,
   },
   barContainer: {
-    height: 8,
-    backgroundColor: colors.surfaceAlt,
+    height: 12,
     borderRadius: borderRadius.full,
     overflow: 'hidden',
+    position: 'relative',
+    backgroundColor: 'rgba(0, 120, 210, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 120, 210, 0.15)',
+  },
+  barBackground: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   barFill: {
     height: '100%',
     borderRadius: borderRadius.full,
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  barShine: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '50%',
   },
   footer: {
     flexDirection: 'row',
@@ -100,11 +138,11 @@ const styles = StyleSheet.create({
   },
   timeText: {
     ...typography.h3,
-    color: colors.textPrimary,
+    color: colors.textOnGlass,
   },
   maxText: {
     ...typography.small,
-    color: colors.textMuted,
+    color: colors.textOnGlassMuted,
     alignSelf: 'flex-end',
   },
 });

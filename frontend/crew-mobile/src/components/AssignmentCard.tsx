@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../theme/colors';
 import { typography, spacing, borderRadius } from '../theme/typography';
 import { Card } from './Card';
@@ -157,6 +158,7 @@ export const AssignmentCard: React.FC<AssignmentCardProps> = ({
 const styles = StyleSheet.create({
   card: {
     marginBottom: spacing.md,
+    marginTop: spacing.md, // Add top margin for separation between cards
   },
   header: {
     flexDirection: 'row',
@@ -169,17 +171,22 @@ const styles = StyleSheet.create({
   },
   flightNumber: {
     ...typography.h2,
-    color: colors.textPrimary,
+    color: colors.textOnGlass,
   },
   aircraftType: {
     ...typography.small,
-    color: colors.textSecondary,
+    color: colors.textOnGlassMuted,
     marginTop: spacing.xs,
   },
   statusBadge: {
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
-    borderRadius: borderRadius.sm,
+    paddingHorizontal: spacing.sm + 2,
+    paddingVertical: spacing.xs + 2,
+    borderRadius: borderRadius.md,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 3,
   },
   statusText: {
     ...typography.captionBold,
@@ -192,7 +199,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: colors.divider,
+    borderColor: 'rgba(0, 120, 210, 0.15)',
     marginBottom: spacing.md,
   },
   airport: {
@@ -205,7 +212,7 @@ const styles = StyleSheet.create({
   },
   airportLabel: {
     ...typography.caption,
-    color: colors.textMuted,
+    color: colors.textOnGlassMuted,
     marginTop: spacing.xs,
   },
   routeLine: {
@@ -217,14 +224,15 @@ const styles = StyleSheet.create({
   line: {
     flex: 1,
     height: 2,
-    backgroundColor: colors.border,
+    backgroundColor: 'rgba(0, 120, 210, 0.25)',
+    borderRadius: 1,
   },
   plane: {
     paddingHorizontal: spacing.sm,
   },
   planeIcon: {
     ...typography.body,
-    color: colors.secondary,
+    color: colors.primary,
   },
   details: {
     flexDirection: 'row',
@@ -236,28 +244,34 @@ const styles = StyleSheet.create({
   },
   detailLabel: {
     ...typography.caption,
-    color: colors.textMuted,
+    color: colors.textOnGlassMuted,
     marginBottom: spacing.xs,
   },
   detailValue: {
     ...typography.bodyBold,
-    color: colors.textPrimary,
+    color: colors.textOnGlass,
   },
   actions: {
     marginTop: spacing.md,
     paddingTop: spacing.md,
     borderTopWidth: 1,
-    borderColor: colors.divider,
+    borderColor: 'rgba(0, 120, 210, 0.15)',
   },
   countdown: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: spacing.sm,
+    backgroundColor: 'rgba(195, 0, 25, 0.15)',
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+    borderRadius: borderRadius.md,
+    borderWidth: 1,
+    borderColor: 'rgba(195, 0, 25, 0.3)',
   },
   countdownLabel: {
     ...typography.small,
-    color: colors.textSecondary,
+    color: colors.textOnGlass,
     marginRight: spacing.sm,
   },
   countdownTime: {

@@ -6,12 +6,14 @@ import {
   ScrollView,
   RefreshControl,
   Alert,
+  ImageBackground,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
+import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../theme/colors';
-import { typography, spacing } from '../theme/typography';
-import { AssignmentCard, Assignment } from '../components';
+import { typography, spacing, borderRadius } from '../theme/typography';
+import { AssignmentCard, Assignment, GlassCard } from '../components';
 
 // Mock pending assignments
 const mockPendingAssignments: Assignment[] = [
@@ -122,28 +124,38 @@ const AssignmentScreen: React.FC = () => {
   const acceptedAssignments = pendingAssignments.filter(a => a.status === 'accepted');
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
-      <StatusBar style="light" />
+    <View style={styles.container}>
+      <StatusBar style="dark" />
       
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Assignments</Text>
-        <Text style={styles.headerSubtitle}>
-          {offeredAssignments.length} pending offer{offeredAssignments.length !== 1 ? 's' : ''}
-        </Text>
-      </View>
+      {/* Background Image */}
+      <ImageBackground
+        source={require('../../assets/csbg.png')}
+        style={styles.backgroundImage}
+        resizeMode="cover"
+      >
+        <View style={styles.overlay} />
+      
+      <SafeAreaView style={styles.safeArea} edges={['top']}>
+        {/* Glass Header */}
+        <GlassCard variant="dark" style={styles.header}>
+          <Text style={styles.headerTitle}>Assignments</Text>
+          <Text style={styles.headerSubtitle}>
+            {offeredAssignments.length} pending offer{offeredAssignments.length !== 1 ? 's' : ''}
+          </Text>
+        </GlassCard>
 
-      <ScrollView
-        style={styles.content}
-        contentContainerStyle={styles.contentContainer}
-        showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            tintColor={colors.primary}
-            colors={[colors.primary]}
-          />
-        }>
+        <ScrollView
+          style={styles.content}
+          contentContainerStyle={styles.contentContainer}
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              tintColor={colors.primary}
+              colors={[colors.primary]}
+            />
+          }>
         
         {offeredAssignments.length > 0 && (
           <View style={styles.section}>
@@ -180,7 +192,11 @@ const AssignmentScreen: React.FC = () => {
         {offeredAssignments.length === 0 && acceptedAssignments.length === 0 && (
           <View style={styles.emptyState}>
             <View style={styles.emptyIcon}>
-              <Text style={styles.emptyIconText}>-</Text>
+              <LinearGradient
+                colors={['rgba(255, 255, 255, 0.95)', 'rgba(255, 255, 255, 0.85)']}
+                style={styles.emptyIconGradient}
+              />
+              <Text style={styles.emptyIconText}>✓</Text>
             </View>
             <Text style={styles.emptyTitle}>No Pending Offers</Text>
             <Text style={styles.emptySubtitle}>
@@ -190,7 +206,7 @@ const AssignmentScreen: React.FC = () => {
         )}
 
         {pastAssignments.length > 0 && (
-          <View style={styles.section}>
+          <View style={[styles.section, { marginBottom: 0 }]}> 
             <Text style={styles.sectionTitle}>Past Assignments</Text>
             {pastAssignments.map((assignment) => (
               <AssignmentCard key={assignment.id} assignment={assignment} />
@@ -198,7 +214,9 @@ const AssignmentScreen: React.FC = () => {
           </View>
         )}
       </ScrollView>
-    </SafeAreaView>
+      </SafeAreaView>
+      </ImageBackground>
+    </View>
   );
 };
 
@@ -207,20 +225,30 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(232, 244, 252, 0.85)',
+  },
+  safeArea: {
+    flex: 1,
+  },
   header: {
-    backgroundColor: colors.secondary,
-    paddingHorizontal: spacing.lg,
-    paddingTop: spacing.md,
-    paddingBottom: spacing.lg,
+    marginHorizontal: spacing.lg,
+    marginTop: spacing.sm,
+    borderRadius: borderRadius.xl + 8,
   },
   headerTitle: {
     ...typography.h1,
-    color: colors.textInverse,
+    color: colors.textOnDarkGlass,
   },
   headerSubtitle: {
     ...typography.body,
-    color: colors.textInverse,
-    opacity: 0.8,
+    color: colors.textOnDarkGlassMuted,
     marginTop: spacing.xs,
   },
   content: {
@@ -228,7 +256,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     padding: spacing.lg,
-    paddingBottom: spacing.xxl,
+    paddingBottom: 160, // Increased for more visible bottom space
   },
   section: {
     marginBottom: spacing.lg,
@@ -241,18 +269,23 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     ...typography.h4,
-    color: colors.textPrimary,
+    color: colors.textOnGlass,
   },
   sectionHint: {
     ...typography.small,
-    color: colors.textSecondary,
+    color: colors.textOnGlassMuted,
     marginBottom: spacing.md,
   },
   urgentBadge: {
     backgroundColor: colors.accent,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
-    borderRadius: 4,
+    paddingHorizontal: spacing.sm + 2,
+    paddingVertical: spacing.xs + 2,
+    borderRadius: borderRadius.md,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 3,
   },
   urgentText: {
     ...typography.captionBold,
@@ -264,26 +297,36 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.xxl,
   },
   emptyIcon: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: colors.surfaceAlt,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.95)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: spacing.md,
+    overflow: 'hidden',
+  },
+  emptyIconGradient: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   emptyIconText: {
-    ...typography.h1,
-    color: colors.textMuted,
+    fontSize: 32,
+    color: colors.textOnGlassMuted,
   },
   emptyTitle: {
     ...typography.h3,
-    color: colors.textPrimary,
+    color: colors.textOnGlass,
     marginBottom: spacing.xs,
   },
   emptySubtitle: {
     ...typography.body,
-    color: colors.textSecondary,
+    color: colors.textOnGlassMuted,
     textAlign: 'center',
   },
 });

@@ -4,12 +4,14 @@ import {
   Text,
   StyleSheet,
   ScrollView,
+  ImageBackground,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
+import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../theme/colors';
 import { typography, spacing, borderRadius } from '../theme/typography';
-import { Card, DutyTimeBar, AssignmentCard, Assignment } from '../components';
+import { Card, DutyTimeBar, AssignmentCard, Assignment, GlassCard } from '../components';
 
 // Mock current assignment
 const mockCurrentAssignment: Assignment = {
@@ -43,21 +45,31 @@ const StatusScreen: React.FC = () => {
   ];
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
-      <StatusBar style="light" />
+    <View style={styles.container}>
+      <StatusBar style="dark" />
       
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>My Status</Text>
-        <View style={styles.statusIndicator}>
-          <View style={styles.statusDot} />
-          <Text style={styles.statusText}>{crewStatus.status}</Text>
-        </View>
-      </View>
+      {/* Background Image */}
+      <ImageBackground
+        source={require('../../assets/csbg.png')}
+        style={styles.backgroundImage}
+        resizeMode="cover"
+      >
+        <View style={styles.overlay} />
+      
+      <SafeAreaView style={styles.safeArea} edges={['top']}>
+        {/* Glass Header */}
+        <GlassCard variant="dark" style={styles.header}>
+          <Text style={styles.headerTitle}>My Status</Text>
+          <View style={styles.statusIndicator}>
+            <View style={styles.statusDot} />
+            <Text style={styles.statusText}>{crewStatus.status}</Text>
+          </View>
+        </GlassCard>
 
-      <ScrollView
-        style={styles.content}
-        contentContainerStyle={styles.contentContainer}
-        showsVerticalScrollIndicator={false}>
+        <ScrollView
+          style={styles.content}
+          contentContainerStyle={styles.contentContainer}
+          showsVerticalScrollIndicator={false}>
         
         <Card variant="elevated" style={styles.dutyCard}>
           <DutyTimeBar hoursRemaining={crewStatus.dutyHoursRemaining} />
@@ -137,7 +149,9 @@ const StatusScreen: React.FC = () => {
           </Card>
         </View>
       </ScrollView>
-    </SafeAreaView>
+      </SafeAreaView>
+      </ImageBackground>
+    </View>
   );
 };
 
@@ -146,15 +160,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(232, 244, 252, 0.85)',
+  },
+  safeArea: {
+    flex: 1,
+  },
   header: {
-    backgroundColor: colors.secondary,
-    paddingHorizontal: spacing.lg,
-    paddingTop: spacing.md,
-    paddingBottom: spacing.lg,
+    marginHorizontal: spacing.lg,
+    marginTop: spacing.sm,
+    borderRadius: borderRadius.xl + 8,
   },
   headerTitle: {
     ...typography.h1,
-    color: colors.textInverse,
+    color: colors.textOnDarkGlass,
   },
   statusIndicator: {
     flexDirection: 'row',
@@ -162,23 +187,27 @@ const styles = StyleSheet.create({
     marginTop: spacing.sm,
   },
   statusDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
+    width: 12,
+    height: 12,
+    borderRadius: 6,
     backgroundColor: colors.success,
     marginRight: spacing.sm,
+    shadowColor: colors.success,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.6,
+    shadowRadius: 4,
+    elevation: 2,
   },
   statusText: {
     ...typography.body,
-    color: colors.textInverse,
-    opacity: 0.9,
+    color: colors.textOnDarkGlassMuted,
   },
   content: {
     flex: 1,
   },
   contentContainer: {
     padding: spacing.lg,
-    paddingBottom: spacing.xxl,
+    paddingBottom: 120,
   },
   dutyCard: {
     marginBottom: spacing.lg,
@@ -186,7 +215,7 @@ const styles = StyleSheet.create({
   dutyInfo: {
     flexDirection: 'row',
     borderTopWidth: 1,
-    borderTopColor: colors.divider,
+    borderTopColor: 'rgba(0, 120, 210, 0.15)',
     marginTop: spacing.md,
     paddingTop: spacing.md,
   },
@@ -196,41 +225,43 @@ const styles = StyleSheet.create({
   },
   dutyLabel: {
     ...typography.caption,
-    color: colors.textMuted,
+    color: colors.textOnGlassMuted,
     marginBottom: spacing.xs,
   },
   dutyValue: {
     ...typography.h4,
-    color: colors.textPrimary,
+    color: colors.textOnGlass,
   },
   dutyDivider: {
     width: 1,
-    backgroundColor: colors.divider,
+    backgroundColor: 'rgba(0, 120, 210, 0.15)',
   },
   section: {
     marginBottom: spacing.lg,
   },
   sectionTitle: {
     ...typography.h4,
-    color: colors.textPrimary,
+    color: colors.textOnGlass,
     marginBottom: spacing.md,
   },
   locationCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: spacing.md,
+    padding: 0,
   },
   locationIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: borderRadius.md,
-    backgroundColor: colors.primary + '15',
+    width: 52,
+    height: 52,
+    borderRadius: borderRadius.lg,
+    backgroundColor: 'rgba(0, 120, 210, 0.2)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 120, 210, 0.3)',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: spacing.md,
   },
   locationIconText: {
-    ...typography.h2,
+    fontSize: 24,
     color: colors.primary,
   },
   locationInfo: {
@@ -238,37 +269,43 @@ const styles = StyleSheet.create({
   },
   locationName: {
     ...typography.bodyBold,
-    color: colors.textPrimary,
+    color: colors.textOnGlass,
   },
   locationMeta: {
     ...typography.small,
-    color: colors.textSecondary,
+    color: colors.textOnGlassMuted,
     marginTop: spacing.xs,
   },
   certCard: {
-    padding: spacing.md,
+    padding: 0,
   },
   certItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    padding: spacing.md,
   },
   certInfo: {
     flex: 1,
   },
   certType: {
     ...typography.bodyBold,
-    color: colors.textPrimary,
+    color: colors.textOnGlass,
   },
   certExpiry: {
     ...typography.small,
-    color: colors.textSecondary,
+    color: colors.textOnGlassMuted,
     marginTop: spacing.xs,
   },
   certBadge: {
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
-    borderRadius: borderRadius.sm,
+    paddingHorizontal: spacing.sm + 2,
+    paddingVertical: spacing.xs + 2,
+    borderRadius: borderRadius.md,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 3,
   },
   certBadgeText: {
     ...typography.captionBold,
@@ -276,20 +313,21 @@ const styles = StyleSheet.create({
   },
   certDivider: {
     height: 1,
-    backgroundColor: colors.divider,
-    marginVertical: spacing.md,
+    backgroundColor: 'rgba(0, 120, 210, 0.15)',
+    marginHorizontal: spacing.md,
   },
   contactCard: {
-    padding: spacing.md,
+    padding: 0,
   },
   contactItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    padding: spacing.md,
   },
   contactLabel: {
     ...typography.body,
-    color: colors.textSecondary,
+    color: colors.textOnGlassMuted,
   },
   contactValue: {
     ...typography.bodyBold,
@@ -297,8 +335,8 @@ const styles = StyleSheet.create({
   },
   contactDivider: {
     height: 1,
-    backgroundColor: colors.divider,
-    marginVertical: spacing.md,
+    backgroundColor: 'rgba(0, 120, 210, 0.15)',
+    marginHorizontal: spacing.md,
   },
 });
 

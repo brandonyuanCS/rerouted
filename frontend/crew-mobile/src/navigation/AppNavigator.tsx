@@ -3,8 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet } from 'react-native';
+import { BlurView } from 'expo-blur';
 import { colors } from '../theme/colors';
-import { typography } from '../theme/typography';
+import { typography, borderRadius } from '../theme/typography';
 
 import LoginScreen from '../screens/LoginScreen';
 import DashboardScreen from '../screens/DashboardScreen';
@@ -56,9 +57,19 @@ const MainTabs: React.FC = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: styles.tabBar,
-        tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textMuted,
+        tabBarActiveTintColor: colors.textOnDarkGlass,
+        tabBarInactiveTintColor: colors.textOnDarkGlassMuted,
         tabBarLabelStyle: styles.tabLabel,
+        tabBarBackground: () => (
+          <View style={styles.tabBarBackground}>
+            <BlurView
+              intensity={40}
+              tint="dark"
+              style={StyleSheet.absoluteFill}
+            />
+            <View style={styles.tabBarGradient} />
+          </View>
+        ),
       }}>
       <Tab.Screen
         name="Dashboard"
@@ -104,12 +115,26 @@ const AppNavigator: React.FC = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: colors.surface,
+    position: 'absolute',
+    backgroundColor: 'transparent',
+    borderTopWidth: 0,
+    elevation: 0,
+    height: 85,
+    paddingTop: 10,
+    paddingBottom: 20,
+  },
+  tabBarBackground: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 50, 100, 0.85)',
     borderTopWidth: 1,
-    borderTopColor: colors.border,
-    paddingTop: 8,
-    paddingBottom: 8,
-    height: 70,
+    borderTopColor: 'rgba(255, 255, 255, 0.2)',
+    overflow: 'hidden',
+  },
+  tabBarGradient: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'transparent',
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255, 255, 255, 0.15)',
   },
   tabLabel: {
     ...typography.caption,
@@ -121,19 +146,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   tabIcon: {
-    width: 32,
-    height: 32,
-    borderRadius: 8,
-    backgroundColor: colors.surfaceAlt,
+    width: 36,
+    height: 36,
+    borderRadius: borderRadius.lg,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.15)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   tabIconActive: {
     backgroundColor: colors.primary,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
+    shadowColor: colors.primary,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    elevation: 4,
   },
   tabIconText: {
     ...typography.bodyBold,
-    color: colors.textMuted,
+    color: 'rgba(255, 255, 255, 0.6)',
   },
   tabIconTextActive: {
     color: colors.textInverse,
