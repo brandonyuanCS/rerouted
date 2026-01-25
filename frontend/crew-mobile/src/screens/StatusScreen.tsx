@@ -13,23 +13,57 @@ import { colors } from '../theme/colors';
 import { typography, spacing, borderRadius } from '../theme/typography';
 import { Card, DutyTimeBar, AssignmentCard, Assignment, GlassCard } from '../components';
 
-// Mock current assignment
-const mockCurrentAssignment: Assignment = {
-  id: '1',
-  flightNumber: 'AA 2847',
-  origin: 'DFW',
-  destination: 'LAX',
-  departureTime: '14:30',
-  gate: 'A24',
-  role: 'flight_attendant',
-  status: 'active',
-  aircraftType: 'Boeing 737-800',
-};
+import { useAssignment } from '../context/AssignmentContext';
+
+// Helper: Extract valid assignments from raw data
+// This function is no longer needed as assignment is now from context.
+// function getAssignmentsMap(rawAssignments: Record<string, string[]>) {
+//   const map: Record<string, string[]> = {};
+//   for (const [flight, crew] of Object.entries(rawAssignments)) {
+//     if (crew && crew.length > 0) {
+//       map[flight] = crew;
+//     }
+//   }
+//   return map;
+// }
 
 const StatusScreen: React.FC = () => {
+  // Hardcoded user for demo
+  const currentUser = {
+    id: 'PLT001',
+    name: 'Sarah Johnson',
+    role: 'Captain',
+    base: 'DFW'
+  };
+
+  const { currentAssignment } = useAssignment();
+
+  // Cleaned up unused derivation
+  // const assignments = getAssignmentsMap(optimizationData.result.best_solution.assignments);
+
+  // let userFlightId = '';
+  // for (const [flightId, crewList] of Object.entries(assignments)) {
+  //   if (crewList.includes(currentUser.id)) {
+  //     userFlightId = flightId;
+  //     break;
+  //   }
+  // }
+
+  // const currentAssignment: Assignment | undefined = userFlightId ? {
+  //   id: userFlightId,
+  //   flightNumber: userFlightId,
+  //   origin: 'DFW',
+  //   destination: 'LGA',
+  //   departureTime: '10:00',
+  //   gate: 'C12',
+  //   role: 'pilot',
+  //   status: 'active',
+  //   aircraftType: 'Boeing 737-800'
+  // } : undefined;
+
   const crewStatus = {
     status: 'On Duty',
-    location: 'DFW - Terminal A',
+    location: currentAssignment ? `${currentAssignment.origin} - Terminal A` : 'DFW - Operations',
     dutyStartTime: '06:00',
     dutyHoursRemaining: 8.5,
     restRequired: false,
@@ -47,7 +81,7 @@ const StatusScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
-      
+
       {/* Background Image */}
       <ImageBackground
         source={require('../../assets/csbg.png')}
@@ -55,101 +89,109 @@ const StatusScreen: React.FC = () => {
         resizeMode="cover"
       >
         <View style={styles.overlay} />
-      
-      <SafeAreaView style={styles.safeArea} edges={['top']}>
-        {/* Glass Header */}
-        <GlassCard variant="dark" style={styles.header}>
-          <Text style={styles.headerTitle}>My Status</Text>
-          <View style={styles.statusIndicator}>
-            <View style={styles.statusDot} />
-            <Text style={styles.statusText}>{crewStatus.status}</Text>
-          </View>
-        </GlassCard>
 
-        <ScrollView
-          style={styles.content}
-          contentContainerStyle={styles.contentContainer}
-          showsVerticalScrollIndicator={false}>
-        
-        <Card variant="elevated" style={styles.dutyCard}>
-          <DutyTimeBar hoursRemaining={crewStatus.dutyHoursRemaining} />
-          <View style={styles.dutyInfo}>
-            <View style={styles.dutyInfoItem}>
-              <Text style={styles.dutyLabel}>Duty Started</Text>
-              <Text style={styles.dutyValue}>{crewStatus.dutyStartTime}</Text>
+        <SafeAreaView style={styles.safeArea} edges={['top']}>
+          {/* Glass Header */}
+          <GlassCard variant="dark" style={styles.header}>
+            <Text style={styles.headerTitle}>My Status</Text>
+            <View style={styles.statusIndicator}>
+              <View style={styles.statusDot} />
+              <Text style={styles.statusText}>{crewStatus.status}</Text>
             </View>
-            <View style={styles.dutyDivider} />
-            <View style={styles.dutyInfoItem}>
-              <Text style={styles.dutyLabel}>Required Rest By</Text>
-              <Text style={styles.dutyValue}>{crewStatus.nextRest}</Text>
-            </View>
-          </View>
-        </Card>
+          </GlassCard>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Current Location</Text>
-          <Card variant="outlined" style={styles.locationCard}>
-            <View style={styles.locationIcon}>
-              <Text style={styles.locationIconText}>*</Text>
-            </View>
-            <View style={styles.locationInfo}>
-              <Text style={styles.locationName}>{crewStatus.location}</Text>
-              <Text style={styles.locationMeta}>Last updated: Just now</Text>
-            </View>
-          </Card>
-        </View>
+          <ScrollView
+            style={styles.content}
+            contentContainerStyle={styles.contentContainer}
+            showsVerticalScrollIndicator={false}>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Active Assignment</Text>
-          <AssignmentCard assignment={mockCurrentAssignment} />
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Certifications</Text>
-          <Card variant="outlined" style={styles.certCard}>
-            {certifications.map((cert, index) => (
-              <View key={cert.type}>
-                <View style={styles.certItem}>
-                  <View style={styles.certInfo}>
-                    <Text style={styles.certType}>{cert.type}</Text>
-                    <Text style={styles.certExpiry}>
-                      Expires: {cert.expiry}
-                    </Text>
-                  </View>
-                  <View
-                    style={[
-                      styles.certBadge,
-                      { backgroundColor: cert.valid ? colors.success : colors.error },
-                    ]}>
-                    <Text style={styles.certBadgeText}>
-                      {cert.valid ? 'VALID' : 'EXPIRED'}
-                    </Text>
-                  </View>
+            <Card variant="elevated" style={styles.dutyCard}>
+              <DutyTimeBar hoursRemaining={crewStatus.dutyHoursRemaining} />
+              <View style={styles.dutyInfo}>
+                <View style={styles.dutyInfoItem}>
+                  <Text style={styles.dutyLabel}>Duty Started</Text>
+                  <Text style={styles.dutyValue}>{crewStatus.dutyStartTime}</Text>
                 </View>
-                {index < certifications.length - 1 && (
-                  <View style={styles.certDivider} />
-                )}
+                <View style={styles.dutyDivider} />
+                <View style={styles.dutyInfoItem}>
+                  <Text style={styles.dutyLabel}>Required Rest By</Text>
+                  <Text style={styles.dutyValue}>{crewStatus.nextRest}</Text>
+                </View>
               </View>
-            ))}
-          </Card>
-        </View>
+            </Card>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Contact Information</Text>
-          <Card variant="outlined" style={styles.contactCard}>
-            <View style={styles.contactItem}>
-              <Text style={styles.contactLabel}>Crew Scheduling</Text>
-              <Text style={styles.contactValue}>1-800-AA-CREW</Text>
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Current Location</Text>
+              <Card variant="outlined" style={styles.locationCard}>
+                <View style={styles.locationIcon}>
+                  <Text style={styles.locationIconText}>*</Text>
+                </View>
+                <View style={styles.locationInfo}>
+                  <Text style={styles.locationName}>{crewStatus.location}</Text>
+                  <Text style={styles.locationMeta}>Last updated: Just now</Text>
+                </View>
+              </Card>
             </View>
-            <View style={styles.contactDivider} />
-            <View style={styles.contactItem}>
-              <Text style={styles.contactLabel}>Operations Center</Text>
-              <Text style={styles.contactValue}>1-800-AA-OPS</Text>
+
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Active Assignment</Text>
+              {currentAssignment ? (
+                <AssignmentCard assignment={currentAssignment} />
+              ) : (
+                <GlassCard>
+                  <Text style={{ color: colors.textOnGlass, textAlign: 'center' }}>
+                    No active assignment found for {currentUser.id}
+                  </Text>
+                </GlassCard>
+              )}
             </View>
-          </Card>
-        </View>
-      </ScrollView>
-      </SafeAreaView>
+
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Certifications</Text>
+              <Card variant="outlined" style={styles.certCard}>
+                {certifications.map((cert, index) => (
+                  <View key={cert.type}>
+                    <View style={styles.certItem}>
+                      <View style={styles.certInfo}>
+                        <Text style={styles.certType}>{cert.type}</Text>
+                        <Text style={styles.certExpiry}>
+                          Expires: {cert.expiry}
+                        </Text>
+                      </View>
+                      <View
+                        style={[
+                          styles.certBadge,
+                          { backgroundColor: cert.valid ? colors.success : colors.error },
+                        ]}>
+                        <Text style={styles.certBadgeText}>
+                          {cert.valid ? 'VALID' : 'EXPIRED'}
+                        </Text>
+                      </View>
+                    </View>
+                    {index < certifications.length - 1 && (
+                      <View style={styles.certDivider} />
+                    )}
+                  </View>
+                ))}
+              </Card>
+            </View>
+
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Contact Information</Text>
+              <Card variant="outlined" style={styles.contactCard}>
+                <View style={styles.contactItem}>
+                  <Text style={styles.contactLabel}>Crew Scheduling</Text>
+                  <Text style={styles.contactValue}>1-800-AA-CREW</Text>
+                </View>
+                <View style={styles.contactDivider} />
+                <View style={styles.contactItem}>
+                  <Text style={styles.contactLabel}>Operations Center</Text>
+                  <Text style={styles.contactValue}>1-800-AA-OPS</Text>
+                </View>
+              </Card>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
       </ImageBackground>
     </View>
   );

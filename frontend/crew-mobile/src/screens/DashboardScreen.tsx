@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   View,
   Text,
@@ -7,7 +6,10 @@ import {
   TouchableOpacity,
   Dimensions,
   ImageBackground,
+  Animated,
+  Easing,
 } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -16,39 +18,82 @@ import { colors } from '../theme/colors';
 import { typography, spacing, borderRadius } from '../theme/typography';
 import { Card, DutyTimeBar, AssignmentCard, Assignment, GlassCard } from '../components';
 import { TabParamList } from '../navigation/AppNavigator';
+import { useAssignment } from '../context/AssignmentContext';
 
 const { width } = Dimensions.get('window');
+
+
+
+import { optimizationData } from '../data/optimizationData';
 
 type DashboardScreenProps = {
   navigation: BottomTabNavigationProp<TabParamList, 'Dashboard'>;
 };
 
-// Mock data for current assignment
-const mockCurrentAssignment: Assignment = {
-  id: '1',
-  flightNumber: 'AA 2847',
-  origin: 'DFW',
-  destination: 'LAX',
-  departureTime: '14:30',
-  gate: 'A24',
-  role: 'flight_attendant',
-  status: 'active',
-  aircraftType: 'Boeing 737-800',
-};
-
 const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigation }) => {
-  const crewMember = {
+  const { currentAssignment, systemStatus } = useAssignment();
+
+  // Hardcoded user for demo
+  const currentUser = {
+    id: 'PLT001',
     name: 'Sarah Johnson',
-    id: 'AA-28471',
-    role: 'Senior Flight Attendant',
+    role: 'Captain',
     base: 'DFW',
-    dutyHoursRemaining: 8.5,
+    dutyHoursRemaining: 8.5
+  };
+
+  // Notification Animation
+  const translateY = useRef(new Animated.Value(-150)).current;
+  const [notificationVisible, setNotificationVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setNotificationVisible(true);
+      Animated.timing(translateY, {
+        toValue: 0,
+        duration: 500,
+        easing: Easing.out(Easing.back(1.5)), // Bouncy effect
+        useNativeDriver: true,
+      }).start();
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleDismiss = () => {
+    Animated.timing(translateY, {
+      toValue: -150,
+      duration: 300,
+      useNativeDriver: true,
+    }).start(() => setNotificationVisible(false));
+  };
+
+  const handleViewOffers = () => {
+    handleDismiss();
+    navigation.navigate('Assignments');
+  };
+
+  // 1. Find the user's current assignment in the data - REPLACED BY CONTEXT
+  // 2. Construct assignment object - REPLACED BY CONTEXT
+
+  // 3. Stats from data
+  // "workers_started": 4 -> maybe show in a different view or as a system status
+
+  const getStatusColor = (status: string) => {
+    switch (status.toLowerCase()) {
+      case 'pending':
+        return colors.warning;
+      case 'completed':
+        return colors.success;
+      default:
+        return colors.textOnGlassMuted;
+    }
   };
 
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
-      
+
       {/* Background Image */}
       <ImageBackground
         source={require('../../assets/csbg.png')}
@@ -56,104 +101,164 @@ const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigation }) => {
         resizeMode="cover"
       >
         <View style={styles.overlay} />
-      
-      <SafeAreaView style={styles.safeArea} edges={['top']}>
-        {/* Glass Header */}
-        <GlassCard variant="dark" style={styles.header}>
-          <View style={styles.headerContent}>
-            <View>
-              <Text style={styles.greeting}>Welcome back,</Text>
-              <Text style={styles.name}>{crewMember.name}</Text>
-            </View>
-            <View style={styles.badge}>
-              <Text style={styles.badgeText}>{crewMember.base}</Text>
-            </View>
-          </View>
-          <View style={styles.headerMeta}>
-            <Text style={styles.metaText}>ID: {crewMember.id}</Text>
-            <Text style={styles.metaDot}>|</Text>
-            <Text style={styles.metaText}>{crewMember.role}</Text>
-          </View>
-        </GlassCard>
 
-        <ScrollView 
-          style={styles.content}
-          contentContainerStyle={styles.contentContainer}
-          showsVerticalScrollIndicator={false}>
-          
-          <Card variant="elevated" style={styles.dutyCard}>
-            <DutyTimeBar hoursRemaining={crewMember.dutyHoursRemaining} />
-          </Card>
-
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Current Assignment</Text>
-            <AssignmentCard assignment={mockCurrentAssignment} />
-          </View>
-
-          <View style={styles.quickActions}>
-            <Text style={styles.sectionTitle}>Quick Actions</Text>
-            <View style={styles.actionGrid}>
-              <TouchableOpacity 
-                style={styles.actionCard}
-                activeOpacity={0.8}
-                onPress={() => navigation.navigate('Assignments')}>
+        <SafeAreaView style={styles.safeArea} edges={['top']}>
+          {/* Notification Popup */}
+          {notificationVisible && (
+            <Animated.View style={[
+              styles.notificationContainer,
+              { transform: [{ translateY }] }
+            ]}>
+              <GlassCard variant="default" style={styles.notificationCard}>
                 <LinearGradient
-                  colors={['rgba(255, 255, 255, 0.95)', 'rgba(255, 255, 255, 0.85)']}
-                  style={styles.actionGradient}
+                  colors={['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.7)']}
+                  style={StyleSheet.absoluteFill}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
                 />
-                <View style={[styles.actionIcon, { backgroundColor: colors.primary }]}>
-                  <Text style={styles.actionIconText}>+</Text>
+                <View style={styles.notificationContent}>
+                  <View style={styles.notificationIcon}>
+                    <Text style={{ fontSize: 20 }}>🚨</Text>
+                  </View>
+                  <View style={styles.notificationTextContainer}>
+                    <Text style={styles.notificationTitle}>URGENT UPDATE</Text>
+                    <Text style={styles.notificationBody}>
+                      New optimized schedule available. Action required immediately.
+                    </Text>
+                  </View>
                 </View>
-                <Text style={styles.actionLabel}>New Offers</Text>
-                <View style={styles.actionBadge}>
-                  <Text style={styles.actionBadgeText}>2</Text>
+                <View style={styles.notificationActions}>
+                  <TouchableOpacity onPress={handleDismiss} style={styles.notificationDismiss}>
+                    <Text style={styles.notificationDismissText}>Dismiss</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={handleViewOffers} style={styles.notificationButton}>
+                    <Text style={styles.notificationButtonText}>View Options</Text>
+                  </TouchableOpacity>
                 </View>
-              </TouchableOpacity>
+              </GlassCard>
+            </Animated.View>
+          )}
 
-              <TouchableOpacity 
-                style={styles.actionCard}
-                activeOpacity={0.8}
-                onPress={() => navigation.navigate('Status')}>
-                <LinearGradient
-                  colors={['rgba(255, 255, 255, 0.95)', 'rgba(255, 255, 255, 0.85)']}
-                  style={styles.actionGradient}
-                />
-                <View style={[styles.actionIcon, { backgroundColor: colors.secondary }]}>
-                  <Text style={styles.actionIconText}>i</Text>
-                </View>
-                <Text style={styles.actionLabel}>My Status</Text>
-              </TouchableOpacity>
+          {/* Glass Header */}
+          <GlassCard variant="dark" style={styles.header}>
+            <View style={styles.headerContent}>
+              <View>
+                <Text style={styles.greeting}>Welcome back,</Text>
+                <Text style={styles.name}>{currentUser.name}</Text>
+              </View>
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>{currentUser.base}</Text>
+              </View>
             </View>
-          </View>
+            <View style={styles.headerMeta}>
+              <Text style={styles.metaText}>ID: {currentUser.id}</Text>
+              <Text style={styles.metaDot}>|</Text>
+              <Text style={styles.metaText}>{currentUser.role}</Text>
+            </View>
+          </GlassCard>
 
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Upcoming Schedule</Text>
-            <Card variant="outlined" style={styles.scheduleCard}>
-              <View style={styles.scheduleItem}>
-                <View style={styles.scheduleDate}>
-                  <Text style={styles.scheduleDayNum}>25</Text>
-                  <Text style={styles.scheduleDayName}>SAT</Text>
-                </View>
-                <View style={styles.scheduleDetails}>
-                  <Text style={styles.scheduleRoute}>DFW - ORD - DFW</Text>
-                  <Text style={styles.scheduleTime}>06:00 - 18:30</Text>
-                </View>
-              </View>
-              <View style={styles.scheduleDivider} />
-              <View style={styles.scheduleItem}>
-                <View style={styles.scheduleDate}>
-                  <Text style={styles.scheduleDayNum}>26</Text>
-                  <Text style={styles.scheduleDayName}>SUN</Text>
-                </View>
-                <View style={styles.scheduleDetails}>
-                  <Text style={styles.scheduleRoute}>DFW - MIA</Text>
-                  <Text style={styles.scheduleTime}>09:00 - 14:00</Text>
-                </View>
-              </View>
+          <ScrollView
+            style={styles.content}
+            contentContainerStyle={styles.contentContainer}
+            showsVerticalScrollIndicator={false}>
+
+            <Card variant="elevated" style={styles.dutyCard}>
+              <DutyTimeBar hoursRemaining={currentUser.dutyHoursRemaining} />
             </Card>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Current Assignment</Text>
+              {currentAssignment ? (
+                <AssignmentCard assignment={currentAssignment} />
+              ) : (
+                <GlassCard>
+                  <Text style={{ color: colors.textOnGlass, textAlign: 'center' }}>
+                    No active assignment found for {currentUser.id}
+                  </Text>
+                </GlassCard>
+              )}
+            </View>
+
+            <View style={styles.quickActions}>
+              <Text style={styles.sectionTitle}>System Status</Text>
+              <View style={styles.actionGrid}>
+                <View style={[styles.actionCard, { alignItems: 'flex-start' }]}>
+                  <Text style={[typography.caption, { color: colors.textOnGlassMuted }]}>Status</Text>
+                  <Text style={[typography.h3, { color: getStatusColor(systemStatus) }]}>{systemStatus.toUpperCase()}</Text>
+                </View>
+                <View style={[styles.actionCard, { alignItems: 'flex-start' }]}>
+                  <Text style={[typography.caption, { color: colors.textOnGlassMuted }]}>Workers</Text>
+                  <Text style={[typography.h3, { color: colors.secondary }]}>{optimizationData.progress.workers_started}</Text>
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.quickActions}>
+              <Text style={styles.sectionTitle}>Quick Actions</Text>
+              <View style={styles.actionGrid}>
+                <TouchableOpacity
+                  style={styles.actionCard}
+                  activeOpacity={0.8}
+                  onPress={() => navigation.navigate('Assignments')}>
+                  <LinearGradient
+                    colors={['rgba(255, 255, 255, 0.95)', 'rgba(255, 255, 255, 0.85)']}
+                    style={styles.actionGradient}
+                  />
+                  <View style={[styles.actionIcon, { backgroundColor: colors.primary }]}>
+                    <Text style={styles.actionIconText}>+</Text>
+                  </View>
+                  <Text style={styles.actionLabel}>New Offers</Text>
+                  <View style={styles.actionBadge}>
+                    <Text style={styles.actionBadgeText}>
+                      2
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={styles.actionCard}
+                  activeOpacity={0.8}
+                  onPress={() => navigation.navigate('Status')}>
+                  <LinearGradient
+                    colors={['rgba(255, 255, 255, 0.95)', 'rgba(255, 255, 255, 0.85)']}
+                    style={styles.actionGradient}
+                  />
+                  <View style={[styles.actionIcon, { backgroundColor: colors.secondary }]}>
+                    <Text style={styles.actionIconText}>i</Text>
+                  </View>
+                  <Text style={styles.actionLabel}>My Status</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Upcoming Schedule</Text>
+              <Card variant="outlined" style={styles.scheduleCard}>
+                <View style={styles.scheduleItem}>
+                  <View style={styles.scheduleDate}>
+                    <Text style={styles.scheduleDayNum}>25</Text>
+                    <Text style={styles.scheduleDayName}>SAT</Text>
+                  </View>
+                  <View style={styles.scheduleDetails}>
+                    <Text style={styles.scheduleRoute}>DFW - ORD - DFW</Text>
+                    <Text style={styles.scheduleTime}>06:00 - 18:30</Text>
+                  </View>
+                </View>
+                <View style={styles.scheduleDivider} />
+                <View style={styles.scheduleItem}>
+                  <View style={styles.scheduleDate}>
+                    <Text style={styles.scheduleDayNum}>26</Text>
+                    <Text style={styles.scheduleDayName}>SUN</Text>
+                  </View>
+                  <View style={styles.scheduleDetails}>
+                    <Text style={styles.scheduleRoute}>DFW - MIA</Text>
+                    <Text style={styles.scheduleTime}>09:00 - 14:00</Text>
+                  </View>
+                </View>
+              </Card>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
       </ImageBackground>
     </View>
   );
@@ -351,6 +456,79 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: 'rgba(0, 120, 210, 0.15)',
     marginHorizontal: spacing.md,
+  },
+  notificationContainer: {
+    position: 'absolute',
+    top: 60, // Adjust based on header/safe area
+    left: spacing.lg,
+    right: spacing.lg,
+    zIndex: 1000,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 10,
+  },
+  notificationCard: {
+    padding: 0,
+    // Use standard glass styling (inherited from GlassCard props but ensured here)
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    borderColor: 'rgba(255, 255, 255, 0.9)',
+    borderWidth: 1,
+    overflow: 'hidden',
+    borderRadius: borderRadius.xl,
+  },
+  notificationContent: {
+    flexDirection: 'row',
+    padding: spacing.md,
+    alignItems: 'center',
+  },
+  notificationIcon: {
+    marginRight: spacing.md,
+    backgroundColor: 'rgba(220, 38, 38, 0.1)',
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  notificationTextContainer: {
+    flex: 1,
+  },
+  notificationTitle: {
+    ...typography.h4,
+    color: colors.primary, // Blue instead of red
+    marginBottom: 2,
+  },
+  notificationBody: {
+    ...typography.small,
+    color: colors.textSecondary,
+  },
+  notificationActions: {
+    flexDirection: 'row',
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(0, 120, 210, 0.1)',
+  },
+  notificationDismiss: {
+    flex: 1,
+    padding: spacing.md,
+    alignItems: 'center',
+    borderRightWidth: 1,
+    borderRightColor: 'rgba(0, 120, 210, 0.1)',
+  },
+  notificationDismissText: {
+    ...typography.smallBold,
+    color: colors.textSecondary,
+  },
+  notificationButton: {
+    flex: 1,
+    padding: spacing.md,
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 120, 210, 0.1)', // Subtle blue tint
+  },
+  notificationButtonText: {
+    ...typography.smallBold,
+    color: colors.primary,
   },
 });
 

@@ -4,6 +4,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
 import { Asset } from 'expo-asset';
 import AppNavigator from './src/navigation/AppNavigator';
+import { AssignmentProvider } from './src/context/AssignmentContext';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -14,11 +15,11 @@ const preloadImages = async () => {
     require('./assets/csbg.png'),
     require('./assets/logo.png'),
   ];
-  
+
   const cacheImages = images.map(image => {
     return Asset.fromModule(image).downloadAsync();
   });
-  
+
   await Promise.all(cacheImages);
 };
 
@@ -55,7 +56,9 @@ export default function App() {
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <SafeAreaProvider>
-        <AppNavigator />
+        <AssignmentProvider>
+          <AppNavigator />
+        </AssignmentProvider>
       </SafeAreaProvider>
     </View>
   );

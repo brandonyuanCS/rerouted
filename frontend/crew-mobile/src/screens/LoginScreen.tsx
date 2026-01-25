@@ -55,7 +55,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
       resizeMode="cover">
       <View style={styles.overlay} />
       <StatusBar style="dark" />
-      
+
       <SafeAreaView style={styles.safeArea}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -68,7 +68,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                 resizeMode="contain"
               />
             </View>
-            <Text style={styles.title}>CrewSync</Text>
+            <Text style={styles.title}>rerouted</Text>
             <Text style={styles.subtitle}>Crew Coordination System</Text>
           </View>
 
@@ -174,6 +174,7 @@ const styles = StyleSheet.create({
   logoImage: {
     width: 120,
     height: 120,
+    borderRadius: 20,
   },
   title: {
     ...typography.h1,

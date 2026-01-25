@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -14,64 +14,71 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../theme/colors';
 import { typography, spacing, borderRadius } from '../theme/typography';
 import { AssignmentCard, Assignment, GlassCard } from '../components';
+import { useAssignment } from '../context/AssignmentContext';
 
-// Mock pending assignments
-const mockPendingAssignments: Assignment[] = [
-  {
-    id: '2',
-    flightNumber: 'AA 1156',
-    origin: 'DFW',
-    destination: 'JFK',
-    departureTime: '16:45',
-    gate: 'C12',
-    role: 'flight_attendant',
-    status: 'offered',
-    expiresAt: new Date(Date.now() + 4 * 60 * 1000).toISOString(),
-    aircraftType: 'Airbus A321',
-  },
-  {
-    id: '3',
-    flightNumber: 'AA 892',
-    origin: 'DFW',
-    destination: 'SFO',
-    departureTime: '18:00',
-    gate: 'B8',
-    role: 'flight_attendant',
-    status: 'offered',
-    expiresAt: new Date(Date.now() + 2.5 * 60 * 1000).toISOString(),
-    aircraftType: 'Boeing 777-200',
-  },
-];
-
-const mockPastAssignments: Assignment[] = [
-  {
-    id: '4',
-    flightNumber: 'AA 445',
-    origin: 'LAX',
-    destination: 'DFW',
-    departureTime: '08:00',
-    gate: 'A15',
-    role: 'flight_attendant',
-    status: 'completed',
-    aircraftType: 'Boeing 737-800',
-  },
-  {
-    id: '5',
-    flightNumber: 'AA 2201',
-    origin: 'ORD',
-    destination: 'DFW',
-    departureTime: '11:30',
-    gate: 'D22',
-    role: 'flight_attendant',
-    status: 'declined',
-    aircraftType: 'Airbus A320',
-  },
-];
+import { optimizationData } from '../data/optimizationData';
 
 const AssignmentScreen: React.FC = () => {
+  const { acceptAssignment } = useAssignment();
   const [refreshing, setRefreshing] = useState(false);
-  const [pendingAssignments, setPendingAssignments] = useState<Assignment[]>(mockPendingAssignments);
-  const [pastAssignments] = useState<Assignment[]>(mockPastAssignments);
+
+  // Hardcoded user for demo
+  const currentUser = { id: 'PLT001' };
+
+  // New Mock Offers for "Urgent" update
+  const initialOffers: Assignment[] = [
+    {
+      id: 'offer-1',
+      flightNumber: 'AA 1198',
+      origin: 'DFW',
+      destination: 'ORD',
+      departureTime: '14:30',
+      gate: 'C22',
+      role: 'pilot',
+      status: 'offered',
+      expiresAt: new Date(Date.now() + 5 * 60 * 1000).toISOString(), // 5 mins from now
+      aircraftType: 'Boeing 737-800'
+    },
+    {
+      id: 'offer-2',
+      flightNumber: 'AA 1234',
+      origin: 'ORD',
+      destination: 'LGA',
+      departureTime: '19:45',
+      gate: 'K12',
+      role: 'pilot',
+      status: 'offered',
+      expiresAt: new Date(Date.now() + 5 * 60 * 1000).toISOString(), // 5 mins from now
+      aircraftType: 'Airbus A321'
+    }
+  ];
+
+  const [pendingAssignments, setPendingAssignments] = useState<Assignment[]>(initialOffers);
+
+  // Countdown Timer Logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPendingAssignments(prevOffers =>
+        prevOffers.map(offer => {
+          // Small hack to force re-render if we were displaying relative time, 
+          // but effectively we might just want to update the expiresAt or let the card handle relative time?
+          // If the card calculates "time remaining" based on `expiresAt` - `now`, simply re-rendering parent works?
+          // Or we can just leave it static if the Card doesn't support live tick.
+          // Assuming Card might not update live without props change. 
+          // Let's just update the state to trigger re-renders. 
+          return { ...offer };
+        })
+      );
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Filter for ANY other assignments the user might have that are NOT the active one?
+  // For now, let's just use the `assignments` map. If they are assigned, it's "Accepted" or "Active".
+  // The Dashboard shows "Active". This screen shows "Accepted" (future) or "Past".
+  // The JSON snapshot is a single point in time. 
+  // We will assume NO past assignments in this JSON.
+  const [pastAssignments] = useState<Assignment[]>([]);
 
   const onRefresh = () => {
     setRefreshing(true);
@@ -89,12 +96,14 @@ const AssignmentScreen: React.FC = () => {
         {
           text: 'Accept',
           onPress: () => {
-            setPendingAssignments((prev) =>
-              prev.map((a) =>
-                a.id === assignmentId ? { ...a, status: 'accepted' as const } : a
-              )
-            );
-            Alert.alert('Success', 'Assignment accepted successfully!');
+            const assignmentToAccept = pendingAssignments.find(a => a.id === assignmentId);
+            if (assignmentToAccept) {
+              acceptAssignment(assignmentToAccept);
+              setPendingAssignments((prev) =>
+                prev.filter(a => a.id !== assignmentId) // Remove from offers
+              );
+              Alert.alert('Success', 'Assignment accepted successfully! Dashboard updated.');
+            }
           },
         },
       ]
@@ -126,7 +135,7 @@ const AssignmentScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
-      
+
       {/* Background Image */}
       <ImageBackground
         source={require('../../assets/csbg.png')}
@@ -134,87 +143,87 @@ const AssignmentScreen: React.FC = () => {
         resizeMode="cover"
       >
         <View style={styles.overlay} />
-      
-      <SafeAreaView style={styles.safeArea} edges={['top']}>
-        {/* Glass Header */}
-        <GlassCard variant="dark" style={styles.header}>
-          <Text style={styles.headerTitle}>Assignments</Text>
-          <Text style={styles.headerSubtitle}>
-            {offeredAssignments.length} pending offer{offeredAssignments.length !== 1 ? 's' : ''}
-          </Text>
-        </GlassCard>
 
-        <ScrollView
-          style={styles.content}
-          contentContainerStyle={styles.contentContainer}
-          showsVerticalScrollIndicator={false}
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor={colors.primary}
-              colors={[colors.primary]}
-            />
-          }>
-        
-        {offeredAssignments.length > 0 && (
-          <View style={styles.section}>
-            <View style={styles.sectionHeader}>
-              <Text style={styles.sectionTitle}>Pending Offers</Text>
-              <View style={styles.urgentBadge}>
-                <Text style={styles.urgentText}>URGENT</Text>
+        <SafeAreaView style={styles.safeArea} edges={['top']}>
+          {/* Glass Header */}
+          <GlassCard variant="dark" style={styles.header}>
+            <Text style={styles.headerTitle}>Assignments</Text>
+            <Text style={styles.headerSubtitle}>
+              {offeredAssignments.length} pending offer{offeredAssignments.length !== 1 ? 's' : ''}
+            </Text>
+          </GlassCard>
+
+          <ScrollView
+            style={styles.content}
+            contentContainerStyle={styles.contentContainer}
+            showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                tintColor={colors.primary}
+                colors={[colors.primary]}
+              />
+            }>
+
+            {offeredAssignments.length > 0 && (
+              <View style={styles.section}>
+                <View style={styles.sectionHeader}>
+                  <Text style={styles.sectionTitle}>Pending Offers</Text>
+                  <View style={styles.urgentBadge}>
+                    <Text style={styles.urgentText}>URGENT</Text>
+                  </View>
+                </View>
+                <Text style={styles.sectionHint}>
+                  First to accept gets the assignment
+                </Text>
+                {offeredAssignments.map((assignment) => (
+                  <AssignmentCard
+                    key={assignment.id}
+                    assignment={assignment}
+                    showActions
+                    onAccept={() => handleAccept(assignment.id)}
+                    onDecline={() => handleDecline(assignment.id)}
+                  />
+                ))}
               </View>
-            </View>
-            <Text style={styles.sectionHint}>
-              First to accept gets the assignment
-            </Text>
-            {offeredAssignments.map((assignment) => (
-              <AssignmentCard
-                key={assignment.id}
-                assignment={assignment}
-                showActions
-                onAccept={() => handleAccept(assignment.id)}
-                onDecline={() => handleDecline(assignment.id)}
-              />
-            ))}
-          </View>
-        )}
+            )}
 
-        {acceptedAssignments.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Accepted</Text>
-            {acceptedAssignments.map((assignment) => (
-              <AssignmentCard key={assignment.id} assignment={assignment} />
-            ))}
-          </View>
-        )}
+            {acceptedAssignments.length > 0 && (
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Accepted</Text>
+                {acceptedAssignments.map((assignment) => (
+                  <AssignmentCard key={assignment.id} assignment={assignment} />
+                ))}
+              </View>
+            )}
 
-        {offeredAssignments.length === 0 && acceptedAssignments.length === 0 && (
-          <View style={styles.emptyState}>
-            <View style={styles.emptyIcon}>
-              <LinearGradient
-                colors={['rgba(255, 255, 255, 0.95)', 'rgba(255, 255, 255, 0.85)']}
-                style={styles.emptyIconGradient}
-              />
-              <Text style={styles.emptyIconText}>✓</Text>
-            </View>
-            <Text style={styles.emptyTitle}>No Pending Offers</Text>
-            <Text style={styles.emptySubtitle}>
-              New assignment offers will appear here
-            </Text>
-          </View>
-        )}
+            {offeredAssignments.length === 0 && acceptedAssignments.length === 0 && (
+              <View style={styles.emptyState}>
+                <View style={styles.emptyIcon}>
+                  <LinearGradient
+                    colors={['rgba(255, 255, 255, 0.95)', 'rgba(255, 255, 255, 0.85)']}
+                    style={styles.emptyIconGradient}
+                  />
+                  <Text style={styles.emptyIconText}>✓</Text>
+                </View>
+                <Text style={styles.emptyTitle}>No Pending Offers</Text>
+                <Text style={styles.emptySubtitle}>
+                  New assignment offers will appear here
+                </Text>
+              </View>
+            )}
 
-        {pastAssignments.length > 0 && (
-          <View style={[styles.section, { marginBottom: 0 }]}> 
-            <Text style={styles.sectionTitle}>Past Assignments</Text>
-            {pastAssignments.map((assignment) => (
-              <AssignmentCard key={assignment.id} assignment={assignment} />
-            ))}
-          </View>
-        )}
-      </ScrollView>
-      </SafeAreaView>
+            {pastAssignments.length > 0 && (
+              <View style={[styles.section, { marginBottom: 0 }]}>
+                <Text style={styles.sectionTitle}>Past Assignments</Text>
+                {pastAssignments.map((assignment) => (
+                  <AssignmentCard key={assignment.id} assignment={assignment} />
+                ))}
+              </View>
+            )}
+          </ScrollView>
+        </SafeAreaView>
       </ImageBackground>
     </View>
   );
