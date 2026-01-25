@@ -78,8 +78,9 @@ function FlightMapInner({ routes, height }: FlightMapInnerProps) {
       zoomControl={false}
       attributionControl={false}
     >
+      {/* Lighter dark tiles - better visibility */}
       <TileLayer
-        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png"
       />
 
       {routes.map((route, idx) => {
@@ -143,9 +144,17 @@ export const FlightMap = dynamic(
     height?: string
   }) => (
     <div className={`relative overflow-hidden rounded-2xl ${className}`} style={{ height }}>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/30 pointer-events-none z-10" />
       <FlightMapInner routes={routes} height={height} />
       <style jsx global>{`
+        .leaflet-container {
+          z-index: 0 !important;
+        }
+        .leaflet-pane {
+          z-index: 0 !important;
+        }
+        .leaflet-top, .leaflet-bottom {
+          z-index: 1 !important;
+        }
         .airport-label {
           background: rgba(0, 120, 210, 0.9) !important;
           border: 1px solid rgba(255, 255, 255, 0.3) !important;
