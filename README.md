@@ -1,8 +1,10 @@
 # Rerouted
 
-Rerouted is a crew-recovery simulation for airline disruptions. It combines an
-FAA constraint-aware, parallel tabu-search optimizer with an operations dashboard
-and a mobile application for employees. 
+Rerouted is a cloud-first crew-recovery simulation for airline disruptions. It
+combines an FAA constraint-aware, parallel tabu-search optimizer with an
+operations dashboard and a mobile application for employees. AWS Lambda is the
+primary compute path, with a compatible local process pool available for
+development and fallback operation.
 
 Data used in this implementation is from the Flight Engine API.
 
@@ -17,8 +19,13 @@ Synthetic operations data (JSON)
        v             v
 Read APIs       Job manager
                      |
-                     v
-            ProcessPoolExecutor
+              +------+------+
+              |             |
+              v             v
+         AWS Lambda     Local fallback
+         execution     process pool
+              |             |
+              +------+------+
                      |
                      v
           Independent tabu searches
@@ -31,11 +38,14 @@ Read APIs       Job manager
 ```
 
 The default large scenario contains 600 flights, 2,400 crew members, 2,400
-pairings, and 350 disruptions. All records are synthetic and deterministic.
+pairings, and 350 disruptions.
 
 ## Technical highlights
 
-- Independent tabu searches run across a configurable local process pool.
+- AWS Lambda provides the primary, deployment-oriented execution path for the
+  parallel search workload.
+- A compatible local process pool provides development parity and fallback
+  compute without requiring cloud infrastructure.
 - Workers use different random seeds and tabu tenures to diversify the search.
 - Candidate assignments enforce aircraft certification, crew status, rest,
   duty-time, flight-time, consecutive-duty-day, location, and role-composition
@@ -46,15 +56,15 @@ pairings, and 350 disruptions. All records are synthetic and deterministic.
   the original pairings.
 - The dashboard renders all production-sized resources with typed API clients,
   explicit failure states, filtering, and bounded pagination.
-- An optional AWS Lambda execution path uses the same optimizer and result
-  construction logic as local execution.
+- Cloud and local execution share the same optimizer and result-construction
+  logic, preventing environment-specific result semantics.
 
 ## Repository structure
 
 ```text
 backend/
   api/          FastAPI routes and schemas
-  cloud/        Optional Lambda client, handler, and deployment tooling
+  cloud/        Primary Lambda client, handler, and deployment tooling
   data/         JSON loading and large-scenario generation
   jobs/         In-memory optimization job lifecycle
   optimizer/    Constraints, moves, scoring, tabu search, and result reporting
@@ -90,6 +100,17 @@ On macOS or Linux, activate the environment with
 
 The API is available at `http://localhost:8000`; interactive OpenAPI
 documentation is available at `http://localhost:8000/docs`.
+
+Local compute is enabled by default for a zero-infrastructure setup. To use the
+primary AWS Lambda path, deploy the optimizer function and configure:
+
+```dotenv
+USE_CLOUD_COMPUTE=true
+AWS_REGION=us-east-1
+LAMBDA_FUNCTION_NAME=crew-optimizer
+```
+
+The API contract and dashboard workflow remain identical in either mode.
 
 ### 2. Start the manager dashboard
 
@@ -137,52 +158,3 @@ Example job request:
   "priority": "balanced"
 }
 ```
-
-## Verification
-
-Backend regression tests:
-
-```powershell
-cd backend
-python -m unittest discover -s tests -v
-```
-
-Manager dashboard:
-
-```powershell
-cd frontend/manager-dashboard
-npm run lint
-npm run typecheck
-npm run build
-```
-
-Mobile type check:
-
-```powershell
-cd frontend/crew-mobile
-npx tsc --noEmit
-```
-
-Generated-data constraints:
-
-```powershell
-cd data
-npm ci
-npm run validate
-```
-
-The validator checks minimum connection time, maximum duty time, aircraft type
-ratings, and rest-window consistency.
-
-## Modeling scope and limitations
-
-Rerouted is a simulation, not an airline dispatch or regulatory-compliance
-system. Its rules intentionally simplify real collective bargaining agreements,
-aircraft staffing, deadheading, time zones, schedule overlap, and the complete
-FAA regulatory framework. Jobs and results are held in memory and are lost when
-the API restarts. Authentication, durable storage, notifications, and the mobile
-publishing workflow are outside the current implementation.
-
-These boundaries are explicit so the repository can be evaluated on the system
-that is implemented: deterministic data generation, constrained local search,
-parallel orchestration, typed APIs, and an integrated inspection UI.

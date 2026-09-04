@@ -1,8 +1,9 @@
 # Rerouted backend
 
 The backend is a FastAPI service that loads deterministic airline-operation
-fixtures, exposes them to the manager dashboard, and runs parallel tabu-search
-jobs for crew recovery.
+fixtures, exposes them to the manager dashboard, and orchestrates parallel
+tabu-search jobs for crew recovery. AWS Lambda is the primary deployment path;
+a local process-pool runtime provides development parity and fallback compute.
 
 ## Run locally
 
@@ -16,17 +17,23 @@ cd backend
 uvicorn main:app --reload --port 8000
 ```
 
-Configuration is read from `backend/.env`. Copy `.env.example` to `.env` and
-set `USE_CLOUD_COMPUTE=true` only when a compatible Lambda function has been
-deployed.
+Configuration is read from `backend/.env`. Copy `.env.example` to `.env`. The
+local fallback works without cloud infrastructure; configure the following
+values to use the primary Lambda execution path:
+
+```dotenv
+USE_CLOUD_COMPUTE=true
+AWS_REGION=us-east-1
+LAMBDA_FUNCTION_NAME=crew-optimizer
+```
 
 ## Optimization lifecycle
 
 1. `POST /api/jobs` creates an in-memory job.
 2. A FastAPI background task loads the cached scenario.
-3. Local mode starts independent searches with `ProcessPoolExecutor`; Lambda
-   mode invokes the configured function synchronously.
-4. Each local worker uses a distinct seed and tabu tenure.
+3. Cloud mode invokes the configured AWS Lambda function synchronously; local
+   fallback mode starts the same searches with `ProcessPoolExecutor`.
+4. Each worker uses a distinct seed and tabu tenure.
 5. The lowest-scoring solution is selected.
 6. Reassignments are produced by diffing that solution against the original
    pairings, and coverage metrics are computed from the same assignment set.
