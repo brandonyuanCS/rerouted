@@ -1,13 +1,10 @@
 # Rerouted
 
-Rerouted is a crew-recovery simulation for airline disruptions. It combines a
-constraint-aware, parallel tabu-search optimizer with an operations dashboard
-and a companion mobile prototype.
+Rerouted is a crew-recovery simulation for airline disruptions. It combines an
+FAA constraint-aware, parallel tabu-search optimizer with an operations dashboard
+and a mobile application for employees. 
 
-The repository began as a TAMUhack project and has since been refactored to
-make the implementation reproducible and technically honest. The dashboard
-uses the optimizer's real selected solution and reports measured search work;
-it does not substitute fabricated reassignments or estimated savings.
+Data used in this implementation is from the Flight Engine API.
 
 ## System overview
 
