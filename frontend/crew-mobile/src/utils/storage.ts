@@ -1,9 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const KEYS = {
-  AUTH_TOKEN: '@crewsync_auth_token',
-  CREW_ID: '@crewsync_crew_id',
-  CREW_PROFILE: '@crewsync_crew_profile',
+  AUTH_TOKEN: '@rerouted_auth_token',
+  CREW_ID: '@rerouted_crew_id',
+  CREW_PROFILE: '@rerouted_crew_profile',
 };
 
 class StorageService {

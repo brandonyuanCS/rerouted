@@ -122,3 +122,20 @@ export async function getDisruptions() {
 
   return response.json();
 }
+
+/**
+ * Publish solution to crew mobile app
+ */
+export async function publishSolution(solution: OptimizationResult): Promise<{ success: boolean; message: string }> {
+  const response = await fetch(`${API_BASE}/publish`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(solution),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to publish solution: ${response.statusText}`);
+  }
+
+  return response.json();
+}

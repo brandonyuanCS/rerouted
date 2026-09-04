@@ -68,7 +68,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                 resizeMode="contain"
               />
             </View>
-            <Text style={styles.title}>rerouted</Text>
+            <Text style={styles.title}>Rerouted</Text>
             <Text style={styles.subtitle}>Crew Coordination System</Text>
           </View>
 

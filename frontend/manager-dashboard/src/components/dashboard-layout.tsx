@@ -85,60 +85,60 @@ function AppSidebar() {
 
   return (
     <Sidebar className="border-none p-3 bg-transparent">
-      <div 
+      <div
         className="liquid-glass-sidebar-inner h-full rounded-2xl overflow-hidden flex flex-col"
       >
-      <SidebarHeader className="p-4 relative z-10">
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-10 flex items-center justify-center">
-            <img src="/logo.png" alt="CrewSync Logo" className="h-10 w-10 object-contain" />
+        <SidebarHeader className="p-4 relative z-10">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 flex items-center justify-center">
+              <img src="/logo.png" alt="Rerouted Logo" className="h-10 w-10 object-contain rounded-lg" />
+            </div>
+            <div>
+              <h1 className="font-bold text-lg text-white drop-shadow-sm">Rerouted</h1>
+              <p className="text-xs text-white/70">Manager Dashboard</p>
+            </div>
           </div>
-          <div>
-            <h1 className="font-bold text-lg text-white drop-shadow-sm">CrewSync</h1>
-            <p className="text-xs text-white/70">Manager Dashboard</p>
+        </SidebarHeader>
+        <div className="px-4">
+          <Separator className="bg-white/30" />
+        </div>
+        <SidebarContent className="relative z-10 flex-1">
+          <SidebarGroup>
+            <SidebarGroupLabel className="text-white/80 text-xs uppercase tracking-wider">Navigation</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {menuItems.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={pathname === item.url}
+                      className="liquid-glass-nav-button hover:bg-white/20 data-[active=true]:bg-white/30 data-[active=true]:backdrop-blur-sm rounded-xl transition-all duration-300 text-white/90 hover:text-white border border-white/15 hover:border-white/30 data-[active=true]:border-white/40"
+                    >
+                      <Link href={item.url}>
+                        <item.icon className="h-4 w-4" />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter className="p-4 relative z-10">
+          <div className="px-0">
+            <Separator className="bg-white/30 mb-4" />
           </div>
-        </div>
-      </SidebarHeader>
-      <div className="px-4">
-        <Separator className="bg-white/30" />
-      </div>
-      <SidebarContent className="relative z-10 flex-1">
-        <SidebarGroup>
-          <SidebarGroupLabel className="text-white/80 text-xs uppercase tracking-wider">Navigation</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={pathname === item.url}
-                    className="liquid-glass-nav-button hover:bg-white/20 data-[active=true]:bg-white/30 data-[active=true]:backdrop-blur-sm rounded-xl transition-all duration-300 text-white/90 hover:text-white border border-white/15 hover:border-white/30 data-[active=true]:border-white/40"
-                  >
-                    <Link href={item.url}>
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-      <SidebarFooter className="p-4 relative z-10">
-        <div className="px-0">
-          <Separator className="bg-white/30 mb-4" />
-        </div>
-        <div className="flex items-center gap-3 p-2 rounded-xl bg-white/15 backdrop-blur-sm border border-white/25">
-          <Avatar className="border border-white/30">
-            <AvatarFallback className="bg-white/20 text-white font-semibold">JD</AvatarFallback>
-          </Avatar>
-          <div>
-            <p className="text-sm font-medium text-white">John Doe</p>
-            <p className="text-xs text-white/60">Operations Manager</p>
+          <div className="flex items-center gap-3 p-2 rounded-xl bg-white/15 backdrop-blur-sm border border-white/25">
+            <Avatar className="border border-white/30">
+              <AvatarFallback className="bg-white/20 text-white font-semibold">JD</AvatarFallback>
+            </Avatar>
+            <div>
+              <p className="text-sm font-medium text-white">John Doe</p>
+              <p className="text-xs text-white/60">Operations Manager</p>
+            </div>
           </div>
-        </div>
-      </SidebarFooter>
+        </SidebarFooter>
       </div>
     </Sidebar>
   );

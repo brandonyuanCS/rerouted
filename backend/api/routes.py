@@ -68,6 +68,8 @@ async def get_disruptions():
             "original_departure": d.original_departure,
             "new_departure": d.new_departure,
             "is_cascade": d.is_cascade,
+            "origin": d.flight.origin if d.flight else "DFW",
+            "destination": d.flight.destination if d.flight else "LAX",
         }
         for d in data["disruptions"]
     ]

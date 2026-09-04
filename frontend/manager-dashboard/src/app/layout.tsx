@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 import DashboardLayout from "@/components/dashboard-layout";
 
 export const metadata: Metadata = {
-  title: "CrewSync - Manager Dashboard",
+  title: "Rerouted - Manager Dashboard",
   description: "AI-powered crew coordination for American Airlines",
 };
 

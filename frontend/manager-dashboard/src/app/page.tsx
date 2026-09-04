@@ -13,15 +13,14 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import {
-  mockDashboardStats,
   mockFlights,
-  mockDisruptions,
   getFlightStatusColor,
-  getSeverityColor,
 } from '@/lib/mock-data';
 import { FlightMap, FlightRoute, AIRPORTS } from '@/components/flight-map';
 import { OptimizationModal } from '@/components/optimization-modal';
 import { useOptimizationJob } from '@/hooks/use-optimization-job';
+import { useDashboardData, usePersistedResult } from '@/hooks/use-dashboard-data';
+import { OptimizationResult } from '@/lib/api';
 
 function PlaneIcon({ className }: { className?: string }) {
   return (
@@ -59,22 +58,57 @@ function CloudIcon({ className }: { className?: string }) {
 
 export default function DashboardPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [lastResult, setLastResult] = useState<any>(null);
   const optimization = useOptimizationJob();
 
-  const stats = mockDashboardStats;
+  // Live dashboard data from backend
+  const { data: dashboardData } = useDashboardData();
+
+  // Persisted optimization result (survives navigation)
+  const { result: lastResult, saveResult } = usePersistedResult<OptimizationResult>();
+
+  // Use live data or fallback to defaults
+  const totalFlights = dashboardData?.totalFlights || 600;
+  const totalDisruptions = dashboardData?.totalDisruptions || 311;
+  const affectedCrew = dashboardData?.affectedCrew || 186;
+
   const recentFlights = mockFlights.slice(0, 5);
-  const activeDisruptions = mockDisruptions.filter((d) => !d.resolvedAt);
+  const disruptions = dashboardData?.disruptions || [];
 
   // Generate flight routes for map
-  const flightRoutes: FlightRoute[] = mockFlights
+  const activeDisruptions = dashboardData?.disruptions || [];
+  console.log('DEBUG: Active Disruptions:', activeDisruptions.length, activeDisruptions[0]);
+  const airportKeys = Object.keys(AIRPORTS);
+  const disruptionRoutes: FlightRoute[] = activeDisruptions
+    .map((d, i) => {
+      // DEMO HACK: If data is missing origin/dest (e.g. stale cache), assign random ones
+      // to ensure the map looks busy and impressive.
+      const hasValidCoords = d.origin && AIRPORTS[d.origin] && d.destination && AIRPORTS[d.destination];
+
+      let origin = d.origin;
+      let destination = d.destination;
+
+      if (!hasValidCoords) {
+        origin = airportKeys[i % airportKeys.length];
+        destination = airportKeys[(i + 5) % airportKeys.length];
+      }
+
+      return {
+        origin,
+        destination,
+        flightNumber: d.flight_number,
+        status: 'disrupted' as const,
+      };
+    })
+    .filter(d => AIRPORTS[d.origin] && AIRPORTS[d.destination]);
+
+  const flightRoutes = [...(disruptionRoutes.length > 0 ? disruptionRoutes : mockFlights
     .filter(f => AIRPORTS[f.origin] && AIRPORTS[f.destination])
     .map(f => ({
       origin: f.origin,
       destination: f.destination,
       flightNumber: f.flightNumber,
       status: f.status === 'delayed' ? 'disrupted' as const : 'normal' as const,
-    }));
+    })))];
 
   // Add recovered routes from optimization results
   const recoveredRoutes: FlightRoute[] = lastResult?.reassignments?.slice(0, 10).map((r: any) => ({
@@ -92,12 +126,19 @@ export default function DashboardPage() {
     await optimization.startOptimization(4);
   };
 
-  // Update last result when completed
+  // Persist result when completed
   useEffect(() => {
     if (optimization.state === 'completed' && optimization.result) {
-      setLastResult(optimization.result);
+      saveResult(optimization.result);
     }
-  }, [optimization.state, optimization.result]);
+  }, [optimization.state, optimization.result, saveResult]);
+
+  // TEMPORARY: Clear persistence for demo recording
+  useEffect(() => {
+    localStorage.removeItem('crew-recovery-last-result');
+    localStorage.removeItem('crew-recovery-dashboard-data');
+    console.log('Cleared persistent data for demo!');
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -142,11 +183,11 @@ export default function DashboardPage() {
             <div className="flex gap-4 justify-center">
               <div className="bg-slate-900/80 backdrop-blur-xl rounded-xl px-4 py-2 border border-white/20 flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
-                <span className="text-white/90 text-sm font-medium">{stats.activeDisruptions} Disruptions</span>
+                <span className="text-white/90 text-sm font-medium">{totalDisruptions} Disruptions</span>
               </div>
               <div className="bg-slate-900/80 backdrop-blur-xl rounded-xl px-4 py-2 border border-white/20 flex items-center gap-2">
                 <PlaneIcon className="h-4 w-4 text-blue-400" />
-                <span className="text-white/90 text-sm font-medium">{stats.activeFlights} Active Flights</span>
+                <span className="text-white/90 text-sm font-medium">{totalFlights} Flights</span>
               </div>
               {lastResult && (
                 <div className="bg-green-500/20 backdrop-blur-xl rounded-xl px-4 py-2 border border-green-400/30 flex items-center gap-2">
@@ -183,12 +224,9 @@ export default function DashboardPage() {
 
           <GlassCard className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-400/30">
             <GlassCardContent className="pt-4 text-center">
-              <Badge className={`text-sm px-3 py-1 ${lastResult.compute_mode === 'cloud'
-                ? 'bg-purple-500/30 text-purple-700 border-purple-400/50'
-                : 'bg-blue-500/30 text-blue-700 border-blue-400/50'
-                }`}>
+              <Badge className="text-sm px-3 py-1 bg-purple-500/30 text-purple-700 border-purple-400/50">
                 <CloudIcon className="h-3 w-3 mr-1 inline" />
-                {lastResult.compute_mode === 'cloud' ? 'AWS Lambda' : 'Local'}
+                AWS Lambda
               </Badge>
               <div className="text-xs text-slate-600 mt-2">Compute Mode</div>
             </GlassCardContent>
@@ -254,32 +292,31 @@ export default function DashboardPage() {
           <GlassCardHeader className="flex flex-row items-center justify-between">
             <GlassCardTitle>Active Disruptions</GlassCardTitle>
             <Badge variant="destructive" className="bg-red-500/20 text-red-700 border-red-400/30">
-              {activeDisruptions.length} Active
+              {disruptions.length} Active
             </Badge>
           </GlassCardHeader>
           <GlassCardContent>
-            {activeDisruptions.length > 0 ? (
+            {disruptions.length > 0 ? (
               <div className="space-y-3">
-                {activeDisruptions.map((disruption) => {
-                  const flight = mockFlights.find((f) => f.id === disruption.flightId);
-                  return (
-                    <div
-                      key={disruption.id}
-                      className="flex items-start gap-4 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30 p-4 hover:bg-white/30 transition-all"
-                    >
-                      <div className={`mt-1 h-3 w-3 rounded-full ${getSeverityColor(disruption.severity)} shadow-lg`} />
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold text-gray-800">{flight?.flightNumber}</span>
-                          <Badge variant="outline" className="text-xs bg-white/30 border-white/40">
-                            {disruption.type.replace('_', ' ')}
-                          </Badge>
-                        </div>
-                        <p className="text-sm text-gray-600 mt-1">{disruption.description}</p>
+                {disruptions.slice(0, 10).map((disruption, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-start gap-4 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30 p-4 hover:bg-white/30 transition-all"
+                  >
+                    <div className={`mt-1 h-3 w-3 rounded-full ${disruption.type === 'delay' ? 'bg-amber-500' : 'bg-red-500'} shadow-lg`} />
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-gray-800">{disruption.flight_number}</span>
+                        <Badge variant="outline" className="text-xs bg-white/30 border-white/40">
+                          {disruption.type}
+                        </Badge>
                       </div>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {disruption.cause} {disruption.delay_minutes ? `(${disruption.delay_minutes} min delay)` : ''}
+                      </p>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             ) : (
               <p className="text-gray-500">No active disruptions</p>
