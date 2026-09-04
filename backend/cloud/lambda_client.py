@@ -14,7 +14,7 @@ except ImportError:
     HAS_BOTO3 = False
     boto3 = None
 
-from optimizer.types import Crew, Flight, Pairing, Disruption, AffectedCrew
+from optimizer.types import Crew, Flight, Pairing, Disruption
 
 
 def serialize_crew(crew: list[Crew]) -> list[dict]:
@@ -92,26 +92,11 @@ def serialize_disruptions(disruptions: list[Disruption]) -> list[dict]:
     ]
 
 
-def serialize_affected_crew(affected_crew: list[AffectedCrew]) -> list[dict]:
-    """Convert AffectedCrew objects to JSON-serializable dicts."""
-    return [
-        {
-            "crewId": ac.crew_id,
-            "originalPairing": ac.original_pairing,
-            "impact": ac.impact,
-            "currentLocation": ac.current_location,
-            "availableFrom": ac.available_from,
-        }
-        for ac in affected_crew
-    ]
-
-
 def invoke_lambda_optimizer(
     crew: list[Crew],
     flights: list[Flight],
     pairings: list[Pairing],
     disruptions: list[Disruption],
-    affected_crew: list[AffectedCrew] = None,
     num_workers: int = 8,
     timeout_seconds: float = 30.0,
 ) -> dict:
@@ -133,7 +118,6 @@ def invoke_lambda_optimizer(
         "flights": serialize_flights(flights),
         "pairings": serialize_pairings(pairings),
         "disruptions": serialize_disruptions(disruptions),
-        "affected_crew": serialize_affected_crew(affected_crew or []),
         "config": {
             "num_workers": num_workers,
             "timeout_seconds": timeout_seconds,

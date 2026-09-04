@@ -59,26 +59,41 @@ async def get_data_summary():
 async def get_disruptions():
     """Get list of disruptions."""
     data = get_data()
-    return [
-        {
-            "flight_number": d.flight_number,
-            "type": d.type.value,
-            "cause": d.cause.value,
-            "delay_minutes": d.delay_minutes,
-            "original_departure": d.original_departure,
-            "new_departure": d.new_departure,
-            "is_cascade": d.is_cascade,
-            "origin": d.flight.origin if d.flight else "DFW",
-            "destination": d.flight.destination if d.flight else "LAX",
-        }
-        for d in data["disruptions"]
-    ]
+    flights_by_number = {
+        flight.flight_number: flight for flight in data["flights"]
+    }
+
+    disruptions = []
+    for disruption in data["disruptions"]:
+        flight = flights_by_number.get(disruption.flight_number)
+        disruptions.append({
+            "flight_number": disruption.flight_number,
+            "type": disruption.type.value,
+            "cause": disruption.cause.value,
+            "delay_minutes": disruption.delay_minutes,
+            "original_departure": disruption.original_departure,
+            "new_departure": disruption.new_departure,
+            "is_cascade": disruption.is_cascade,
+            "origin": flight.origin if flight else "",
+            "destination": flight.destination if flight else "",
+        })
+
+    return disruptions
 
 
 @router.get("/data/flights")
 async def get_flights():
     """Get list of flights."""
     data = get_data()
+    disruptions_by_flight = {
+        disruption.flight_number: disruption
+        for disruption in data["disruptions"]
+    }
+    crew_by_flight: dict[str, set[str]] = {}
+    for pairing in data["pairings"]:
+        for flight_number in pairing.flights:
+            crew_by_flight.setdefault(flight_number, set()).add(pairing.crew_id)
+
     return [
         {
             "flight_number": f.flight_number,
@@ -86,9 +101,71 @@ async def get_flights():
             "destination": f.destination,
             "aircraft": f.aircraft,
             "scheduled_departure": f.scheduled_departure,
+            "scheduled_arrival": f.scheduled_arrival,
             "duration": f.duration,
+            "distance": f.distance,
+            "passenger_capacity": f.typical_passenger_count,
+            "assigned_crew": len(crew_by_flight.get(f.flight_number, set())),
+            "disruption_type": (
+                disruptions_by_flight[f.flight_number].type.value
+                if f.flight_number in disruptions_by_flight else None
+            ),
+            "delay_minutes": (
+                disruptions_by_flight[f.flight_number].delay_minutes
+                if f.flight_number in disruptions_by_flight else None
+            ),
         }
         for f in data["flights"]
+    ]
+
+
+@router.get("/data/crew")
+async def get_crew():
+    """Get the crew roster used by the current optimization dataset."""
+    data = get_data()
+    return [
+        {
+            "crew_id": crew.crew_id,
+            "name": crew.name,
+            "role": crew.role.value,
+            "status": crew.status.value,
+            "home_base": crew.home_base,
+            "current_location": crew.current_location,
+            "certifications": crew.certifications,
+            "duty_time_today": crew.duty_time_today,
+            "flight_time_today": crew.flight_time_today,
+            "consecutive_duty_days": crew.consecutive_duty_days,
+        }
+        for crew in data["crew"]
+    ]
+
+
+@router.get("/data/pairings")
+async def get_pairings():
+    """Get active crew pairings with crew metadata."""
+    data = get_data()
+    crew_by_id = {crew.crew_id: crew for crew in data["crew"]}
+
+    return [
+        {
+            "pairing_id": pairing.pairing_id,
+            "crew_id": pairing.crew_id,
+            "crew_name": (
+                crew_by_id[pairing.crew_id].name
+                if pairing.crew_id in crew_by_id else "Unknown crew member"
+            ),
+            "crew_role": (
+                crew_by_id[pairing.crew_id].role.value
+                if pairing.crew_id in crew_by_id else "unknown"
+            ),
+            "flights": pairing.flights,
+            "duty_start": pairing.duty_start,
+            "duty_end": pairing.duty_end,
+            "total_flight_time": pairing.total_flight_time,
+            "total_duty_time": pairing.total_duty_time,
+            "returns_to_base": pairing.returns_to_base,
+        }
+        for pairing in data["pairings"]
     ]
 
 
@@ -184,7 +261,6 @@ async def run_optimization_job(job_id: str):
                     data["flights"],
                     data["pairings"],
                     data["disruptions"],
-                    affected_crew=data["affected_crew"],
                     num_workers=num_workers,
                     timeout_seconds=timeout,
                 )
@@ -194,7 +270,14 @@ async def run_optimization_job(job_id: str):
                 "message": f"Starting {num_workers} local parallel workers...",
                 "compute_mode": "local",
                 "workers_started": num_workers,
+                "workers_completed": 0,
+                "workers_total": num_workers,
+                "scenarios_evaluated": 0,
+                "iterations_completed": 0,
             })
+
+            def report_progress(progress: dict):
+                job_manager.update_progress(job_id, progress)
             
             # Run locally
             result = await asyncio.get_event_loop().run_in_executor(
@@ -204,14 +287,23 @@ async def run_optimization_job(job_id: str):
                     data["flights"],
                     data["pairings"],
                     data["disruptions"],
-                    affected_crew=data["affected_crew"],
                     num_workers=num_workers,
                     timeout_seconds=timeout,
+                    progress_callback=report_progress,
                 )
             )
         
         # Add compute mode to result
         result["compute_mode"] = "cloud" if use_cloud else "local"
+
+        job_manager.update_progress(job_id, {
+            "message": "Optimization complete",
+            "workers_completed": result["workers_used"],
+            "workers_total": result["workers_used"],
+            "scenarios_evaluated": result["total_scenarios_evaluated"],
+            "iterations_completed": result["total_iterations"],
+            "best_score": result["best_score"],
+        })
         
         job_manager.set_result(job_id, result)
         

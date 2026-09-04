@@ -1,7 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { publishSolution } from '@/lib/api';
+import {
+  CheckCircle2,
+  Cloud,
+  Cpu,
+  Download,
+  LoaderCircle,
+  RotateCcw,
+  TriangleAlert,
+} from 'lucide-react';
+
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -9,8 +19,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import {
   Table,
   TableBody,
@@ -19,15 +27,20 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { OptimizationResult } from '@/lib/api';
+import type { OptimizationResult } from '@/lib/api';
 
 interface OptimizationModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onRetry: () => void;
   state: 'running' | 'completed' | 'error';
   progress: {
     workersStarted: number;
+    workersCompleted: number;
+    workersTotal: number;
     scenariosEvaluated: number;
+    iterationsCompleted: number;
+    bestScore: number | null;
     message: string;
     computeMode: 'cloud' | 'local' | null;
   };
@@ -37,23 +50,14 @@ interface OptimizationModalProps {
   onReset: () => void;
 }
 
-// Rotating status messages for loading state
-const LOADING_MESSAGES = [
-  "Initializing optimization workers...",
-  "Analyzing crew availability...",
-  "Evaluating flight constraints...",
-  "Running parallel tabu search...",
-  "Exploring assignment scenarios...",
-  "Checking FAA duty time limits...",
-  "Optimizing for cost efficiency...",
-  "Comparing alternative solutions...",
-  "Validating crew certifications...",
-  "Finalizing best assignments...",
-];
+function formatScore(score: number | null | undefined): string {
+  return score == null ? '—' : score.toLocaleString(undefined, { maximumFractionDigits: 1 });
+}
 
 export function OptimizationModal({
   isOpen,
   onClose,
+  onRetry,
   state,
   progress,
   elapsedTime,
@@ -61,232 +65,218 @@ export function OptimizationModal({
   error,
   onReset,
 }: OptimizationModalProps) {
-  const [messageIndex, setMessageIndex] = useState(0);
-  const [progressPercent, setProgressPercent] = useState(0);
+  const workerTotal = Math.max(progress.workersTotal, progress.workersStarted, 1);
+  const progressPercent = state === 'completed'
+    ? 100
+    : Math.round((progress.workersCompleted / workerTotal) * 100);
 
-  // Rotate loading messages
-  useEffect(() => {
-    if (state !== 'running') return;
-
-    const interval = setInterval(() => {
-      setMessageIndex((prev) => (prev + 1) % LOADING_MESSAGES.length);
-    }, 2500);
-
-    return () => clearInterval(interval);
-  }, [state]);
-
-  // Animate progress bar (asymptotic approach to ~85%)
-  useEffect(() => {
-    if (state !== 'running') {
-      if (state === 'completed') setProgressPercent(100);
-      return;
-    }
-
-    const interval = setInterval(() => {
-      setProgressPercent((prev) => {
-        // Fast initial progress, then slow down as approaching 85%
-        const remaining = 85 - prev;
-        const increment = Math.max(remaining * 0.08, 0.5);
-        return Math.min(prev + increment, 85);
-      });
-    }, 300);
-
-    return () => clearInterval(interval);
-  }, [state]);
-
-  // Reset on close
   const handleClose = () => {
     onReset();
-    setMessageIndex(0);
-    setProgressPercent(0);
     onClose();
   };
 
+  const exportResult = () => {
+    if (!result) return;
+
+    const blob = new Blob([JSON.stringify(result, null, 2)], {
+      type: 'application/json',
+    });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `rerouted-optimization-${Date.now()}.json`;
+    anchor.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl bg-white border border-slate-200 shadow-2xl">
-        {/* Loading State */}
+    <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
+      <DialogContent className="max-h-[85vh] max-w-3xl overflow-y-auto border-slate-200 bg-white p-0 shadow-2xl">
         {state === 'running' && (
-          <>
+          <div className="p-6 sm:p-8">
             <DialogHeader>
-              <DialogTitle className="text-xl font-semibold text-slate-800 flex items-center gap-2">
-                <span className="inline-block animate-pulse">⚡</span>
-                Optimizing Crew Assignments
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+                <LoaderCircle className="h-5 w-5 animate-spin" aria-hidden="true" />
+              </div>
+              <DialogTitle className="text-xl font-semibold tracking-tight text-slate-950">
+                Optimizing crew assignments
               </DialogTitle>
-              <DialogDescription className="text-slate-500">
-                Running high-performance parallel search
+              <DialogDescription className="text-slate-600">
+                Running independent tabu-search workers and comparing feasible schedules.
               </DialogDescription>
             </DialogHeader>
 
-            <div className="py-6 space-y-6">
-              {/* Progress Bar */}
-              <div className="space-y-2">
-                <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-[#0078D2] rounded-full transition-all duration-300 ease-out"
-                    style={{ width: `${progressPercent}%` }}
-                  />
+            <div className="mt-8 space-y-7">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="font-medium text-slate-700">
+                    {progress.message || 'Preparing optimization workers'}
+                  </span>
+                  <span className="tabular-nums text-slate-500">{progressPercent}%</span>
                 </div>
-                <div className="flex justify-between text-xs text-slate-400">
-                  <span>{Math.round(progressPercent)}%</span>
-                  <span>{elapsedTime}s elapsed</span>
+                <div
+                  className="h-2 overflow-hidden rounded-full bg-slate-200"
+                  role="progressbar"
+                  aria-label="Optimization progress"
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-valuenow={progressPercent}
+                >
+                  {progress.workersCompleted === 0 ? (
+                    <div className="h-full w-1/3 animate-[progress-indeterminate_1.4s_ease-in-out_infinite] rounded-full bg-blue-700" />
+                  ) : (
+                    <div
+                      className="h-full rounded-full bg-blue-700 transition-[width] duration-500 ease-out"
+                      style={{ width: `${progressPercent}%` }}
+                    />
+                  )}
+                </div>
+                <div className="flex justify-between text-xs text-slate-500">
+                  <span>{progress.workersCompleted} of {workerTotal} workers complete</span>
+                  <span className="tabular-nums">{elapsedTime}s elapsed</span>
                 </div>
               </div>
 
-              {/* Status Message */}
-              <div className="text-center">
-                <p className="text-slate-600 font-medium transition-all duration-300">
-                  {LOADING_MESSAGES[messageIndex]}
-                </p>
-              </div>
+              <dl className="grid divide-y divide-slate-200 rounded-xl border border-slate-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                <div className="px-4 py-4">
+                  <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">Scenarios</dt>
+                  <dd className="mt-1 text-xl font-semibold tabular-nums text-slate-950">
+                    {progress.scenariosEvaluated.toLocaleString()}
+                  </dd>
+                </div>
+                <div className="px-4 py-4">
+                  <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">Iterations</dt>
+                  <dd className="mt-1 text-xl font-semibold tabular-nums text-slate-950">
+                    {progress.iterationsCompleted.toLocaleString()}
+                  </dd>
+                </div>
+                <div className="px-4 py-4">
+                  <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">Best score</dt>
+                  <dd className="mt-1 text-xl font-semibold tabular-nums text-slate-950">
+                    {formatScore(progress.bestScore)}
+                  </dd>
+                </div>
+              </dl>
 
-              {/* Stats Row */}
-              <div className="grid grid-cols-3 gap-4 pt-2">
-                <div className="text-center p-3 bg-slate-50 rounded-lg">
-                  <div className="text-2xl font-bold text-[#0078D2]">
-                    {progress.workersStarted || 4}
-                  </div>
-                  <div className="text-xs text-slate-500 mt-1">Workers</div>
-                </div>
-                <div className="text-center p-3 bg-slate-50 rounded-lg">
-                  <div className="text-2xl font-bold text-slate-700">
-                    {(progress.scenariosEvaluated || elapsedTime * 280).toLocaleString()}
-                  </div>
-                  <div className="text-xs text-slate-500 mt-1">Scenarios</div>
-                </div>
-                <div className="text-center p-4 bg-slate-50 rounded-lg">
-                  <Badge variant="outline" className="text-xs">
-                    ☁️ Cloud
-                  </Badge>
-                  <div className="text-xs text-slate-500 mt-2">Compute</div>
-                </div>
+              <div className="flex items-center gap-2 text-sm text-slate-600">
+                {progress.computeMode === 'cloud' ? (
+                  <Cloud className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Cpu className="h-4 w-4" aria-hidden="true" />
+                )}
+                <span>
+                  {progress.computeMode === 'cloud' ? 'AWS Lambda compute' : 'Local process pool'}
+                </span>
               </div>
             </div>
-          </>
+          </div>
         )}
 
-        {/* Completed State */}
         {state === 'completed' && result && (
-          <>
-            <DialogHeader>
-              <DialogTitle className="text-xl font-semibold text-slate-800 flex items-center gap-2">
-                ✓ Optimization Complete
-              </DialogTitle>
-              <DialogDescription className="text-slate-500">
-                Found optimal crew assignments in {elapsedTime} seconds
-              </DialogDescription>
-            </DialogHeader>
+          <div>
+            <div className="border-b border-slate-200 p-6 sm:p-8">
+              <DialogHeader>
+                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
+                  <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <DialogTitle className="text-xl font-semibold tracking-tight text-slate-950">
+                  Optimization complete
+                </DialogTitle>
+                <DialogDescription className="text-slate-600">
+                  Compared {result.total_scenarios_evaluated.toLocaleString()} candidate schedules in {elapsedTime} seconds.
+                </DialogDescription>
+              </DialogHeader>
 
-            <div className="py-4 space-y-5">
-              {/* Key Metrics */}
-              <div className="grid grid-cols-3 gap-3">
-                <div className="text-center p-4 bg-blue-50 rounded-xl border border-blue-100">
-                  <div className="text-2xl font-bold text-[#0078D2]">
-                    {result.total_scenarios_evaluated?.toLocaleString()}
-                  </div>
-                  <div className="text-xs text-slate-600 mt-1">Scenarios Evaluated</div>
+              <dl className="mt-7 grid divide-y divide-slate-200 rounded-xl border border-slate-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                <div className="px-4 py-4">
+                  <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">Best score</dt>
+                  <dd className="mt-1 text-xl font-semibold tabular-nums text-slate-950">{formatScore(result.best_score)}</dd>
                 </div>
-                <div className="text-center p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <div className="text-2xl font-bold text-slate-700">
-                    {result.workers_used}
-                  </div>
-                  <div className="text-xs text-slate-600 mt-1">Parallel Workers</div>
+                <div className="px-4 py-4">
+                  <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">Workers</dt>
+                  <dd className="mt-1 text-xl font-semibold tabular-nums text-slate-950">{result.workers_used}</dd>
                 </div>
-                <div className="text-center p-4 bg-green-50 rounded-xl border border-green-100">
-                  <div className="text-2xl font-bold text-green-600">
-                    {result.metrics?.crew_reassigned || 0}
-                  </div>
-                  <div className="text-xs text-slate-600 mt-1">Crew Reassigned</div>
+                <div className="px-4 py-4">
+                  <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">Reassignments</dt>
+                  <dd className="mt-1 text-xl font-semibold tabular-nums text-slate-950">{result.metrics?.crew_reassigned ?? 0}</dd>
                 </div>
-              </div>
+              </dl>
+            </div>
 
-              {/* Savings Highlight */}
-              {result.metrics && (
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-4 text-center">
-                  <div className="text-3xl font-bold text-green-600">
-                    ${(result.metrics.cost_savings_usd || 0).toLocaleString()}
+            <div className="space-y-6 p-6 sm:p-8">
+              {result.reassignments.length > 0 ? (
+                <section aria-labelledby="reassignments-heading">
+                  <div className="mb-3 flex items-center justify-between gap-4">
+                    <h3 id="reassignments-heading" className="font-medium text-slate-900">Recommended reassignments</h3>
+                    <Badge variant="secondary">{result.reassignments.length} changes</Badge>
                   </div>
-                  <div className="text-sm text-green-700 mt-1">
-                    Projected cost savings
-                  </div>
-                </div>
-              )}
-
-              {/* Reassignments Preview */}
-              {result.reassignments && result.reassignments.length > 0 && (
-                <div>
-                  <h4 className="text-sm font-medium text-slate-700 mb-2">
-                    Top Reassignments
-                  </h4>
-                  <div className="border border-slate-200 rounded-lg overflow-hidden">
+                  <div className="overflow-hidden rounded-xl border border-slate-200">
                     <Table>
                       <TableHeader>
-                        <TableRow className="bg-slate-50">
-                          <TableHead className="text-xs">Flight</TableHead>
-                          <TableHead className="text-xs">Crew</TableHead>
-                          <TableHead className="text-xs">Route</TableHead>
+                        <TableRow className="bg-slate-50 hover:bg-slate-50">
+                          <TableHead>Flight</TableHead>
+                          <TableHead>Crew member</TableHead>
+                          <TableHead>Positioning</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
-                        {result.reassignments.slice(0, 5).map((r, idx) => (
-                          <TableRow key={idx}>
-                            <TableCell className="font-mono text-sm text-[#0078D2]">
-                              {r.flight}
+                        {result.reassignments.slice(0, 6).map((reassignment) => (
+                          <TableRow key={`${reassignment.flight}-${reassignment.crew_id}`}>
+                            <TableCell className="font-mono font-medium text-blue-700">{reassignment.flight}</TableCell>
+                            <TableCell>
+                              <div className="font-medium text-slate-900">{reassignment.crew_name}</div>
+                              <div className="text-xs text-slate-500">{reassignment.crew_id}</div>
                             </TableCell>
-                            <TableCell className="text-sm text-slate-700">
-                              {r.crew_name}
-                            </TableCell>
-                            <TableCell className="text-sm text-slate-500">
-                              {r.from_location} → {r.to_location}
+                            <TableCell className="text-slate-600">
+                              {reassignment.from_location} → {reassignment.to_location}
                             </TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
                     </Table>
                   </div>
-                  {result.reassignments.length > 5 && (
-                    <p className="text-xs text-slate-400 mt-1 text-center">
-                      +{result.reassignments.length - 5} more reassignments
+                  {result.reassignments.length > 6 && (
+                    <p className="mt-2 text-sm text-slate-500">
+                      {result.reassignments.length - 6} additional changes are included in the export.
                     </p>
                   )}
-                </div>
+                </section>
+              ) : (
+                <p className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+                  The selected schedule did not require any crew reassignments.
+                </p>
               )}
 
-              {/* Actions */}
-              <div className="flex justify-end gap-3 pt-2">
-                <Button
-                  variant="outline"
-                  onClick={handleClose}
-                >
-                  Close
-                </Button>
-                <Button
-                  className="bg-[#0078D2] hover:bg-[#0066b3] text-white"
-                >
-                  Apply Changes
+              <div className="flex flex-col-reverse gap-3 border-t border-slate-200 pt-5 sm:flex-row sm:justify-end">
+                <Button variant="outline" onClick={handleClose}>Close</Button>
+                <Button onClick={exportResult} className="bg-blue-700 text-white hover:bg-blue-800">
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  Export result
                 </Button>
               </div>
             </div>
-          </>
+          </div>
         )}
 
-        {/* Error State */}
         {state === 'error' && (
-          <>
+          <div className="p-6 sm:p-8">
             <DialogHeader>
-              <DialogTitle className="text-xl font-semibold text-red-600">
-                Optimization Failed
-              </DialogTitle>
-              <DialogDescription className="text-slate-500">
-                {error || 'An unexpected error occurred'}
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-700">
+                <TriangleAlert className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <DialogTitle className="text-xl font-semibold text-slate-950">Optimization failed</DialogTitle>
+              <DialogDescription className="text-slate-600">
+                {error || 'The optimization job ended unexpectedly.'}
               </DialogDescription>
             </DialogHeader>
-            <div className="py-4">
-              <Button variant="outline" onClick={handleClose}>
-                Close
+            <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+              <Button variant="outline" onClick={handleClose}>Close</Button>
+              <Button onClick={onRetry} className="bg-blue-700 text-white hover:bg-blue-800">
+                <RotateCcw className="h-4 w-4" aria-hidden="true" />
+                Try again
               </Button>
             </div>
-          </>
+          </div>
         )}
       </DialogContent>
     </Dialog>

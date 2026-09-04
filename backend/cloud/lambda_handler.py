@@ -11,11 +11,11 @@ from typing import Any
 # Import optimizer modules (will be packaged with Lambda)
 from optimizer.types import (
     Crew, CrewRole, CrewStatus,
-    Flight, Pairing, Disruption, AffectedCrew,
+    Flight, Pairing, Disruption,
     DisruptionType, DisruptionCause,
 )
 from optimizer.search import tabu_search, TabuConfig
-from optimizer.demo import generate_demo_reassignments, compute_demo_metrics
+from optimizer.results import build_reassignments, compute_solution_metrics
 
 
 # Tabu tenures for worker diversity
@@ -97,20 +97,6 @@ def deserialize_disruptions(data: list[dict]) -> list[Disruption]:
     ]
 
 
-def deserialize_affected_crew(data: list[dict]) -> list[AffectedCrew]:
-    """Convert JSON affected crew data to AffectedCrew objects."""
-    return [
-        AffectedCrew(
-            crew_id=ac["crewId"],
-            original_pairing=ac["originalPairing"],
-            impact=ac["impact"],
-            current_location=ac["currentLocation"],
-            available_from=ac.get("availableFrom", ""),
-        )
-        for ac in data
-    ]
-
-
 def run_worker(args: tuple) -> dict:
     """Run a single tabu search worker."""
     crew, flights, pairings, disruptions, base_config, worker_id, sim_time = args
@@ -155,7 +141,6 @@ def handler(event: dict, context: Any) -> dict:
         "flights": [...],        # Raw JSON flight data
         "pairings": [...],       # Raw JSON pairing data
         "disruptions": [...],    # Raw JSON disruption data
-        "affected_crew": [...],  # Raw JSON affected crew data
         "config": {              # Optional config overrides
             "num_workers": 8,
             "timeout_seconds": 30.0
@@ -173,7 +158,6 @@ def handler(event: dict, context: Any) -> dict:
         flights = deserialize_flights(event["flights"])
         pairings = deserialize_pairings(event["pairings"])
         disruptions = deserialize_disruptions(event["disruptions"])
-        affected_crew = deserialize_affected_crew(event.get("affected_crew", []))
         
         # Simulation time (3PM gives 10+ hours since morning rest)
         sim_time = datetime(2026, 1, 24, 15, 0, 0)
@@ -216,17 +200,12 @@ def handler(event: dict, context: Any) -> dict:
         total_iterations = sum(r["iterations"] for r in results)
         total_moves = sum(r["moves_evaluated"] for r in results)
         
-        # Generate demo reassignments for dashboard
-        flights_by_number = {f.flight_number: f for f in flights}
-        crew_by_id = {c.crew_id: c for c in crew}
-        
-        demo_changes = []
-        demo_metrics = {}
-        if affected_crew:
-            demo_changes = generate_demo_reassignments(
-                disruptions, affected_crew, flights_by_number, crew_by_id
-            )
-            demo_metrics = compute_demo_metrics(demo_changes, disruptions)
+        reassignments = build_reassignments(
+            best["solution"], crew, flights, pairings, disruptions
+        )
+        metrics = compute_solution_metrics(
+            best["solution"], reassignments, crew, pairings, disruptions
+        )
         
         return {
             "statusCode": 200,
@@ -234,11 +213,11 @@ def handler(event: dict, context: Any) -> dict:
                 "best_solution": best["solution"],
                 "best_score": best["best_score"],
                 "best_worker_id": best["worker_id"],
-                "total_scenarios_evaluated": total_moves + total_iterations * 50,
+                "total_scenarios_evaluated": total_moves,
                 "total_iterations": total_iterations,
-                "workers_used": num_workers,
-                "reassignments": demo_changes,
-                "metrics": demo_metrics,
+                "workers_used": len(results),
+                "reassignments": reassignments,
+                "metrics": metrics,
                 "per_worker_results": [
                     {
                         "worker_id": r["worker_id"],
@@ -275,7 +254,6 @@ if __name__ == "__main__":
         "flights": [],
         "pairings": [],
         "disruptions": [],
-        "affected_crew": [],
         "config": {"num_workers": 2, "timeout_seconds": 5.0}
     }
     

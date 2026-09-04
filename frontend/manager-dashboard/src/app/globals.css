@@ -3,6 +3,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes progress-indeterminate {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(310%);
+  }
+}
+
 /* Satoshi Font */
 .font-satoshi {
   font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -126,7 +135,9 @@
   }
   body {
     @apply text-foreground;
-    background: linear-gradient(135deg, rgba(0, 120, 210, 0.4) 0%, rgba(0, 100, 180, 0.35) 50%, rgba(0, 80, 160, 0.4) 100%) !important;
+    background:
+      radial-gradient(circle at top right, rgba(0, 120, 210, 0.09), transparent 32rem),
+      #f4f7fa !important;
     background-attachment: fixed !important;
     min-height: 100vh;
   }
@@ -145,114 +156,50 @@
 .liquid-glass {
   position: relative;
   overflow: hidden;
-  background: rgba(30, 41, 59, 0.15);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.12),
-    0 0 20px rgba(255, 255, 255, 0.15),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-    inset 0 0 20px rgba(255, 255, 255, 0.1),
-    inset 2px 2px 8px rgba(255, 255, 255, 0.2),
-    inset -2px -2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .liquid-glass::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0.15) 40%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 .liquid-glass::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 1) 50%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 2;
+  display: none;
 }
 
 .liquid-glass:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.15),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
-    inset 2px 2px 6px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 3px rgba(0, 0, 0, 0.05);
+  border-color: rgba(100, 116, 139, 0.35);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.09);
 }
 
 .liquid-glass-card {
   position: relative;
   overflow: hidden;
-  background: rgba(30, 41, 59, 0.12);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 1.5rem;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    0 0 15px rgba(255, 255, 255, 0.12),
-    inset 0 0 15px rgba(255, 255, 255, 0.08),
-    inset 2px 2px 8px rgba(255, 255, 255, 0.15),
-    inset -2px -2px 8px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 1rem;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .liquid-glass-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.02) 100%
-  );
-  pointer-events: none;
-  border-radius: inherit;
+  display: none;
 }
 
 .liquid-glass-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    transparent 100%
-  );
-  pointer-events: none;
-  border-radius: inherit;
+  display: none;
 }
 
 .liquid-glass-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 
-    0 16px 48px rgba(0, 0, 0, 0.12),
-    inset 2px 2px 6px rgba(255, 255, 255, 0.4),
-    inset -1px -1px 3px rgba(0, 0, 0, 0.05);
+  border-color: rgba(100, 116, 139, 0.4);
+  box-shadow: 0 7px 22px rgba(15, 23, 42, 0.08);
 }
 
 .liquid-glass-sidebar {
@@ -267,57 +214,18 @@
 .liquid-glass-sidebar-inner {
   position: relative;
   overflow: hidden;
-  background: rgba(0, 60, 120, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  border-radius: 1.5rem;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.15),
-    0 0 30px rgba(255, 255, 255, 0.2),
-    0 0 60px rgba(255, 255, 255, 0.1),
-    inset 0 0 30px rgba(255, 255, 255, 0.15),
-    inset 2px 2px 15px rgba(255, 255, 255, 0.2),
-    inset -2px -2px 15px rgba(0, 0, 0, 0.1);
+  background: #0f2740;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
 }
 
 .liquid-glass-sidebar-inner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.1) 20%,
-    rgba(255, 255, 255, 0.03) 100%
-  );
-  pointer-events: none;
-  border-radius: inherit;
+  display: none;
 }
 
 .liquid-glass-sidebar-inner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 1px solid transparent;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0.2) 20%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.2) 80%,
-    rgba(255, 255, 255, 0.4) 100%
-  ) border-box;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) padding-box, 
-    linear-gradient(#fff 0 0);
-  mask: 
-    linear-gradient(#fff 0 0) padding-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  display: none;
 }
 
 .liquid-glass-nav-button {
@@ -358,12 +266,11 @@
   box-shadow: 
     0 4px 16px rgba(0, 0, 0, 0.1),
     inset 1px 1px 2px rgba(255, 255, 255, 0.3);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .liquid-glass-button:hover {
   background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.02);
   box-shadow: 
     0 6px 20px rgba(0, 0, 0, 0.15),
     inset 1px 1px 3px rgba(255, 255, 255, 0.4);

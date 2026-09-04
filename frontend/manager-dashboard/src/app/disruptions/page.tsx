@@ -1,175 +1,49 @@
 'use client';
 
-import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
+import { useMemo, useState } from 'react';
+import { Search } from 'lucide-react';
+
+import { ResourceError, ResourceLoading } from '@/components/resource-state';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { mockDisruptions, mockFlights, getSeverityColor } from '@/lib/mock-data';
+import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { useApiResource } from '@/hooks/use-api-resource';
+import { getDisruptions } from '@/lib/api';
 
-function AlertIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-      <path d="M12 9v4" />
-      <path d="M12 17h.01" />
-    </svg>
-  );
-}
-
-function CheckIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
+const PAGE_SIZE = 50;
+const causeLabel = (cause: string) => cause.replaceAll('_', ' ');
 
 export default function DisruptionsPage() {
-  const activeDisruptions = mockDisruptions.filter((d) => !d.resolvedAt);
-  const resolvedDisruptions = mockDisruptions.filter((d) => d.resolvedAt);
+  const { data: disruptions, error, loading, refetch } = useApiResource(getDisruptions);
+  const [query, setQuery] = useState('');
+  const [type, setType] = useState('all');
+  const [page, setPage] = useState(1);
 
-  const severityCounts = {
-    critical: mockDisruptions.filter((d) => d.severity === 'critical' && !d.resolvedAt).length,
-    high: mockDisruptions.filter((d) => d.severity === 'high' && !d.resolvedAt).length,
-    medium: mockDisruptions.filter((d) => d.severity === 'medium' && !d.resolvedAt).length,
-    low: mockDisruptions.filter((d) => d.severity === 'low' && !d.resolvedAt).length,
+  const filtered = useMemo(() => (disruptions ?? []).filter((disruption) => {
+    const needle = query.trim().toLowerCase();
+    const matchesQuery = !needle || [disruption.flight_number, disruption.origin, disruption.destination, disruption.cause].some((value) => value.toLowerCase().includes(needle));
+    return matchesQuery && (type === 'all' || disruption.type === type);
+  }), [disruptions, query, type]);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const visibleDisruptions = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const counts = {
+    total: disruptions?.length ?? 0,
+    delays: disruptions?.filter((disruption) => disruption.type === 'delay').length ?? 0,
+    cancellations: disruptions?.filter((disruption) => disruption.type === 'cancellation').length ?? 0,
+    cascades: disruptions?.filter((disruption) => disruption.is_cascade).length ?? 0,
   };
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-slate-800">Disruptions</h1>
-        <p className="text-slate-600">Monitor and resolve operational disruptions</p>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-4">
-        <GlassCard className="border-red-200/50">
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Critical</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-red-600">{severityCounts.critical}</div>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard className="border-orange-200/50">
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">High</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-orange-600">{severityCounts.high}</div>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard className="border-yellow-200/50">
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Medium</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-yellow-600">{severityCounts.medium}</div>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Low</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-gray-600">{severityCounts.low}</div>
-          </GlassCardContent>
-        </GlassCard>
-      </div>
-
+      <header><h1 className="text-3xl font-semibold tracking-tight text-slate-950">Disruptions</h1><p className="mt-1 text-slate-600">Current operational impact across the network</p></header>
+      <GlassCard className="p-0"><dl className="grid divide-y divide-slate-200 sm:grid-cols-4 sm:divide-x sm:divide-y-0">{[['Total disruptions', counts.total], ['Delayed', counts.delays], ['Cancelled', counts.cancellations], ['Cascading', counts.cascades]].map(([label, value]) => <div key={label} className="px-6 py-5"><dt className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</dt><dd className="mt-1 text-2xl font-semibold tabular-nums text-slate-950">{value}</dd></div>)}</dl></GlassCard>
       <GlassCard>
-        <GlassCardHeader>
-          <GlassCardTitle className="flex items-center gap-2">
-            <AlertIcon className="h-5 w-5 text-red-500" />
-            Active Disruptions
-          </GlassCardTitle>
-        </GlassCardHeader>
-        <GlassCardContent>
-          {activeDisruptions.length > 0 ? (
-            <div className="space-y-4">
-              {activeDisruptions.map((disruption) => {
-                const flight = mockFlights.find((f) => f.id === disruption.flightId);
-                return (
-                  <div
-                    key={disruption.id}
-                    className="flex items-start gap-4 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30 p-4 hover:bg-white/30 transition-all"
-                  >
-                    <div className={`mt-1 h-3 w-3 rounded-full ${getSeverityColor(disruption.severity)} shadow-lg`} />
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="font-bold text-gray-800">{flight?.flightNumber}</span>
-                        <span className="text-gray-600">
-                          {flight?.origin} - {flight?.destination}
-                        </span>
-                        <Badge variant="outline" className="ml-2 bg-white/30 border-white/40">
-                          {disruption.type.replace('_', ' ')}
-                        </Badge>
-                        <Badge className={`${getSeverityColor(disruption.severity)} text-slate-800 liquid-glass-badge border-0`}>
-                          {disruption.severity}
-                        </Badge>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-2">{disruption.description}</p>
-                      <p className="text-xs text-gray-500">
-                        Reported: {new Date(disruption.createdAt).toLocaleString('en-US', {
-                          dateStyle: 'short',
-                          timeStyle: 'short',
-                        })}
-                      </p>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button size="sm" variant="outline" className="liquid-glass-button">
-                        Assign Crew
-                      </Button>
-                      <Button size="sm" className="liquid-glass-button bg-[#0078D2] text-slate-800 hover:bg-[#0078D2]/80">
-                        Resolve
-                      </Button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="py-8 text-center">
-              <CheckIcon className="h-12 w-12 mx-auto text-green-500 mb-2" />
-              <p className="text-gray-500">No active disruptions</p>
-            </div>
-          )}
-        </GlassCardContent>
+        <GlassCardHeader><div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"><div><GlassCardTitle>Operational events</GlassCardTitle><p className="mt-1 text-sm text-slate-500">{filtered.length.toLocaleString()} matching records</p></div><div className="flex flex-col gap-2 sm:flex-row"><div className="relative"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><Input aria-label="Search disruptions" placeholder="Flight, airport, or cause" value={query} onChange={(event) => { setQuery(event.target.value); setPage(1); }} className="bg-white pl-9 sm:w-64" /></div><Select value={type} onValueChange={(value) => { setType(value); setPage(1); }}><SelectTrigger className="bg-white sm:w-40"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All types</SelectItem><SelectItem value="delay">Delays</SelectItem><SelectItem value="cancellation">Cancellations</SelectItem></SelectContent></Select></div></div></GlassCardHeader>
+        <GlassCardContent>{loading && !disruptions ? <ResourceLoading label="Loading disruptions" /> : error && !disruptions ? <ResourceError message={error} onRetry={() => void refetch()} /> : <><div className="overflow-x-auto rounded-xl border border-slate-200"><Table><TableHeader><TableRow className="bg-slate-50 hover:bg-slate-50"><TableHead>Flight</TableHead><TableHead>Route</TableHead><TableHead>Type</TableHead><TableHead>Cause</TableHead><TableHead>Delay</TableHead><TableHead>Departure</TableHead><TableHead>Cascade</TableHead></TableRow></TableHeader><TableBody>{visibleDisruptions.map((disruption) => <TableRow key={disruption.flight_number} className="hover:bg-slate-50"><TableCell className="font-mono font-medium text-blue-700">{disruption.flight_number}</TableCell><TableCell>{disruption.origin} → {disruption.destination}</TableCell><TableCell><Badge variant="outline" className={disruption.type === 'cancellation' ? 'border-red-200 bg-red-50 text-red-800' : 'border-amber-200 bg-amber-50 text-amber-800'}>{disruption.type}</Badge></TableCell><TableCell className="capitalize">{causeLabel(disruption.cause)}</TableCell><TableCell className="tabular-nums">{disruption.delay_minutes == null ? '—' : `${disruption.delay_minutes} min`}</TableCell><TableCell className="tabular-nums">{disruption.original_departure.slice(11, 16) || disruption.original_departure.slice(0, 5)}</TableCell><TableCell>{disruption.is_cascade ? 'Yes' : 'No'}</TableCell></TableRow>)}</TableBody></Table></div><div className="mt-4 flex items-center justify-between text-sm text-slate-600"><span>Page {page} of {pageCount}</span><div className="flex gap-2"><Button variant="outline" size="sm" disabled={page === 1} onClick={() => setPage((current) => current - 1)}>Previous</Button><Button variant="outline" size="sm" disabled={page === pageCount} onClick={() => setPage((current) => current + 1)}>Next</Button></div></div></>}</GlassCardContent>
       </GlassCard>
-
-      {resolvedDisruptions.length > 0 && (
-        <GlassCard>
-          <GlassCardHeader>
-            <GlassCardTitle className="flex items-center gap-2">
-              <CheckIcon className="h-5 w-5 text-green-500" />
-              Recently Resolved
-            </GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="space-y-4">
-              {resolvedDisruptions.map((disruption) => {
-                const flight = mockFlights.find((f) => f.id === disruption.flightId);
-                return (
-                  <div
-                    key={disruption.id}
-                    className="flex items-start gap-4 rounded-2xl bg-green-500/10 backdrop-blur-sm border border-green-300/30 p-4"
-                  >
-                    <CheckIcon className="h-5 w-5 text-green-500 mt-0.5" />
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="font-bold text-gray-800">{flight?.flightNumber}</span>
-                        <Badge variant="outline" className="bg-white/30 border-white/40">
-                          {disruption.type.replace('_', ' ')}
-                        </Badge>
-                      </div>
-                      <p className="text-sm text-gray-600">{disruption.description}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </GlassCardContent>
-        </GlassCard>
-      )}
     </div>
   );
 }

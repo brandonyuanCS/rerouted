@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 // Vertex shader
@@ -111,7 +111,6 @@ export function GlassRefraction({
   const programRef = useRef<WebGLProgram | null>(null);
   const animationRef = useRef<number>(0);
   const mouseRef = useRef({ x: -1000, y: -1000 });
-  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     if (!enabled || !canvasRef.current || !containerRef.current) return;
@@ -253,11 +252,6 @@ export function GlassRefraction({
 
   const handleMouseLeave = () => {
     mouseRef.current = { x: -1000, y: -1000 };
-    setIsHovered(false);
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
   };
 
   return (
@@ -266,7 +260,6 @@ export function GlassRefraction({
       className={cn('relative overflow-hidden', className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onMouseEnter={handleMouseEnter}
     >
       {enabled && (
         <canvas

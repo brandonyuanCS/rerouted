@@ -4,3 +4,10 @@
 __pycache__/
 *.pyc
 *.pyo
+node_modules/
+.next/
+.expo/
+coverage/
+backend/job*.json
+backend/output.json
+backend/cloud/lambda_package.zip

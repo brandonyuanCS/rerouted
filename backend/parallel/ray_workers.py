@@ -5,15 +5,17 @@ Runs multiple independent searches with different configurations.
 
 import concurrent.futures
 from datetime import datetime
-from typing import Optional
-import os
+from typing import Callable, Optional
 
 from optimizer.types import (
-    Crew, Flight, Pairing, Disruption, AffectedCrew,
-    OptimizationResult, SearchStats, Solution,
+    Crew, Flight, Pairing, Disruption,
+    Solution,
 )
 from optimizer.search import tabu_search, TabuConfig
-from optimizer.demo import generate_demo_reassignments, compute_demo_metrics
+from optimizer.results import build_reassignments, compute_solution_metrics
+
+
+ProgressCallback = Callable[[dict], None]
 
 
 # Different tabu tenures for diversity
@@ -70,10 +72,10 @@ def run_parallel_optimization(
     flights: list[Flight],
     pairings: list[Pairing],
     disruptions: list[Disruption],
-    affected_crew: list[AffectedCrew] = None,
     num_workers: int = 8,
     timeout_seconds: float = 30.0,
     sim_time: Optional[datetime] = None,
+    progress_callback: Optional[ProgressCallback] = None,
 ) -> dict:
     """
     Launch parallel tabu searches and return best result.
@@ -97,6 +99,8 @@ def run_parallel_optimization(
     
     # Use ProcessPoolExecutor for parallel execution on Windows
     results = []
+    total_moves = 0
+    total_iterations = 0
     with concurrent.futures.ProcessPoolExecutor(max_workers=num_workers) as executor:
         # Submit all tasks
         futures = {executor.submit(run_worker_task, args): i for i, args in enumerate(worker_args)}
@@ -106,6 +110,22 @@ def run_parallel_optimization(
             try:
                 data = future.result()
                 results.append(data)
+                total_moves += data["moves_evaluated"]
+                total_iterations += data["iterations"]
+
+                if progress_callback:
+                    progress_callback({
+                        "message": (
+                            f"Completed {len(results)} of {num_workers} search workers"
+                        ),
+                        "workers_completed": len(results),
+                        "workers_total": num_workers,
+                        "scenarios_evaluated": total_moves,
+                        "iterations_completed": total_iterations,
+                        "best_score": min(
+                            result["best_score"] for result in results
+                        ),
+                    })
             except Exception as e:
                 print(f"Worker generated an exception: {e}")
     
@@ -115,31 +135,22 @@ def run_parallel_optimization(
     # Find best result
     best = min(results, key=lambda r: r["best_score"])
     
-    # Compute aggregates
-    total_iterations = sum(r["iterations"] for r in results)
-    total_moves = sum(r["moves_evaluated"] for r in results)
-    
-    # Generate demo reassignments for dashboard
-    flights_by_number = {f.flight_number: f for f in flights}
-    crew_by_id = {c.crew_id: c for c in crew}
-    
-    demo_changes = []
-    demo_metrics = {}
-    if affected_crew:
-        demo_changes = generate_demo_reassignments(
-            disruptions, affected_crew, flights_by_number, crew_by_id
-        )
-        demo_metrics = compute_demo_metrics(demo_changes, disruptions)
+    reassignments = build_reassignments(
+        best["solution"], crew, flights, pairings, disruptions
+    )
+    metrics = compute_solution_metrics(
+        best["solution"], reassignments, crew, pairings, disruptions
+    )
     
     return {
         "best_solution": best["solution"],
         "best_score": best["best_score"],
         "best_worker_id": best["worker_id"],
-        "total_scenarios_evaluated": total_moves + total_iterations * 50,  # Estimate
+        "total_scenarios_evaluated": total_moves,
         "total_iterations": total_iterations,
-        "workers_used": num_workers,
-        "reassignments": demo_changes,
-        "metrics": demo_metrics,
+        "workers_used": len(results),
+        "reassignments": reassignments,
+        "metrics": metrics,
         "per_worker_results": [
             {
                 "worker_id": r["worker_id"],

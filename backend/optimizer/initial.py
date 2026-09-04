@@ -39,6 +39,8 @@ def generate_initial_solution(
             if pairing.crew_id not in assignments[flight_num]:
                 assignments[flight_num].append(pairing.crew_id)
                 crew_states[pairing.crew_id].assigned_flights.append(flight_num)
+
+    original_assignments = copy.deepcopy(assignments)
     
     # Identify disrupted flights needing crew
     disrupted_flight_nums = {
@@ -53,6 +55,7 @@ def generate_initial_solution(
             unassigned.append(flight_num)
     
     # Greedy initial assignment for uncovered flights
+    initial_changes = []
     for flight_num in unassigned:
         flight = flights_by_number.get(flight_num)
         if not flight:
@@ -63,9 +66,22 @@ def generate_initial_solution(
             flight, crew_states, sim_time, assignments.get(flight_num, [])
         )
         
-        # Assign up to 5 crew (2 pilots + 3 FAs)
-        pilots_needed = 2
-        fas_needed = 3
+        current_states = [
+            crew_states[crew_id]
+            for crew_id in assignments.get(flight_num, [])
+            if crew_id in crew_states
+        ]
+        pilots_needed = max(
+            0,
+            2 - sum(state.role == CrewRole.PILOT for state in current_states),
+        )
+        fas_needed = max(
+            0,
+            3 - sum(
+                state.role == CrewRole.FLIGHT_ATTENDANT
+                for state in current_states
+            ),
+        )
         
         for crew_id in available:
             if pilots_needed == 0 and fas_needed == 0:
@@ -75,15 +91,25 @@ def generate_initial_solution(
             
             if state.role == CrewRole.PILOT and pilots_needed > 0:
                 _assign_crew(assignments, crew_states, flight_num, crew_id, flight)
+                initial_changes.append({
+                    "type": "reassign",
+                    "flight": flight_num,
+                    "crew_id": crew_id,
+                })
                 pilots_needed -= 1
             elif state.role == CrewRole.FLIGHT_ATTENDANT and fas_needed > 0:
                 _assign_crew(assignments, crew_states, flight_num, crew_id, flight)
+                initial_changes.append({
+                    "type": "reassign",
+                    "flight": flight_num,
+                    "crew_id": crew_id,
+                })
                 fas_needed -= 1
     
     # Recalculate unassigned
     final_unassigned = [
         f for f in disrupted_flight_nums
-        if len(assignments.get(f, [])) < 5
+        if not _has_required_roles(assignments.get(f, []), crew_states)
     ]
     
     return Solution(
@@ -91,9 +117,9 @@ def generate_initial_solution(
         crew_states=crew_states,
         objective=float("inf"),
         unassigned_flights=final_unassigned,
-        reassignment_count=0,
-        original_assignments=copy.deepcopy(assignments),  # Store original for diff
-        changes=[],
+        reassignment_count=len(initial_changes),
+        original_assignments=original_assignments,
+        changes=initial_changes,
     )
 
 
@@ -117,6 +143,23 @@ def _find_available_crew(
     
     # Sort by seniority (prefer less senior for reassignment)
     return available
+
+
+def _has_required_roles(
+    crew_ids: list[str],
+    crew_states: dict[str, CrewState],
+) -> bool:
+    """Return whether an assignment has two pilots and three flight attendants."""
+    pilots = sum(
+        1 for crew_id in crew_ids
+        if crew_states.get(crew_id) and crew_states[crew_id].role == CrewRole.PILOT
+    )
+    flight_attendants = sum(
+        1 for crew_id in crew_ids
+        if crew_states.get(crew_id)
+        and crew_states[crew_id].role == CrewRole.FLIGHT_ATTENDANT
+    )
+    return pilots >= 2 and flight_attendants >= 3
 
 
 def _assign_crew(

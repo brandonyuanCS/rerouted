@@ -22,7 +22,11 @@ export interface UseOptimizationJobReturn {
   error: string | null;
   progress: {
     workersStarted: number;
+    workersCompleted: number;
+    workersTotal: number;
     scenariosEvaluated: number;
+    iterationsCompleted: number;
+    bestScore: number | null;
     message: string;
     computeMode: 'cloud' | 'local' | null;
   };
@@ -123,7 +127,11 @@ export function useOptimizationJob(): UseOptimizationJobReturn {
 
   const progress = {
     workersStarted: job?.progress?.workers_started || 0,
+    workersCompleted: job?.progress?.workers_completed || 0,
+    workersTotal: job?.progress?.workers_total || job?.progress?.workers_started || 0,
     scenariosEvaluated: job?.progress?.scenarios_evaluated || 0,
+    iterationsCompleted: job?.progress?.iterations_completed || 0,
+    bestScore: job?.progress?.best_score ?? null,
     message: job?.progress?.message || '',
     computeMode: job?.progress?.compute_mode || null,
   };

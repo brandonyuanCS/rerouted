@@ -172,7 +172,6 @@ def test_invoke() -> None:
         "flights": [],
         "pairings": [],
         "disruptions": [],
-        "affected_crew": [],
         "config": {"num_workers": 2, "timeout_seconds": 5.0}
     }
     

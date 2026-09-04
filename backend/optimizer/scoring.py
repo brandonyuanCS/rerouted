@@ -3,7 +3,8 @@ Objective function for scoring solutions.
 Lower scores are better.
 """
 
-from optimizer.types import Solution, Disruption, DisruptionType, CrewState
+from optimizer.types import Solution, Disruption, DisruptionType
+from optimizer.constraints import has_minimum_crew
 
 
 # Penalty weights
@@ -36,8 +37,13 @@ def score_solution(
     }
     
     for flight_num in disrupted_flights:
-        assigned = solution.assignments.get(flight_num, [])
-        if len(assigned) < 5:  # Need 2 pilots + 3 FAs
+        assigned = [
+            solution.crew_states[crew_id]
+            for crew_id in solution.assignments.get(flight_num, [])
+            if crew_id in solution.crew_states
+        ]
+        flight = flights_by_number.get(flight_num)
+        if not flight or not has_minimum_crew(assigned, flight)[0]:
             score += PENALTY_UNASSIGNED_FLIGHT
     
     # 2. Delay penalties based on disruption severity
@@ -75,11 +81,21 @@ def calculate_improvement(old_score: float, new_score: float) -> float:
 
 def get_solution_metrics(
     solution: Solution,
-    disruptions: list[Disruption]
+    disruptions: list[Disruption],
+    flights_by_number: dict,
 ) -> dict:
     """Get human-readable metrics from a solution."""
     disrupted = {d.flight_number for d in disruptions if d.type == DisruptionType.DELAY}
-    covered = sum(1 for f in disrupted if len(solution.assignments.get(f, [])) >= 5)
+    covered = 0
+    for flight_number in disrupted:
+        flight = flights_by_number.get(flight_number)
+        assigned = [
+            solution.crew_states[crew_id]
+            for crew_id in solution.assignments.get(flight_number, [])
+            if crew_id in solution.crew_states
+        ]
+        if flight and has_minimum_crew(assigned, flight)[0]:
+            covered += 1
     
     return {
         "disrupted_flights": len(disrupted),

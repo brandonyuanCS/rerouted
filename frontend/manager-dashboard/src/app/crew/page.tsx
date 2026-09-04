@@ -1,260 +1,70 @@
 'use client';
 
-import { useState } from 'react';
-import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
+import { useMemo, useState } from 'react';
+import { Search } from 'lucide-react';
+
+import { ResourceError, ResourceLoading } from '@/components/resource-state';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
 import { Input } from '@/components/ui/input';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { mockCrew, getRoleLabel, getStatusColor } from '@/lib/mock-data';
-import { CrewMember } from '@/lib/types';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { useApiResource } from '@/hooks/use-api-resource';
+import { getCrew, type ApiCrewMember } from '@/lib/api';
 
-function SearchIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
-  );
-}
+const PAGE_SIZE = 50;
 
-function CrewDetailDialog({ crew }: { crew: CrewMember }) {
+const roleLabel = (role: ApiCrewMember['role']) => role === 'pilot' ? 'Pilot' : 'Flight attendant';
+const statusLabel = (status: ApiCrewMember['status']) => status.replace('_', ' ');
+const statusClasses = (status: ApiCrewMember['status']) => ({
+  available: 'border-emerald-200 bg-emerald-50 text-emerald-800',
+  on_duty: 'border-blue-200 bg-blue-50 text-blue-800',
+  resting: 'border-amber-200 bg-amber-50 text-amber-800',
+  day_off: 'border-slate-200 bg-slate-50 text-slate-700',
+}[status]);
+
+function CrewDetails({ crew }: { crew: ApiCrewMember }) {
   return (
-    <DialogContent className="max-w-md">
-      <DialogHeader>
-        <DialogTitle>
-          {crew.firstName} {crew.lastName}
-        </DialogTitle>
-        <DialogDescription>Employee ID: {crew.employeeId}</DialogDescription>
-      </DialogHeader>
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-sm text-muted-foreground">Role</p>
-            <p className="font-medium">{getRoleLabel(crew.role)}</p>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground">Status</p>
-            <Badge className={`${getStatusColor(crew.status)} text-slate-800`}>
-              {crew.status.replace('_', ' ')}
-            </Badge>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground">Base</p>
-            <p className="font-medium">{crew.base}</p>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground">Duty Hours Left</p>
-            <p className="font-medium">{crew.dutyHoursRemaining}h</p>
-          </div>
-        </div>
-        <div>
-          <p className="text-sm text-muted-foreground mb-2">Contact</p>
-          <p className="text-sm">{crew.phone}</p>
-          <p className="text-sm">{crew.email}</p>
-        </div>
-        <div>
-          <p className="text-sm text-muted-foreground mb-2">Certifications</p>
-          <div className="flex flex-wrap gap-1">
-            {crew.certifications.map((cert) => (
-              <Badge key={cert} variant="outline">
-                {cert}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </div>
+    <DialogContent className="max-w-lg">
+      <DialogHeader><DialogTitle>{crew.name}</DialogTitle><DialogDescription>{crew.crew_id} · {roleLabel(crew.role)}</DialogDescription></DialogHeader>
+      <dl className="grid grid-cols-2 gap-x-6 gap-y-5 text-sm">
+        <div><dt className="text-slate-500">Status</dt><dd className="mt-1"><Badge variant="outline" className={statusClasses(crew.status)}>{statusLabel(crew.status)}</Badge></dd></div>
+        <div><dt className="text-slate-500">Home base</dt><dd className="mt-1 font-medium">{crew.home_base}</dd></div>
+        <div><dt className="text-slate-500">Current location</dt><dd className="mt-1 font-medium">{crew.current_location}</dd></div>
+        <div><dt className="text-slate-500">Consecutive duty days</dt><dd className="mt-1 font-medium">{crew.consecutive_duty_days}</dd></div>
+        <div><dt className="text-slate-500">Duty today</dt><dd className="mt-1 font-medium">{(crew.duty_time_today / 60).toFixed(1)} hours</dd></div>
+        <div><dt className="text-slate-500">Flight time today</dt><dd className="mt-1 font-medium">{(crew.flight_time_today / 60).toFixed(1)} hours</dd></div>
+      </dl>
+      <div><p className="mb-2 text-sm text-slate-500">Aircraft certifications</p><div className="flex flex-wrap gap-2">{crew.certifications.map((certification) => <Badge key={certification} variant="secondary">{certification}</Badge>)}</div></div>
     </DialogContent>
   );
 }
 
 export default function CrewPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('all');
-  const [roleFilter, setRoleFilter] = useState<string>('all');
+  const { data: crew, error, loading, refetch } = useApiResource(getCrew);
+  const [query, setQuery] = useState('');
+  const [status, setStatus] = useState('all');
+  const [role, setRole] = useState('all');
+  const [page, setPage] = useState(1);
 
-  const filteredCrew = mockCrew.filter((crew) => {
-    const matchesSearch =
-      crew.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      crew.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      crew.employeeId.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesStatus = statusFilter === 'all' || crew.status === statusFilter;
-    const matchesRole = roleFilter === 'all' || crew.role === roleFilter;
-    return matchesSearch && matchesStatus && matchesRole;
-  });
-
-  const statusCounts = {
-    available: mockCrew.filter((c) => c.status === 'available').length,
-    on_duty: mockCrew.filter((c) => c.status === 'on_duty').length,
-    on_break: mockCrew.filter((c) => c.status === 'on_break').length,
-    off_duty: mockCrew.filter((c) => c.status === 'off_duty').length,
-    on_leave: mockCrew.filter((c) => c.status === 'on_leave').length,
-  };
+  const filtered = useMemo(() => (crew ?? []).filter((member) => {
+    const needle = query.trim().toLowerCase();
+    const matchesQuery = !needle || [member.name, member.crew_id, member.home_base, member.current_location].some((value) => value.toLowerCase().includes(needle));
+    return matchesQuery && (status === 'all' || member.status === status) && (role === 'all' || member.role === role);
+  }), [crew, query, role, status]);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const visibleCrew = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const counts = { total: crew?.length ?? 0, available: crew?.filter((member) => member.status === 'available').length ?? 0, onDuty: crew?.filter((member) => member.status === 'on_duty').length ?? 0, pilots: crew?.filter((member) => member.role === 'pilot').length ?? 0 };
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-slate-800">Crew Management</h1>
-        <p className="text-slate-600">View and manage crew members</p>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-5">
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Available</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-green-600">{statusCounts.available}</div>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">On Duty</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-blue-600">{statusCounts.on_duty}</div>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">On Break</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-yellow-600">{statusCounts.on_break}</div>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Off Duty</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-gray-600">{statusCounts.off_duty}</div>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">On Leave</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-purple-600">{statusCounts.on_leave}</div>
-          </GlassCardContent>
-        </GlassCard>
-      </div>
-
+      <header><h1 className="text-3xl font-semibold tracking-tight text-slate-950">Crew roster</h1><p className="mt-1 text-slate-600">Availability, duty utilization, and qualifications</p></header>
+      <GlassCard className="p-0"><dl className="grid divide-y divide-slate-200 sm:grid-cols-4 sm:divide-x sm:divide-y-0">{[['Total crew', counts.total], ['Available', counts.available], ['On duty', counts.onDuty], ['Pilots', counts.pilots]].map(([label, value]) => <div key={label} className="px-6 py-5"><dt className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</dt><dd className="mt-1 text-2xl font-semibold tabular-nums text-slate-950">{value}</dd></div>)}</dl></GlassCard>
       <GlassCard>
-        <GlassCardHeader>
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <GlassCardTitle>All Crew Members</GlassCardTitle>
-            <div className="flex flex-col gap-2 md:flex-row">
-              <div className="relative">
-                <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
-                <Input
-                  placeholder="Search by name or ID..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 w-full md:w-64 liquid-glass-input"
-                />
-              </div>
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full md:w-40 liquid-glass-input">
-                  <SelectValue placeholder="Status" />
-                </SelectTrigger>
-                <SelectContent className="liquid-glass-card border-white/30">
-                  <SelectItem value="all">All Status</SelectItem>
-                  <SelectItem value="available">Available</SelectItem>
-                  <SelectItem value="on_duty">On Duty</SelectItem>
-                  <SelectItem value="on_break">On Break</SelectItem>
-                  <SelectItem value="off_duty">Off Duty</SelectItem>
-                  <SelectItem value="on_leave">On Leave</SelectItem>
-                </SelectContent>
-              </Select>
-              <Select value={roleFilter} onValueChange={setRoleFilter}>
-                <SelectTrigger className="w-full md:w-40 liquid-glass-input">
-                  <SelectValue placeholder="Role" />
-                </SelectTrigger>
-                <SelectContent className="liquid-glass-card border-white/30">
-                  <SelectItem value="all">All Roles</SelectItem>
-                  <SelectItem value="pilot">Captain</SelectItem>
-                  <SelectItem value="first_officer">First Officer</SelectItem>
-                  <SelectItem value="lead_attendant">Lead Attendant</SelectItem>
-                  <SelectItem value="flight_attendant">Flight Attendant</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </GlassCardHeader>
-        <GlassCardContent>
-          <div className="rounded-xl overflow-hidden">
-            <Table>
-              <TableHeader>
-                <TableRow className="border-b border-white hover:bg-white/10">
-                  <TableHead className="text-gray-700">Employee ID</TableHead>
-                  <TableHead className="text-gray-700">Name</TableHead>
-                  <TableHead className="text-gray-700">Role</TableHead>
-                  <TableHead className="text-gray-700">Base</TableHead>
-                  <TableHead className="text-gray-700">Status</TableHead>
-                  <TableHead className="text-gray-700">Duty Hours</TableHead>
-                  <TableHead className="text-gray-700">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredCrew.map((crew) => (
-                  <TableRow key={crew.id} className="border-b border-white hover:bg-white/20 transition-colors">
-                    <TableCell className="font-mono text-gray-800">{crew.employeeId}</TableCell>
-                    <TableCell className="font-medium text-gray-800">
-                      {crew.firstName} {crew.lastName}
-                    </TableCell>
-                    <TableCell className="text-gray-700">{getRoleLabel(crew.role)}</TableCell>
-                    <TableCell className="text-gray-700">{crew.base}</TableCell>
-                    <TableCell>
-                      <Badge className={`${getStatusColor(crew.status)} text-slate-800 liquid-glass-badge border-0`}>
-                        {crew.status.replace('_', ' ')}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="text-gray-700">{crew.dutyHoursRemaining}h</TableCell>
-                    <TableCell>
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="sm" className="liquid-glass-button">
-                            View
-                          </Button>
-                        </DialogTrigger>
-                        <CrewDetailDialog crew={crew} />
-                      </Dialog>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-          {filteredCrew.length === 0 && (
-            <div className="py-8 text-center text-gray-500">
-              No crew members found matching your filters.
-            </div>
-          )}
-        </GlassCardContent>
+        <GlassCardHeader><div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between"><div><GlassCardTitle>Personnel</GlassCardTitle><p className="mt-1 text-sm text-slate-500">{filtered.length.toLocaleString()} matching records</p></div><div className="flex flex-col gap-2 sm:flex-row"><div className="relative"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><Input aria-label="Search crew" placeholder="Name, ID, or airport" value={query} onChange={(event) => { setQuery(event.target.value); setPage(1); }} className="bg-white pl-9 sm:w-64" /></div><Select value={status} onValueChange={(value) => { setStatus(value); setPage(1); }}><SelectTrigger className="bg-white sm:w-36"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All statuses</SelectItem><SelectItem value="available">Available</SelectItem><SelectItem value="on_duty">On duty</SelectItem><SelectItem value="resting">Resting</SelectItem><SelectItem value="day_off">Day off</SelectItem></SelectContent></Select><Select value={role} onValueChange={(value) => { setRole(value); setPage(1); }}><SelectTrigger className="bg-white sm:w-40"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All roles</SelectItem><SelectItem value="pilot">Pilot</SelectItem><SelectItem value="flightAttendant">Flight attendant</SelectItem></SelectContent></Select></div></div></GlassCardHeader>
+        <GlassCardContent>{loading && !crew ? <ResourceLoading label="Loading crew roster" /> : error && !crew ? <ResourceError message={error} onRetry={() => void refetch()} /> : <><div className="overflow-x-auto rounded-xl border border-slate-200"><Table><TableHeader><TableRow className="bg-slate-50 hover:bg-slate-50"><TableHead>Crew ID</TableHead><TableHead>Name</TableHead><TableHead>Role</TableHead><TableHead>Base</TableHead><TableHead>Location</TableHead><TableHead>Status</TableHead><TableHead>Duty today</TableHead><TableHead className="text-right">Details</TableHead></TableRow></TableHeader><TableBody>{visibleCrew.map((member) => <TableRow key={member.crew_id} className="hover:bg-slate-50"><TableCell className="font-mono text-blue-700">{member.crew_id}</TableCell><TableCell className="font-medium text-slate-900">{member.name}</TableCell><TableCell>{roleLabel(member.role)}</TableCell><TableCell>{member.home_base}</TableCell><TableCell>{member.current_location}</TableCell><TableCell><Badge variant="outline" className={statusClasses(member.status)}>{statusLabel(member.status)}</Badge></TableCell><TableCell className="tabular-nums">{(member.duty_time_today / 60).toFixed(1)}h</TableCell><TableCell className="text-right"><Dialog><DialogTrigger asChild><Button variant="ghost" size="sm">View</Button></DialogTrigger><CrewDetails crew={member} /></Dialog></TableCell></TableRow>)}</TableBody></Table></div><div className="mt-4 flex items-center justify-between text-sm text-slate-600"><span>Page {page} of {pageCount}</span><div className="flex gap-2"><Button variant="outline" size="sm" disabled={page === 1} onClick={() => setPage((current) => current - 1)}>Previous</Button><Button variant="outline" size="sm" disabled={page === pageCount} onClick={() => setPage((current) => current + 1)}>Next</Button></div></div></>}</GlassCardContent>
       </GlassCard>
     </div>
   );

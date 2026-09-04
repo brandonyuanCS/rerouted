@@ -6,9 +6,76 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
 export interface JobProgress {
   workers_started: number;
+  workers_completed?: number;
+  workers_total?: number;
   scenarios_evaluated: number;
+  iterations_completed?: number;
+  best_score?: number;
   message?: string;
   compute_mode?: 'cloud' | 'local';
+}
+
+export interface DataSummary {
+  total_flights: number;
+  total_crew: number;
+  total_pairings: number;
+  total_disruptions: number;
+  delays: number;
+  cancellations: number;
+  affected_crew: number;
+}
+
+export interface ApiDisruption {
+  flight_number: string;
+  type: 'delay' | 'cancellation';
+  cause: string;
+  delay_minutes: number | null;
+  original_departure: string;
+  new_departure: string | null;
+  is_cascade: boolean;
+  origin: string;
+  destination: string;
+}
+
+export interface ApiFlight {
+  flight_number: string;
+  origin: string;
+  destination: string;
+  aircraft: string;
+  scheduled_departure: string;
+  scheduled_arrival: string;
+  duration: number;
+  distance: number;
+  passenger_capacity: number;
+  assigned_crew: number;
+  disruption_type: 'delay' | 'cancellation' | null;
+  delay_minutes: number | null;
+}
+
+export interface ApiCrewMember {
+  crew_id: string;
+  name: string;
+  role: 'pilot' | 'flightAttendant';
+  status: 'available' | 'on_duty' | 'resting' | 'day_off';
+  home_base: string;
+  current_location: string;
+  certifications: string[];
+  duty_time_today: number;
+  flight_time_today: number;
+  consecutive_duty_days: number;
+}
+
+export interface ApiPairing {
+  pairing_id: string;
+  crew_id: string;
+  crew_name: string;
+  crew_role: 'pilot' | 'flightAttendant' | 'unknown';
+  flights: string[];
+  duty_start: string;
+  duty_end: string;
+  total_flight_time: number;
+  total_duty_time: number;
+  returns_to_base: boolean;
 }
 
 export interface PerWorkerResult {
@@ -33,10 +100,11 @@ export interface Reassignment {
 export interface OptimizationMetrics {
   total_disrupted_flights: number;
   flights_recovered: number;
+  covered_disrupted_flights: number;
+  uncovered_disrupted_flights: number;
+  coverage_rate: number;
   crew_reassigned: number;
   original_delay_minutes: number;
-  projected_delay_saved: number;
-  cost_savings_usd: number;
 }
 
 export interface OptimizationResult {
@@ -100,7 +168,7 @@ export async function getJobStatus(jobId: string): Promise<Job> {
 /**
  * Get data summary
  */
-export async function getDataSummary() {
+export async function getDataSummary(): Promise<DataSummary> {
   const response = await fetch(`${API_BASE}/data/summary`);
 
   if (!response.ok) {
@@ -113,7 +181,7 @@ export async function getDataSummary() {
 /**
  * Get disruptions list
  */
-export async function getDisruptions() {
+export async function getDisruptions(): Promise<ApiDisruption[]> {
   const response = await fetch(`${API_BASE}/data/disruptions`);
 
   if (!response.ok) {
@@ -123,18 +191,31 @@ export async function getDisruptions() {
   return response.json();
 }
 
-/**
- * Publish solution to crew mobile app
- */
-export async function publishSolution(solution: OptimizationResult): Promise<{ success: boolean; message: string }> {
-  const response = await fetch(`${API_BASE}/publish`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(solution),
-  });
+export async function getFlights(): Promise<ApiFlight[]> {
+  const response = await fetch(`${API_BASE}/data/flights`);
 
   if (!response.ok) {
-    throw new Error(`Failed to publish solution: ${response.statusText}`);
+    throw new Error(`Failed to get flights: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+export async function getCrew(): Promise<ApiCrewMember[]> {
+  const response = await fetch(`${API_BASE}/data/crew`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to get crew: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+export async function getPairings(): Promise<ApiPairing[]> {
+  const response = await fetch(`${API_BASE}/data/pairings`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to get pairings: ${response.statusText}`);
   }
 
   return response.json();

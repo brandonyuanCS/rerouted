@@ -12,7 +12,7 @@ from optimizer.types import (
     ReassignMove, SwapMove, RemoveMove, Move,
     DisruptionType, CrewRole,
 )
-from optimizer.constraints import is_assignment_legal, get_required_crew
+from optimizer.constraints import has_minimum_crew, is_assignment_legal
 
 
 def generate_neighborhood(
@@ -51,8 +51,13 @@ def generate_neighborhood(
             continue
         
         current_crew = solution.assignments.get(flight_num, [])
-        if len(current_crew) >= 5:
-            continue  # Already covered
+        current_states = [
+            solution.crew_states[crew_id]
+            for crew_id in current_crew
+            if crew_id in solution.crew_states
+        ]
+        if has_minimum_crew(current_states, flight)[0]:
+            continue
         
         # Find available crew at this location
         for crew_id, state in solution.crew_states.items():
@@ -128,16 +133,42 @@ def apply_move(
         objective=solution.objective,
         unassigned_flights=solution.unassigned_flights.copy(),
         reassignment_count=solution.reassignment_count,
+        original_assignments=copy.deepcopy(solution.original_assignments),
+        changes=copy.deepcopy(solution.changes),
     )
     
     if isinstance(move, ReassignMove):
         _apply_reassign(new_solution, move, flights_by_number)
+        _refresh_coverage(new_solution, move.flight_number, flights_by_number)
     elif isinstance(move, SwapMove):
         _apply_swap(new_solution, move, flights_by_number)
+        _refresh_coverage(new_solution, move.flight_a, flights_by_number)
+        _refresh_coverage(new_solution, move.flight_b, flights_by_number)
     elif isinstance(move, RemoveMove):
         _apply_remove(new_solution, move, flights_by_number)
+        _refresh_coverage(new_solution, move.flight_number, flights_by_number)
     
     return new_solution
+
+
+def _refresh_coverage(
+    solution: Solution,
+    flight_number: str,
+    flights_by_number: dict[str, Flight],
+) -> None:
+    """Keep the solution's uncovered-flight index consistent after a move."""
+    flight = flights_by_number.get(flight_number)
+    if not flight:
+        return
+
+    assigned = [
+        solution.crew_states[crew_id]
+        for crew_id in solution.assignments.get(flight_number, [])
+        if crew_id in solution.crew_states
+    ]
+    covered = has_minimum_crew(assigned, flight)[0]
+    if covered and flight_number in solution.unassigned_flights:
+        solution.unassigned_flights.remove(flight_number)
 
 
 def _apply_reassign(

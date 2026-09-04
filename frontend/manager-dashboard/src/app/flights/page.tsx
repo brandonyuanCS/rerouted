@@ -1,286 +1,111 @@
 'use client';
 
-import { useState } from 'react';
-import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
+import { useMemo, useState } from 'react';
+import { Search } from 'lucide-react';
+
+import { ResourceError, ResourceLoading } from '@/components/resource-state';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
 import { Input } from '@/components/ui/input';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { mockFlights, mockCrew, getFlightStatusColor } from '@/lib/mock-data';
-import { Flight } from '@/lib/types';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { useApiResource } from '@/hooks/use-api-resource';
+import { getFlights, type ApiFlight } from '@/lib/api';
 
-function SearchIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
-  );
+const PAGE_SIZE = 50;
+
+function formatTime(value: string): string {
+  if (value.includes('T')) {
+    return new Date(value).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  }
+  return value.slice(0, 5);
 }
 
-function FlightDetailDialog({ flight }: { flight: Flight }) {
-  const assignedCrew = flight.crewAssignments.map((assignment) => {
-    const crew = mockCrew.find((c) => c.id === assignment.crewMemberId);
-    return { ...assignment, crew };
-  });
+function getStatus(flight: ApiFlight): string {
+  return flight.disruption_type ?? 'scheduled';
+}
 
+function statusClasses(status: string): string {
+  if (status === 'cancellation') return 'border-red-200 bg-red-50 text-red-800';
+  if (status === 'delay') return 'border-amber-200 bg-amber-50 text-amber-800';
+  return 'border-slate-200 bg-slate-50 text-slate-700';
+}
+
+function FlightDetails({ flight }: { flight: ApiFlight }) {
+  const status = getStatus(flight);
   return (
     <DialogContent className="max-w-lg">
       <DialogHeader>
-        <DialogTitle>{flight.flightNumber}</DialogTitle>
-        <DialogDescription>
-          {flight.origin} to {flight.destination}
-        </DialogDescription>
+        <DialogTitle>{flight.flight_number}</DialogTitle>
+        <DialogDescription>{flight.origin} → {flight.destination}</DialogDescription>
       </DialogHeader>
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-sm text-muted-foreground">Status</p>
-            <Badge className={`${getFlightStatusColor(flight.status)} text-slate-800`}>
-              {flight.status.replace('_', ' ')}
-            </Badge>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground">Gate</p>
-            <p className="font-medium">{flight.gate || 'TBD'}</p>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground">Scheduled Departure</p>
-            <p className="font-medium">
-              {new Date(flight.scheduledDeparture).toLocaleString('en-US', {
-                dateStyle: 'short',
-                timeStyle: 'short',
-              })}
-            </p>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground">Scheduled Arrival</p>
-            <p className="font-medium">
-              {new Date(flight.scheduledArrival).toLocaleString('en-US', {
-                dateStyle: 'short',
-                timeStyle: 'short',
-              })}
-            </p>
-          </div>
-          <div className="col-span-2">
-            <p className="text-sm text-muted-foreground">Aircraft</p>
-            <p className="font-medium">{flight.aircraft}</p>
-          </div>
-        </div>
-        <div>
-          <p className="text-sm text-muted-foreground mb-2">Assigned Crew</p>
-          {assignedCrew.length > 0 ? (
-            <div className="space-y-2">
-              {assignedCrew.map((assignment) => (
-                <div
-                  key={assignment.id}
-                  className="flex items-center justify-between rounded-lg border p-3"
-                >
-                  <div>
-                    <p className="font-medium">
-                      {assignment.crew?.firstName} {assignment.crew?.lastName}
-                    </p>
-                    <p className="text-sm text-muted-foreground">{assignment.role}</p>
-                  </div>
-                  <Badge
-                    variant={assignment.status === 'confirmed' ? 'default' : 'outline'}
-                  >
-                    {assignment.status}
-                  </Badge>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-sm text-muted-foreground">No crew assigned yet</p>
-          )}
-        </div>
-      </div>
+      <dl className="grid grid-cols-2 gap-x-6 gap-y-5 text-sm">
+        <div><dt className="text-slate-500">Status</dt><dd className="mt-1"><Badge variant="outline" className={statusClasses(status)}>{status}</Badge></dd></div>
+        <div><dt className="text-slate-500">Aircraft</dt><dd className="mt-1 font-medium text-slate-900">{flight.aircraft}</dd></div>
+        <div><dt className="text-slate-500">Departure</dt><dd className="mt-1 font-medium text-slate-900">{formatTime(flight.scheduled_departure)}</dd></div>
+        <div><dt className="text-slate-500">Arrival</dt><dd className="mt-1 font-medium text-slate-900">{formatTime(flight.scheduled_arrival)}</dd></div>
+        <div><dt className="text-slate-500">Duration</dt><dd className="mt-1 font-medium text-slate-900">{flight.duration} minutes</dd></div>
+        <div><dt className="text-slate-500">Distance</dt><dd className="mt-1 font-medium text-slate-900">{flight.distance.toLocaleString()} miles</dd></div>
+        <div><dt className="text-slate-500">Assigned crew</dt><dd className="mt-1 font-medium text-slate-900">{flight.assigned_crew}</dd></div>
+        <div><dt className="text-slate-500">Capacity</dt><dd className="mt-1 font-medium text-slate-900">{flight.passenger_capacity}</dd></div>
+      </dl>
+      {flight.delay_minutes != null && <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">Current delay: {flight.delay_minutes} minutes</p>}
     </DialogContent>
   );
 }
 
 export default function FlightsPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const { data: flights, error, loading, refetch } = useApiResource(getFlights);
+  const [query, setQuery] = useState('');
+  const [status, setStatus] = useState('all');
+  const [page, setPage] = useState(1);
 
-  const filteredFlights = mockFlights.filter((flight) => {
-    const matchesSearch =
-      flight.flightNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      flight.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      flight.destination.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesStatus = statusFilter === 'all' || flight.status === statusFilter;
-    return matchesSearch && matchesStatus;
-  });
+  const filtered = useMemo(() => (flights ?? []).filter((flight) => {
+    const needle = query.trim().toLowerCase();
+    const matchesQuery = !needle || [flight.flight_number, flight.origin, flight.destination, flight.aircraft]
+      .some((value) => value.toLowerCase().includes(needle));
+    return matchesQuery && (status === 'all' || getStatus(flight) === status);
+  }), [flights, query, status]);
 
-  const statusCounts = {
-    scheduled: mockFlights.filter((f) => f.status === 'scheduled').length,
-    boarding: mockFlights.filter((f) => f.status === 'boarding').length,
-    in_air: mockFlights.filter((f) => f.status === 'in_air').length,
-    delayed: mockFlights.filter((f) => f.status === 'delayed').length,
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const visibleFlights = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const counts = {
+    total: flights?.length ?? 0,
+    delayed: flights?.filter((flight) => flight.disruption_type === 'delay').length ?? 0,
+    cancelled: flights?.filter((flight) => flight.disruption_type === 'cancellation').length ?? 0,
+    covered: flights?.filter((flight) => flight.assigned_crew >= 5).length ?? 0,
   };
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-slate-800">Flights</h1>
-        <p className="text-slate-600">Monitor and manage flight operations</p>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-4">
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Scheduled</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-gray-600">{statusCounts.scheduled}</div>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Boarding</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-blue-600">{statusCounts.boarding}</div>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">In Air</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-green-600">{statusCounts.in_air}</div>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Delayed</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-yellow-600">{statusCounts.delayed}</div>
-          </GlassCardContent>
-        </GlassCard>
-      </div>
-
+      <header><h1 className="text-3xl font-semibold tracking-tight text-slate-950">Flights</h1><p className="mt-1 text-slate-600">Live schedule coverage and disruption status</p></header>
+      <GlassCard className="p-0">
+        <dl className="grid divide-y divide-slate-200 sm:grid-cols-4 sm:divide-x sm:divide-y-0">
+          {[['Total flights', counts.total], ['Delayed', counts.delayed], ['Cancelled', counts.cancelled], ['Fully crewed', counts.covered]].map(([label, value]) => (
+            <div key={label} className="px-6 py-5"><dt className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</dt><dd className="mt-1 text-2xl font-semibold tabular-nums text-slate-950">{value}</dd></div>
+          ))}
+        </dl>
+      </GlassCard>
       <GlassCard>
         <GlassCardHeader>
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <GlassCardTitle>All Flights</GlassCardTitle>
-            <div className="flex flex-col gap-2 md:flex-row">
-              <div className="relative">
-                <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
-                <Input
-                  placeholder="Search flights..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 w-full md:w-64 liquid-glass-input"
-                />
-              </div>
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full md:w-40 liquid-glass-input">
-                  <SelectValue placeholder="Status" />
-                </SelectTrigger>
-                <SelectContent className="liquid-glass-card border-white/30">
-                  <SelectItem value="all">All Status</SelectItem>
-                  <SelectItem value="scheduled">Scheduled</SelectItem>
-                  <SelectItem value="boarding">Boarding</SelectItem>
-                  <SelectItem value="departed">Departed</SelectItem>
-                  <SelectItem value="in_air">In Air</SelectItem>
-                  <SelectItem value="landed">Landed</SelectItem>
-                  <SelectItem value="delayed">Delayed</SelectItem>
-                  <SelectItem value="cancelled">Cancelled</SelectItem>
-                </SelectContent>
-              </Select>
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div><GlassCardTitle>Flight schedule</GlassCardTitle><p className="mt-1 text-sm text-slate-500">{filtered.length.toLocaleString()} matching records</p></div>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <div className="relative"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><Input aria-label="Search flights" placeholder="Flight, airport, or aircraft" value={query} onChange={(event) => { setQuery(event.target.value); setPage(1); }} className="w-full bg-white pl-9 sm:w-64" /></div>
+              <Select value={status} onValueChange={(value) => { setStatus(value); setPage(1); }}><SelectTrigger className="w-full bg-white sm:w-40"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All statuses</SelectItem><SelectItem value="scheduled">Scheduled</SelectItem><SelectItem value="delay">Delayed</SelectItem><SelectItem value="cancellation">Cancelled</SelectItem></SelectContent></Select>
             </div>
           </div>
         </GlassCardHeader>
         <GlassCardContent>
-          <div className="rounded-xl overflow-hidden">
-            <Table>
-              <TableHeader>
-                <TableRow className="border-b border-white hover:bg-white/10">
-                  <TableHead className="text-gray-700">Flight</TableHead>
-                  <TableHead className="text-gray-700">Route</TableHead>
-                  <TableHead className="text-gray-700">Departure</TableHead>
-                  <TableHead className="text-gray-700">Arrival</TableHead>
-                  <TableHead className="text-gray-700">Gate</TableHead>
-                  <TableHead className="text-gray-700">Aircraft</TableHead>
-                  <TableHead className="text-gray-700">Status</TableHead>
-                  <TableHead className="text-gray-700">Crew</TableHead>
-                  <TableHead className="text-gray-700">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredFlights.map((flight) => (
-                  <TableRow key={flight.id} className="border-b border-white hover:bg-white/20 transition-colors">
-                    <TableCell className="font-medium text-gray-800">{flight.flightNumber}</TableCell>
-                    <TableCell className="text-gray-700">
-                      {flight.origin} - {flight.destination}
-                    </TableCell>
-                    <TableCell className="text-gray-700">
-                      {new Date(flight.scheduledDeparture).toLocaleTimeString('en-US', {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                      })}
-                    </TableCell>
-                    <TableCell className="text-gray-700">
-                      {new Date(flight.scheduledArrival).toLocaleTimeString('en-US', {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                      })}
-                    </TableCell>
-                    <TableCell className="text-gray-700">{flight.gate || '-'}</TableCell>
-                    <TableCell className="text-sm text-gray-700">{flight.aircraft}</TableCell>
-                    <TableCell>
-                      <Badge className={`${getFlightStatusColor(flight.status)} text-slate-800 liquid-glass-badge border-0`}>
-                        {flight.status.replace('_', ' ')}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant="outline" className="bg-white/30 border-white/40 text-gray-700">
-                        {flight.crewAssignments.length} assigned
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="sm" className="liquid-glass-button">
-                            Details
-                          </Button>
-                        </DialogTrigger>
-                        <FlightDetailDialog flight={flight} />
-                      </Dialog>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-          {filteredFlights.length === 0 && (
-            <div className="py-8 text-center text-gray-500">
-              No flights found matching your filters.
-            </div>
+          {loading && !flights ? <ResourceLoading label="Loading flight schedule" /> : error && !flights ? <ResourceError message={error} onRetry={() => void refetch()} /> : (
+            <>
+              <div className="overflow-x-auto rounded-xl border border-slate-200"><Table><TableHeader><TableRow className="bg-slate-50 hover:bg-slate-50"><TableHead>Flight</TableHead><TableHead>Route</TableHead><TableHead>Departure</TableHead><TableHead>Aircraft</TableHead><TableHead>Crew</TableHead><TableHead>Status</TableHead><TableHead className="text-right">Details</TableHead></TableRow></TableHeader><TableBody>
+                {visibleFlights.map((flight) => { const flightStatus = getStatus(flight); return <TableRow key={flight.flight_number} className="hover:bg-slate-50"><TableCell className="font-mono font-medium text-blue-700">{flight.flight_number}</TableCell><TableCell>{flight.origin} → {flight.destination}</TableCell><TableCell className="tabular-nums">{formatTime(flight.scheduled_departure)}</TableCell><TableCell>{flight.aircraft}</TableCell><TableCell>{flight.assigned_crew}/5</TableCell><TableCell><Badge variant="outline" className={statusClasses(flightStatus)}>{flightStatus}</Badge></TableCell><TableCell className="text-right"><Dialog><DialogTrigger asChild><Button variant="ghost" size="sm">View</Button></DialogTrigger><FlightDetails flight={flight} /></Dialog></TableCell></TableRow>; })}
+              </TableBody></Table></div>
+              <div className="mt-4 flex items-center justify-between text-sm text-slate-600"><span>Page {page} of {pageCount}</span><div className="flex gap-2"><Button variant="outline" size="sm" disabled={page === 1} onClick={() => setPage((current) => current - 1)}>Previous</Button><Button variant="outline" size="sm" disabled={page === pageCount} onClick={() => setPage((current) => current + 1)}>Next</Button></div></div>
+            </>
           )}
         </GlassCardContent>
       </GlassCard>

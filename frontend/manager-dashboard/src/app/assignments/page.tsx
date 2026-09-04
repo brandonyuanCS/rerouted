@@ -1,276 +1,48 @@
 'use client';
 
-import { useState } from 'react';
-import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
+import { useMemo, useState } from 'react';
+import { Search } from 'lucide-react';
+
+import { ResourceError, ResourceLoading } from '@/components/resource-state';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { mockFlights, mockCrew, getRoleLabel } from '@/lib/mock-data';
-import { CrewAssignment } from '@/lib/types';
+import { GlassCard, GlassCardContent, GlassCardHeader, GlassCardTitle } from '@/components/ui/glass-card';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { useApiResource } from '@/hooks/use-api-resource';
+import { getPairings } from '@/lib/api';
 
-function getAssignmentStatusColor(status: CrewAssignment['status']): string {
-  const colors: Record<CrewAssignment['status'], string> = {
-    pending: 'bg-yellow-500',
-    accepted: 'bg-blue-500',
-    declined: 'bg-red-500',
-    confirmed: 'bg-green-500',
-  };
-  return colors[status];
-}
-
-function CreateAssignmentDialog() {
-  const availableCrew = mockCrew.filter((c) => c.status === 'available');
-  const upcomingFlights = mockFlights.filter(
-    (f) => f.status === 'scheduled' || f.status === 'boarding'
-  );
-
-  return (
-    <DialogContent className="max-w-md">
-      <DialogHeader>
-        <DialogTitle>Create Assignment</DialogTitle>
-        <DialogDescription>Assign a crew member to a flight</DialogDescription>
-      </DialogHeader>
-      <div className="space-y-4">
-        <div>
-          <label className="text-sm font-medium">Select Flight</label>
-          <Select>
-            <SelectTrigger className="mt-1">
-              <SelectValue placeholder="Choose a flight" />
-            </SelectTrigger>
-            <SelectContent>
-              {upcomingFlights.map((flight) => (
-                <SelectItem key={flight.id} value={flight.id}>
-                  {flight.flightNumber} - {flight.origin} to {flight.destination}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div>
-          <label className="text-sm font-medium">Select Crew Member</label>
-          <Select>
-            <SelectTrigger className="mt-1">
-              <SelectValue placeholder="Choose crew member" />
-            </SelectTrigger>
-            <SelectContent>
-              {availableCrew.map((crew) => (
-                <SelectItem key={crew.id} value={crew.id}>
-                  {crew.firstName} {crew.lastName} - {getRoleLabel(crew.role)}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div>
-          <label className="text-sm font-medium">Role on Flight</label>
-          <Select>
-            <SelectTrigger className="mt-1">
-              <SelectValue placeholder="Choose role" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="captain">Captain</SelectItem>
-              <SelectItem value="first_officer">First Officer</SelectItem>
-              <SelectItem value="lead_attendant">Lead Attendant</SelectItem>
-              <SelectItem value="flight_attendant">Flight Attendant</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-      <DialogFooter>
-        <Button variant="outline">Cancel</Button>
-        <Button>Send Assignment</Button>
-      </DialogFooter>
-    </DialogContent>
-  );
-}
+const PAGE_SIZE = 50;
+const formatMinutes = (minutes: number) => `${Math.floor(minutes / 60)}h ${minutes % 60}m`;
 
 export default function AssignmentsPage() {
-  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const { data: pairings, error, loading, refetch } = useApiResource(getPairings);
+  const [query, setQuery] = useState('');
+  const [role, setRole] = useState('all');
+  const [page, setPage] = useState(1);
 
-  const allAssignments = mockFlights.flatMap((flight) =>
-    flight.crewAssignments.map((assignment) => ({
-      ...assignment,
-      flight,
-      crew: mockCrew.find((c) => c.id === assignment.crewMemberId),
-    }))
-  );
-
-  const filteredAssignments = allAssignments.filter((assignment) => {
-    return statusFilter === 'all' || assignment.status === statusFilter;
-  });
-
-  const statusCounts = {
-    pending: allAssignments.filter((a) => a.status === 'pending').length,
-    accepted: allAssignments.filter((a) => a.status === 'accepted').length,
-    confirmed: allAssignments.filter((a) => a.status === 'confirmed').length,
-    declined: allAssignments.filter((a) => a.status === 'declined').length,
+  const filtered = useMemo(() => (pairings ?? []).filter((pairing) => {
+    const needle = query.trim().toLowerCase();
+    const matchesQuery = !needle || [pairing.pairing_id, pairing.crew_id, pairing.crew_name, ...pairing.flights].some((value) => value.toLowerCase().includes(needle));
+    return matchesQuery && (role === 'all' || pairing.crew_role === role);
+  }), [pairings, query, role]);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const visiblePairings = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const totals = {
+    pairings: pairings?.length ?? 0,
+    legs: pairings?.reduce((sum, pairing) => sum + pairing.flights.length, 0) ?? 0,
+    dutyMinutes: pairings?.reduce((sum, pairing) => sum + pairing.total_duty_time, 0) ?? 0,
+    baseReturns: pairings?.filter((pairing) => pairing.returns_to_base).length ?? 0,
   };
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-slate-800">Assignments</h1>
-          <p className="text-slate-600">Manage crew flight assignments</p>
-        </div>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button className="liquid-glass-button bg-[#0078D2] text-slate-800 hover:bg-[#0078D2]/80">Create Assignment</Button>
-          </DialogTrigger>
-          <CreateAssignmentDialog />
-        </Dialog>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-4">
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Pending</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-yellow-600">{statusCounts.pending}</div>
-            <p className="text-xs text-gray-500">Awaiting response</p>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Accepted</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-blue-600">{statusCounts.accepted}</div>
-            <p className="text-xs text-gray-500">Needs confirmation</p>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Confirmed</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-green-600">{statusCounts.confirmed}</div>
-            <p className="text-xs text-gray-500">Ready for duty</p>
-          </GlassCardContent>
-        </GlassCard>
-        <GlassCard>
-          <GlassCardHeader className="pb-2">
-            <GlassCardTitle className="text-sm font-medium">Declined</GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <div className="text-2xl font-bold text-red-600">{statusCounts.declined}</div>
-            <p className="text-xs text-gray-500">Needs reassignment</p>
-          </GlassCardContent>
-        </GlassCard>
-      </div>
-
+      <header><h1 className="text-3xl font-semibold tracking-tight text-slate-950">Crew pairings</h1><p className="mt-1 text-slate-600">Current flight sequences and planned duty windows</p></header>
+      <GlassCard className="p-0"><dl className="grid divide-y divide-slate-200 sm:grid-cols-4 sm:divide-x sm:divide-y-0">{[['Pairings', totals.pairings.toLocaleString()], ['Assigned legs', totals.legs.toLocaleString()], ['Scheduled duty', formatMinutes(totals.dutyMinutes)], ['Return to base', totals.baseReturns.toLocaleString()]].map(([label, value]) => <div key={label} className="px-6 py-5"><dt className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</dt><dd className="mt-1 text-2xl font-semibold tabular-nums text-slate-950">{value}</dd></div>)}</dl></GlassCard>
       <GlassCard>
-        <GlassCardHeader>
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <GlassCardTitle>All Assignments</GlassCardTitle>
-            <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-full md:w-40 liquid-glass-input">
-                <SelectValue placeholder="Status" />
-              </SelectTrigger>
-              <SelectContent className="liquid-glass-card border-white/30">
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="pending">Pending</SelectItem>
-                <SelectItem value="accepted">Accepted</SelectItem>
-                <SelectItem value="confirmed">Confirmed</SelectItem>
-                <SelectItem value="declined">Declined</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </GlassCardHeader>
-        <GlassCardContent>
-          <div className="rounded-xl overflow-hidden">
-            <Table>
-              <TableHeader>
-                <TableRow className="border-b border-white hover:bg-white/10">
-                  <TableHead className="text-gray-700">Flight</TableHead>
-                  <TableHead className="text-gray-700">Route</TableHead>
-                  <TableHead className="text-gray-700">Crew Member</TableHead>
-                  <TableHead className="text-gray-700">Role</TableHead>
-                  <TableHead className="text-gray-700">Assigned</TableHead>
-                  <TableHead className="text-gray-700">Status</TableHead>
-                  <TableHead className="text-gray-700">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredAssignments.map((assignment) => (
-                  <TableRow key={assignment.id} className="border-b border-white hover:bg-white/20 transition-colors">
-                    <TableCell className="font-medium text-gray-800">
-                      {assignment.flight.flightNumber}
-                    </TableCell>
-                    <TableCell className="text-gray-700">
-                      {assignment.flight.origin} - {assignment.flight.destination}
-                    </TableCell>
-                    <TableCell className="text-gray-800">
-                      {assignment.crew?.firstName} {assignment.crew?.lastName}
-                    </TableCell>
-                    <TableCell className="text-gray-700">{assignment.role}</TableCell>
-                    <TableCell className="text-gray-700">
-                      {new Date(assignment.assignedAt).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                      })}
-                    </TableCell>
-                    <TableCell>
-                      <Badge className={`${getAssignmentStatusColor(assignment.status)} text-slate-800 liquid-glass-badge border-0`}>
-                        {assignment.status}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex gap-2">
-                        {assignment.status === 'accepted' && (
-                          <Button size="sm" variant="default" className="liquid-glass-button bg-[#0078D2] text-slate-800">
-                            Confirm
-                          </Button>
-                        )}
-                        {assignment.status === 'pending' && (
-                          <Button size="sm" variant="outline" className="liquid-glass-button">
-                            Resend
-                          </Button>
-                        )}
-                        {(assignment.status === 'declined' || assignment.status === 'pending') && (
-                          <Button size="sm" variant="destructive" className="liquid-glass-button bg-[#C30019] text-slate-800">
-                            Cancel
-                          </Button>
-                        )}
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-          {filteredAssignments.length === 0 && (
-            <div className="py-8 text-center text-gray-500">
-              No assignments found matching your filters.
-            </div>
-          )}
-        </GlassCardContent>
+        <GlassCardHeader><div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"><div><GlassCardTitle>Active pairings</GlassCardTitle><p className="mt-1 text-sm text-slate-500">{filtered.length.toLocaleString()} matching records</p></div><div className="flex flex-col gap-2 sm:flex-row"><div className="relative"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><Input aria-label="Search pairings" placeholder="Pairing, crew, or flight" value={query} onChange={(event) => { setQuery(event.target.value); setPage(1); }} className="bg-white pl-9 sm:w-64" /></div><Select value={role} onValueChange={(value) => { setRole(value); setPage(1); }}><SelectTrigger className="bg-white sm:w-40"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All roles</SelectItem><SelectItem value="pilot">Pilots</SelectItem><SelectItem value="flightAttendant">Flight attendants</SelectItem></SelectContent></Select></div></div></GlassCardHeader>
+        <GlassCardContent>{loading && !pairings ? <ResourceLoading label="Loading crew pairings" /> : error && !pairings ? <ResourceError message={error} onRetry={() => void refetch()} /> : <><div className="overflow-x-auto rounded-xl border border-slate-200"><Table><TableHeader><TableRow className="bg-slate-50 hover:bg-slate-50"><TableHead>Pairing</TableHead><TableHead>Crew member</TableHead><TableHead>Role</TableHead><TableHead>Flight sequence</TableHead><TableHead>Duty window</TableHead><TableHead>Duty time</TableHead><TableHead>Base return</TableHead></TableRow></TableHeader><TableBody>{visiblePairings.map((pairing) => <TableRow key={pairing.pairing_id} className="hover:bg-slate-50"><TableCell className="font-mono text-blue-700">{pairing.pairing_id}</TableCell><TableCell><div className="font-medium text-slate-900">{pairing.crew_name}</div><div className="font-mono text-xs text-slate-500">{pairing.crew_id}</div></TableCell><TableCell>{pairing.crew_role === 'flightAttendant' ? 'Flight attendant' : 'Pilot'}</TableCell><TableCell><div className="flex max-w-xs flex-wrap gap-1">{pairing.flights.map((flight) => <Badge key={flight} variant="secondary" className="font-mono font-normal">{flight}</Badge>)}</div></TableCell><TableCell className="whitespace-nowrap tabular-nums">{pairing.duty_start.slice(0, 5)}–{pairing.duty_end.slice(0, 5)}</TableCell><TableCell className="whitespace-nowrap tabular-nums">{formatMinutes(pairing.total_duty_time)}</TableCell><TableCell>{pairing.returns_to_base ? 'Yes' : 'No'}</TableCell></TableRow>)}</TableBody></Table></div><div className="mt-4 flex items-center justify-between text-sm text-slate-600"><span>Page {page} of {pageCount}</span><div className="flex gap-2"><Button variant="outline" size="sm" disabled={page === 1} onClick={() => setPage((current) => current - 1)}>Previous</Button><Button variant="outline" size="sm" disabled={page === pageCount} onClick={() => setPage((current) => current + 1)}>Next</Button></div></div></>}</GlassCardContent>
       </GlassCard>
     </div>
   );

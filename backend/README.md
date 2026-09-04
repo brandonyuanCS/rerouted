@@ -1,86 +1,56 @@
-# Backend - Crew Recovery Command Center
+# Rerouted backend
 
-## What It Does
-- Optimizes crew reassignments when flight disruptions occur
-- Uses parallel Tabu Search across 8 workers to explore 10,000+ scenarios
-- Returns top solution with metrics in 15-30 seconds
+The backend is a FastAPI service that loads deterministic airline-operation
+fixtures, exposes them to the manager dashboard, and runs parallel tabu-search
+jobs for crew recovery.
 
-## Algorithm: Tabu Search
-- Metaheuristic for NP-hard combinatorial optimization
-- Avoids cycling by maintaining a "tabu list" of recent moves
-- Aspiration criteria: override tabu if move produces best-ever solution
-- Neighborhood moves: REASSIGN (add crew), SWAP (exchange crew)
+## Run locally
 
-## Parallelization Strategy
-- Built-in `ProcessPoolExecutor` distributes work across CPU cores
-- Ensures compatibility with Python 3.13 on Windows
-- 8 independent search threads with varied tabu tenures (5, 7, 10, 12, 15)
+From the repository root:
 
-## Constraint Enforcement (FAA Regulations)
-- 14-hour max duty time
-- 8-hour max flight time
-- 10-hour minimum rest between duties
-- 6 consecutive duty days maximum
-- Aircraft type certification required
-- Crew must be at departure airport
-
-## Objective Function (Penalties)
-- 10,000 points per uncovered flight (can't operate)
-- 500 points for severe delays (>2 hrs)
-- 200 points for major delays (1-2 hrs)
-- 25 points per crew reassignment
-- 0.5 points per minute overtime (soft 12-hr limit)
-
-## API Endpoints
-- POST /api/jobs - Submit optimization job
-- GET /api/jobs/:id - Get job status and results
-- GET /api/data/summary - Data stats
-- GET /api/data/disruptions - List disruptions
-- GET /api/data/flights - List flights
-
-## Job Result Format
-```json
-{
-  "reassignments": [
-    {
-      "type": "reassign",
-      "flight": "AA1005",
-      "crew_id": "PLT050",
-      "crew_name": "William Wright",
-      "crew_role": "pilot",
-      "from_location": "DFW",
-      "to_location": "CLT",
-      "reason": "Delay on AA1005 (late_aircraft): 117min delay",
-      "action": "Reassigned William Wright (PLT050) to AA1005"
-    }
-  ],
-  "metrics": {
-    "total_disrupted_flights": 61,
-    "flights_recovered": 25,
-    "crew_reassigned": 25,
-    "original_delay_minutes": 4814,
-    "projected_delay_saved": 1684,
-    "cost_savings_usd": 662500
-  }
-}
-```
-
-## Data Scale
-- 276 flights
-- 1,014 crew members (405 pilots, 609 FAs)
-- 897 existing pairings
-- 69 disruptions (61 delays, 8 cancellations)
-- 307 affected crew members
-
-## Running
-```bash
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r backend/requirements.txt
 cd backend
-pip install -r requirements.txt
-python main.py
+uvicorn main:app --reload --port 8000
 ```
 
-## Tech Stack
-- Python 3.11+
-- FastAPI for REST API
-- ProcessPoolExecutor (built-in) for parallel processing
-- Pydantic for data validation
+Configuration is read from `backend/.env`. Copy `.env.example` to `.env` and
+set `USE_CLOUD_COMPUTE=true` only when a compatible Lambda function has been
+deployed.
+
+## Optimization lifecycle
+
+1. `POST /api/jobs` creates an in-memory job.
+2. A FastAPI background task loads the cached scenario.
+3. Local mode starts independent searches with `ProcessPoolExecutor`; Lambda
+   mode invokes the configured function synchronously.
+4. Each local worker uses a distinct seed and tabu tenure.
+5. The lowest-scoring solution is selected.
+6. Reassignments are produced by diffing that solution against the original
+   pairings, and coverage metrics are computed from the same assignment set.
+
+Lower objective scores are better. The objective currently combines uncovered
+flight penalties, disruption severity, assignment churn, overtime, and a small
+home-base preference. Hard assignment checks cover certification, status, rest,
+duty time, flight time, consecutive duty days, location, and required role mix.
+
+## Tests
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
+The regression suite checks resource-count consistency, the disruption-to-flight
+join that supplies map routes, role-aware coverage, and solution-derived result
+metrics.
+
+## Operational limitations
+
+- Jobs are process-local and are not durable.
+- Progress is updated when individual search workers complete.
+- The scenario and regulatory model are simplified.
+- CORS is permissive for local development and must be restricted before any
+  public deployment.
+- The default simulation clock is fixed to the generated scenario date.

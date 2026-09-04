@@ -9,7 +9,7 @@ const GlassCard = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "liquid-glass-card rounded-3xl p-6 text-card-foreground relative",
+        "liquid-glass-card rounded-2xl p-6 text-card-foreground relative",
         className
       )}
       {...props}
